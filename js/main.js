@@ -4,31 +4,31 @@ function dropDownMain() {
   document.getElementById("myDropdown").classList.toggle("show");
 }
 
-// Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-  if (!event.target.matches(".dropbtn")) {
-    let dropdowns = document.getElementsByClassName("dropdown-content");
-    for (i = 0; i < dropdowns.length; i++) {
-      let openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains("show")) {
-        openDropdown.classList.remove("show");
-      }
-    }
-  }
-};
-
-function dropDownMainSecond() {
+function dropDownSec() {
   document.getElementById("mySecondDropdown").classList.toggle("show");
 }
+
 // Close the dropdown if the user clicks outside of it
-window.onclick = function (event) {
-  if (!event.target.matches(".dropbtnSecond")) {
-    let dropdowns = document.getElementsByClassName("dropdown-content-rent");
+
+document
+  .getElementById("secondDropdownBtn")
+  .addEventListener("click", function (event) {
+    event.stopPropagation();
+    console.log("event");
+  });
+
+window.addEventListener("click", function (event) {
+  if (!event.target.matches(".dropbtn", ".dropbtnSecond")) {
+    let dropdowns = document.querySelectorAll(
+      ".dropdown-content,.dropdown-content-rent"
+    );
+    console.log(dropdowns.length);
     for (i = 0; i < dropdowns.length; i++) {
       let openDropdown = dropdowns[i];
+      console.log(openDropdown);
       if (openDropdown.classList.contains("show")) {
         openDropdown.classList.remove("show");
       }
     }
   }
-};
+});
