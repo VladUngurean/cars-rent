@@ -22,7 +22,6 @@ body {
   align-items: center;
   width: 100%;
   height: 100%;
-  padding: 0 20px;
 }
 
 .header-top-area {
@@ -79,6 +78,7 @@ body {
 .header__bot {
   width: 100%;
   height: 100%;
+  padding: 0 10px;
   display: flex;
   justify-content: start;
   align-items: center;
@@ -215,4 +215,115 @@ body {
 
 .show {
   display: block;
+}
+
+.search-form {
+  padding: 0 20px;
+}
+.search-form-box {
+  box-shadow: 0 0 25px rgba(0, 0, 0, 0.39);
+  margin-top: 20px;
+  padding: 15px 20px;
+}
+.search-form__text > h2 {
+  text-align: center;
+  font-size: 30px;
+  font-family: "Rubik", sans-serif;
+}
+.search-form__date {
+  text-align: center;
+}
+.search-form__date > input {
+  width: 100%;
+  height: 45px;
+  border: 2px solid #f0f0ff;
+  margin-top: 15px;
+  padding: 5px 10px;
+}
+.search-form__date > input:focus {
+  outline: none;
+  border: 2px solid #e6130f;
+}
+.search-form__insurance {
+  margin-top: 10px;
+  text-align: start;
+}
+.search-form__insurance > p {
+  font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
+  font-size: large;
+}
+.search-form__insurance__labels {
+  display: flex;
+  flex-direction: column;
+}
+.search-form__insurance__labels > label {
+  margin-top: 10px;
+  font-size: medium;
+  font-family: "Rubik", sans-serif;
+}
+.search-form__button {
+  margin: 15px 0;
+}
+.search-form__button > button {
+  color: #e6130f;
+  background: 0 0;
+  width: 100%;
+  margin: 0;
+  border-width: 2px;
+  border-style: solid;
+  border-color: #e6130f;
+  position: relative;
+  display: block;
+  padding: 20px 15px;
+  font-family: "Rubik", sans-serif;
+  font-weight: 600;
+  text-align: center;
+  text-transform: uppercase;
+  letter-spacing: 7px;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.search-form__button > button::before {
+  content: "";
+  display: block;
+  position: absolute;
+  z-index: 999;
+  top: -6px;
+  left: -6px;
+  border-width: 2px 0 0 2px;
+  border-color: #e6130f;
+  box-sizing: border-box;
+  border-style: solid;
+  width: 10px;
+  height: 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.search-form__button > button:hover::before, .search-form__button > button:focus::before {
+  height: calc(100% + 12px);
+  width: calc(100% + 12px);
+}
+.search-form__button > button::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -6px;
+  right: -6px;
+  border-width: 0 2px 2px 0;
+  border-color: #e6130f;
+  box-sizing: border-box;
+  border-style: solid;
+  width: 10px;
+  height: 10px;
+  -webkit-transition: all 0.3s ease-in-out;
+  transition: all 0.3s ease-in-out;
+}
+.search-form__button > button:hover::after, .search-form__button > button:focus::after {
+  height: calc(100% + 12px);
+  width: calc(100% + 12px);
+}
+.search-form__button > button:hover {
+  background-color: #e6130f;
+  color: white;
 }/*# sourceMappingURL=style.css.map */

@@ -85,8 +85,8 @@
     <!-- Search car secction START -->
     <section class="search-form-area">
         <div class="container">
-            <div class="search-form__container">
-                <div class="search-form__box">
+            <div class="search-form">
+                <div class="search-form-box">
 
                     <div class="search-form__text">
                         <h2>Cauta Masina Potrivita</h2>
@@ -101,21 +101,23 @@
 
                     <div class="search-form__insurance">
                         <p>Alege timpul de asigurare</p>
-                        <label>
-                            <input type="radio">
-                            Asigurare simpla RCA
-                        </label>
-                        <label>
-                            <input type="radio">
-                            Asigurare Casco
-                        </label>
+                        <div class="search-form__insurance__labels">
+
+                            <label>
+                                <input name="insurance" type="radio">
+                                Asigurare simpla RCA
+                            </label>
+                            <label>
+                                <input name="insurance" type="radio">
+                                Asigurare Casco
+                            </label>
+                        </div>
+
                     </div>
 
                     <div class="search-form__button">
 
-                        <p>
-                            <button type="submit" class="search-car__button check2">Caută</button>
-                        </p>
+                        <button type="submit" class="check2">Caută</button>
 
                     </div>
 
