@@ -218,6 +218,7 @@ body {
 }
 
 .search-form {
+  margin: 70px 0 0 0;
   padding: 0 20px;
 }
 .search-form-box {
