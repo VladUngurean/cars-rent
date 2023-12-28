@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1,
+    "make": "Mercedes",
+    "title": "Mercedes-Benz GLS 350d",
+    "price": 69,
+    "firstRegistration": 2017,
+    "transmission": "Automat",
+    "fuelType": "Diesel",
+    "imgSrc": "merc.jpg"
+  },
+  {
+    "id": 2,
+    "make": "Mercedes",
+    "title": "Mercedes-Benz GLE 250d",
+    "price": 49,
+    "firstRegistration": 2017,
+    "transmission": "Automat",
+    "fuelType": "Diesel",
+    "imgSrc": "merc.jpg"
+  },
+  {
+    "id": 3,
+    "make": "Mercedes",
+    "title": "Mercedes-Benz GLC-Coupe",
+    "price": 49,
+    "firstRegistration": 2017,
+    "transmission": "Automat",
+    "fuelType": "Diesel",
+    "imgSrc": "merc.jpg"
+  }
+]

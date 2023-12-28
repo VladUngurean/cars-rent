@@ -327,4 +327,82 @@ body {
 .search-form__button > button:hover {
   background-color: #e6130f;
   color: white;
+}
+
+.car-list-area {
+  margin-top: 50px;
+}
+.car-list-area .car-list__container {
+  width: 100%;
+}
+.car-list-area .car-list__container-text {
+  width: 100%;
+  padding: 0 15px 0 15px;
+}
+.car-list-area .car-list__container-text > h2 {
+  font-weight: 600;
+  line-height: 1.2;
+  font-size: 2.5rem;
+  text-align: center;
+  color: #6b6b6b;
+}
+.car-list-area #car-list-render {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  padding: 0 20px;
+}
+.car-list-area #car-list-render .car-list__box {
+  text-align: center;
+  padding: 10px 10px;
+  border: 3px solid #f0f0ff;
+  margin-top: 30px;
+}
+.car-list-area #car-list-render .car-list__box > img {
+  max-width: 100%;
+  width: 315px;
+}
+.car-list-area #car-list-render .car-list__box > h4 {
+  font-size: 20px;
+  color: #001238;
+  letter-spacing: 1px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+  display: inline-block;
+  text-transform: capitalize;
+  font-family: Poppins, sans-serif;
+  font-weight: 600;
+}
+.car-list-area #car-list-render .car-list__box-details {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.car-list-area #car-list-render .car-list__box-details__price {
+  color: #e6130f;
+}
+.car-list-area #car-list-render .car-list__box-details__price > span {
+  color: black;
+  font-weight: 600;
+}
+.car-list-area #car-list-render .car-list__box-details-tech {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.car-list-area #car-list-render .car-list__box-details-tech__item {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.car-list-area #car-list-render .car-list__box-details-tech__item > img {
+  width: 16px;
+  height: 16px;
+  margin: 0 2px 0 8px;
 }/*# sourceMappingURL=style.css.map */
