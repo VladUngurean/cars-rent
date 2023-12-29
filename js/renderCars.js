@@ -35,9 +35,10 @@ function renderCars(carsArray) {
                                     </div>
                                 </div>
                             </div>
-                            <button>Inchiriaza</button>
-
-					    </div>`;
+                            <div class="car-list__box-link">
+                              <a href="#" >Inchiriaza</a>
+                            </div>
+					                </div>`;
     carsContainer.insertAdjacentHTML("beforeend", productHTML);
   });
 }

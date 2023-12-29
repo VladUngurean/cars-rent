@@ -7,7 +7,7 @@
     "firstRegistration": 2017,
     "transmission": "Automat",
     "fuelType": "Diesel",
-    "imgSrc": "merc.jpg"
+    "imgSrc": "merc_gls.jpg"
   },
   {
     "id": 2,
@@ -17,7 +17,7 @@
     "firstRegistration": 2017,
     "transmission": "Automat",
     "fuelType": "Diesel",
-    "imgSrc": "merc.jpg"
+    "imgSrc": "merc_gle.jpg"
   },
   {
     "id": 3,
@@ -27,6 +27,6 @@
     "firstRegistration": 2017,
     "transmission": "Automat",
     "fuelType": "Diesel",
-    "imgSrc": "merc.jpg"
+    "imgSrc": "merc_glc.jpg"
   }
 ]

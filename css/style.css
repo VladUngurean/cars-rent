@@ -16,6 +16,13 @@ body {
   overflow-x: hidden;
 }
 
+a,
+li,
+div {
+  text-decoration: none;
+  font-family: "Rubik", sans-serif;
+}
+
 .container {
   display: flex;
   justify-content: center;
@@ -368,7 +375,6 @@ body {
   color: #001238;
   letter-spacing: 1px;
   margin-top: 10px;
-  margin-bottom: 10px;
   -webkit-transition: all 0.4s ease 0s;
   transition: all 0.4s ease 0s;
   display: inline-block;
@@ -383,6 +389,7 @@ body {
   flex-direction: column;
 }
 .car-list-area #car-list-render .car-list__box-details__price {
+  margin: 15px 0;
   color: #e6130f;
 }
 .car-list-area #car-list-render .car-list__box-details__price > span {
@@ -405,4 +412,39 @@ body {
   width: 16px;
   height: 16px;
   margin: 0 2px 0 8px;
+}
+.car-list-area #car-list-render .car-list__box-link {
+  position: relative;
+  text-align: center;
+  background: #020202 none repeat scroll 0 0;
+  position: relative;
+  z-index: 1;
+  overflow: hidden;
+  width: 100%;
+  margin: 25px auto 0;
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
+}
+.car-list-area #car-list-render .car-list__box-link > a {
+  display: inline-block;
+  text-transform: uppercase;
+  height: 40px;
+  font-weight: 500;
+  color: #fff;
+  font-size: 14px;
+  line-height: 40px;
+  width: 100%;
+}
+.car-list-area #car-list-render .car-list__box-link > a::after {
+  position: absolute;
+  content: "";
+  width: 58%;
+  height: 100%;
+  background: #e6130f none repeat scroll 0 0;
+  right: -36px;
+  z-index: -1;
+  -webkit-transform: skewX(40deg);
+  transform: skewX(40deg);
+  -webkit-transition: all 0.4s ease 0s;
+  transition: all 0.4s ease 0s;
 }/*# sourceMappingURL=style.css.map */

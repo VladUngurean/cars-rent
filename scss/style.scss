@@ -6,6 +6,7 @@
 html {
   box-sizing: border-box;
 }
+
 *,
 *::after,
 *::before {
@@ -14,10 +15,18 @@ html {
   margin: 0;
   // outline: auto;
 }
+
 body {
   min-width: 320px;
   overflow-x: hidden;
   //   background-color: #975454;
+}
+
+a,
+li,
+div {
+  text-decoration: none;
+  font-family: "Rubik", sans-serif;
 }
 
 .container {
@@ -473,7 +482,7 @@ body {
         color: #001238;
         letter-spacing: 1px;
         margin-top: 10px;
-        margin-bottom: 10px;
+        // margin-bottom: 10px;
         -webkit-transition: all 0.4s ease 0s;
         transition: all 0.4s ease 0s;
         display: inline-block;
@@ -488,6 +497,7 @@ body {
         flex-direction: column;
 
         &__price {
+          margin: 15px 0;
           color: #e6130f;
           & > span {
             color: black;
@@ -514,6 +524,42 @@ body {
             }
           }
         }
+      }
+
+      &-link {
+        position: relative;
+        text-align: center;
+        background: #020202 none repeat scroll 0 0;
+        position: relative;
+        z-index: 1;
+        overflow: hidden;
+        width: 100%;
+        margin: 25px auto 0;
+        -webkit-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
+      }
+      &-link > a {
+        display: inline-block;
+        text-transform: uppercase;
+        height: 40px;
+        font-weight: 500;
+        color: #fff;
+        font-size: 14px;
+        line-height: 40px;
+        width: 100%;
+      }
+      &-link > a::after {
+        position: absolute;
+        content: "";
+        width: 58%;
+        height: 100%;
+        background: #e6130f none repeat scroll 0 0;
+        right: -36px;
+        z-index: -1;
+        -webkit-transform: skewX(40deg);
+        transform: skewX(40deg);
+        -webkit-transition: all 0.4s ease 0s;
+        transition: all 0.4s ease 0s;
       }
     }
   }
