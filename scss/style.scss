@@ -13,12 +13,17 @@ html {
   box-sizing: inherit;
   padding: 0;
   margin: 0;
-  outline: auto;
+
+  // outline: auto;
 }
 
 body {
+  // display: flex;
+
+  max-width: 100vw;
   min-width: 320px;
   overflow-x: hidden;
+
   //   background-color: #975454;
 }
 
@@ -42,7 +47,6 @@ div {
 
 //HEADER STYLING START
 .header-top-area {
-  width: 100vw;
   min-height: 47px;
 
   display: flex;
@@ -109,7 +113,7 @@ div {
 //HEADER NAV STYLING START
 .header-nav-area {
   height: 50px;
-  background: #020202 none repeat scroll 0 0;
+  background: $main-dark none repeat scroll 0 0;
 }
 
 .header__bot {
@@ -141,7 +145,6 @@ div {
   width: 30px;
   height: 20px;
   background-color: transparent;
-  color: white;
   border: none;
   cursor: pointer;
 
@@ -150,18 +153,23 @@ div {
     width: 30px;
     height: 3px;
     border-radius: 1px;
-    background-color: red;
+    background-color: white;
     position: absolute;
     top: 0;
     // bottom: 0;
     left: 0;
     // right: 0;
     box-shadow: 0 8px 0 0 white, 0 16px 0 0 white;
+
+    transition: all ease-in-out 0.3s;
   }
 
   &:hover {
     &::after {
-      box-shadow: 0 8px 0 0 rgb(228, 38, 38), 0 16px 0 0 rgb(228, 38, 38);
+      background-color: $main-red;
+      box-shadow: 0 8px 0 0 $main-red, 0 16px 0 0 $main-red;
+
+      transition: all ease-in-out 0.3s;
     }
   }
 }
@@ -178,15 +186,15 @@ div {
   z-index: 1;
 
   & > a:first-child {
-    border-top: 1px solid #e6130f;
+    border-top: 1px solid $main-red;
   }
   & > a:last-child {
-    border-bottom: 1px solid #e6130f;
+    border-bottom: 1px solid $main-red;
   }
 
   & > a {
     font-family: "Rubik", sans-serif;
-    color: black;
+    color: $main-dark;
 
     border-top: 1px solid #b9b9b9;
     padding: 12px 16px;
@@ -194,7 +202,7 @@ div {
     display: block;
   }
   & > a:hover {
-    background-color: #e6130f;
+    background-color: $main-red;
     color: white;
 
     transition: 0.3s ease-in-out;
@@ -218,7 +226,7 @@ div {
 
   &::after {
     content: "";
-    color: #e6130f;
+    color: $main-red;
     position: relative;
     float: right;
     right: 0;
@@ -239,11 +247,11 @@ div {
   &:focus {
     &::after {
       content: "";
-      color: black;
+      color: $main-dark;
     }
 
     transition: 0.3s ease-in-out;
-    background-color: #e6130f;
+    background-color: $main-red;
     color: white;
   }
 }
@@ -262,7 +270,7 @@ div {
   & > a {
     font-family: "Rubik", sans-serif;
     // font-weight: 500;
-    color: black;
+    color: $main-dark;
 
     border-top: 1px solid #b9b9b9;
     padding: 12px 30px;
@@ -272,7 +280,7 @@ div {
 
   & > a:hover {
     transition: 0.3s ease-in-out;
-    background-color: #e6130f;
+    background-color: $main-red;
     color: white;
   }
 }
@@ -327,7 +335,7 @@ div {
     }
     & > input:focus {
       outline: none;
-      border: 2px solid #e6130f;
+      border: 2px solid $main-red;
     }
   }
 
@@ -354,7 +362,7 @@ div {
   &__button {
     margin: 15px 0;
     & > button {
-      color: #e6130f;
+      color: black;
       background: 0 0;
 
       width: 100%;
@@ -362,7 +370,7 @@ div {
 
       border-width: 2px;
       border-style: solid;
-      border-color: #e6130f;
+      border-color: $main-red;
 
       position: relative;
       display: block;
@@ -389,7 +397,7 @@ div {
         left: -6px;
 
         border-width: 2px 0 0 2px;
-        border-color: #e6130f;
+        border-color: $main-red;
         box-sizing: border-box;
         border-style: solid;
 
@@ -416,7 +424,7 @@ div {
 
         border-width: 0 2px 2px 0;
 
-        border-color: #e6130f;
+        border-color: $main-red;
         box-sizing: border-box;
         border-style: solid;
         width: 10px;
@@ -432,7 +440,7 @@ div {
       }
     }
     & > button:hover {
-      background-color: #e6130f;
+      background-color: $main-red;
       color: white;
     }
   }
@@ -498,9 +506,9 @@ div {
 
         &__price {
           margin: 15px 0;
-          color: #e6130f;
+          color: $main-red;
           & > span {
-            color: black;
+            color: $main-dark;
             font-weight: 600;
           }
         }
@@ -529,7 +537,7 @@ div {
       &-link {
         position: relative;
         text-align: center;
-        background: #020202 none repeat scroll 0 0;
+        background: $main-dark none repeat scroll 0 0;
         position: relative;
         z-index: 1;
         overflow: hidden;
@@ -553,7 +561,7 @@ div {
         content: "";
         width: 58%;
         height: 100%;
-        background: #e6130f none repeat scroll 0 0;
+        background: $main-red none repeat scroll 0 0;
         right: -36px;
         z-index: -1;
         -webkit-transform: skewX(40deg);
