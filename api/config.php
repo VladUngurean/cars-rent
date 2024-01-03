@@ -6,9 +6,10 @@
 // $dbname = "carsrent";
 
 $dbhost ="sql.freedb.tech";
-$dbuser = "Vladd";
-$dbpass="1122";
+$dbuser = "freedb_Vladd";
+$dbpass="28wSGgn5FJ*MxtQ";
 $dbname ="freedb_carsrent";
+
 $conn = new mysqli($dbhost, $dbuser, $dbpass,$dbname);
 // Create connection
 //$conn = new mysqli($servername, $username, $password,$dbname);
