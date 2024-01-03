@@ -214,8 +214,8 @@
 
     <!-- Register secction END -->
 
-    <script src="/api/js/renderCars.js"></script>
-    <script src="/api/js/main.js"></script>
+    <!-- <script src="/api/js/renderCars.js"></script>
+    <script src="/api/js/main.js"></script> -->
 </body>
 
 </html>
