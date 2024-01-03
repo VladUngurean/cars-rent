@@ -14,8 +14,8 @@
 <body>
 
 <?php
-    include 'api/config.php';
-    include 'api/render.php'
+    include 'config.php';
+    include 'render.php'
 ?>
 
     <!-- Header TOP secction START -->
