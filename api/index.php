@@ -1,4 +1,11 @@
-<?php define("CSS_PATH", '/api/css/style.css'); ?>
+<?php 
+    // Define the linkResource() function 
+    function linkResource($rel, $href) { 
+        echo "<link rel='{$rel}' href='{$href}'>"; 
+    } 
+?>
+
+<?php linkResource("stylesheet", "/api/css/style.css"); ?>
 
 <!DOCTYPE HTML>
 <html lang="en">
@@ -215,8 +222,8 @@
 
     <!-- Register secction END -->
 
-<script type='text/javascript' src="/api/js/renderCars.js"></script>
-<script type='text/javascript' src="/api/js/main.js"></script>
+<!-- <script type='text/javascript' src="/api/js/renderCars.js"></script>
+<script type='text/javascript' src="/api/js/main.js"></script> -->
 
     <!-- <script src="/api/js/renderCars.js"></script>
     <script src="/api/js/main.js"></script> -->
