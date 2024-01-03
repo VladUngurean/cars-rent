@@ -1,12 +1,15 @@
+<?php define("CSS_PATH", '/api/css/style.css'); ?>
+
 <!DOCTYPE HTML>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <!-- <link rel="stylesheet" href="/api/css/style.css"> -->
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
 
     <title>Cars Rent</title>
 
@@ -210,13 +213,13 @@
     </div>
 
 
-
-
-
     <!-- Register secction END -->
 
-    <script src="/api/js/renderCars.js"></script>
-    <script src="/api/js/main.js"></script>
+<script type='text/javascript' src="/api/js/renderCars.js"></script>
+<script type='text/javascript' src="/api/js/main.js"></script>
+
+    <!-- <script src="/api/js/renderCars.js"></script>
+    <script src="/api/js/main.js"></script> -->
 </body>
 
 </html>
