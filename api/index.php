@@ -212,8 +212,8 @@
 
     <!-- Register secction END -->
 
-<script type='text/javascript' src="/api/js/renderCars.js"></script>
-<script type='text/javascript' src="/api/js/main.js"></script>
+<script type='text/javascript' src="/api/renderCars.js"></script>
+<script type='text/javascript' src="/api/main.js"></script>
 
     <!-- <script src="/api/js/renderCars.js"></script>
     <script src="/api/js/main.js"></script> -->
