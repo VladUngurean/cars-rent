@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
 
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
     <title>Cars Rent</title>
 </head>
 
@@ -157,6 +159,57 @@
         </div>
     </section>
     <!-- Comment secction END -->
+    <!-- Register secction START -->
+
+    <div class="register-area">
+        <div class="container">
+            <div class="register-area__container">
+                <div class="register-area__container-text">
+                    <h2>Comanda Masina Online</h2>
+                </div>
+                <form action="php/connect.php" method="post">
+                    <div class="register-area__container__input-field">
+                        <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                        <input type="email" name="email" placeholder="Email" required />
+                    </div>
+                    <div class="register-area__container__input-field">
+                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input type="password" name="password" placeholder="Parola" required />
+                    </div>
+                    <div class="register-area__container__input-field">
+                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                        <input type="password" name="password" placeholder="Repeta Parola" required />
+                    </div>
+
+                    <div class="register-area__container__input-field">
+                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                        <input type="text" name="firstName" placeholder="Nume" />
+                    </div>
+
+                    <div class="register-area__container__input-field">
+                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                        <input type="text" name="lastName" placeholder="Prenume" required />
+                    </div>
+
+                    <div class="register-area__container__input-field">
+                        <span><i aria-hidden="true" class="fa fa-phone"></i></span>
+                        <input type="text" name="phoneNumber" placeholder="Telefon de Contact" required />
+                    </div>
+
+                    <input class="button" type="submit" value="Register" />
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+
+
+    <?php
+    include 'php/config.php';
+    ?>
+
+    <!-- Register secction END -->
 
     <script src="js/renderCars.js"></script>
     <script src="/js/main.js"></script>
