@@ -415,6 +415,9 @@ div {
   height: 16px;
   margin: 0 2px 0 8px;
 }
+.car-list-area #car-list-render .car-list__box-details-tech__item > div {
+  white-space: nowrap;
+}
 .car-list-area #car-list-render .car-list__box-link {
   position: relative;
   text-align: center;

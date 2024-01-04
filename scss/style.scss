@@ -526,10 +526,16 @@ div {
             align-items: center;
             flex-direction: row;
 
+            // & > img:first-child {
+            //   margin: 0 2px 0 0px;
+            // }
             & > img {
               width: 16px;
               height: 16px;
               margin: 0 2px 0 8px;
+            }
+            & > div {
+              white-space: nowrap;
             }
           }
         }

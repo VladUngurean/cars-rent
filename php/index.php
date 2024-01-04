@@ -234,7 +234,7 @@ if ($result->num_rows > 0) {
                                 <div class="car-list__box-details-tech">
                                     <div class="car-list__box-details-tech__item">
                                         <img src="/images/icons/calendarIcon.png" alt="time">
-                                        <p> An: ${car.registrationYear}</p>
+                                        <div> An: ${car.registrationYear}</div>
                                     </div>
 
                                     <div class="car-list__box-details-tech__item">
