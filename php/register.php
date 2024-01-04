@@ -30,7 +30,7 @@ if(isset($_POST['submit']))
         return  array($_SESSION['email'],$_SESSION['firstName'],$_SESSION['lastName'],$_SESSION['phoneNumber']);
     }
 
-    list($a,$b,$c,$d) = catchValues();
+    // list($a,$b,$c,$d) = catchValues();
     $registerErrorMesage = '';
     $dataBaseResponse = '';
     
@@ -45,15 +45,16 @@ if(isset($_POST['submit']))
                         $checkEmail = mysqli_query($conn, "select email from users where email = '$email'");
                         $checkPhone = mysqli_query($conn, "select phone from users where phone = '$phoneNumber'");
                         if(mysqli_num_rows($checkEmail) > 0){ 
+                            list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Email Already exists'; 
                         } elseif(mysqli_num_rows($checkPhone) > 0){
+                            list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
                         } else {
                             $conn->query("INSERT INTO `users` (`user_role`,`firstName`, `lastName` ,`password`, `email`, `phone`)
                             VALUES((SELECT user_role_id from user_roles WHERE user_role='user'), '$firstName', '$lastName', '$password', '$email', '$phoneNumber')");
                             $conn->close();
                         }
-
                     } else {  
                         list($a,$b,$c,$d) = catchValues();
                         $registerErrorMesage =  "Phone Number should contain only numbers";

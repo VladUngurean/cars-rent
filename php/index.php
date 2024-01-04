@@ -29,16 +29,15 @@ if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
     //   echo "imgSrc: " . $row["car_image"]. " - title: " . $row["title"]. " - price: " . $row["rent_days_price_46"]. " - firstRegistration: " . $row["registration_year"]. " - transmission: " . $row["transmission_type"]. " - fuelType: " . $row["engine_fuel"]."<br>";
-    $data[] = $row;
-    // $carImage = $row['car_image'];
-    // $makeTitle = $row['title'];
-    // $rentDaysPrice46 = $row['rent_days_price_46'];
-    // $registrationYear = $row['registration_year'];
-    // $engineFuel = $row['engine_fuel'];
-    // $transmisionType = $row['transmission_type'];
-    // //   echo "<img src='$imagePath' alt='Image'>";
+    // $data[] = $row;
+    $carImage = $row['car_image'];
+    $makeTitle = $row['title'];
+    $rentDaysPrice46 = $row['rent_days_price_46'];
+    $registrationYear = $row['registration_year'];
+    $engineFuel = $row['engine_fuel'];
+    $transmisionType = $row['transmission_type'];
+      echo "<img src='$carImage' alt='Image'>";
     }
-    echo json_encode($data);
 
   } else {
     echo json_encode(["message" => "No data found"]);
