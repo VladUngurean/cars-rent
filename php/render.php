@@ -1,5 +1,7 @@
 <?php
-include 'config.php';
+
+include "config.php";
+
 $sql= "SELECT cars.car_image, car_make_title.title, cars.rent_days_price_46, cars.registration_year, car_transmission.transmission_type, car_engine_fuel.engine_fuel 
 FROM `cars` 
 LEFT JOIN car_make_title
@@ -9,7 +11,6 @@ ON cars.transmission_type=car_transmission.transmission_id
 LEFT JOIN car_engine_fuel
 ON cars.engine_fuel=car_engine_fuel.engine_fuel_id";
 $result = $conn->query($sql);
-
 
 if ($result->num_rows > 0) {
     // output data of each row

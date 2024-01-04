@@ -1,22 +1,56 @@
-<!DOCTYPE HTML>
+<!DOCTYPE html>
 <html lang="en">
     
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="/css/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Cars Rent</title>
 
+    <?php
+
+include "config.php";
+
+$sql= "SELECT cars.car_image, car_make_title.title, cars.rent_days_price_46, cars.registration_year, car_transmission.transmission_type, car_engine_fuel.engine_fuel 
+FROM `cars` 
+LEFT JOIN car_make_title
+on cars.make_title=car_make_title.make_title_id
+LEFT JOIN car_transmission
+ON cars.transmission_type=car_transmission.transmission_id
+LEFT JOIN car_engine_fuel
+ON cars.engine_fuel=car_engine_fuel.engine_fuel_id";
+$result = $conn->query($sql);
+
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+    //   echo "imgSrc: " . $row["car_image"]. " - title: " . $row["title"]. " - price: " . $row["rent_days_price_46"]. " - firstRegistration: " . $row["registration_year"]. " - transmission: " . $row["transmission_type"]. " - fuelType: " . $row["engine_fuel"]."<br>";
+    $data[] = $row;
+    // $carImage = $row['car_image'];
+    // $makeTitle = $row['title'];
+    // $rentDaysPrice46 = $row['rent_days_price_46'];
+    // $registrationYear = $row['registration_year'];
+    // $engineFuel = $row['engine_fuel'];
+    // $transmisionType = $row['transmission_type'];
+    // //   echo "<img src='$imagePath' alt='Image'>";
+    }
+    echo json_encode($data);
+
+  } else {
+    echo json_encode(["message" => "No data found"]);
+  }
+  $conn->close();
+?>
+
 </head>
 
 <body>
 
-<?php
-    include 'php/render.php'
-?>
+<!-- <img src="" alt="" srcset=""> -->
 
     <!-- Header TOP secction START -->
     <section class="header-top-area">
@@ -28,7 +62,7 @@
                 <div class="language">
 
                     <button class="language__button" type="button">
-                        <img src="images/ro.svg" alt="ro">
+                        <img src="/images/ro.svg" alt="ro">
                         Română
                     </button>
 
@@ -48,7 +82,7 @@
                 <!-- Header Logo START -->
                 <div class="site__logo">
                     <a href="#">
-                        <img src="images/logo.png" alt="logo">
+                        <img src="/images/logo.png" alt="logo">
                     </a>
                 </div>
                 <!-- Header Logo END -->
@@ -164,58 +198,15 @@
         </div>
     </section>
     <!-- Comment secction END -->
-    <!-- Register secction START -->
-
-    <div class="register-area">
-        <div class="container">
-            <div class="register-area__container">
-                <div class="register-area__container-text">
-                    <h2>Comanda Masina Online</h2>
-                </div>
-                <form action="/php/auth/register.php" method="post">
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input type="email" name="email" placeholder="Email" required />
-                    </div>
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="password" placeholder="Parola" required />
-                    </div>
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="password" placeholder="Repeta Parola" required />
-                    </div>
-
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                        <input type="text" name="firstName" placeholder="Nume" />
-                    </div>
-
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                        <input type="text" name="lastName" placeholder="Prenume" required />
-                    </div>
-
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                        <input type="text" name="phoneNumber" placeholder="Telefon de Contact" required />
-                    </div>
-
-                    <input class="button" type="submit" value="Register" />
-                </form>
-
-            </div>
-        </div>
-    </div>
 
 
-    <!-- Register secction END -->
-
-<script type='text/javascript' src="js/renderCars.js"></script>
-<script type='text/javascript' src="js/main.js"></script>
+<script type='text/javascript' src="/js/renderCars.js"></script>
+<script type='text/javascript' src="/js/main.js"></script>
 
     <!-- <script src="js/renderCars.js"></script>
     <script src="js/main.js"></script> -->
+
+
 </body>
 
 </html>
