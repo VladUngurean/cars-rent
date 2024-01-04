@@ -4,7 +4,7 @@
     <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/public/css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -15,8 +15,7 @@
 <body>
 
 <?php
-    include 'config.php';
-    include 'render.php'
+    include 'php/render.php'
 ?>
 
     <!-- Header TOP secction START -->
@@ -29,7 +28,7 @@
                 <div class="language">
 
                     <button class="language__button" type="button">
-                        <img src="/public/images/ro.svg" alt="ro">
+                        <img src="images/ro.svg" alt="ro">
                         Română
                     </button>
 
@@ -49,7 +48,7 @@
                 <!-- Header Logo START -->
                 <div class="site__logo">
                     <a href="#">
-                        <img src="/public/images/logo.png" alt="logo">
+                        <img src="images/logo.png" alt="logo">
                     </a>
                 </div>
                 <!-- Header Logo END -->
@@ -173,7 +172,7 @@
                 <div class="register-area__container-text">
                     <h2>Comanda Masina Online</h2>
                 </div>
-                <form action="php/connect.php" method="post">
+                <form action="/php/auth/register.php" method="post">
                     <div class="register-area__container__input-field">
                         <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
                         <input type="email" name="email" placeholder="Email" required />
@@ -212,11 +211,11 @@
 
     <!-- Register secction END -->
 
-<script type='text/javascript' src="/public/js/renderCars.js"></script>
-<script type='text/javascript' src="/public/js/main.js"></script>
+<script type='text/javascript' src="js/renderCars.js"></script>
+<script type='text/javascript' src="js/main.js"></script>
 
-    <!-- <script src="/public/js/renderCars.js"></script>
-    <script src="/public/js/main.js"></script> -->
+    <!-- <script src="js/renderCars.js"></script>
+    <script src="js/main.js"></script> -->
 </body>
 
 </html>
