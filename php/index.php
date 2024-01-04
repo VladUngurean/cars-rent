@@ -30,14 +30,27 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
     //   echo "imgSrc: " . $row["car_image"]. " - title: " . $row["title"]. " - price: " . $row["rent_days_price_46"]. " - firstRegistration: " . $row["registration_year"]. " - transmission: " . $row["transmission_type"]. " - fuelType: " . $row["engine_fuel"]."<br>";
     // $data[] = $row;
-    $carImage = $row['car_image'];
-    $makeTitle = $row['title'];
-    $rentDaysPrice46 = $row['rent_days_price_46'];
-    $registrationYear = $row['registration_year'];
-    $engineFuel = $row['engine_fuel'];
-    $transmisionType = $row['transmission_type'];
-      echo "<img src='$carImage' alt='Image'>";
+    // $carImage = $row['car_image'];
+    // $makeTitle = $row['title'];
+    // $rentDaysPrice46 = $row['rent_days_price_46'];
+    // $registrationYear = $row['registration_year'];
+    // $engineFuel = $row['engine_fuel'];
+    // $transmisionType = $row['transmission_type'];
+    //   echo "<img src='$carImage' alt='Image'>";
+
+    $data[] = array(
+        'carImage' => $row['car_image'],
+        'makeTitle' => $row['title'],
+        'rentDaysPrice46' => $row['rent_days_price_46'],
+        'registrationYear' => $row['registration_year'],
+        'engineFuel' => $row['engine_fuel'],
+        'transmissionType' => $row['transmission_type']
+    );
     }
+    // echo json_encode($data);
+    echo '<script>';
+    echo 'var carData = ' . json_encode($data) . ';';
+    echo '</script>';
 
   } else {
     echo json_encode(["message" => "No data found"]);
@@ -49,7 +62,8 @@ if ($result->num_rows > 0) {
 
 <body>
 
-<!-- <img src="" alt="" srcset=""> -->
+
+
 
     <!-- Header TOP secction START -->
     <section class="header-top-area">
@@ -199,7 +213,51 @@ if ($result->num_rows > 0) {
     <!-- Comment secction END -->
 
 
-<script type='text/javascript' src="/js/renderCars.js"></script>
+
+<script type="text/javascript">
+        document.addEventListener("DOMContentLoaded", function () {
+            // Access the PHP data in JavaScript
+            const dataFromPHP = carData;
+            console.log(dataFromPHP);
+
+            // Process the data and dynamically create HTML elements
+            const carsContainer = document.querySelector("#car-list-render");
+
+            dataFromPHP.forEach(car => {
+    const productHTML = `<div class="car-list__box">
+                            <img src="${car.carImage}" alt="carImage">
+                            <h4 >${car.makeTitle}</h4>
+                            <div class="car-list__box-details">
+
+                                <div class="car-list__box-details__price">De la <span>${car.rentDaysPrice46} €</span>/Zi</div>
+
+                                <div class="car-list__box-details-tech">
+                                    <div class="car-list__box-details-tech__item">
+                                        <img src="/images/icons/calendarIcon.png" alt="time">
+                                        <p> An: ${car.registrationYear}</p>
+                                    </div>
+
+                                    <div class="car-list__box-details-tech__item">
+                                        <img src="/images/icons/gear.png" alt="transmission">
+                                        <div>${car.transmissionType}</div>
+                                    </div>
+
+                                    <div class="car-list__box-details-tech__item">
+                                        <img src="/images/icons/fuel.png" alt="fuelType">
+                                        <div> ${car.engineFuel}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="car-list__box-link">
+                                <a href="#" >Inchiriaza</a>
+                            </div>
+					    </div>`;
+                    carsContainer.insertAdjacentHTML("beforeend", productHTML);
+        });
+    });
+</script>
+
+<!-- <script type='text/javascript' src="/js/renderCars.js"></script> -->
 <script type='text/javascript' src="/js/main.js"></script>
 
     <!-- <script src="js/renderCars.js"></script>
