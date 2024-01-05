@@ -15,14 +15,29 @@
 
 include "config.php";
 
-$sql= "SELECT cars.car_image, car_make_title.title, cars.rent_days_price_46, cars.registration_year, car_transmission.transmission_type, car_engine_fuel.engine_fuel 
-FROM `cars` 
-LEFT JOIN car_make_title
-on cars.make_title=car_make_title.make_title_id
-LEFT JOIN car_transmission
-ON cars.transmission_type=car_transmission.transmission_id
-LEFT JOIN car_engine_fuel
-ON cars.engine_fuel=car_engine_fuel.engine_fuel_id";
+$sql= "SELECT cars.car_image, car_make.make, car_make_title.title, cars.registration_year, car_transmission.transmission_type,car_engine_fuel.engine_fuel, 
+car_engine_capacity.engine_capacity, car_body_type.body_type, car_doors.doors_number, car_passengers_number.passengers_number,cars.description, 
+cars.rent_days_price_1_2, cars.rent_days_price_3_7, cars.rent_days_price_8_20, cars.rent_days_price_21_45, cars.rent_days_price_46, car_rent_status.rent_status
+FROM `cars`
+LEFT JOIN car_make_title 
+on cars.make_title=car_make_title.make_title_id 
+LEFT JOIN car_make
+on car_make_title.make=car_make.make_id
+LEFT JOIN car_transmission 
+ON cars.transmission_type=car_transmission.transmission_id 
+LEFT JOIN car_engine_fuel 
+ON cars.engine_fuel=car_engine_fuel.engine_fuel_id
+LEFT JOIN car_engine_capacity
+ON cars.engine_capacity=car_engine_capacity.engine_capacity_id
+LEFT JOIN car_body_type
+ON cars.body_type=car_body_type.body_type_id
+LEFT JOIN car_doors
+ON cars.doors=car_doors.doors_id
+LEFT JOIN car_passengers_number
+ON cars.passengers_number=car_passengers_number.passengers_number_id
+LEFT JOIN car_rent_status
+ON cars.rent_status=car_rent_status.rent_status_id;";
+
 $result = $conn->query($sql);
 
 if ($result->num_rows > 0) {
@@ -31,11 +46,22 @@ if ($result->num_rows > 0) {
 
     $data[] = array(
         'carImage' => $row['car_image'],
+        'make' => $row['make'],
         'makeTitle' => $row['title'],
-        'rentDaysPrice46' => $row['rent_days_price_46'],
         'registrationYear' => $row['registration_year'],
+        'transmissionType' => $row['transmission_type'],
         'engineFuel' => $row['engine_fuel'],
-        'transmissionType' => $row['transmission_type']
+        'engineCapacity' => $row['engine_capacity'],
+        'bodyType' => $row['body_type'],
+        'dorsNumber' => $row['doors_number'],
+        'passengersNumber' => $row['passengers_number'],
+        'description' => $row['description'],
+        'rentDaysPrice1_2' => $row['rent_days_price_1_2'],
+        'rentDaysPrice3_7' => $row['rent_days_price_3_7'],
+        'rentDaysPrice8_20' => $row['rent_days_price_8_20'],
+        'rentDaysPrice21_45' => $row['rent_days_price_21_45'],
+        'rentDaysPrice46' => $row['rent_days_price_46'],
+        'rentStatus' => $row['rent_status']
     );
     }
     echo '<script>';
