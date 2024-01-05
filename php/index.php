@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-    
-    <head>
+
+<head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
 
+    <!-- <script src="https://code.jquery.com/jquery-3.7.1.min.js" integrity="sha256-/JqT3SQfawRcv/BIHPThkBvs0OEvtFFmqPF/lYI/Cxo=" crossorigin="anonymous"></script> -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Cars Rent</title>
@@ -24,19 +25,9 @@ LEFT JOIN car_engine_fuel
 ON cars.engine_fuel=car_engine_fuel.engine_fuel_id";
 $result = $conn->query($sql);
 
-
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-    //   echo "imgSrc: " . $row["car_image"]. " - title: " . $row["title"]. " - price: " . $row["rent_days_price_46"]. " - firstRegistration: " . $row["registration_year"]. " - transmission: " . $row["transmission_type"]. " - fuelType: " . $row["engine_fuel"]."<br>";
-    // $data[] = $row;
-    // $carImage = $row['car_image'];
-    // $makeTitle = $row['title'];
-    // $rentDaysPrice46 = $row['rent_days_price_46'];
-    // $registrationYear = $row['registration_year'];
-    // $engineFuel = $row['engine_fuel'];
-    // $transmisionType = $row['transmission_type'];
-    //   echo "<img src='$carImage' alt='Image'>";
 
     $data[] = array(
         'carImage' => $row['car_image'],
@@ -47,9 +38,8 @@ if ($result->num_rows > 0) {
         'transmissionType' => $row['transmission_type']
     );
     }
-    // echo json_encode($data);
     echo '<script>';
-    echo 'var carData = ' . json_encode($data) . ';';
+    echo 'let carData = ' . json_encode($data) . ';';
     echo '</script>';
 
   } else {
@@ -62,82 +52,7 @@ if ($result->num_rows > 0) {
 
 <body>
 
-
-
-
-    <!-- Header TOP secction START -->
-    <section class="header-top-area">
-        <div class="container">
-
-            <div class="header__top">
-
-                <!-- Language Select START -->
-                <div class="language">
-
-                    <button class="language__button" type="button">
-                        <img src="/images/ro.svg" alt="ro">
-                        Română
-                    </button>
-
-                </div>
-                <!-- Language Select END -->
-
-            </div>
-    </section>
-    <!-- Header TOP secction END -->
-
-    <!-- Header MID secction START -->
-
-    <section class="header-mid-area">
-        <div class="container">
-            <div class="header__mid">
-
-                <!-- Header Logo START -->
-                <div class="site__logo">
-                    <a href="#">
-                        <img src="/images/logo.png" alt="logo">
-                    </a>
-                </div>
-                <!-- Header Logo END -->
-
-            </div>
-        </div>
-    </section>
-
-    <!-- Header MID secction END -->
-
-    <!-- Header BOT secction START -->
-    <section class="header-nav-area">
-
-        <div class="container">
-            <div class="header__bot">
-
-                <div class="dropdown">
-                    <button onclick="navDropDownMain()" class="dropbtnMain"></button>
-                    <div id="dropdownMain" class="dropdown__content-main">
-                        <a href="#home">Acasa</a>
-
-                        <button id="secondDropdownBtn" onclick="navDropDownSecond()" class="dropbtnSecond">Alege Masina</button>
-
-                        <div id="dropdownSecond" class="dropdown__content-second">
-                            <a href="#about">Chirie SUV</a>
-                            <a href="#about">Chirie Hatckback</a>
-                            <a href="#about">Chirie Crossovere</a>
-                            <a href="#about">Chirie Sedan</a>
-                            <a href="#about">Chirie Minivan</a>
-                        </div>
-
-                        <a href="#contact">Despre Noi</a>
-                        <a href="#contact">Contacte</a>
-                    </div>
-                </div>
-
-            </div>
-        </div>
-
-    </section>
-
-    <!-- Header BOT secction END -->
+    <?php include('header.php'); ?>
 
     <!-- Search car secction START -->
     <section class="search-form-area">
@@ -150,10 +65,10 @@ if ($result->num_rows > 0) {
                     </div>
 
                     <div class="search-form__date">
-                        <input type="text" placeholder="Data Inchirierii">
-                        <input type="text" placeholder="Ora Inchirierii">
-                        <input type="text" placeholder="Data Returnarii">
-                        <input type="text" placeholder="Ora Returnarii">
+                        <input type="date" id="datePicker" placeholder="Data Inchirierii">
+                        <input type="time" id="timePicker" placeholder="Ora Inchirierii">
+                        <input type="date" id="datePickerReturn" placeholder="Data Returnarii">
+                        <input type="time" id="timePickerReturn" placeholder="Ora Returnarii">
                     </div>
 
                     <div class="search-form__insurance">
@@ -212,57 +127,11 @@ if ($result->num_rows > 0) {
     </section>
     <!-- Comment secction END -->
 
-
-
-<script type="text/javascript">
-        document.addEventListener("DOMContentLoaded", function () {
-            // Access the PHP data in JavaScript
-            const dataFromPHP = carData;
-            console.log(dataFromPHP);
-
-            // Process the data and dynamically create HTML elements
-            const carsContainer = document.querySelector("#car-list-render");
-
-            dataFromPHP.forEach(car => {
-    const productHTML = `<div class="car-list__box">
-                            <img src="${car.carImage}" alt="carImage">
-                            <h4 >${car.makeTitle}</h4>
-                            <div class="car-list__box-details">
-
-                                <div class="car-list__box-details__price">De la <span>${car.rentDaysPrice46} €</span>/Zi</div>
-
-                                <div class="car-list__box-details-tech">
-                                    <div class="car-list__box-details-tech__item">
-                                        <img src="/images/icons/calendarIcon.png" alt="time">
-                                        <div> An: ${car.registrationYear}</div>
-                                    </div>
-
-                                    <div class="car-list__box-details-tech__item">
-                                        <img src="/images/icons/gear.png" alt="transmission">
-                                        <div>${car.transmissionType}</div>
-                                    </div>
-
-                                    <div class="car-list__box-details-tech__item">
-                                        <img src="/images/icons/fuel.png" alt="fuelType">
-                                        <div> ${car.engineFuel}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="car-list__box-link">
-                                <a href="#" >Inchiriaza</a>
-                            </div>
-					    </div>`;
-                    carsContainer.insertAdjacentHTML("beforeend", productHTML);
-        });
-    });
-</script>
-
-<!-- <script type='text/javascript' src="/js/renderCars.js"></script> -->
-<script type='text/javascript' src="/js/main.js"></script>
+    <script type='text/javascript' src="/js/renderCars.js"></script>
+    <script type='text/javascript' src="/js/main.js"></script>
 
     <!-- <script src="js/renderCars.js"></script>
     <script src="js/main.js"></script> -->
-
 
 </body>
 
