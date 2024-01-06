@@ -47,7 +47,7 @@ if ($result->num_rows > 0) {
     $data[] = array(
         'carImage' => $row['car_image'],
         'make' => $row['make'],
-        'makeTitle' => $row['title'],
+        'model' => $row['title'],
         'registrationYear' => $row['registration_year'],
         'transmissionType' => $row['transmission_type'],
         'engineFuel' => $row['engine_fuel'],
@@ -81,7 +81,57 @@ if ($result->num_rows > 0) {
     <?php include('header.php'); ?>
 
     <!-- Search car secction START -->
+    <!-- NEW SECCTION  -->
+
     <section class="search-form-area">
+        <div class="container">
+            <div class="search-form">
+                <div class="search-form-box">
+
+                    <div class="search-form__text">
+                        <h2>Cauta Masina Potrivita</h2>
+                    </div>
+
+                    <div class="search-form__date">
+                        <select name="car" id="selectCarMake">
+                            <option value="">Toate Marcile</option>
+                        </select>
+                        <select name="car" id="selectTransmission">
+                            <option value="">Transmisie</option>
+                        </select>
+                        <select name="car" id="selectCarModel">
+                            <option value="">Model</option>
+                        </select>
+                    </div>
+
+                    <div class="search-form__insurance">
+                        <p>Alege timpul de asigurare</p>
+                        <div class="search-form__insurance__labels">
+
+                            <label>
+                                <input name="insurance" type="radio">
+                                Asigurare simpla RCA
+                            </label>
+                            <label>
+                                <input name="insurance" type="radio">
+                                Asigurare Casco
+                            </label>
+                        </div>
+
+                    </div>
+
+                    <div class="search-form__button">
+
+                        <button type="submit" class="check2">Caută</button>
+
+                    </div>
+
+                </div>
+            </div>
+    </section>
+
+    <!-- OLD SECCTION START -->
+    <!-- <section class="search-form-area">
         <div class="container">
             <div class="search-form">
                 <div class="search-form-box">
@@ -121,7 +171,7 @@ if ($result->num_rows > 0) {
 
                 </div>
             </div>
-    </section>
+    </section> -->
     <!-- Search car secction END -->
 
     <!-- Car list secction START -->
@@ -153,6 +203,7 @@ if ($result->num_rows > 0) {
     </section>
     <!-- Comment secction END -->
 
+    <script type='text/javascript' src="/js/filter.js"></script>
     <script type='text/javascript' src="/js/renderCars.js"></script>
     <script type='text/javascript' src="/js/main.js"></script>
 
