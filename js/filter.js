@@ -35,33 +35,33 @@ function filteredDataForSelect(inputArray) {
   return resultArray;
 }
 
+// Variable to store the currently active element
+let activeDropdown = null;
 carsFromFilter.forEach((car) => {
-  // Filter models based on the current car's make
-
   let makeToString = [`${car.make}`];
-  console.log(makeToString);
-  // Render the make
+
   makeToString.forEach((make) => {
-    console.log(make);
     const renderCarForSelect = `
-    <li class="">
-      <div class="dropdown__content-second__select-options">
-        <label class="" for="1">
-          <input class="" type="checkbox" id="" name="" value="">
-          <span id="dropDown${make}Models">${make}
-            <a href="">&gt;</a>
-          </span>
-        </label>
-      </div>
-      <ul id="renderModels${make}" class="ulForCarModels"></ul>
-    </li>
-  `;
+      <li class="">
+        <div class="dropdown__content-second__select-options">
+          <label class="" for="1">
+            <input class="" type="checkbox" id="" name="" value="">
+            <span id="dropDown${make}Models">${make}
+              <a href="">&gt;</a>
+            </span>
+          </label>
+        </div>
+        <ul id="renderModels${make}" class="ulForCarModels"></ul>
+      </li>
+    `;
     carSelectDropDown.insertAdjacentHTML("beforeend", renderCarForSelect);
-    let testttt = document.getElementById(`dropDown${car.make}Models`);
+
+    let dropDownForCarModel = document.getElementById(
+      `dropDown${car.make}Models`
+    );
     let renderHereBabe = document.getElementById(`renderModels${car.make}`);
-    // Render the filtered models
+
     car.models.forEach((model) => {
-      console.log(model);
       const renderCarForSelect2 = `
         <li class="">
           <div>
@@ -75,15 +75,18 @@ carsFromFilter.forEach((car) => {
       renderHereBabe.insertAdjacentHTML("beforeend", renderCarForSelect2);
     });
 
-    // when click on menu button it toggles 'show' and check if second dropdown is actvie then it close it
-    testttt.addEventListener("click", function () {
+    // Event listener for the make dropdown
+    dropDownForCarModel.addEventListener("click", function () {
+      // Close the active dropdown if there is one
+      if (activeDropdown && activeDropdown !== renderHereBabe) {
+        activeDropdown.classList.remove("show");
+      }
+
+      // Toggle the current dropdown
       renderHereBabe.classList.toggle("show");
-      console.log(renderHereBabe);
-      // // let secondDropdown = document.getElementById(`${renderHereBabe}`);
-      // // console.log(secondDropdown.classList);
-      // if (secondDropdown.classList.contains("show")) {
-      //   secondDropdown.classList.remove("show");
-      // }
+
+      // Update the active dropdown
+      activeDropdown = renderHereBabe;
     });
   });
 });

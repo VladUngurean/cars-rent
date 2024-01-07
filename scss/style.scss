@@ -290,7 +290,9 @@ div {
 
 .ulForCarModels {
   display: none;
+  position: relative;
   border: 2px solid black;
+  left: 20px;
 }
 
 .show {
@@ -688,9 +690,6 @@ div {
       width: 1px;
     }
   }
-}
-
-@media (max-width: 600px) {
 }
 
 //Register SECCTION STYLING END
