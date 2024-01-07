@@ -288,18 +288,12 @@ div {
   }
 }
 
+.ulForCarModels {
+  display: none;
+  border: 2px solid black;
+}
+
 .show {
-  // display: flex;
-  // align-items: stretch;
-
-  // position: relative;
-  // z-index: 9999;
-  // top: 0;
-  // left: 0;
-  // width: 100vw;
-  // height: 100vh;
-  // background-color: rgba(0, 0, 0, 0.79);
-
   display: block;
 }
 
@@ -321,45 +315,8 @@ div {
   &__text > h2 {
     text-align: center;
     font-size: 30px;
+    // color: red;
     font-family: "Rubik", sans-serif;
-  }
-
-  &__date {
-    // margin: 20px 0 0 0;
-    text-align: center;
-
-    & > input {
-      width: 100%;
-      height: 45px;
-      border: 2px solid #f0f0ff;
-
-      margin-top: 15px;
-      padding: 5px 10px;
-    }
-    & > input:focus {
-      outline: none;
-      border: 2px solid $main-red;
-    }
-  }
-
-  &__insurance {
-    margin-top: 10px;
-    text-align: start;
-    & > p {
-      font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS",
-        sans-serif;
-      font-size: large;
-    }
-    &__labels {
-      display: flex;
-      flex-direction: column;
-
-      & > label {
-        margin-top: 10px;
-        font-size: medium;
-        font-family: "Rubik", sans-serif;
-      }
-    }
   }
 
   &__button {

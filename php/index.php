@@ -98,10 +98,9 @@ if ($result->num_rows > 0) {
                             <div class="search-container">
 
                                 <div class="dropdown__select-options">
-                                    <div id="dropdownMain__select-options" class="dropdown__content-main__select-options">
+                                    <div id="dropDownCarMake" class="dropdown__content-main__select-options">
 
-                                        <ul id="renderCarMakeSelect">
-                                        </ul>
+                                        <ul id="renderCarMakeSelect"></ul>
 
                                     </div>
                                 </div>
@@ -110,22 +109,6 @@ if ($result->num_rows > 0) {
                         </div>
 
                     </section>
-
-                    <div class="search-form__insurance">
-                        <p>Alege timpul de asigurare</p>
-                        <div class="search-form__insurance__labels">
-
-                            <label>
-                                <input name="insurance" type="radio">
-                                Asigurare simpla RCA
-                            </label>
-                            <label>
-                                <input name="insurance" type="radio">
-                                Asigurare Casco
-                            </label>
-                        </div>
-
-                    </div>
 
                     <div class="search-form__button">
 

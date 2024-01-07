@@ -34,127 +34,56 @@ function filteredDataForSelect(inputArray) {
 
   return resultArray;
 }
-let d = "fdg";
-//working example
-
-// carsFromFilter.map((car) => {
-//   // Render the make
-//   const renderCarForSelect = `
-//     <li class="">
-//       <div id="dropdownSecond__select-options" class="dropdown__content-second__select-options">
-//         <label class="" for="1">
-//           <input class="" type="checkbox" id="" name="" value="">
-//           <span>${car.make}
-//             <a href="">&gt;</a>
-//           </span>
-//         </label>
-//       </div>
-//       <ul id="renderHereBabe"></ul>
-//     </li>
-//   `;
-//   carSelectDropDown.insertAdjacentHTML("beforeend", renderCarForSelect);
-//   // let renderHereBabe = document.getElementById("renderHereBabe");
-//   // // Render the models
-//   // car.models.forEach((model) => {
-//   //   const renderCarForSelect2 = `
-//   //     <li class="">
-//   //       <div>
-//   //         <label class="" for="1">
-//   //           <input class="" type="checkbox" id="" name="" value="">
-//   //           <span>${model}
-//   //             <a href="">A2 &gt; </a>
-//   //           </span>
-//   //         </label>
-//   //       </div>
-//   //     </li>
-//   //   `;
-//   //   renderHereBabe.insertAdjacentHTML("beforeend", renderCarForSelect2);
-//   // });
-// });
-
-let g = "fgfga"; //working example
-//test example
-
-// carsFromFilter.map((car) => {
-//   // Render the make
-//   const renderCarForSelect = `
-//     <li class="">
-//       <div id="dropdownSecond__select-options" class="dropdown__content-second__select-options">
-//         <label class="" for="1">
-//           <input class="" type="checkbox" id="" name="" value="">
-//           <span id="showModelsSpan">${car.make}
-//             <a href="">&gt;</a>
-//           </span>
-//         </label>
-//       </div>
-//       <ul id="renderHereBabe"></ul>
-//     </li>
-//   `;
-//   carSelectDropDown.insertAdjacentHTML("beforeend", renderCarForSelect);
-//   // Render the models
-//   let renderHereBabe = document.getElementById("renderHereBabe");
-//   car.models.forEach((model) => {
-//     // if(car.make = )
-//     const renderCarForSelect2 = `
-//       <li class="">
-//         <div>
-//           <label class="" for="1">
-//             <input class="" type="checkbox" id="" name="" value="">
-//             <span>${model}
-//               <a href="">&gt;</a>
-//             </span>
-//           </label>
-//         </div>
-//       </li>
-//     `;
-//     renderHereBabe.insertAdjacentHTML("beforeend", renderCarForSelect2);
-//   });
-// });
-
-let h = "fgfga"; //test example
 
 carsFromFilter.forEach((car) => {
   // Filter models based on the current car's make
-  // const modelsToRender = car.filter((model) => model.make == car.make);
-  // console.log(car);
+
   let makeToString = [`${car.make}`];
-  // console.log(makeToString);
+  console.log(makeToString);
   // Render the make
   makeToString.forEach((make) => {
     console.log(make);
     const renderCarForSelect = `
     <li class="">
-      <div id="dropdownSecond__select-options" class="dropdown__content-second__select-options">
+      <div class="dropdown__content-second__select-options">
         <label class="" for="1">
           <input class="" type="checkbox" id="" name="" value="">
-          <span id="showModelsSpan${make}">${make}
+          <span id="dropDown${make}Models">${make}
             <a href="">&gt;</a>
           </span>
         </label>
       </div>
-      <ul id="renderHereBabe${make}" class="ulForCarModels"></ul>
+      <ul id="renderModels${make}" class="ulForCarModels"></ul>
     </li>
   `;
     carSelectDropDown.insertAdjacentHTML("beforeend", renderCarForSelect);
-  });
+    let testttt = document.getElementById(`dropDown${car.make}Models`);
+    let renderHereBabe = document.getElementById(`renderModels${car.make}`);
+    // Render the filtered models
+    car.models.forEach((model) => {
+      console.log(model);
+      const renderCarForSelect2 = `
+        <li class="">
+          <div>
+            <label class="" for="1">
+              <input class="" type="checkbox" id="" name="" value="">
+              <span>${model}</span>
+            </label>
+          </div>
+        </li>
+      `;
+      renderHereBabe.insertAdjacentHTML("beforeend", renderCarForSelect2);
+    });
 
-  let renderHereBabe = document.getElementById(`renderHereBabe${car.make}`);
-  // Render the filtered models
-  car.models.forEach((model) => {
-    console.log(model);
-    const renderCarForSelect2 = `
-      <li class="">
-        <div>
-          <label class="" for="1">
-            <input class="" type="checkbox" id="" name="" value="">
-            <span>${model}</span>
-          </label>
-        </div>
-      </li>
-    `;
-    renderHereBabe.insertAdjacentHTML("beforeend", renderCarForSelect2);
+    // when click on menu button it toggles 'show' and check if second dropdown is actvie then it close it
+    testttt.addEventListener("click", function () {
+      renderHereBabe.classList.toggle("show");
+      console.log(renderHereBabe);
+      // // let secondDropdown = document.getElementById(`${renderHereBabe}`);
+      // // console.log(secondDropdown.classList);
+      // if (secondDropdown.classList.contains("show")) {
+      //   secondDropdown.classList.remove("show");
+      // }
+    });
   });
 });
-
-console.log(carsFromFilter);
-console.log(carsFromFilter[0].models);
