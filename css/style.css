@@ -18,8 +18,10 @@ body {
 }
 
 a,
+ul,
 li,
 div {
+  list-style-type: none;
   text-decoration: none;
   font-family: "Rubik", sans-serif;
 }

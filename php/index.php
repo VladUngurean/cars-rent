@@ -92,17 +92,24 @@ if ($result->num_rows > 0) {
                         <h2>Cauta Masina Potrivita</h2>
                     </div>
 
-                    <div class="search-form__date">
-                        <select name="car" id="selectCarMake">
-                            <option value="">Toate Marcile</option>
-                        </select>
-                        <select name="car" id="selectTransmission">
-                            <option value="">Transmisie</option>
-                        </select>
-                        <select name="car" id="selectCarModel">
-                            <option value="">Model</option>
-                        </select>
-                    </div>
+                    <section class="search-test">
+
+                        <div class="container">
+                            <div class="search-container">
+
+                                <div class="dropdown__select-options">
+                                    <div id="dropdownMain__select-options" class="dropdown__content-main__select-options">
+
+                                        <ul id="renderCarMakeSelect">
+                                        </ul>
+
+                                    </div>
+                                </div>
+
+                            </div>
+                        </div>
+
+                    </section>
 
                     <div class="search-form__insurance">
                         <p>Alege timpul de asigurare</p>
