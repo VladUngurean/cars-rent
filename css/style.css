@@ -276,7 +276,6 @@ div {
   content: "";
   display: block;
   position: absolute;
-  z-index: 999;
   top: -6px;
   left: -6px;
   border-width: 2px 0 0 2px;
@@ -337,14 +336,16 @@ div {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
+  flex-direction: row;
+  flex-wrap: wrap;
   padding: 0 20px;
 }
 .car-list-area #car-list-render .car-list__box {
   text-align: center;
   padding: 10px 10px;
   border: 3px solid #f0f0ff;
-  margin-top: 30px;
+  margin: 15px 15px;
+  max-width: 320px;
 }
 .car-list-area #car-list-render .car-list__box > img {
   max-width: 100%;

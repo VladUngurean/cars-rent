@@ -1,43 +1,43 @@
-document.addEventListener("DOMContentLoaded", function () {
-  // Access the PHP data in JavaScript
-  const dataFromPHP = carData;
-  //   console.log(dataFromPHP);
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Access the PHP data in JavaScript
+//   const dataFromPHP = carData;
+//   //   console.log(dataFromPHP);
 
-  // Process the data and dynamically create HTML elements
-  const carsContainer = document.querySelector("#car-list-render");
+//   // Process the data and dynamically create HTML elements
+//   const carsContainer = document.querySelector("#car-list-render");
 
-  dataFromPHP.forEach((car) => {
-    const productHTML = `<div class="car-list__box">
-                            <img src="${car.carImage}" alt="carImage">
-                            <h4 >${car.make} - ${car.model}</h4>
-                            <div class="car-list__box-details">
+//   dataFromPHP.forEach((car) => {
+//     const productHTML = `<div class="car-list__box">
+//                             <img src="${car.carImage}" alt="carImage">
+//                             <h4 >${car.make} - ${car.model}</h4>
+//                             <div class="car-list__box-details">
 
-                                <div class="car-list__box-details__price">De la <span>${car.rentDaysPrice46} €</span>/Zi</div>
+//                                 <div class="car-list__box-details__price">De la <span>${car.rentDaysPrice46} €</span>/Zi</div>
 
-                                <div class="car-list__box-details-tech">
-                                    <div class="car-list__box-details-tech__item">
-                                        <img src="/images/icons/calendarIcon.png" alt="time">
-                                        <div> An: ${car.registrationYear}</div>
-                                    </div>
+//                                 <div class="car-list__box-details-tech">
+//                                     <div class="car-list__box-details-tech__item">
+//                                         <img src="/images/icons/calendarIcon.png" alt="time">
+//                                         <div> An: ${car.registrationYear}</div>
+//                                     </div>
 
-                                    <div class="car-list__box-details-tech__item">
-                                        <img src="/images/icons/gear.png" alt="transmission">
-                                        <div>${car.transmissionType}</div>
-                                    </div>
+//                                     <div class="car-list__box-details-tech__item">
+//                                         <img src="/images/icons/gear.png" alt="transmission">
+//                                         <div>${car.transmissionType}</div>
+//                                     </div>
 
-                                    <div class="car-list__box-details-tech__item">
-                                        <img src="/images/icons/fuel.png" alt="fuelType">
-                                        <div> ${car.engineFuel}</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="car-list__box-link">
-                                <a href="#" >Inchiriaza</a>
-                            </div>
-					    </div>`;
-    carsContainer.insertAdjacentHTML("beforeend", productHTML);
-  });
-});
+//                                     <div class="car-list__box-details-tech__item">
+//                                         <img src="/images/icons/fuel.png" alt="fuelType">
+//                                         <div> ${car.engineFuel}</div>
+//                                     </div>
+//                                 </div>
+//                             </div>
+//                             <div class="car-list__box-link">
+//                                 <a href="#" >Inchiriaza</a>
+//                             </div>
+// 					    </div>`;
+//     carsContainer.insertAdjacentHTML("beforeend", productHTML);
+//   });
+// });
 
 //FOR SELECT DATE AND HOURS STRT
 

@@ -112,7 +112,7 @@ if ($result->num_rows > 0) {
 
                     <div class="search-form__button">
 
-                        <button type="submit" class="check2">Caută</button>
+                        <button id="tessst" type="submit" class="check2">Caută</button>
 
                     </div>
 
