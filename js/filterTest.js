@@ -1,4 +1,4 @@
-function createTransmissionTypeSelectHTML() {
+function createTransmissionSelectHTML() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
@@ -9,12 +9,12 @@ function createTransmissionTypeSelectHTML() {
             </span>
           </label>
         </div>
-        <ul id="transmissionTypeList" class="ulForCarModels"></ul>
+        <ul id="transmissionTypeList" class="ulForTransmissions"></ul>
       </li>
     `;
 }
 
-function createTransmissionTypeForSelectHTML(transmissionType) {
+function createTransmissionForSelect(transmissionType) {
   return `
         <li class="">
           <div class="">
@@ -29,21 +29,26 @@ function createTransmissionTypeForSelectHTML(transmissionType) {
 
 // Get data from the database
 const carsInfoFromPHP = carData;
-console.log(carsInfoFromPHP);
+// console.log(carsInfoFromPHP);
 
 // Get UL by id to render carMakes for select option
 let transmissionTypeSelectDropDown = document.getElementById(
-  "renderCarMakeSelect"
+  "renderCarTransmissionSelect"
+);
+const renderTransmissionSelectHTML = createTransmissionSelectHTML();
+transmissionTypeSelectDropDown.insertAdjacentHTML(
+  "beforeend",
+  renderTransmissionSelectHTML
 );
 
 // To prevent more than one dropdown opened at the time
-let activeDropdownStatus = null;
+// let activeDropdownStatus = null;
 
 // Filter cars to show for select options
-function filteredDataForSelect(inputArray) {
+function filteredTransmissionTypes(data) {
   const uniqueTransmissionTypes = [];
 
-  inputArray.forEach(({ transmissionType }) => {
+  data.forEach(({ transmissionType }) => {
     if (!uniqueTransmissionTypes[transmissionType]) {
       uniqueTransmissionTypes[transmissionType] = {
         transmissionType,
@@ -58,84 +63,88 @@ function filteredDataForSelect(inputArray) {
   return Object.values(uniqueTransmissionTypes);
 }
 
-// console.log(filteredDataForSelect(carsInfoFromPHP));
+// console.log(filteredTransmissionTypes(carsInfoFromPHP));
 
 // Applies filter on data from the database
-const carsFromFilter = filteredDataForSelect(carsInfoFromPHP);
-console.log(carsFromFilter);
-carsFromFilter.forEach(renderCarForSelect);
+const transmissionTypesFromFilter = filteredTransmissionTypes(carsInfoFromPHP);
+console.log(transmissionTypesFromFilter);
+transmissionTypesFromFilter.forEach(renderTransmissionSelect);
 
-// Render on screen cars for select option from filteredDataForSelect function
-function renderCarForSelect(car) {
-  let test = car.transmissionType;
-  console.log(test);
-  const renderCarForSelectHTML = createTransmissionTypeSelectHTML();
-  transmissionTypeSelectDropDown.insertAdjacentHTML(
-    "beforeend",
-    renderCarForSelectHTML
+// Render on screen cars for select option from filteredTransmissionTypes function
+function renderTransmissionSelect(car) {
+  const forRenderTransmission = document.getElementById("transmissionTypeList");
+
+  console.log(car.transmissionTypes);
+  renderTransmissionTypesForSelect(
+    car.transmissionTypes,
+    forRenderTransmission
   );
 
-  const dropDownForCarModel = document.getElementById(`selectTransmissionType`);
-  const forRenderModels = document.getElementById(`transmissionTypeList`);
-
-  console.log(car.transmissionType);
-  renderCarModelsForSelect(car, forRenderModels);
-  dropDownForCarModel.addEventListener("click", function () {
-    handleDropDownClick(forRenderModels);
+  let transmissionTypeCheckbox = document.getElementById(`transmissionType`);
+  transmissionTypeCheckbox.addEventListener("change", function () {
+    toggleTransmissionCheckbox(transmissionTypeCheckbox, forRenderTransmission);
   });
 
-  let makeCheckbox = document.getElementById(`transmissionType`);
-  makeCheckbox.addEventListener("change", function () {
-    toggleMakeCheckbox(makeCheckbox, forRenderModels);
-  });
-
-  let modelCheckboxes = forRenderModels.querySelectorAll(
+  let transmissionCheckboxes = forRenderTransmission.querySelectorAll(
     ".transmissionType-checkbox"
   );
-  modelCheckboxes.forEach((modelCheckbox) => {
-    modelCheckbox.addEventListener("change", function () {
-      handleModelCheckboxChange(modelCheckbox, makeCheckbox, modelCheckboxes);
+  transmissionCheckboxes.forEach((transmissionCheckbox) => {
+    transmissionCheckbox.addEventListener("change", function () {
+      handletransmissionCheckboxChange(
+        transmissionCheckbox,
+        transmissionTypeCheckbox,
+        transmissionCheckboxes
+      );
     });
   });
 }
 
-function renderCarModelsForSelect(transmissionTypes, container) {
+const dropDownForTransmission = document.getElementById(
+  "selectTransmissionType"
+);
+const forRenderTransmission = document.getElementById("transmissionTypeList");
+dropDownForTransmission.addEventListener("click", function () {
+  handleDropDownClick(forRenderTransmission);
+  console.log("hh");
+});
+
+function renderTransmissionTypesForSelect(transmissionTypes, container) {
   console.log(transmissionTypes);
   transmissionTypes.forEach((type) => {
-    const renderCarForSelect2HTML = createTransmissionTypeForSelectHTML(type);
-    container.insertAdjacentHTML("beforeend", renderCarForSelect2HTML);
+    const renderTransmissionSelect2HTML = createTransmissionForSelect(type);
+    container.insertAdjacentHTML("beforeend", renderTransmissionSelect2HTML);
   });
 }
 
-function handleDropDownClick(container) {
-  if (activeDropdownStatus && activeDropdownStatus !== container) {
-    activeDropdownStatus.classList.remove("show");
-  }
-  container.classList.toggle("show");
-  activeDropdownStatus = container;
-}
+// function handleDropDownClick(container) {
+//   if (activeDropdownStatus && activeDropdownStatus !== container) {
+//     activeDropdownStatus.classList.remove("show");
+//   }
+//   container.classList.toggle("show");
+//   activeDropdownStatus = container;
+// }
 
-function toggleMakeCheckbox(makeCheckbox, container) {
-  let modelCheckboxes = container.querySelectorAll(
+function toggleTransmissionCheckbox(TransmissionCheckbox, container) {
+  let transmissionCheckboxes = container.querySelectorAll(
     ".transmissionType-checkbox"
   );
-  modelCheckboxes.forEach((modelCheckbox) => {
-    modelCheckbox.checked = makeCheckbox.checked;
+  transmissionCheckboxes.forEach((transmissionCheckbox) => {
+    transmissionCheckbox.checked = TransmissionCheckbox.checked;
     console.log(
-      `Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`
+      `Checkbox All ${TransmissionCheckbox.id} is checked: ${TransmissionCheckbox.checked}`
     );
   });
 }
 
-function handleModelCheckboxChange(
-  modelCheckbox,
-  makeCheckbox,
-  allModelCheckboxes
+function handletransmissionCheckboxChange(
+  transmissionCheckbox,
+  transmissionTypeCheckbox,
+  alltransmissionCheckboxes
 ) {
-  makeCheckbox.checked = Array.from(allModelCheckboxes).some(
+  transmissionTypeCheckbox.checked = Array.from(alltransmissionCheckboxes).some(
     (checkbox) => checkbox.checked
   );
   console.log(
-    `Checkbox ${modelCheckbox.id} is checked: ${modelCheckbox.checked}`
+    `Checkbox ${transmissionCheckbox.id} is checked: ${transmissionCheckbox.checked}`
   );
 }

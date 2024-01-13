@@ -1,4 +1,18 @@
-function createCarForSelectHTML(make) {
+function forMakeSelectHTML() {
+  return `
+      <li class="">
+        <div class="dropdown__content-second__select-options">
+          <label class="" for="1">
+            <span id="dropDownMakes"> Marca
+              <a href="">&gt;</a>
+            </span>
+          </label>
+        </div>
+        <ul id="carMakesForSelect" class="ulForCarMakes"></ul>
+      </li>
+    `;
+}
+function createCarMakeForSelectHTML(make) {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
@@ -33,6 +47,18 @@ console.log(carsInfoFromPHP);
 
 // Get UL by id to render carMakes for select option
 let carSelectDropDown = document.getElementById("renderCarMakeSelect");
+//Render make select option =================================================== test
+const makeForSelectHTML = forMakeSelectHTML();
+carSelectDropDown.insertAdjacentHTML("beforeend", makeForSelectHTML);
+
+let carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
+let dropDownMakes = document.getElementById("dropDownMakes");
+
+dropDownMakes.addEventListener("click", function () {
+  console.log("main");
+  handleDropDownClickMakes(carMakesForSelectDropdown);
+});
+//Render make select option =================================================== test end
 
 // To prevent more than one dropdown opened at the time
 let activeDropdownStatus = null;
@@ -60,9 +86,14 @@ carsFromFilter.forEach(renderCarForSelect);
 
 // Render on screen cars for select option from filteredDataForSelect function
 function renderCarForSelect(car) {
+  let carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
+
   const make = car.make;
-  const renderCarForSelectHTML = createCarForSelectHTML(make);
-  carSelectDropDown.insertAdjacentHTML("beforeend", renderCarForSelectHTML);
+  const renderCarForSelectHTML = createCarMakeForSelectHTML(make);
+  carMakesForSelectDropdown.insertAdjacentHTML(
+    "beforeend",
+    renderCarForSelectHTML
+  );
 
   const dropDownForCarModel = document.getElementById(`dropDown${make}Models`);
   const forRenderModels = document.getElementById(`renderModels${make}`);
@@ -70,7 +101,7 @@ function renderCarForSelect(car) {
   renderCarModelsForSelect(car.models, forRenderModels, make);
 
   dropDownForCarModel.addEventListener("click", function () {
-    handleDropDownClick(forRenderModels);
+    handleDropDownClickModels(forRenderModels);
   });
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
@@ -93,11 +124,18 @@ function renderCarModelsForSelect(models, container, make) {
   });
 }
 
-function handleDropDownClick(container) {
+function handleDropDownClickMakes(container) {
   if (activeDropdownStatus && activeDropdownStatus !== container) {
-    activeDropdownStatus.classList.remove("show");
+    activeDropdownStatus.classList.remove("showMakes");
   }
-  container.classList.toggle("show");
+  container.classList.toggle("showMakes");
+  activeDropdownStatus = container;
+}
+function handleDropDownClickModels(container) {
+  if (activeDropdownStatus && activeDropdownStatus !== container) {
+    activeDropdownStatus.classList.remove("showModels");
+  }
+  container.classList.toggle("showModels");
   activeDropdownStatus = container;
 }
 

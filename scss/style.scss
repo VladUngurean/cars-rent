@@ -288,14 +288,23 @@ div {
   }
 }
 
+.ulForCarMakes {
+  display: none;
+  position: relative;
+  border: 2px solid rgb(124, 124, 124);
+  left: 5px;
+}
 .ulForCarModels {
   display: none;
   position: relative;
   border: 2px solid black;
-  left: 20px;
+  left: 5px;
 }
 
-.show {
+.showMakes {
+  display: block;
+}
+.showModels {
   display: block;
 }
 
