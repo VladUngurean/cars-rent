@@ -125,11 +125,8 @@ function renderCarModelsForSelect(models, container) {
   });
 }
 
-function handleDropDownClickMakes(container, second) {
-  if (
-    (activeMainDropdownStatus && activeMainDropdownStatus !== container) ||
-    (activeMainDropdownStatus && activeMainDropdownStatus !== second)
-  ) {
+function handleDropDownClickMakes(container) {
+  if (activeMainDropdownStatus && activeMainDropdownStatus !== container) {
     activeMainDropdownStatus.classList.remove("show");
   }
   container.classList.toggle("show");
