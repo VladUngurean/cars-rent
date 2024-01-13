@@ -40,9 +40,6 @@ transmissionTypeSelectDropDown.insertAdjacentHTML(
   renderTransmissionSelectHTML
 );
 
-// To prevent more than one dropdown opened at the time
-// let activeMainDropdownStatus = null;
-
 // Filter to showTransmissions for select options
 function filteredTransmissionTypes(data) {
   const uniqueTransmissionTypes = [];
@@ -62,8 +59,6 @@ function filteredTransmissionTypes(data) {
   return Object.values(uniqueTransmissionTypes);
 }
 
-// console.log(filteredTransmissionTypes(carsFromPHP));
-
 // Applies filter on data from the database
 const transmissionTypesFromFilter = filteredTransmissionTypes(carsFromPHP);
 console.log(transmissionTypesFromFilter);
@@ -78,23 +73,6 @@ function renderTransmissionSelect(car) {
     car.transmissionTypes,
     forRenderTransmission
   );
-
-  // let transmissionTypeCheckbox = document.getElementById(`transmissionType`);
-  // transmissionTypeCheckbox.addEventListener("change", function () {
-  //   toggleTransmissionCheckbox(transmissionTypeCheckbox, forRenderTransmission);
-  // });
-
-  let transmissionCheckboxes = forRenderTransmission.querySelectorAll(
-    ".transmissionType-checkbox"
-  );
-  transmissionCheckboxes.forEach((transmissionCheckbox) => {
-    transmissionCheckbox.addEventListener("change", function () {
-      handletransmissionCheckboxChange(
-        transmissionCheckbox,
-        transmissionCheckboxes
-      );
-    });
-  });
 }
 
 const dropDownForTransmission = document.getElementById(
@@ -121,3 +99,16 @@ function handleDropDownClick(container) {
   container.classList.toggle("show");
   activeMainDropdownStatus = container;
 }
+
+// Function for checkboxes
+
+const transmissionCheckboxes = document.querySelectorAll(
+  ".transmissionType-checkbox"
+);
+
+// Listen for changes in transmission checkboxes
+transmissionCheckboxes.forEach((checkbox) => {
+  checkbox.addEventListener("change", function () {
+    renderFilteredCars();
+  });
+});

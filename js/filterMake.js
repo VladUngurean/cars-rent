@@ -1,3 +1,5 @@
+let globalTest;
+
 function forMakeSelectHTML() {
   return `
       <li class="">
@@ -237,6 +239,7 @@ function renderAllCars() {
 }
 
 // Function to render filtered cars based on checked checkboxes
+
 function renderFilteredCars() {
   carsContainer.innerHTML = "";
 
@@ -248,16 +251,23 @@ function renderFilteredCars() {
     .filter((checkbox) => checkbox.checked)
     .map((checkbox) => checkbox.id.replace("select", ""));
 
-  if (checkedMakes.length === 0 && checkedModels.length === 0) {
+  const checkedTransmissions = Array.from(transmissionCheckboxes)
+    .filter((checkbox) => checkbox.checked)
+    .map((checkbox) => checkbox.id.replace("select", ""));
+
+  if (
+    checkedMakes.length === 0 &&
+    checkedModels.length === 0 &&
+    checkedTransmissions.length === 0
+  ) {
     renderAllCars();
   } else {
     carsInfoFromPHP.forEach((car) => {
-      // const makeCheckbox = document.getElementById(`selectMake${car.make}`);
-      // const modelCheckbox = document.getElementById(`select${car.model}`);
-
       if (
         (checkedMakes.length === 0 || checkedMakes.includes(car.make)) &&
-        (checkedModels.length === 0 || checkedModels.includes(car.model))
+        (checkedModels.length === 0 || checkedModels.includes(car.model)) &&
+        (checkedTransmissions.length === 0 ||
+          checkedTransmissions.includes(car.transmissionType))
       ) {
         renderCars(car);
       }
