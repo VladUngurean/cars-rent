@@ -97,15 +97,13 @@ if ($result->num_rows > 0) {
                         <div class="container">
                             <div class="search-container">
 
-                                <div class="dropdown__select-options">
-                                    <div id="dropDownCarMake" class="dropdown__content-main__select-options">
+                                <div class="search__select-options">
 
-                                        <ul id="renderCarMakeSelect"></ul>
+                                    <ul id="renderCarMakeSelect"></ul>
 
-                                        <ul id="renderCarTransmissionSelect"></ul>
+                                    <ul id="renderCarTransmissionSelect"></ul>
 
 
-                                    </div>
                                 </div>
 
                             </div>
@@ -196,8 +194,13 @@ if ($result->num_rows > 0) {
     </section>
     <!-- Comment secction END -->
 
-    <script type='text/javascript' src="/js/filterTest.js"></script>
-    <!-- <script type='text/javascript' src="/js/filter.js"></script> -->
+    <!-- <script type='text/javascript' src="/js/filtersTryToCombine.js"></script> -->
+
+
+    <script type='text/javascript' src="/js/filterTransmission.js"></script>
+
+    <script type='text/javascript' src="/js/filterMake.js"></script>
+
     <!-- <script type='text/javascript' src="/js/renderCars.js"></script> -->
     <script type='text/javascript' src="/js/main.js"></script>
 

@@ -61,6 +61,7 @@ dropDownMakes.addEventListener("click", function () {
 //Render make select option =================================================== test end
 
 // To prevent more than one dropdown opened at the time
+let activeMainDropdownStatus = null;
 let activeDropdownStatus = null;
 
 // Filter cars to show for select options
@@ -98,7 +99,7 @@ function renderCarForSelect(car) {
   const dropDownForCarModel = document.getElementById(`dropDown${make}Models`);
   const forRenderModels = document.getElementById(`renderModels${make}`);
 
-  renderCarModelsForSelect(car.models, forRenderModels, make);
+  renderCarModelsForSelect(car.models, forRenderModels);
 
   dropDownForCarModel.addEventListener("click", function () {
     handleDropDownClickModels(forRenderModels);
@@ -117,25 +118,30 @@ function renderCarForSelect(car) {
   });
 }
 
-function renderCarModelsForSelect(models, container, make) {
+function renderCarModelsForSelect(models, container) {
   models.forEach((model) => {
     const renderCarForSelect2HTML = createCarModelForSelectHTML(model);
     container.insertAdjacentHTML("beforeend", renderCarForSelect2HTML);
   });
 }
 
-function handleDropDownClickMakes(container) {
-  if (activeDropdownStatus && activeDropdownStatus !== container) {
-    activeDropdownStatus.classList.remove("showMakes");
+function handleDropDownClickMakes(container, second) {
+  if (
+    (activeMainDropdownStatus && activeMainDropdownStatus !== container) ||
+    (activeMainDropdownStatus && activeMainDropdownStatus !== second)
+  ) {
+    activeMainDropdownStatus.classList.remove("show");
   }
-  container.classList.toggle("showMakes");
-  activeDropdownStatus = container;
+  container.classList.toggle("show");
+  activeMainDropdownStatus = container;
 }
+
 function handleDropDownClickModels(container) {
   if (activeDropdownStatus && activeDropdownStatus !== container) {
-    activeDropdownStatus.classList.remove("showModels");
+    activeDropdownStatus.classList.remove("show");
   }
-  container.classList.toggle("showModels");
+
+  container.classList.toggle("show");
   activeDropdownStatus = container;
 }
 

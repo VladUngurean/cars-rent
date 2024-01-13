@@ -288,26 +288,6 @@ div {
   }
 }
 
-.ulForCarMakes {
-  display: none;
-  position: relative;
-  border: 2px solid rgb(124, 124, 124);
-  left: 5px;
-}
-.ulForCarModels {
-  display: none;
-  position: relative;
-  border: 2px solid black;
-  left: 5px;
-}
-
-.showMakes {
-  display: block;
-}
-.showModels {
-  display: block;
-}
-
 //HEADER NAV STYLING END
 
 //SEARCH CAR FORM STYLING SART
@@ -703,3 +683,43 @@ div {
 }
 
 //Register SECCTION STYLING END
+
+//SEARH SECCTION START
+.search {
+  &__select-options {
+    min-width: 300px;
+    min-height: 300px;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    flex-direction: row;
+    & > ul {
+      margin: 20px 30px;
+    }
+  }
+}
+
+.ulForCarMakes {
+  display: none;
+  position: relative;
+  border: 2px solid rgb(124, 124, 124);
+  left: 5px;
+}
+.ulForCarModels {
+  display: none;
+  position: relative;
+  border: 2px solid black;
+  left: 5px;
+}
+.ulForTransmissions {
+  display: none;
+  position: relative;
+  border: 2px solid black;
+  left: 5px;
+}
+
+.show {
+  display: block;
+}
+//SEARH SECCTION END
