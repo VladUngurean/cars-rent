@@ -14,13 +14,6 @@ function createCarForSelectHTML(make) {
     `;
 }
 
-function renderCarModelsForSelect(models, container, make) {
-  models.forEach((model) => {
-    const renderCarForSelect2HTML = createCarModelForSelectHTML(model);
-    container.insertAdjacentHTML("beforeend", renderCarForSelect2HTML);
-  });
-}
-
 function createCarModelForSelectHTML(model) {
   return `
         <li class="">
@@ -93,40 +86,11 @@ function renderCarForSelect(car) {
   });
 }
 
-function createCarForSelectHTML(make) {
-  return `
-      <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
-            <span id="dropDown${make}Models">${make}
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
-        <ul id="renderModels${make}" class="ulForCarModels"></ul>
-      </li>
-    `;
-}
-
 function renderCarModelsForSelect(models, container, make) {
   models.forEach((model) => {
     const renderCarForSelect2HTML = createCarModelForSelectHTML(model);
     container.insertAdjacentHTML("beforeend", renderCarForSelect2HTML);
   });
-}
-
-function createCarModelForSelectHTML(model) {
-  return `
-        <li class="">
-          <div class="">
-            <label class="" for="1">
-              <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
-              <span>${model}</span>
-            </label>
-          </div>
-        </li>
-      `;
 }
 
 function handleDropDownClick(container) {
@@ -158,12 +122,7 @@ function handleModelCheckboxChange(
   console.log(
     `Checkbox ${modelCheckbox.id} is checked: ${modelCheckbox.checked}`
   );
-  console.log(
-    `Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`
-  );
 }
-// Access the PHP data in JavaScript
-const dataFromPHP = carData;
 
 // Render cars on the webpage
 const renderCars = (car) => {
@@ -233,7 +192,7 @@ renderAllCars();
 // Function to render all cars
 function renderAllCars() {
   carsContainer.innerHTML = "";
-  dataFromPHP.forEach(renderCars);
+  carsInfoFromPHP.forEach(renderCars);
 }
 
 // Function to render filtered cars based on checked checkboxes
@@ -251,9 +210,9 @@ function renderFilteredCars() {
   if (checkedMakes.length === 0 && checkedModels.length === 0) {
     renderAllCars();
   } else {
-    dataFromPHP.forEach((car) => {
-      const makeCheckbox = document.getElementById(`selectMake${car.make}`);
-      const modelCheckbox = document.getElementById(`select${car.model}`);
+    carsInfoFromPHP.forEach((car) => {
+      // const makeCheckbox = document.getElementById(`selectMake${car.make}`);
+      // const modelCheckbox = document.getElementById(`select${car.model}`);
 
       if (
         (checkedMakes.length === 0 || checkedMakes.includes(car.make)) &&
