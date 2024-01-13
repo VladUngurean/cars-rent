@@ -194,12 +194,7 @@ if ($result->num_rows > 0) {
     </section>
     <!-- Comment secction END -->
 
-    <!-- <script type='text/javascript' src="/js/filtersTryToCombine.js"></script> -->
-
-
-    <script type='text/javascript' src="/js/filterTransmission.js"></script>
-
-    <script type='text/javascript' src="/js/filterMake.js"></script>
+    <script type='text/javascript' src="/js/filter.js"></script>
 
     <!-- <script type='text/javascript' src="/js/renderCars.js"></script> -->
     <script type='text/javascript' src="/js/main.js"></script>
