@@ -28,17 +28,18 @@ function createTransmissionForSelect(transmissionType) {
 
 // Get data from the database
 const carsFromPHP = carData;
-// console.log(carsFromPHP);
 
 // Get UL by id to render carMakes for select option
-let transmissionTypeSelectDropDown = document.getElementById(
-  "renderCarTransmissionSelect"
+renderTransmissionSelectHTML(
+  "renderCarTransmissionSelect",
+  createTransmissionSelectHTML
 );
-const renderTransmissionSelectHTML = createTransmissionSelectHTML();
-transmissionTypeSelectDropDown.insertAdjacentHTML(
-  "beforeend",
-  renderTransmissionSelectHTML
-);
+
+function renderTransmissionSelectHTML(addressToRender, functionToRender) {
+  let addressToRenderHTML = document.getElementById(`${addressToRender}`);
+  const renderToSelectHTML = functionToRender();
+  addressToRenderHTML.insertAdjacentHTML("beforeend", renderToSelectHTML);
+}
 
 // Filter to showTransmissions for select options
 function filteredTransmissionTypes(data) {
@@ -80,7 +81,7 @@ const dropDownForTransmission = document.getElementById(
 );
 const forRenderTransmission = document.getElementById("transmissionTypeList");
 dropDownForTransmission.addEventListener("click", function () {
-  handleDropDownClick(forRenderTransmission);
+  selectDropDownOnClick(forRenderTransmission, activeMain);
   console.log("hh");
 });
 
@@ -90,14 +91,6 @@ function renderTransmissionTypesForSelect(transmissionTypes, container) {
     const renderTransmissionSelect2HTML = createTransmissionForSelect(type);
     container.insertAdjacentHTML("beforeend", renderTransmissionSelect2HTML);
   });
-}
-
-function handleDropDownClick(container) {
-  if (activeMainDropdownStatus && activeMainDropdownStatus !== container) {
-    activeMainDropdownStatus.classList.remove("show");
-  }
-  container.classList.toggle("show");
-  activeMainDropdownStatus = container;
 }
 
 // Function for checkboxes

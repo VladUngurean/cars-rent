@@ -1,5 +1,4 @@
-let globalTest;
-
+//HTML for make and model
 function forMakeSelectHTML() {
   return `
       <li class="">
@@ -42,6 +41,7 @@ function createCarModelForSelectHTML(model) {
         </li>
       `;
 }
+//HTML for transmission
 
 // Get data from the database
 const carsInfoFromPHP = carData;
@@ -58,13 +58,13 @@ let dropDownMakes = document.getElementById("dropDownMakes");
 
 dropDownMakes.addEventListener("click", function () {
   console.log("main");
-  handleDropDownClickMakes(carMakesForSelectDropdown);
+  selectDropDownOnClick(carMakesForSelectDropdown, activeMain);
 });
 //Render make select option =================================================== test end
 
 // To prevent more than one dropdown opened at the time
-let activeMainDropdownStatus = null;
-let activeDropdownStatus = null;
+let activeMain = null;
+let activeSecond = null;
 
 // Filter cars to show for select options
 function filteredDataForSelect(inputArray) {
@@ -89,7 +89,8 @@ carsFromFilter.forEach(renderCarForSelect);
 
 // Render on screen cars for select option from filteredDataForSelect function
 function renderCarForSelect(car) {
-  let carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
+  const carMakesForSelectDropdown =
+    document.getElementById("carMakesForSelect");
 
   const make = car.make;
   const renderCarForSelectHTML = createCarMakeForSelectHTML(make);
@@ -104,7 +105,7 @@ function renderCarForSelect(car) {
   renderCarModelsForSelect(car.models, forRenderModels);
 
   dropDownForCarModel.addEventListener("click", function () {
-    handleDropDownClickModels(forRenderModels);
+    selectDropDownOnClick(forRenderModels, activeSecond);
   });
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
@@ -127,21 +128,13 @@ function renderCarModelsForSelect(models, container) {
   });
 }
 
-function handleDropDownClickMakes(container) {
-  if (activeMainDropdownStatus && activeMainDropdownStatus !== container) {
-    activeMainDropdownStatus.classList.remove("show");
+//
+function selectDropDownOnClick(container, activeStatus) {
+  if (activeStatus && activeStatus !== container) {
+    activeStatus.classList.remove("show");
   }
   container.classList.toggle("show");
-  activeMainDropdownStatus = container;
-}
-
-function handleDropDownClickModels(container) {
-  if (activeDropdownStatus && activeDropdownStatus !== container) {
-    activeDropdownStatus.classList.remove("show");
-  }
-
-  container.classList.toggle("show");
-  activeDropdownStatus = container;
+  activeStatus = container;
 }
 
 function toggleMakeCheckbox(makeCheckbox, container) {
