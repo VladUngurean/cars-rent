@@ -1,5 +1,12 @@
+// Get data from the database
+const carsInfoFromPHP = carData;
+console.log(carsInfoFromPHP);
+// To prevent more than one dropdown opened at the time
+let activeMain = null;
+let activeSecond = null;
+
 //HTML for make and model
-function forMakeSelectHTML() {
+function HTMLforMakeModelSelect() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
@@ -13,7 +20,7 @@ function forMakeSelectHTML() {
       </li>
     `;
 }
-function createCarMakeForSelectHTML(make) {
+function HTMLmakeSelectOptions(make) {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
@@ -28,8 +35,7 @@ function createCarMakeForSelectHTML(make) {
       </li>
     `;
 }
-
-function createCarModelForSelectHTML(model) {
+function HTMLmodelSelectOptions(model) {
   return `
         <li class="">
           <div class="">
@@ -42,7 +48,7 @@ function createCarModelForSelectHTML(model) {
       `;
 }
 //HTML for transmission
-function createTransmissionSelectHTML() {
+function HTMLforTransmissionSelect() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
@@ -56,8 +62,7 @@ function createTransmissionSelectHTML() {
       </li>
     `;
 }
-
-function createTransmissionForSelect(transmissionType) {
+function HTMLtransmissionSelectOptions(transmissionType) {
   return `
         <li class="">
           <div class="">
@@ -69,38 +74,9 @@ function createTransmissionForSelect(transmissionType) {
         </li>
       `;
 }
-// Get data from the database
-const carsInfoFromPHP = carData;
-console.log(carsInfoFromPHP);
 
-// Get UL by id to render carMakes for select option
-renderTransmissionSelectHTML("renderCarMakeSelect", forMakeSelectHTML);
-renderTransmissionSelectHTML(
-  "renderCarTransmissionSelect",
-  createTransmissionSelectHTML
-);
-
-function renderTransmissionSelectHTML(addressToRender, functionToRender) {
-  let addressToRenderHTML = document.getElementById(`${addressToRender}`);
-  const renderToSelectHTML = functionToRender();
-  addressToRenderHTML.insertAdjacentHTML("beforeend", renderToSelectHTML);
-}
-
-let carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
-let dropDownMakes = document.getElementById("dropDownMakes");
-
-dropDownMakes.addEventListener("click", function () {
-  console.log("main");
-  selectDropDownOnClick(carMakesForSelectDropdown, activeMain);
-});
-//Render make select option =================================================== test end
-
-// To prevent more than one dropdown opened at the time
-let activeMain = null;
-let activeSecond = null;
-
-// Filter cars to show for select options
-function filteredDataForSelect(inputArray) {
+// Filter make and models to show for select options !!!!NEED TO MAKE REUSABLE
+function filterNestedDataForSelectOptions(inputArray) {
   const uniqueMakes = {};
 
   inputArray.forEach(({ make, model }) => {
@@ -115,9 +91,14 @@ function filteredDataForSelect(inputArray) {
 
   return Object.values(uniqueMakes);
 }
-
-//Filter for car details, make them usable in this code
 //Reusble function
+//Render select options
+function renderSelectOptions(addressToRender, functionToRender) {
+  let addressToRenderHTML = document.getElementById(`${addressToRender}`);
+  const renderToSelectHTML = functionToRender();
+  addressToRenderHTML.insertAdjacentHTML("beforeend", renderToSelectHTML);
+}
+//Filter for car details, make them usable in this code(REUSABLE FUNC)
 function filterForSelectOptions(inputArray, carDetail) {
   const uniqueValues = {};
 
@@ -135,46 +116,45 @@ function filterForSelectOptions(inputArray, carDetail) {
   return Object.values(uniqueValues);
 }
 
+// Applies filter on data from the database
+function applyFiltersForSelectOption(filteredData, renderFunction) {
+  filteredData.forEach(renderFunction);
+}
+// Applies filter on data from the database END
+
+// CHECK ACTIVE STATUS
+function selectDropDownOnClick(container, activeStatus) {
+  if (activeStatus && activeStatus !== container) {
+    activeStatus.classList.remove("show");
+  }
+  container.classList.toggle("show");
+  activeStatus = container;
+}
+// CHECK ACTIVE STATUS END
+//Reusble function END-------------------------------------------------------
+
+// ALL FUNCTION CALLS--------------------------------------------------------------------
+//ALL THAT RENDER SOMETHING FOR SELECT
+renderSelectOptions("renderCarMakeSelect", HTMLforMakeModelSelect);
+renderSelectOptions("renderCarTransmissionSelect", HTMLforTransmissionSelect);
+//ALL THAT RENDER SOMETHING FOR SELECT END
+
+const forRenderTransmission = document.getElementById("transmissionTypeList");
 const filteredTransmission = filterForSelectOptions(
   carsInfoFromPHP,
   "transmissionType"
 );
-// Applies filter on data from the database
-const carsFromFilter = filteredDataForSelect(carsInfoFromPHP);
-carsFromFilter.forEach(renderCarForSelect);
-
 applyFiltersForSelectOption(filteredTransmission, renderTransmissionSelect);
-function applyFiltersForSelectOption(filteredData, renderFunction) {
-  // console.log(filteredData);
-  filteredData.forEach(renderFunction);
-}
 
-// Render on screen cars for select option from filteredDataForSelect function
-//transmission render to test tomorrow==--------------------------------------------------------------------------------------
+// ALL FUNCTION CALLS END-----------------------------------------------------------------
 
-function renderTransmissionSelect(car) {
-  const forRenderTransmission = document.getElementById("transmissionTypeList");
-  renderTransmissionTypesForSelect(
-    car.transmissionTypes,
-    forRenderTransmission
-  );
-}
-const dropDownForTransmission = document.getElementById(
-  "selectTransmissionType"
-);
-const forRenderTransmission = document.getElementById("transmissionTypeList");
-dropDownForTransmission.addEventListener("click", function () {
-  selectDropDownOnClick(forRenderTransmission, activeMain);
-  console.log("hh");
-});
-//transmission render to test tomorrow==--------------------------------------------------------------------------------------
-
+//ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT
 function renderCarForSelect(car) {
   const carMakesForSelectDropdown =
     document.getElementById("carMakesForSelect");
 
   const make = car.make;
-  const renderCarForSelectHTML = createCarMakeForSelectHTML(make);
+  const renderCarForSelectHTML = HTMLmakeSelectOptions(make);
   carMakesForSelectDropdown.insertAdjacentHTML(
     "beforeend",
     renderCarForSelectHTML
@@ -202,45 +182,63 @@ function renderCarForSelect(car) {
   });
 }
 
-//transmission render to test tomorrow==--------------------------------------------------------------------------------------
-function renderTransmissionTypesForSelect(transmissionTypes, container) {
-  // console.log(transmissionTypes);
-  transmissionTypes.forEach((type) => {
-    const renderTransmissionSelect2HTML = createTransmissionForSelect(type);
-    container.insertAdjacentHTML("beforeend", renderTransmissionSelect2HTML);
-  });
-}
-//transmission render to test tomorrow==--------------------------------------------------------------------------------------
-
 function renderCarModelsForSelect(models, container) {
   models.forEach((model) => {
-    const renderCarForSelect2HTML = createCarModelForSelectHTML(model);
+    const renderCarForSelect2HTML = HTMLmodelSelectOptions(model);
     container.insertAdjacentHTML("beforeend", renderCarForSelect2HTML);
   });
 }
 
-//
-function selectDropDownOnClick(container, activeStatus) {
-  if (activeStatus && activeStatus !== container) {
-    activeStatus.classList.remove("show");
-  }
-  container.classList.toggle("show");
-  activeStatus = container;
+function renderTransmissionSelect(car) {
+  renderTransmissionTypesForSelect(
+    car.transmissionTypes,
+    forRenderTransmission
+  );
 }
-//transmission render to test tomorrow==--------------------------------------------------------------------------------------
+
+function renderTransmissionTypesForSelect(transmissionTypes, container) {
+  transmissionTypes.forEach((type) => {
+    const rendTransmissionSelectHTML = HTMLtransmissionSelectOptions(type);
+    container.insertAdjacentHTML("beforeend", rendTransmissionSelectHTML);
+  });
+}
+
+//ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT END
+
+//GOLBAL VARIABLES-----------------------------------------------------------------------
+const carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
+const dropDownMakes = document.getElementById("dropDownMakes");
 
 const transmissionCheckboxes = document.querySelectorAll(
   ".transmissionType-checkbox"
 );
 
-// Listen for changes in transmission checkboxes
+const dropDownForTransmission = document.getElementById(
+  "selectTransmissionType"
+);
+// Applies filter on data from the database
+const carsFromFilter = filterNestedDataForSelectOptions(carsInfoFromPHP);
+carsFromFilter.forEach(renderCarForSelect);
+//GOLBAL VARIABLES END-----------------------------------------------
+
+//EVENT LISTENERS -----------------------------------------------
+dropDownMakes.addEventListener("click", function () {
+  console.log("main");
+  selectDropDownOnClick(carMakesForSelectDropdown, activeMain);
+});
+
+dropDownForTransmission.addEventListener("click", function () {
+  selectDropDownOnClick(forRenderTransmission, activeMain);
+  console.log("hh");
+});
+//EVENT LISTENERS END-------------------------------------------------
+
+//CHECHBOXES--------------------------------------------------------------------
 transmissionCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     renderFilteredCars();
   });
 });
-
-//transmission render to test tomorrow==--------------------------------------------------------------------------------------
 
 function toggleMakeCheckbox(makeCheckbox, container) {
   let modelCheckboxes = container.querySelectorAll(".model-checkbox");
@@ -265,7 +263,7 @@ function handleModelCheckboxChange(
   );
 }
 
-// Render cars on the webpage
+// Render cars on the webpage---------------------------------------------------------------------------------
 const renderCars = (car) => {
   const productHTML = createCarHTML(car);
   carsContainer.insertAdjacentHTML("beforeend", productHTML);
