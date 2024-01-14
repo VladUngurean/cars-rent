@@ -166,6 +166,7 @@ function renderCarForSelect(car) {
   renderCarModelsForSelect(car.models, forRenderModels);
 
   dropDownForCarModel.addEventListener("click", function () {
+    console.log("second");
     selectDropDownOnClick(forRenderModels, activeSecond);
   });
 
