@@ -196,10 +196,8 @@ if ($result->num_rows > 0) {
 
     <script type='text/javascript' src="/js/filter.js"></script>
 
-    <!-- <script type='text/javascript' src="/js/renderCars.js"></script> -->
     <script type='text/javascript' src="/js/main.js"></script>
 
-    <!-- <script src="js/renderCars.js"></script>
     <script src="js/main.js"></script> -->
 
 </body>
