@@ -123,12 +123,20 @@ function applyFiltersForSelectOption(filteredData, renderFunction) {
 // Applies filter on data from the database END
 
 // CHECK ACTIVE STATUS
-function selectDropDownOnClick(container, activeStatus) {
-  if (activeStatus && activeStatus !== container) {
-    activeStatus.classList.remove("show");
+function toggleShowSelectOptions(container, activeStatus) {
+  if (activeStatus === activeMain) {
+    // Get all elements with the "show" class except the current container
+    const elementsToShow = document.querySelectorAll(".show:not(.container)");
+    // Remove the "show" class from all other elements
+    elementsToShow.forEach((element) => {
+      element.classList.remove("show");
+    });
+    // Update the activeMain variable
+    activeMain = container;
+  } else if (activeStatus === activeSecond) {
+    activeSecond = container;
   }
   container.classList.toggle("show");
-  activeStatus = container;
 }
 // CHECK ACTIVE STATUS END
 //Reusble function END-------------------------------------------------------
@@ -167,7 +175,7 @@ function renderCarForSelect(car) {
 
   dropDownForCarModel.addEventListener("click", function () {
     console.log("second");
-    selectDropDownOnClick(forRenderModels, activeSecond);
+    toggleShowSelectOptions(forRenderModels, activeSecond);
   });
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
@@ -225,11 +233,11 @@ carsFromFilter.forEach(renderCarForSelect);
 //EVENT LISTENERS -----------------------------------------------
 dropDownMakes.addEventListener("click", function () {
   console.log("main");
-  selectDropDownOnClick(carMakesForSelectDropdown, activeMain);
+  toggleShowSelectOptions(carMakesForSelectDropdown, activeMain);
 });
 
 dropDownForTransmission.addEventListener("click", function () {
-  selectDropDownOnClick(forRenderTransmission, activeMain);
+  toggleShowSelectOptions(forRenderTransmission, activeMain);
   console.log("hh");
 });
 //EVENT LISTENERS END-------------------------------------------------
