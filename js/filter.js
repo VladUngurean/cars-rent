@@ -53,7 +53,7 @@ function HTMLforTransmissionSelect() {
       <li class="">
         <div class="dropdown__content-second__select-options">
           <label class="" for="1">
-            <span id="selectTransmissionType">Transmisie
+            <span id="selectTransmissionType">Cutie de viteze
               <a href="">&gt;</a>
             </span>
           </label>
@@ -74,6 +74,91 @@ function HTMLtransmissionSelectOptions(transmissionType) {
         </li>
       `;
 }
+
+//HTML for do today-------------------------------------------------------------------------------------
+
+//HTML for fuel type-------------------------------------------------------------------------------------
+function HTMLforFuelTypeSelect() {
+  return `
+      <li class="">
+        <div class="dropdown__content-second__select-options">
+          <label class="" for="1">
+            <span id="selectFuelType">Tip combustibil
+              <a href="">&gt;</a>
+            </span>
+          </label>
+        </div>
+        <ul id="fuelTypeList" class="ulForFuelTypes"></ul>
+      </li>
+    `;
+}
+function HTMLFuelTypeSelectOptions(fuelType) {
+  return `
+        <li class="">
+          <div class="">
+            <label class="" for="1">
+              <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
+              <span>${fuelType}</span>
+            </label>
+          </div>
+        </li>
+      `;
+}
+//HTML for body type-------------------------------------------------------------------------------------
+function HTMLforBodyTypeSelect() {
+  return `
+      <li class="">
+        <div class="dropdown__content-second__select-options">
+          <label class="" for="1">
+            <span id="selectBodyType">Tip caroserie
+              <a href="">&gt;</a>
+            </span>
+          </label>
+        </div>
+        <ul id="BodyTypeList" class="ulForBodyTypes"></ul>
+      </li>
+    `;
+}
+function HTMLBodyTypeSelectOptions(bodyType) {
+  return `
+        <li class="">
+          <div class="">
+            <label class="" for="1">
+              <input id="select${bodyType}" class="bodyType-checkbox" type="checkbox" name="" value="">
+              <span>${bodyType}</span>
+            </label>
+          </div>
+        </li>
+      `;
+}
+//HTML for rent status-------------------------------------------------------------------------------------
+function HTMLforRentStatusSelect() {
+  return `
+      <li class="">
+        <div class="dropdown__content-second__select-options">
+          <label class="" for="1">
+            <span id="selectRentStatus">Statut Arenda
+              <a href="">&gt;</a>
+            </span>
+          </label>
+        </div>
+        <ul id="RentStatusList" class="ulForRentStatus"></ul>
+      </li>
+    `;
+}
+function HTMLRentStatusSelectOptions(rentStatus) {
+  return `
+        <li class="">
+          <div class="">
+            <label class="" for="1">
+              <input id="select${rentStatus}" class="rentStatus-checkbox" type="checkbox" name="" value="">
+              <span>${rentStatus}</span>
+            </label>
+          </div>
+        </li>
+      `;
+}
+//HTML for do today end-------------------------------------------------------------------------------------
 
 // Filter make and models to show for select options !!!!NEED TO MAKE REUSABLE
 function filterNestedDataForSelectOptions(inputArray) {
@@ -145,14 +230,22 @@ function toggleShowSelectOptions(container, activeStatus) {
 //ALL THAT RENDER SOMETHING FOR SELECT
 renderSelectOptions("renderCarMakeSelect", HTMLforMakeModelSelect);
 renderSelectOptions("renderCarTransmissionSelect", HTMLforTransmissionSelect);
+renderSelectOptions("renderCarFuelTypeSelect", HTMLforFuelTypeSelect);
+renderSelectOptions("renderCarBodyTypeSelect", HTMLforBodyTypeSelect);
+renderSelectOptions("renderCarRentStatusSelect", HTMLforRentStatusSelect);
 //ALL THAT RENDER SOMETHING FOR SELECT END
 
+//aplly filter for transmission
 const forRenderTransmission = document.getElementById("transmissionTypeList");
 const filteredTransmission = filterForSelectOptions(
   carsInfoFromPHP,
   "transmissionType"
 );
-applyFiltersForSelectOption(filteredTransmission, renderTransmissionSelect);
+applyFiltersForSelectOption(filteredTransmission, renderCarDetailForSelect);
+//aplly filter for fuel type
+// const forRenderFuelType = document.getElementById("fuelTypeList");
+// const filteredFuelType = filterForSelectOptions(carsInfoFromPHP, "engineFuel");
+// applyFiltersForSelectOption(filteredFuelType, renderCarDetailForSelect);
 
 // ALL FUNCTION CALLS END-----------------------------------------------------------------
 
@@ -198,7 +291,13 @@ function renderCarModelsForSelect(models, container) {
   });
 }
 
-function renderTransmissionSelect(car) {
+// function renderCarDetailForSelect(car, carDetail) {
+//   renderTransmissionTypesForSelect(
+//     car.transmissionTypes,
+//     forRenderTransmission
+//   );
+// }
+function renderCarDetailForSelect(car) {
   renderTransmissionTypesForSelect(
     car.transmissionTypes,
     forRenderTransmission

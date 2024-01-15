@@ -102,6 +102,9 @@ if ($result->num_rows > 0) {
                                     <ul id="renderCarMakeSelect"></ul>
 
                                     <ul id="renderCarTransmissionSelect"></ul>
+                                    <ul id="renderCarFuelTypeSelect"></ul>
+                                    <ul id="renderCarBodyTypeSelect"></ul>
+                                    <ul id="renderCarRentStatusSelect"></ul>
 
 
                                 </div>
