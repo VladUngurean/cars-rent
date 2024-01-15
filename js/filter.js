@@ -202,25 +202,6 @@ function filterForSelectOptions(inputArray, carDetail) {
 }
 
 // Applies filter on data from the database
-// function applyFiltersForSelectOption(filteredData, renderFunction) {
-//   filteredData.forEach(renderFunction);
-// }
-
-//working but not optimised
-// function applyFiltersAndRenderForSelectOption(
-//   filteredData,
-//   container,
-//   infoAboutCar
-// ) {
-//   filteredData.forEach((car) => {
-//     renderSelectOptionsForSelect(
-//       car[infoAboutCar],
-//       container,
-//       HTMLtransmissionSelectOptions
-//     );
-//   });
-// }
-
 function applyFiltersAndRenderForSelectOption(
   filteredData,
   container,
@@ -238,7 +219,6 @@ function applyFiltersAndRenderForSelectOption(
 function HTMLreturnMainFunction(type) {
   return `<option value="${type}">${type}</option>`;
 }
-
 // Applies filter on data from the database END
 
 // CHECK ACTIVE STATUS
@@ -370,9 +350,6 @@ function renderSelectOptionsForSelect(
 //ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT END
 
 //GOLBAL VARIABLES-----------------------------------------------------------------------
-// Initialize checkboxes and models
-const makeCheckboxes = document.querySelectorAll(".make-checkbox");
-const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 //dropdorns and checboxes for transmission
 const carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
@@ -428,18 +405,7 @@ dropDownForRentStatus.addEventListener("click", function () {
 });
 
 //CHECHBOXES--------------------------------------------------------------------
-// Listen for changes in make checkboxes
-makeCheckboxes.forEach((makeCheckbox) => {
-  makeCheckbox.addEventListener("change", function () {
-    renderFilteredCars();
-  });
-});
-// Listen for changes in model checkboxes
-modelCheckboxes.forEach((modelCheckbox) => {
-  modelCheckbox.addEventListener("change", function () {
-    renderFilteredCars();
-  });
-});
+
 transmissionCheckboxes.forEach((checkbox) => {
   checkbox.addEventListener("change", function () {
     renderFilteredCars();
@@ -485,6 +451,23 @@ function handleModelCheckboxChange(
   );
 }
 
+//test
+// Initialize checkboxes and models
+const makeCheckboxes = document.querySelectorAll(".make-checkbox");
+const modelCheckboxes = document.querySelectorAll(".model-checkbox");
+
+// Listen for changes in make checkboxes
+makeCheckboxes.forEach((makeCheckbox) => {
+  makeCheckbox.addEventListener("change", function () {
+    renderFilteredCars();
+  });
+});
+// Listen for changes in model checkboxes
+modelCheckboxes.forEach((modelCheckbox) => {
+  modelCheckbox.addEventListener("change", function () {
+    renderFilteredCars();
+  });
+});
 // Render cars on the webpage---------------------------------------------------------------------------------
 const renderCars = (car) => {
   const productHTML = createCarHTML(car);
