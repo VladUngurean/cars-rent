@@ -5,7 +5,7 @@
         <div class="header__top">
 
             <!-- Language Select START -->
-            <div class="language">
+            <div class="language__container">
 
                 <button class="language__button" type="button">
                     <img src="/images/ro.svg" alt="ro">
@@ -14,6 +14,14 @@
 
             </div>
             <!-- Language Select END -->
+
+            <div id='user__container'>
+                <div class="user__icon__container">
+                    <a href="register.php">
+                        <img src="" alt="userImg">
+                    </a>
+                </div>
+            </div>
 
         </div>
 </section>

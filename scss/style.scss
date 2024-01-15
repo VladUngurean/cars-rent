@@ -58,36 +58,41 @@ div {
 
   border-bottom: 1px solid #ccc;
 
-  //   .header__top {
-  //   }
-
-  .language__button {
-    border: none;
-    background-color: transparent;
+  .header__top {
     display: flex;
-    position: relative;
+    flex-direction: row;
+    float: right;
+    .language__container {
+      margin: 0 50px;
+      .language__button {
+        border: none;
+        background-color: transparent;
+        display: flex;
+        position: relative;
 
-    font-size: 14px;
-    font-family: "Rubik", sans-serif;
+        font-size: 14px;
+        font-family: "Rubik", sans-serif;
 
-    &::after {
-      content: "";
-      position: absolute;
-      right: -10px;
-      top: 7px;
-      display: inline-block;
-      margin-left: 0.255em;
-      vertical-align: 0.255em;
-      border-top: 0.3em solid;
-      border-right: 0.3em solid transparent;
-      border-bottom: 0;
-      border-left: 0.3em solid transparent;
-    }
+        &::after {
+          content: "";
+          position: absolute;
+          right: -10px;
+          top: 7px;
+          display: inline-block;
+          margin-left: 0.255em;
+          vertical-align: 0.255em;
+          border-top: 0.3em solid;
+          border-right: 0.3em solid transparent;
+          border-bottom: 0;
+          border-left: 0.3em solid transparent;
+        }
 
-    img {
-      width: 16px;
-      height: 16px;
-      margin: 0 3px 0 0;
+        img {
+          width: 16px;
+          height: 16px;
+          margin: 0 3px 0 0;
+        }
+      }
     }
   }
 }
@@ -574,7 +579,7 @@ div {
   margin: 8% auto 0;
   position: relative;
   z-index: 1;
-  border-top: 5px solid $yellow;
+  border-top: 5px solid gray;
 
   box-shadow: 0 0 3px rgba(0, 0, 0, 0.1);
 
@@ -645,11 +650,11 @@ div {
     &[type="email"]:focus,
     &[type="password"]:focus {
       box-shadow: 0 0 2px 1px rgba(255, 0, 0, 0.5);
-      border: 1px solid $yellow;
+      border: 1px solid gray;
       background: #fafafa;
     }
     &[type="submit"] {
-      background: $yellow;
+      background: gray;
       height: 35px;
       line-height: 35px;
       width: 100%;
@@ -662,10 +667,10 @@ div {
 
       transition: all 0.3s ease-in-out;
       &:hover {
-        background: darken($yellow, 7%);
+        background: darken(gray, 7%);
       }
       &:focus {
-        background: darken($yellow, 7%);
+        background: darken(gray, 7%);
       }
     }
     &[type="checkbox"],

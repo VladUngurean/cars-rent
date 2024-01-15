@@ -222,21 +222,57 @@ function HTMLreturnMainFunction(type) {
 // Applies filter on data from the database END
 
 // CHECK ACTIVE STATUS
+
 function toggleShowSelectOptions(container, activeStatus) {
   if (activeStatus === activeMain) {
-    // Get all elements with the "show" class except the current container
-    const elementsToShow = document.querySelectorAll(".show:not(.container)");
-    // Remove the "show" class from all other elements
-    elementsToShow.forEach((element) => {
-      element.classList.remove("show");
-    });
-    // Update the activeMain variable
-    activeMain = container;
+    if (activeMain === container) {
+      container.classList.toggle("show");
+    } else {
+      // Hide all activeMain elements
+      if (activeMain) {
+        activeMain.classList.remove("show");
+      }
+      // Hide all activeSecond elements
+      if (activeSecond) {
+        activeSecond.classList.remove("show");
+      }
+      // Show the current container
+      container.classList.add("show");
+      activeMain = container;
+    }
   } else if (activeStatus === activeSecond) {
-    activeSecond = container;
+    if (activeSecond === container) {
+      container.classList.toggle("show");
+    } else {
+      // Hide all activeSecond elements
+      if (activeSecond) {
+        activeSecond.classList.remove("show");
+      }
+
+      // Show the current container
+      container.classList.add("show");
+      activeSecond = container;
+    }
   }
-  container.classList.toggle("show");
 }
+
+//working function
+
+// function toggleShowSelectOptions(container, activeStatus) {
+//   if (activeStatus === activeMain) {
+//     // Get all elements with the "show" class except the current container
+//     const elementsToShow = document.querySelectorAll(".show:not(.container)");
+//     // Remove the "show" class from all other elements
+//     elementsToShow.forEach((element) => {
+//       element.classList.remove("show");
+//     });
+//     // Update the activeMain variable
+//     activeMain = container;
+//   } else if (activeStatus === activeSecond) {
+//     activeSecond = container;
+//   }
+//   container.classList.toggle("show");
+// }
 // CHECK ACTIVE STATUS END
 //Reusble function END-------------------------------------------------------
 
