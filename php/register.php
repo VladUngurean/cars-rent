@@ -39,7 +39,7 @@ if(isset($_POST['submit']))
     
     if (validateEmail($email)) {
         if($password == $passwordCheck){
-            $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+            $password = password_hash($password, PASSWORD_DEFAULT);
             if (preg_match ("/^[a-zA-z]*$/", $firstName) ) {  
                 if (preg_match ("/^[a-zA-z]*$/", $lastName) ) {  
                     if (preg_match ("/^[0-9]*$/", $phoneNumber) ){  
