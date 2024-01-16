@@ -1,84 +1,62 @@
-<?php
-session_start();
-
-include_once('config.php');
-
-if (isset($_POST['submit'])) {
-
-    $errorMsg = "";
-
-    $email    = trim(mysqli_real_escape_string($conn, $_POST['email']));
-    $password = trim(mysqli_real_escape_string($conn, $_POST['password']));
-    var_dump($email, $password); // Add this line for debugging
-    
-
-    if (!empty($email) || !empty($password)) {
-        $query  = "SELECT * FROM users WHERE email = '$email'";
-        $result = mysqli_query($conn, $query);
-        if (!$result) {
-            die("Query failed: " . mysqli_error($conn));
-        }
-        
-        if (mysqli_num_rows($result) == 1) {
-            $row = mysqli_fetch_assoc($result);
-            echo `$row[password]`;
-            echo "Stored Password: " . $row['password'] . "<br>";
-            echo "Entered Password: " . $password . "<br>";
-            if (password_verify($password, $row['password'])) {
-                // $_SESSION['id'] = $row['id'];
-                // $_SESSION['firstName'] = $row['firstName'];
-                header("Location: profile.php");
-                exit();
-            } else {
-                $errorMsg = "Email or Password is invalid";
-            }
-        } else {
-            $errorMsg = "No user found with this email";
-        }
-    } else {
-        $errorMsg = "Email and Password are required";
-    }
-}
+<?php  
+    include "config.php";
+    session_start();  
+    if(isset($_SESSION["email"])) {  
+        header("location:index.php");  
+    }   
+    if(isset($_POST["login"])) {  
+        if(empty($_POST["email"]) && empty($_POST["password"]))  
+        {  
+            echo '<script>alert("Both Fields are required")</script>';  
+        }  
+        else  
+        {  
+            $email = mysqli_real_escape_string($conn, $_POST["email"]);  
+            $password = mysqli_real_escape_string($conn, $_POST["password"]);  
+            $password = md5($password);  
+            $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";  
+            $result = mysqli_query($conn, $query);  
+            if(mysqli_num_rows($result) > 0)  
+            {  
+                    $_SESSION['email'] = $email;  
+                    header("location:index.php");  
+            }  
+            else  
+            {  
+                    echo '<script>alert("Wrong User Details")</script>';  
+            }  
+        }  
+    }  
 ?>
 
-<!Doctype html>
-<html lang="en">
+<!DOCTYPE html>
+<html>
 
 <head>
-    <meta charset="utf-8">
-    <title>PHP Password hash Login in PHP Mysql</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+    <title>Webslesson Tutorial | PHP Login Registration Form with md5() Password Encryption</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.0/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div class="container" style="margin-top:50px">
-        <h1 style="text-align: center;">PHP Password_hash Login in PHP Mysql</h1><br>
-        <div class="row">
-            <div class="col-md-4"></div>
-            <div class="col-md-4" style="margin-top:20px">
-                <?php
-            if (isset($errorMsg)) {
-                echo "<div class='alert alert-danger alert-dismissible'>
-                        <button type='button' class='close' data-dismiss='alert'>&times;</button>
-                        $errorMsg
-                      </div>";
-            }
-        ?>
-                <form action="" method="POST">
-                    <div class="form-group">
-                        <input type="email" class="form-control" name="email" placeholder="Email">
-                    </div>
-                    <div class="form-group">
-                        <input class="form-control" name="password" placeholder="Password">
-                    </div>
-                    <p>Are you new user? <a href="index.php">Sign Up</a></p>
-                    <input type="submit" class="btn btn-warning btn btn-block" name="submit" value="Login">
-                </form>
-            </div>
-        </div>
+    <br /><br />
+    <div class="container" style="width:500px;">
+        <h3 align="center">PHP Login Registration Form with md5() Password Encryption</h3>
+        <br />
+        <h3 align="center">Login</h3>
+        <br />
+        <form method="post">
+            <label>Enter email</label>
+            <input type="text" name="email" class="form-control" />
+            <br />
+            <label>Enter Password</label>
+            <input type="password" name="password" class="form-control" />
+            <br />
+            <input type="submit" name="login" value="Login" class="btn btn-info" />
+            <br />
+            <p align="center"><a href="register.php">Register</a></p>
+        </form>
     </div>
 </body>
 

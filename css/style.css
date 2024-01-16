@@ -432,7 +432,6 @@ div {
 
 .comment-area__container {
   width: 100%;
-  height: 500px;
   padding: 15px 20px;
   background-position: center;
   background-size: cover;
@@ -549,8 +548,8 @@ div {
 }
 
 .search__select-options {
-  min-width: 300px;
-  min-height: 300px;
+  min-width: 320px;
+  min-height: 130px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;

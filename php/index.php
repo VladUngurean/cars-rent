@@ -12,8 +12,11 @@
     <title>Cars Rent</title>
 
     <?php
-
 include "config.php";
+
+session_start();
+// echo isset($_SESSION["email"]) ? 'Session is active' : 'Session is not active';
+
 
 $sql= "SELECT cars.car_image, car_make.make, car_make_title.title, cars.registration_year, car_transmission.transmission_type,car_engine_fuel.engine_fuel, 
 car_engine_capacity.engine_capacity, car_body_type.body_type, car_doors.doors_number, car_passengers_number.passengers_number,cars.description, 
@@ -71,7 +74,12 @@ if ($result->num_rows > 0) {
   } else {
     echo json_encode(["message" => "No data found"]);
   }
+
+
+
   $conn->close();
+
+
 ?>
 
 </head>
@@ -80,6 +88,13 @@ if ($result->num_rows > 0) {
 
     <?php include('header.php'); ?>
 
+
+    <?php  
+        echo '<label><a href="logout.php">Logout</a></label>';  
+        if(!isset($_SESSION["email"])){  
+            echo 'Session is not active' ;
+        } else { echo 'Session is active' ; }
+    ?>
     <!-- Search car secction START -->
     <!-- NEW SECCTION  -->
 

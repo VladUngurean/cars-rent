@@ -1,27 +1,19 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
-    <link rel="stylesheet" href="/css/style.css">
-
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-
     <!-- PHP CODE START -->
     <?php
+    include "config.php";
+    session_start();
 
-session_start();
+    if(isset($_SESSION["email"])) {  
+        header("location:entry.php");  
+    } 
 
-if(isset($_POST['submit']))  
-{  
-    $email = $_POST['email'];
-    $password = $_POST['password'];
-    $passwordCheck = $_POST['passwordCheck'];
-    $firstName = $_POST['firstName'];
-    $lastName = $_POST['lastName'];
-    $phoneNumber = $_POST['phoneNumber'];
+if(isset($_POST['submit'])) {  
+    $email = mysqli_real_escape_string($conn, $_POST["email"]);  
+    $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
+    $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
+    $phoneNumber = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
+    $password = mysqli_real_escape_string($conn, $_POST["password"]); 
+    $passwordCheck = mysqli_real_escape_string($conn, $_POST["passwordCheck"]); 
 
     function catchValues(){
         $_SESSION['email'] = $_POST['email'];
@@ -35,11 +27,9 @@ if(isset($_POST['submit']))
     $registerErrorMesage = '';
     $dataBaseResponse = '';
     
-    include "config.php";
-    
     if (validateEmail($email)) {
         if($password == $passwordCheck){
-            $password = password_hash($password, PASSWORD_DEFAULT);
+            $password = md5($password); 
             if (preg_match ("/^[a-zA-z]*$/", $firstName) ) {  
                 if (preg_match ("/^[a-zA-z]*$/", $lastName) ) {  
                     if (preg_match ("/^[0-9]*$/", $phoneNumber) ){  
@@ -52,9 +42,12 @@ if(isset($_POST['submit']))
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
                         } else {
-                            $conn->query("INSERT INTO `users` (`user_role`,`firstName`, `lastName` ,`password`, `email`, `phone`)
-                            VALUES((SELECT user_role_id from user_roles WHERE user_role='user'), '$firstName', '$lastName', '$password', '$email', '$phoneNumber')");
-                            $conn->close();
+                            $query = "INSERT INTO users(user_role,firstName,lastName,phone,email,password) 
+                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='user'),'$firstName','$lastName','$phoneNumber','$email','$password')";
+                        if(mysqli_query($conn, $query))  
+                        {  
+                            echo '<script>alert("Registration Done")</script>';  
+                        }  
                         }
                     } else {  
                         list($a,$b,$c,$d) = catchValues();
@@ -90,63 +83,75 @@ function validateEmail($email) {
     ?>
     <!-- PHP CODE END -->
 
-</head>
+    <!DOCTYPE html>
+    <html lang="en">
 
-<body>
-    <!-- Register secction START -->
-    <div class="register-area">
-        <div class="container">
-            <div class="register-area__container">
-                <div class="register-area__container-text">
-                    <h2>Comanda Masina Online</h2>
-                </div>
 
-                <form action="" method="post">
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                        <input value="<?php if(isset($a)){ echo $a;}?>" type="email" name="email" placeholder="Email" minlength="5" maxlength="40" required />
-                    </div>
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="password" placeholder="Parola" minlength="5" maxlength="40" required />
-                    </div>
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                        <input type="password" name="passwordCheck" placeholder="Repeta Parola" minlength="5" maxlength="40" required />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Register</title>
+        <link rel="stylesheet" href="/css/style.css">
+
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+    </head>
+
+    <body>
+        <!-- Register secction START -->
+        <div class="register-area">
+            <div class="container">
+                <div class="register-area__container">
+                    <div class="register-area__container-text">
+                        <h2>Comanda Masina Online</h2>
                     </div>
 
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                        <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="firstName" placeholder="Nume" minlength="3" maxlength="40" required />
-                    </div>
+                    <form action="" method="post">
+                        <div class="register-area__container__input-field">
+                            <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
+                            <input value="<?php if(isset($a)){ echo $a;}?>" type="email" name="email" placeholder="Email" minlength="5" maxlength="40" required />
+                        </div>
+                        <div class="register-area__container__input-field">
+                            <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                            <input type="password" name="password" placeholder="Parola" minlength="5" maxlength="40" required />
+                        </div>
+                        <div class="register-area__container__input-field">
+                            <span><i aria-hidden="true" class="fa fa-lock"></i></span>
+                            <input type="password" name="passwordCheck" placeholder="Repeta Parola" minlength="5" maxlength="40" required />
+                        </div>
 
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                        <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="lastName" placeholder="Prenume" minlength="3" maxlength="40" required />
-                    </div>
+                        <div class="register-area__container__input-field">
+                            <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                            <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="firstName" placeholder="Nume" minlength="3" maxlength="40" required />
+                        </div>
 
-                    <div class="register-area__container__input-field">
-                        <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                        <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phoneNumber" placeholder="Telefon de Contact" minlength="8" maxlength="10" required />
-                    </div>
+                        <div class="register-area__container__input-field">
+                            <span><i aria-hidden="true" class="fa fa-user"></i></span>
+                            <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="lastName" placeholder="Prenume" minlength="3" maxlength="40" required />
+                        </div>
 
-                    <p><?php if (!empty($registerErrorMesage)) {
+                        <div class="register-area__container__input-field">
+                            <span><i aria-hidden="true" class="fa fa-phone"></i></span>
+                            <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phoneNumber" placeholder="Telefon de Contact" minlength="8" maxlength="10" required />
+                        </div>
+
+                        <p><?php if (!empty($registerErrorMesage)) {
                         echo $registerErrorMesage;
                     }?></p>
-                    <p><?php if (!empty($dataBaseResponse)) {
+                        <p><?php if (!empty($dataBaseResponse)) {
                         echo $dataBaseResponse;
                     }?></p>
+                        <p align="center"><a href="login.php">Login</a></p>
+                        <input class="button" name="submit" type="submit" value="Register" />
+                    </form>
 
-                    <input class="button" name="submit" type="submit" value="Register" />
-                </form>
-
+                </div>
             </div>
         </div>
-    </div>
-    <!-- Register secction END -->
+        <!-- Register secction END -->
 
 
 
-</body>
+    </body>
 
-</html>
+    </html>

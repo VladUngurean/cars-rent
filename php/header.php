@@ -1,4 +1,5 @@
 <!-- Header TOP secction START -->
+
 <section class="header-top-area">
     <div class="container">
 
@@ -18,7 +19,14 @@
             <div id='user__container'>
                 <div class="user__icon__container">
                     <a href="register.php">
-                        <img src="" alt="userImg">
+                        <?php  
+                        if(!isset($_SESSION["email"])){  
+                            echo '<label><a href="login.php">Login</a></label>';  
+                            echo '<label><a href="register.php">Register</a></label>';  
+                        } else {
+                            echo '<i class="fa-solid fa-user" style="color: #000000;"></i>';
+                         }
+                    ?>
                     </a>
                 </div>
             </div>
