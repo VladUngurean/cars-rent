@@ -141,8 +141,8 @@ function validateEmail($email) {
                         <p><?php if (!empty($dataBaseResponse)) {
                         echo $dataBaseResponse;
                     }?></p>
-                        <p align="center"><a href="login.php">Login</a></p>
                         <input class="button" name="submit" type="submit" value="Register" />
+                        <p align="center"><a href="login.php">Login</a></p>
                     </form>
 
                 </div>

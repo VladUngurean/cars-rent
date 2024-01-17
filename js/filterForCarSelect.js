@@ -255,24 +255,6 @@ function toggleShowSelectOptions(container, activeStatus) {
     }
   }
 }
-
-//working function
-
-// function toggleShowSelectOptions(container, activeStatus) {
-//   if (activeStatus === activeMain) {
-//     // Get all elements with the "show" class except the current container
-//     const elementsToShow = document.querySelectorAll(".show:not(.container)");
-//     // Remove the "show" class from all other elements
-//     elementsToShow.forEach((element) => {
-//       element.classList.remove("show");
-//     });
-//     // Update the activeMain variable
-//     activeMain = container;
-//   } else if (activeStatus === activeSecond) {
-//     activeSecond = container;
-//   }
-//   container.classList.toggle("show");
-// }
 // CHECK ACTIVE STATUS END
 //Reusble function END-------------------------------------------------------
 
@@ -376,7 +358,7 @@ function renderSelectOptionsForSelect(
   container,
   generateHTMLCallback
 ) {
-  console.log(infoAboutCar);
+  // console.log(infoAboutCar);
   infoAboutCar.forEach((type) => {
     const HTMLtoRender = generateHTMLCallback(type);
     container.insertAdjacentHTML("beforeend", HTMLtoRender);
@@ -524,7 +506,7 @@ const createCarHTML = (car) => `
             </div>
         </div>
         <div class="car-list__box-link">
-            <a href="#">Inchiriaza</a>
+            <button id="rentThisCar">Inchiriaza</button>
         </div>
     </div>
   `;
@@ -556,6 +538,38 @@ function renderAllCars() {
   carsInfoFromPHP.forEach(renderCars);
 }
 
+//test
+let selectedCarForRent = {};
+
+// Event listener for "Inchiriaza" button
+document.addEventListener("click", function (event) {
+  // Check if the clicked element is the "Inchiriaza" button
+  if (event.target.id === "rentThisCar") {
+    // Find the parent car-list__box element
+    const carBox = event.target.closest(".car-list__box");
+    if (carBox) {
+      // Get the index of the selected car based on its position in the list
+      const carIndex = Array.from(carBox.parentElement.children).indexOf(
+        carBox
+      );
+
+      // Retrieve the selected car information
+      const selectedCar = carsInfoFromPHP[carIndex];
+
+      // Store the information in the selectedCarForRent object
+      selectedCarForRent = {
+        make: selectedCar.make,
+        model: selectedCar.model,
+        passangerNumber: selectedCar.passengersNumber,
+        // Add other relevant properties as needed
+      };
+
+      // Log the selected car information
+      console.log("Selected Car for Rent:", selectedCarForRent);
+    }
+  }
+});
+//test end
 // Function to render filtered cars based on checked checkboxes
 
 function renderFilteredCars() {
