@@ -23,7 +23,7 @@ if ($result->num_rows > 0) {
         'bodyType' => $row['body_type'],
         'dorsNumber' => $row['doors_number'],
         'passengersNumber' => $row['passengers_number'],
-        'description' => $row['description'],
+        'description' => $row['car_description'],
         'rentDaysPrice1_2' => $row['rent_days_price_1_2'],
         'rentDaysPrice3_7' => $row['rent_days_price_3_7'],
         'rentDaysPrice8_20' => $row['rent_days_price_8_20'],

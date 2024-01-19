@@ -9,17 +9,17 @@
 
 if(isset($_POST['submit'])) {  
     $email = mysqli_real_escape_string($conn, $_POST["email"]);  
-    $firstName = mysqli_real_escape_string($conn, $_POST['firstName']);
-    $lastName = mysqli_real_escape_string($conn, $_POST['lastName']);
-    $phoneNumber = mysqli_real_escape_string($conn, $_POST['phoneNumber']);
+    $firstName = mysqli_real_escape_string($conn, $_POST['first_name']);
+    $lastName = mysqli_real_escape_string($conn, $_POST['last_name']);
+    $phoneNumber = mysqli_real_escape_string($conn, $_POST['phone']);
     $password = mysqli_real_escape_string($conn, $_POST["password"]); 
     $passwordCheck = mysqli_real_escape_string($conn, $_POST["passwordCheck"]); 
 
     function catchValues(){
         $_SESSION['email'] = $_POST['email'];
-        $_SESSION['firstName'] = $_POST['firstName'];
-        $_SESSION['lastName'] = $_POST['lastName'];
-        $_SESSION['phoneNumber'] = $_POST['phoneNumber'];
+        $_SESSION['firstName'] = $_POST['first_name'];
+        $_SESSION['lastName'] = $_POST['last_name'];
+        $_SESSION['phoneNumber'] = $_POST['phone'];
         return  array($_SESSION['email'],$_SESSION['firstName'],$_SESSION['lastName'],$_SESSION['phoneNumber']);
     }
 
@@ -42,8 +42,8 @@ if(isset($_POST['submit'])) {
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
                         } else {
-                            $query = "INSERT INTO users(user_role,firstName,lastName,phone,email,password) 
-                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='user'),'$firstName','$lastName','$phoneNumber','$email','$password')";
+                            $query = "INSERT INTO users(user_role,first_name,last_name,phone,email,password) 
+                            VALUES((SELECT user_role FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                         if(mysqli_query($conn, $query))  
                         {  
                             echo '<script>alert("Registration Done")</script>';  
@@ -122,17 +122,17 @@ function validateEmail($email) {
 
                         <div class="register-area__container__input-field">
                             <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                            <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="firstName" placeholder="Nume" minlength="3" maxlength="40" required />
+                            <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="first_name" placeholder="Nume" minlength="3" maxlength="40" required />
                         </div>
 
                         <div class="register-area__container__input-field">
                             <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                            <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="lastName" placeholder="Prenume" minlength="3" maxlength="40" required />
+                            <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="last_name" placeholder="Prenume" minlength="3" maxlength="40" required />
                         </div>
 
                         <div class="register-area__container__input-field">
                             <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                            <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phoneNumber" placeholder="Telefon de Contact" minlength="8" maxlength="10" required />
+                            <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phone" placeholder="Telefon de Contact" minlength="8" maxlength="10" required />
                         </div>
 
                         <p><?php if (!empty($registerErrorMesage)) {

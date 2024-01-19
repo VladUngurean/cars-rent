@@ -1,6 +1,18 @@
 // Get data from the database
+const carMakesForPlace = carMakesForPlaceOnDb;
+console.log(carMakesForPlace);
+const carMakesForPlace2 = carTransmissionsForPlaceOnDb;
+console.log(carMakesForPlace2);
+const carEngineFuelForPlaceOnDbb = carEngineFuelForPlaceOnDb;
+console.log(carEngineFuelForPlaceOnDbb);
+const carBodyTypeForPlaceOnDbb = carBodyTypeForPlaceOnDb;
+console.log(carBodyTypeForPlaceOnDbb);
+const carDoorsNumberForPlaceOnDbb = carDoorsNumberForPlaceOnDb;
+console.log(carDoorsNumberForPlaceOnDbb);
+const carPassengersNumberForPlaceOnDbb = carPassengersNumberForPlaceOnDb;
+console.log(carPassengersNumberForPlaceOnDbb);
 const carsInfoFromPHP = carData;
-console.log(carsInfoFromPHP);
+// console.log(carsInfoFromPHP);
 // To prevent more than one dropdown opened at the time
 let activeMain = null;
 let activeSecond = null;

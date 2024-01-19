@@ -16,7 +16,7 @@ function HTMLforMakeModelSelect() {
             </span>
           </label>
         </div>
-        <ul id="carMakesForSelect" class="ulForHideSelectOptions ulForCarMakes"></ul>
+        <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes"></ul>
       </li>
     `;
 }
@@ -58,7 +58,7 @@ function HTMLforTransmissionSelect() {
             </span>
           </label>
         </div>
-        <ul id="transmissionTypeList" class="ulForHideSelectOptions ulForTransmissions"></ul>
+        <ul id="transmissionTypeList" class="ulForHideSelectOption ulForTransmissions"></ul>
       </li>
     `;
 }
@@ -67,16 +67,13 @@ function HTMLtransmissionSelectOptions(transmissionType) {
         <li class="">
           <div class="">
             <label class="" for="1">
-              <input id="select${transmissionType}" class="transmissionType-checkbox" type="checkbox" name="" value="">
+              <input id="select${transmissionType}" class="transmissionType-checkbox" type="radio" name="transmission" value="">
               <span>${transmissionType}</span>
             </label>
           </div>
         </li>
       `;
 }
-
-//HTML for do today-------------------------------------------------------------------------------------
-
 //HTML for fuel type-------------------------------------------------------------------------------------
 function HTMLforFuelTypeSelect() {
   return `
@@ -88,7 +85,7 @@ function HTMLforFuelTypeSelect() {
             </span>
           </label>
         </div>
-        <ul id="fuelTypeList" class="ulForHideSelectOptions ulForFuelTypes"></ul>
+        <ul id="fuelTypeList" class="ulForHideSelectOption ulForFuelTypes"></ul>
       </li>
     `;
 }
@@ -97,7 +94,7 @@ function HTMLFuelTypeSelectOptions(fuelType) {
         <li class="">
           <div class="">
             <label class="" for="1">
-              <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
+              <input id="select${fuelType}" class="fuelType-checkbox" type="radio" name="fuelType" value="">
               <span>${fuelType}</span>
             </label>
           </div>
@@ -115,7 +112,7 @@ function HTMLforBodyTypeSelect() {
             </span>
           </label>
         </div>
-        <ul id="BodyTypeList" class="ulForHideSelectOptions ulForBodyTypes"></ul>
+        <ul id="BodyTypeList" class="ulForHideSelectOption ulForBodyTypes"></ul>
       </li>
     `;
 }
@@ -124,35 +121,8 @@ function HTMLBodyTypeSelectOptions(bodyType) {
         <li class="">
           <div class="">
             <label class="" for="1">
-              <input id="select${bodyType}" class="bodyType-checkbox" type="checkbox" name="" value="">
+              <input id="select${bodyType}" class="bodyType-checkbox" type="radio" name="bodyType" value="">
               <span>${bodyType}</span>
-            </label>
-          </div>
-        </li>
-      `;
-}
-//HTML for rent status-------------------------------------------------------------------------------------
-function HTMLforRentStatusSelect() {
-  return `
-      <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <span id="selectRentStatus">Statut Arenda
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
-        <ul id="rentStatusList" class="ulForHideSelectOptions ulForRentStatus"></ul>
-      </li>
-    `;
-}
-function HTMLRentStatusSelectOptions(rentStatus) {
-  return `
-        <li class="">
-          <div class="">
-            <label class="" for="1">
-              <input id="select${rentStatus}" class="rentStatus-checkbox" type="checkbox" name="" value="">
-              <span>${rentStatus}</span>
             </label>
           </div>
         </li>
@@ -296,18 +266,7 @@ applyFiltersAndRenderForSelectOption(
   "bodyTypes",
   HTMLBodyTypeSelectOptions
 );
-//aplly filter for body type
-// const forRenderRentStatus = document.getElementById("rentStatusList");
-// const filteredRentStatus = filterForSelectOptions(
-//   carsInfoFromPHP,
-//   "rentStatus"
-// );
-// applyFiltersAndRenderForSelectOption(
-//   filteredRentStatus,
-//   forRenderRentStatus,
-//   "rentStatuss",
-//   HTMLRentStatusSelectOptions
-// );
+
 // ALL FUNCTION CALLS END-----------------------------------------------------------------
 
 //ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT
@@ -386,9 +345,6 @@ const fuelTypeCheckboxes = document.querySelectorAll(".fuelType-checkbox");
 //dropdorns and checboxes for fuel type
 const dropDownForBodyType = document.getElementById("selectBodyType");
 const bodyTypeCheckboxes = document.querySelectorAll(".bodyType-checkbox");
-//dropdorns and checboxes for rent status
-const dropDownForRentStatus = document.getElementById("selectRentStatus");
-const rentStatusCheckboxes = document.querySelectorAll(".rentStatus-checkbox");
 
 // Applies filter on data from the database
 const carsFromFilter = filterNestedDataForSelectOptions(carsInfoFromPHP);
@@ -416,10 +372,6 @@ dropDownForBodyType.addEventListener("click", function () {
   toggleShowSelectOptions(forRenderBodyType, activeMain);
   console.log("body");
 });
-// dropDownForRentStatus.addEventListener("click", function () {
-//   toggleShowSelectOptions(forRenderRentStatus, activeMain);
-//   console.log("body");
-// });
 
 //CHECHBOXES--------------------------------------------------------------------
 
@@ -438,11 +390,6 @@ bodyTypeCheckboxes.forEach((checkbox) => {
     renderFilteredCars();
   });
 });
-// rentStatusCheckboxes.forEach((checkbox) => {
-//   checkbox.addEventListener("change", function () {
-//     renderFilteredCars();
-//   });
-// });
 //EVENT LISTENERS END-------------------------------------------------
 
 function toggleMakeCheckbox(makeCheckbox, container) {
@@ -460,9 +407,15 @@ function handleModelCheckboxChange(
   makeCheckbox,
   allModelCheckboxes
 ) {
-  makeCheckbox.checked = Array.from(allModelCheckboxes).some(
-    (checkbox) => checkbox.checked
-  );
+  // const firstModelCheckbox = allModelCheckboxes[0];
+  // console.log(firstModelCheckbox);
+  // makeCheckbox.checked = Array.from(allModelCheckboxes).some(
+  //   (checkbox) => checkbox.checked
+  // );
+  const firstModelCheckbox = allModelCheckboxes[0]; // Assuming the first checkbox is at index 0
+
+  makeCheckbox.checked = firstModelCheckbox.checked;
+
   console.log(
     `Checkbox ${modelCheckbox.id} is checked: ${modelCheckbox.checked}`
   );
@@ -474,14 +427,14 @@ const makeCheckboxes = document.querySelectorAll(".make-checkbox");
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 // Listen for changes in make checkboxes
-makeCheckboxes.forEach((makeCheckbox) => {
-  makeCheckbox.addEventListener("change", function () {
-    renderFilteredCars();
-  });
-});
-// Listen for changes in model checkboxes
-modelCheckboxes.forEach((modelCheckbox) => {
-  modelCheckbox.addEventListener("change", function () {
-    renderFilteredCars();
-  });
-});
+// makeCheckboxes.forEach((makeCheckbox) => {
+//   makeCheckbox.addEventListener("change", function () {
+//     renderFilteredCars();
+//   });
+// });
+// // Listen for changes in model checkboxes
+// modelCheckboxes.forEach((modelCheckbox) => {
+//   modelCheckbox.addEventListener("change", function () {
+//     renderFilteredCars();
+//   });
+// });

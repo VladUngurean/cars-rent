@@ -24,7 +24,7 @@
     </div>
 
     <form action="" method="post" style="text-align: center; display: flex; justify-content: center; ailgn-items: center;">
-        <div style="text-align: center; display: flex; justify-content: center; ailgn-items: center; flex-direction: column; max-width:320px;">
+        <div class="addNewCar" style="text-align: start; display: flex; justify-content: center; ailgn-items: center; flex-direction: column; max-width:320px;">
 
             <ul id="makeModelToDb"></ul>
             <!-- <ul id="makeModelToDb"></ul> -->
@@ -32,6 +32,8 @@
             <!-- <div id="registrationYearToDb"></div> -->
             <ul id="engineFuelToDb"></ul>
             <ul id="bodyTypeToDb"></ul>
+            <ul id="carNumberToDb">carNumberToDb</ul>
+            <ul id="pasangersNumberToDb">pasangersNumberToDb</ul>
             <input type="number" name="engineCapacityToDb" placeholder="engineCapacity" minlength="2" maxlength="10" required />
             <input type="number" name="registrationYear" placeholder="registrationYear" minlength="4" maxlength="4" required />
             <!-- <div id="engineCapacityToDb"></div> -->
