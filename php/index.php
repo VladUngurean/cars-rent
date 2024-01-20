@@ -13,8 +13,8 @@
 
     <?php
         // include "getCarDetails.php";
-        include "getCarsFromDb.php";
-        include "getTransmission.php";
+        // include "getAllCarsData.php";
+        include "getExistingCarsToShow.php";
     ?>
 
 </head>

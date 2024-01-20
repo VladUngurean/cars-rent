@@ -15,8 +15,7 @@ if ($result->num_rows > 0) {
     );
     }
     echo '<script>';
-    echo 'let carMakesForPlaceOnDb = ' . json_encode($dataMakesModels) . ';';
-    // echo 'console.log(carData);';
+    echo 'let makesModelsFromDb = ' . json_encode($dataMakesModels) . ';';
     echo '</script>';
 
     $result->close();
@@ -37,8 +36,7 @@ if ($result->num_rows > 0) {
     );
     }
     echo '<script>';
-    echo 'let carTransmissionsForPlaceOnDb = ' . json_encode($dataTransmissions) . ';';
-    // echo 'console.log(carData);';
+    echo 'const transmissionsFromDb = ' . json_encode($dataTransmissions) . ';';
     echo '</script>';
  $result->close();
  $conn->next_result();
@@ -58,8 +56,7 @@ if ($result->num_rows > 0) {
     );
     }
     echo '<script>';
-    echo 'let carEngineFuelForPlaceOnDb = ' . json_encode($dataEngineFuel) . ';';
-    // echo 'console.log(carData);';
+    echo 'const engineFuelsFromDb = ' . json_encode($dataEngineFuel) . ';';
     echo '</script>';
  $result->close();
  $conn->next_result();
@@ -79,8 +76,7 @@ if ($result->num_rows > 0) {
     );
     }
     echo '<script>';
-    echo 'let carBodyTypeForPlaceOnDb = ' . json_encode($dataBodyType) . ';';
-    // echo 'console.log(carData);';
+    echo 'const bodyTypesFromDb = ' . json_encode($dataBodyType) . ';';
     echo '</script>';
  $result->close();
  $conn->next_result();
@@ -100,8 +96,7 @@ if ($result->num_rows > 0) {
     );
     }
     echo '<script>';
-    echo 'let carDoorsNumberForPlaceOnDb = ' . json_encode($dataDoorsNumber) . ';';
-    // echo 'console.log(carData);';
+    echo 'const doorsNumberFromDb = ' . json_encode($dataDoorsNumber) . ';';
     echo '</script>';
  $result->close();
  $conn->next_result();
@@ -115,14 +110,12 @@ $result = $conn->query('CALL getPassengersNumber();');
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
-
     $dataPassengersNumber[] = array(
         'passengersNumber' => $row['passengers_number'],
     );
     }
     echo '<script>';
-    echo 'let carPassengersNumberForPlaceOnDb = ' . json_encode($dataPassengersNumber) . ';';
-    // echo 'console.log(carData);';
+    echo 'const passengersNumberFromDb = ' . json_encode($dataPassengersNumber) . ';';
     echo '</script>';
  $result->close();
  $conn->next_result();
@@ -130,5 +123,5 @@ if ($result->num_rows > 0) {
     echo json_encode(["message" => "No data found"]);
   }
 
-  $conn->close();
+  // $conn->close();
 ?>
