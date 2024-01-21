@@ -1,21 +1,21 @@
 // Get data from the database
 const allCarMakesModelsFromDb = makesModelsFromDb;
-console.log(allCarMakesModelsFromDb);
+// console.log(allCarMakesModelsFromDb);
 
 const allTransmissionTypesFromDb = transmissionsFromDb;
-console.log(allTransmissionTypesFromDb);
+// console.log(allTransmissionTypesFromDb);
 
 const allEngineFuelsFromDb = engineFuelsFromDb;
-console.log(allEngineFuelsFromDb);
+// console.log(allEngineFuelsFromDb);
 
 const allBodyTypesFromDb = bodyTypesFromDb;
-console.log(allBodyTypesFromDb);
+// console.log(allBodyTypesFromDb);
 
 const allDoorsNumberFromDb = doorsNumberFromDb;
-console.log(allDoorsNumberFromDb);
+// console.log(allDoorsNumberFromDb);
 
 const allPassengersNumberFromDb = passengersNumberFromDb;
-console.log(allPassengersNumberFromDb);
+// console.log(allPassengersNumberFromDb);
 
 // Get data from the database
 // const carsInfoFromPHP = carData;
@@ -36,7 +36,20 @@ function HTMLforMakeModelSelect() {
           </label>
         </div>
         <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes">
-          <li>+Add New Make</li>
+
+          <li class="">
+          <div class="dropdown__content-second__select-options">
+          <input class="make-checkbox" type="radio" name="model" value=""><input type="text" name="other_reason" placeholder="+Add new Make"/>
+          </div>
+          <ul id="renderModelsNewMake" class="">
+            <li class="">
+              <div class="">
+                <input class="model-checkbox" type="radio" name="model" value=""><input type="text" name="other_reason" placeholder="+Add new Model"/>
+              </div>
+            </li>
+          </ul>
+        </li>
+
         </ul>
       </li>
     `;
@@ -563,4 +576,15 @@ const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 //   modelCheckbox.addEventListener("change", function () {
 //     renderFilteredCars();
 //   });
+// });
+
+/// DROP DOWN FOR MEW MAKE AND MODEL
+// const dropDownForNewMakeModel = document.getElementById(
+//   "dropDownNewMakeModels"
+// );
+// const forRenderNewModels = document.getElementById("renderModelsNewMake");
+
+// dropDownForNewMakeModel.addEventListener("click", function () {
+//   console.log("second");
+//   toggleShowSelectOptions(forRenderNewModels, activeMain);
 // });
