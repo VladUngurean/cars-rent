@@ -17,7 +17,6 @@ include "config.php";
 include "getAllCarsData.php";
 
 if(isset($_POST['submit'])) {  
-    // $result = $conn->query('CALL InsertCarAndImages()');
     $make = mysqli_real_escape_string($conn, $_POST["make"]);  
     $model = mysqli_real_escape_string($conn, $_POST["model"]);  
     $transmissionType = mysqli_real_escape_string($conn, $_POST["transmission_type"]);  
@@ -34,20 +33,16 @@ if(isset($_POST['submit'])) {
     $rentDaysPrice21_4 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_21_4"]);  
     $rentDaysPrice46 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_46"]);  
     $imagePaths = mysqli_real_escape_string($conn, $_POST["image_paths"]);  
-    
-        // Prepare the statement 16 (17)
-        $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
 
-        // Bind parameters 16 (17)
-        // $stmt->bind_param("ssississiiiiiiiss", $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $imagePaths);
-        // $stmt->bind_param("ssississiiiiiiiss", $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $imagePaths);
-        // Execute the statement
-        // $stmt->execute([$make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $imagePaths]);
+    // Prepare the statement 16
+    $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+
+    // Execute the statement
     if ($stmt->execute([$make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $imagePaths])) {
         echo '<script>alert("New car successfully added to DB")</script>';  
-        }
-        // Close the statement
-        $stmt->close();
+    }
+    // Close the statement
+    $stmt->close();
 };
 ?>
 

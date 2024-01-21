@@ -19,7 +19,7 @@
             if(mysqli_num_rows($result) > 0)  
             {  
                     $_SESSION['email'] = $email;  
-                    header("location:index.php");  
+                    header("location:profile.php");  
             }  
             else  
             {  

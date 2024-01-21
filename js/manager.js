@@ -35,7 +35,9 @@ function HTMLforMakeModelSelect() {
             </span>
           </label>
         </div>
-        <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes"></ul>
+        <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes">
+          <li>+Add New Make</li>
+        </ul>
       </li>
     `;
 }
@@ -50,18 +52,23 @@ function HTMLmakeSelectOptions(make) {
             </span>
           </label>
         </div>
-        <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels"></ul>
+        <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
+          <li class="">
+            <div class="">
+              <input class="model-checkbox" type="radio" name="model" value=""><input type="text" name="other_reason" placeholder="+Add new ${make} Model"/>
+            </div>
+          </li>
+        </ul>
       </li>
     `;
 }
+
 function HTMLmodelSelectOptions(model) {
   return `
         <li class="">
           <div class="">
-            <label class="" for="1">
-              <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}">
-              <span>${model}</span>
-            </label>
+            <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}">
+            <span>${model}</span>
           </div>
         </li>
       `;
