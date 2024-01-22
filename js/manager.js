@@ -36,24 +36,16 @@ function HTMLforMakeModelSelect() {
           </label>
         </div>
         <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes">
-
           <li class="">
-          <div class="dropdown__content-second__select-options">
-          <input class="make-checkbox" type="radio" name="model" value=""><input type="text" name="other_reason" placeholder="+Add new Make"/>
-          </div>
-          <ul id="renderModelsNewMake" class="">
-            <li class="">
-              <div class="">
-                <input class="model-checkbox" type="radio" name="model" value=""><input type="text" name="other_reason" placeholder="+Add new Model"/>
-              </div>
-            </li>
-          </ul>
-        </li>
-
+            <div class="dropdown__content-second__select-options">
+              <input class="make-checkbox" type="radio" name="make" value=""><input type="text" name="other_reason" placeholder="+Add new Make"/>
+            </div>
+          </li>
         </ul>
       </li>
     `;
 }
+
 function HTMLmakeSelectOptions(make) {
   return `
       <li class="">
@@ -68,7 +60,8 @@ function HTMLmakeSelectOptions(make) {
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
           <li class="">
             <div class="">
-              <input class="model-checkbox" type="radio" name="model" value=""><input type="text" name="other_reason" placeholder="+Add new ${make} Model"/>
+              <input class="newCarMakeModelRadio model-checkbox" type="radio" name="model">
+              <input class="newCarMakeModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model" value=""/>
             </div>
           </li>
         </ul>
@@ -222,23 +215,6 @@ function HTMLpasangersNumberSelectOptions(pasangersNumber) {
       `;
 }
 //HTML for do today end-------------------------------------------------------------------------------------
-
-// Filter make and models to show for select options !!!!NEED TO MAKE REUSABLE
-// function filterNestedDataForSelectOptions(inputArray) {
-//   const uniqueMakes = {};
-
-//   inputArray.forEach(({ make, model }) => {
-//     if (!uniqueMakes[make]) {
-//       uniqueMakes[make] = {
-//         make,
-//         models: new Set(),
-//       };
-//     }
-//     uniqueMakes[make].models.add(model);
-//   });
-
-//   return Object.values(uniqueMakes);
-// }
 //Reusble function
 //Render select options
 function renderSelectOptions(addressToRender, functionToRender) {
@@ -246,24 +222,6 @@ function renderSelectOptions(addressToRender, functionToRender) {
   const renderToSelectHTML = functionToRender();
   addressToRenderHTML.insertAdjacentHTML("beforeend", renderToSelectHTML);
 }
-
-// //Filter for car details, make them usable in this code(REUSABLE FUNC)
-// function filterForSelectOptions(inputArray, carDetail) {
-//   const uniqueValues = {};
-
-//   inputArray.forEach((car) => {
-//     if (!uniqueValues[car[carDetail]]) {
-//       uniqueValues[car[carDetail]] = {
-//         [carDetail]: car[carDetail],
-//         [`${carDetail}s`]: new Set(),
-//       };
-//     }
-//     uniqueValues[car[carDetail]][`${carDetail}s`].add(car[carDetail]);
-//   });
-
-//   // Return the result if needed
-//   return Object.values(uniqueValues);
-// }
 
 // // Applies filter on data from the database
 function applyFiltersAndRenderForSelectOption(
@@ -333,6 +291,24 @@ renderSelectOptions("carDoorsNumberToDb", HTMLforDoorsNumberSelect);
 renderSelectOptions("pasangersNumberToDb", HTMLforPasangersNumberSelect);
 //ALL THAT RENDER SOMETHING FOR SELECT END
 
+// function changeRadioValue() {
+//   // Get the value entered by the user
+//   let radioInputValue = document.querySelectorAll(
+//     ".newCarMakeModelInput"
+//   ).value;
+//   console.log(radioInputValue);
+
+//   // Get all radio input elements with the class newCarMakeModelTest
+//   let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
+
+//   // Change the value attribute to the entered value for the checked radio input
+//   radioInputs.forEach((e) => {
+//     if (e.checked) {
+//       e.value = radioInputValue;
+//     }
+//   });
+// }
+
 //aplly filter for make model
 const forRenderMake = document.getElementById("carMakesForSelect");
 renderSelectOptionsForSelect(
@@ -401,13 +377,6 @@ function renderCarForSelect(car) {
 
   const make = car.make;
   const model = car.model.split(",");
-  console.log(make);
-  console.log(model);
-  // const renderCarForSelectHTML = HTMLmakeSelectOptions(make);
-  // carMakesForSelectDropdown.insertAdjacentHTML(
-  //   "beforeend",
-  //   renderCarForSelectHTML
-  // );
 
   const dropDownForCarModel = document.getElementById(`dropDown${make}Models`);
   const forRenderModels = document.getElementById(`renderModels${make}`);
@@ -433,7 +402,7 @@ function renderCarForSelect(car) {
 }
 
 function renderCarModelsForSelect(models, container) {
-  console.log(models);
+  // console.log(models);
   models.forEach((model) => {
     const renderCarForSelectHTML = HTMLmodelSelectOptions(model);
     container.insertAdjacentHTML("beforeend", renderCarForSelectHTML);
@@ -482,55 +451,6 @@ allCarMakesModelsFromDb.forEach(renderCarForSelect);
 
 //GOLBAL VARIABLES END-----------------------------------------------
 
-//EVENT LISTENERS -----------------------------------------------
-// DROPDOWNS -----------------------------------------------
-
-// dropDownMakes.addEventListener("click", function () {
-//   // forRenderFuelType;
-//   console.log("make");
-//   toggleShowSelectOptions(carMakesForSelectDropdown, activeMain);
-// });
-
-// dropDownForTransmission.addEventListener("click", function () {
-//   toggleShowSelectOptions(forRenderTransmission, activeMain);
-//   console.log("transmi");
-// });
-// dropDownForFuelType.addEventListener("click", function () {
-//   toggleShowSelectOptions(forRenderFuelType, activeMain);
-//   console.log("fuel");
-// });
-// dropDownForBodyType.addEventListener("click", function () {
-//   toggleShowSelectOptions(forRenderBodyType, activeMain);
-//   console.log("body");
-// });
-// dropDownForBodyType.addEventListener("click", function () {
-//   toggleShowSelectOptions(forRenderDoorsNumberToDb, activeMain);
-//   console.log("doors");
-// });
-// dropDownForBodyType.addEventListener("click", function () {
-//   toggleShowSelectOptions(forRenderPassangerNumberToDb, activeMain);
-//   console.log("passangers");
-// });
-
-//CHECHBOXES--------------------------------------------------------------------
-
-transmissionCheckboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", function () {
-    renderFilteredCars();
-  });
-});
-fuelTypeCheckboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", function () {
-    renderFilteredCars();
-  });
-});
-bodyTypeCheckboxes.forEach((checkbox) => {
-  checkbox.addEventListener("change", function () {
-    renderFilteredCars();
-  });
-});
-//EVENT LISTENERS END-------------------------------------------------
-
 function toggleMakeCheckbox(makeCheckbox, container) {
   let modelCheckboxes = container.querySelectorAll(".model-checkbox");
   modelCheckboxes.forEach((modelCheckbox) => {
@@ -546,12 +466,7 @@ function handleModelCheckboxChange(
   makeCheckbox,
   allModelCheckboxes
 ) {
-  // const firstModelCheckbox = allModelCheckboxes[0];
-  // console.log(firstModelCheckbox);
-  // makeCheckbox.checked = Array.from(allModelCheckboxes).some(
-  //   (checkbox) => checkbox.checked
-  // );
-  const firstModelCheckbox = allModelCheckboxes[0]; // Assuming the first checkbox is at index 0
+  const firstModelCheckbox = allModelCheckboxes[0];
 
   makeCheckbox.checked = firstModelCheckbox.checked;
 
@@ -566,25 +481,3 @@ const makeCheckboxes = document.querySelectorAll(".make-checkbox");
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 // Listen for changes in make checkboxes
-// makeCheckboxes.forEach((makeCheckbox) => {
-//   makeCheckbox.addEventListener("change", function () {
-//     renderFilteredCars();
-//   });
-// });
-// // Listen for changes in model checkboxes
-// modelCheckboxes.forEach((modelCheckbox) => {
-//   modelCheckbox.addEventListener("change", function () {
-//     renderFilteredCars();
-//   });
-// });
-
-/// DROP DOWN FOR MEW MAKE AND MODEL
-// const dropDownForNewMakeModel = document.getElementById(
-//   "dropDownNewMakeModels"
-// );
-// const forRenderNewModels = document.getElementById("renderModelsNewMake");
-
-// dropDownForNewMakeModel.addEventListener("click", function () {
-//   console.log("second");
-//   toggleShowSelectOptions(forRenderNewModels, activeMain);
-// });

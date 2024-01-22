@@ -36,7 +36,7 @@ if(isset($_POST['submit'])) {
 
     // Prepare the statement 16
     $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
+    
     // Execute the statement
     if ($stmt->execute([$make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $imagePaths])) {
         echo '<script>alert("New car successfully added to DB")</script>';  
@@ -73,7 +73,27 @@ if(isset($_POST['submit'])) {
             <input type="number" name="rentDaysPrice_46" placeholder="Pret 46" minlength="2" maxlength="4" required />
             <input type="text" name="image_paths" placeholder="images" required />
 
-            <input class="button" name="submit" type="submit" value="To DB" />
+            <script>
+            function changeRadioValue() {
+                // Get the value entered by the user
+                let radioInputValue = document.querySelector(
+                    ".newCarMakeModelInput"
+                ).value;
+                console.log(radioInputValue);
+
+                // Get all radio input elements with the class newCarMakeModelTest
+                let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
+
+                // Change the value attribute to the entered value for the checked radio input
+                radioInputs.forEach((e) => {
+                    if (e.checked) {
+                        e.value = radioInputValue;
+                    }
+                });
+            }
+            </script>
+
+            <input onclick="changeRadioValue()" class="button" name="submit" type="submit" value="To DB" />
         </div>
 
     </form>
