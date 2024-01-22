@@ -76,9 +76,15 @@ if(isset($_POST['submit'])) {
             <script>
             function changeRadioValue() {
                 // Get the value entered by the user
-                let radioInputValue = document.querySelector(
-                    ".newCarMakeModelInput"
-                ).value;
+                let radioInputsValue = document.querySelectorAll(".newCarMakeModelInput");
+                let radioInputValue;
+
+                for (let i = 0; i < radioInputsValue.length; i++) {
+                    if (radioInputsValue[i].value !== undefined && radioInputsValue[i].value !== "") {
+                        radioInputValue = radioInputsValue[i].value;
+                        break; // Stop the loop once a non-empty value is found
+                    }
+                }
                 console.log(radioInputValue);
 
                 // Get all radio input elements with the class newCarMakeModelTest
