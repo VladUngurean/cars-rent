@@ -46,37 +46,39 @@ if(isset($_POST['submit'])) {
     $rentDaysPrice21_4 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_21_4"]);  
     $rentDaysPrice46 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_46"]);  
     $imagePaths = $_FILES['image_paths']['name'];
+    $fileCount = count($imagePaths);
+    $allImages = '';
 
-    $fileName = $_FILES['image_paths']['name'];
-    $fileTmpName = $_FILES['image_paths']['tmp_name'];
-    $fileSize = $_FILES['image_paths']['size'];
-    $fileError = $_FILES['image_paths']['error'];
+    for ($i = 0; $i < $fileCount; $i++) {
+        $fileName = $_FILES['image_paths']['name'][$i];
+        $fileTmpName = $_FILES['image_paths']['tmp_name'][$i];
+        $fileSize = $_FILES['image_paths']['size'][$i];
+        $fileError = $_FILES['image_paths']['error'][$i];
 
-    $fileExt = explode('.', $fileName);
-    $fileActualExt = strtolower(end($fileExt));
+        $fileExt = explode('.', $fileName);
+        $fileActualExt = strtolower(end($fileExt));
 
-    $allowed = array('jpg', 'jpeg', 'png');
+        $allowed = array('jpg', 'jpeg', 'png');
 
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
-            if ($fileSize < 500000) {
-                $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/'.$fileName;
-                move_uploaded_file($fileTmpName, $fileDestination);
-            } else {
-                echo "Your file is too big!";
-            }
+            $uniqueFileName = uniqid('', true) . '_' . $fileName;  // Generate a unique filename
+            $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $uniqueFileName;
+            move_uploaded_file($fileTmpName, $fileDestination);
+            $allImages .= $uniqueFileName . ',';  // Store the unique filename in the list
         } else {
             echo "There was an error uploading your file!";
         }
     } else {
         echo "You cannot upload files of this type!";
+    } 
     }
-
+    $allImages = rtrim($allImages, ',');
     // Prepare the statement 16
     $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     
     // Execute the statement
-    if ($stmt->execute([$make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $fileDestination])) {
+    if ($stmt->execute([$make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $allImages])) {
         echo '<script>alert("New car successfully added to DB")</script>'; 
         // var_dump($imagePaths);
         // var_dump($fileDestination);
@@ -86,7 +88,6 @@ if(isset($_POST['submit'])) {
     $stmt->close();
 };
 ?>
-
 
     <script type='text/javascript' src="/js/manager.js" defer></script>
 </head>

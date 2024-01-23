@@ -487,14 +487,16 @@ modelCheckboxes.forEach((modelCheckbox) => {
 });
 // Render cars on the webpage---------------------------------------------------------------------------------
 const renderCars = (car) => {
-  const productHTML = createCarHTML(car);
+  let getImages = car.carImage.split(",");
+  console.log(getImages);
+  const productHTML = createCarHTML(car, getImages);
   carsContainer.insertAdjacentHTML("beforeend", productHTML);
 };
 
 // Create HTML for a single car
-const createCarHTML = (car) => `
+const createCarHTML = (car, getImages) => `
     <div class="car-list__box">
-        <img src="${car.carImage}" alt="carImage">
+        <img src="/images/carsList/${getImages[0]}" alt="carImage">
         <h4>${car.make} - ${car.model}</h4>
         <div class="car-list__box-details">
             <div class="car-list__box-details__price">De la <span>${
