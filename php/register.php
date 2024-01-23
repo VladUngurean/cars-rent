@@ -4,7 +4,7 @@
     session_start();
 
     if(isset($_SESSION["email"])) {  
-        header("location:profile.php");  
+        header("location:userProfile.php");  
     } 
 
 if(isset($_POST['submit'])) {  

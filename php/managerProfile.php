@@ -16,6 +16,19 @@ include "config.php";
 
 include "getAllCarsData.php";
 
+// Check if the user is logged in
+if (!isset($_SESSION['email'])) {
+    header('Location: login.php');
+    exit;
+    echo "Unauthorized email!";
+}
+
+// Check if the user has the correct role
+if ($_SESSION['role'] !== 'Manager') {
+    echo "Unauthorized access!";
+    exit;
+}
+
 if(isset($_POST['submit'])) {  
     $make = mysqli_real_escape_string($conn, $_POST["make"]);  
     $model = mysqli_real_escape_string($conn, $_POST["model"]);  

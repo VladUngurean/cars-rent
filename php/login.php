@@ -36,19 +36,22 @@
     
     if(isset($_SESSION["email"])) {  
         header("location:index.php");  
-    }   
+    }  
+    
+
     
     if(isset($_POST["login"])) {  
         if(empty($_POST["email"]) && empty($_POST["password"])) {  
             echo '<script>alert("Both Fields are required")</script>';  
-        }  
+        }
+
         else {  
             $email = mysqli_real_escape_string($conn, $_POST["email"]);  
             $password = mysqli_real_escape_string($conn, $_POST["password"]);  
             $password = md5($password);  
             $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";  
             $result = mysqli_query($conn, $query);  
-            
+
             if(mysqli_num_rows($result) > 0) {  
                 // If user login is successful, get the user role
                 $userRole = getUserRole($email);
@@ -59,9 +62,9 @@
     
                 // Redirect to the appropriate dashboard or home page
                 if ($userRole === 'User') {
-                    header("location:user.php");
+                    header("location:userProfile.php");
                 } elseif ($userRole === 'Manager') {
-                    header("location:manager.php");
+                    header("location:managerProfile.php");
                 } else {
                     // Handle other roles or scenarios
                     echo "Unknown user role!";
@@ -72,6 +75,7 @@
             }  
         }  
     }
+
     
     // Function to get user role using the stored procedure
     function getUserRole($email) {
