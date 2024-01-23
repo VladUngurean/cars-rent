@@ -46,6 +46,8 @@ if(isset($_POST['submit'])) {
 };
 ?>
 
+
+    <script type='text/javascript' src="/js/manager.js" defer></script>
 </head>
 
 <body style="text-align:center">
@@ -73,43 +75,16 @@ if(isset($_POST['submit'])) {
             <input type="number" name="rentDaysPrice_46" placeholder="Pret 46" minlength="2" maxlength="4" required />
             <input type="text" name="image_paths" placeholder="images" required />
 
-            <script>
-            function changeRadioValue() {
-                // Get the value entered by the user
-                let radioInputsValue = document.querySelectorAll(".newCarMakeModelInput");
-                let radioInputValue;
-
-                for (let i = 0; i < radioInputsValue.length; i++) {
-                    if (radioInputsValue[i].value !== undefined && radioInputsValue[i].value !== "") {
-                        radioInputValue = radioInputsValue[i].value;
-                        break; // Stop the loop once a non-empty value is found
-                    }
-                }
-                console.log(radioInputValue);
-
-                // Get all radio input elements with the class newCarMakeModelTest
-                let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
-
-                // Change the value attribute to the entered value for the checked radio input
-                radioInputs.forEach((e) => {
-                    if (e.checked) {
-                        e.value = radioInputValue;
-                    }
-                });
-            }
-            </script>
-
-            <input onclick="changeRadioValue()" class="button" name="submit" type="submit" value="To DB" />
+            <!-- <input id="sendCarToDataBase" onclick="changeRadioValue()" class="button" name="submit" type="submit" value="To DB" /> -->
+            <input id="sendCarToDataBase" class="button" name="submit" type="submit" value="To DB" />
         </div>
 
     </form>
 
     <?php  
         echo '<label><a href="logout.php">Logout</a></label> <br/>';  
-        echo '<label><a href="index.php">Main Page</a></label>';  
+        echo '<label style=" margin-bottom:250px" ><a href="index.php">Main Page</a></label>';  
     ?>
-
-    <script type='text/javascript' src="/js/manager.js"></script>
 
 </body>
 

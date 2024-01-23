@@ -17,9 +17,6 @@ const allDoorsNumberFromDb = doorsNumberFromDb;
 const allPassengersNumberFromDb = passengersNumberFromDb;
 // console.log(allPassengersNumberFromDb);
 
-// Get data from the database
-// const carsInfoFromPHP = carData;
-// console.log(carsInfoFromPHP);
 // To prevent more than one dropdown opened at the time
 let activeMain = null;
 let activeSecond = null;
@@ -38,8 +35,19 @@ function HTMLforMakeModelSelect() {
         <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes">
           <li class="">
             <div class="dropdown__content-second__select-options">
-              <input class="make-checkbox" type="radio" name="make" value=""><input type="text" name="other_reason" placeholder="+Add new Make"/>
+              <input id="newMakeRadio" class="make-checkbox" type="radio" name="make" value="">
+              <input id="newMakeInput" class="" type="text" name="new_make" placeholder="+Add new Model" value=""/>
             </div>
+
+            <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
+              <li class="">
+                <div class="">
+                  <input class="newCarMakeModelRadio model-checkbox" type="radio" name="model">
+                  <input class="newCarMakeModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model" value=""/>
+                </div>
+              </li>
+            </ul>
+
           </li>
         </ul>
       </li>
@@ -291,24 +299,6 @@ renderSelectOptions("carDoorsNumberToDb", HTMLforDoorsNumberSelect);
 renderSelectOptions("pasangersNumberToDb", HTMLforPasangersNumberSelect);
 //ALL THAT RENDER SOMETHING FOR SELECT END
 
-// function changeRadioValue() {
-//   // Get the value entered by the user
-//   let radioInputValue = document.querySelectorAll(
-//     ".newCarMakeModelInput"
-//   ).value;
-//   console.log(radioInputValue);
-
-//   // Get all radio input elements with the class newCarMakeModelTest
-//   let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
-
-//   // Change the value attribute to the entered value for the checked radio input
-//   radioInputs.forEach((e) => {
-//     if (e.checked) {
-//       e.value = radioInputValue;
-//     }
-//   });
-// }
-
 //aplly filter for make model
 const forRenderMake = document.getElementById("carMakesForSelect");
 renderSelectOptionsForSelect(
@@ -317,13 +307,6 @@ renderSelectOptionsForSelect(
   "make",
   HTMLmakeSelectOptions
 );
-// const forRenderModel = document.getElementById("carMakesForSelect");
-// renderSelectOptionsForSelect(
-//   allCarMakesModelsFromDb,
-//   forRenderModel,
-//   "model",
-//   HTMLmakeSelectOptions
-// );
 //aplly filter for transmission
 const forRenderTransmission = document.getElementById("transmissionTypeList");
 renderSelectOptionsForSelect(
@@ -481,3 +464,44 @@ const makeCheckboxes = document.querySelectorAll(".make-checkbox");
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 // Listen for changes in make checkboxes
+
+const dropDownForNewCarNewModel = document.getElementById("newMakeInput");
+dropDownForNewCarNewModel.addEventListener("click", function () {
+  renderNewModels.classList.toggle("show");
+});
+
+const sendCarToDb = document.getElementById("sendCarToDataBase");
+//add new model to existing make
+sendCarToDb.addEventListener("click", function () {
+  let radioInputsValue = document.querySelectorAll(".newCarMakeModelInput");
+  let radioInputValue;
+  let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
+
+  for (let i = 0; i < radioInputsValue.length; i++) {
+    if (
+      radioInputsValue[i].value !== undefined &&
+      radioInputsValue[i].value !== ""
+    ) {
+      radioInputValue = radioInputsValue[i].value;
+      break;
+    }
+  }
+  radioInputs.forEach((e) => {
+    if (e.checked) {
+      e.value = radioInputValue;
+    }
+  });
+});
+// add new make and new model
+sendCarToDb.addEventListener("click", function () {
+  let newMakeInput = document.getElementById("newMakeInput");
+  let radioInputValue;
+  let newMakeRadioInputs = document.getElementById("newMakeRadio");
+
+  if (newMakeInput.value !== undefined && newMakeInput.value !== "") {
+    radioInputValue = newMakeInput.value;
+  }
+  if (newMakeRadioInputs.checked) {
+    newMakeRadioInputs.value = radioInputValue;
+  }
+});
