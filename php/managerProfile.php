@@ -17,17 +17,17 @@ include "config.php";
 include "getAllCarsData.php";
 
 // Check if the user is logged in
-if (!isset($_SESSION['email'])) {
-    header('Location: login.php');
-    exit;
-    echo "Unauthorized email!";
-}
+// if (!isset($_SESSION['email'])) {
+//     header('Location: login.php');
+//     exit;
+//     echo "Unauthorized email!";
+// }
 
-// Check if the user has the correct role
-if ($_SESSION['role'] !== 'Manager') {
-    echo "Unauthorized access!";
-    exit;
-}
+// // Check if the user has the correct role
+// if ($_SESSION['role'] !== 'Manager') {
+//     echo "Unauthorized access!";
+//     exit;
+// }
 
 if(isset($_POST['submit'])) {  
     $make = mysqli_real_escape_string($conn, $_POST["make"]);  
@@ -45,14 +45,42 @@ if(isset($_POST['submit'])) {
     $rentDaysPrice8_20 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_8_20"]);  
     $rentDaysPrice21_4 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_21_4"]);  
     $rentDaysPrice46 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_46"]);  
-    $imagePaths = mysqli_real_escape_string($conn, $_POST["image_paths"]);  
+    $imagePaths = $_FILES['image_paths']['name'];
+
+    $fileName = $_FILES['image_paths']['name'];
+    $fileTmpName = $_FILES['image_paths']['tmp_name'];
+    $fileSize = $_FILES['image_paths']['size'];
+    $fileError = $_FILES['image_paths']['error'];
+
+    $fileExt = explode('.', $fileName);
+    $fileActualExt = strtolower(end($fileExt));
+
+    $allowed = array('jpg', 'jpeg', 'png');
+
+    if (in_array($fileActualExt, $allowed)) {
+        if ($fileError === 0) {
+            if ($fileSize < 500000) {
+                $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/'.$fileName;
+                move_uploaded_file($fileTmpName, $fileDestination);
+            } else {
+                echo "Your file is too big!";
+            }
+        } else {
+            echo "There was an error uploading your file!";
+        }
+    } else {
+        echo "You cannot upload files of this type!";
+    }
 
     // Prepare the statement 16
     $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     
     // Execute the statement
-    if ($stmt->execute([$make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $imagePaths])) {
-        echo '<script>alert("New car successfully added to DB")</script>';  
+    if ($stmt->execute([$make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $fileDestination])) {
+        echo '<script>alert("New car successfully added to DB")</script>'; 
+        // var_dump($imagePaths);
+        // var_dump($fileDestination);
+        header("Location: managerProfile.php");
     }
     // Close the statement
     $stmt->close();
@@ -70,7 +98,7 @@ if(isset($_POST['submit'])) {
         <br />
     </div>
 
-    <form action="" method="post" style="text-align: center; display: flex; justify-content: center; ailgn-items: center;">
+    <form action="" method="post" enctype="multipart/form-data" style="text-align: center; display: flex; justify-content: center; ailgn-items: center;">
         <div class="addNewCar" style="text-align: start; display: flex; justify-content: center; ailgn-items: center; flex-direction: column; max-width:320px;">
             <ul id="makeModelToDb"></ul>
             <ul id="transmissionTypeToDb"></ul>
@@ -86,7 +114,7 @@ if(isset($_POST['submit'])) {
             <input type="number" name="rentDaysPrice_8_20" placeholder="Pret 8-20" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_21_4" placeholder="Pret 21-45" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_46" placeholder="Pret 46" minlength="2" maxlength="4" required />
-            <input type="text" name="image_paths" placeholder="images" required />
+            <input type="file" name="image_paths[]" multiple />
 
             <!-- <input id="sendCarToDataBase" onclick="changeRadioValue()" class="button" name="submit" type="submit" value="To DB" /> -->
             <input id="sendCarToDataBase" class="button" name="submit" type="submit" value="To DB" />
