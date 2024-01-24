@@ -30,6 +30,8 @@
                     header("location:userProfile.php");
                 } elseif ($userRole === 'Manager') {
                     header("location:managerProfile.php");
+                } elseif ($userRole === 'Admin') {
+                    header("location:adminProfile.php");
                 } else {
                     // Handle other roles or scenarios
                     echo "Unknown user role!";
