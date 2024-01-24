@@ -24,10 +24,11 @@
     <?php include('header.php'); ?>
 
     <?php  
-        echo '<label><a href="logout.php">Logout</a></label>';  
+        echo '<label><a href="logout.php">Logout</a></label><br>';  
         if(!isset($_SESSION["email"])){  
-            echo 'Session is not active' ;
-        } else { echo 'Session is active' ; }
+            echo 'Session is not active<br>' ;
+        } else { echo 'Session is active<br>' ; }
+        echo $userRole
     ?>
     <!-- Search car secction START -->
     <!-- NEW SECCTION  -->

@@ -4,7 +4,7 @@
     session_start();  
     if(isset($_SESSION["email"])) {  
         header("location:index.php");  
-    }   
+    } 
 
     if(isset($_POST["login"])) {  
         if(empty($_POST["email"]) && empty($_POST["password"])) {  
@@ -16,8 +16,6 @@
             $password = md5($password);  
             $query = "SELECT * FROM users WHERE email = '$email' AND password = '$password'";
             $result = mysqli_query($conn, $query);  
-
-            // include "getUserRole.php";
 
             if(mysqli_num_rows($result) > 0) {  
                 // If user login is successful, get the user role

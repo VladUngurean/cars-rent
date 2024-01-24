@@ -12,10 +12,12 @@
     <title>Manager Account</title>
 
     <?php
+    session_start();
 include "config.php";
 
 include "getAllCarsData.php";
 
+// include 'loginLogic.php';
 // Check if the user is logged in
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
@@ -28,6 +30,7 @@ if ($_SESSION['role'] !== 'Manager') {
     echo "Unauthorized access!";
     exit;
 }
+if ($_SESSION['role'] == 'Manager') {
 
 if(isset($_POST['submit'])) {  
     $make = mysqli_real_escape_string($conn, $_POST["make"]);  
@@ -87,6 +90,8 @@ if(isset($_POST['submit'])) {
     // Close the statement
     $stmt->close();
 };
+}
+
 ?>
 
     <script type='text/javascript' src="/js/manager.js" defer></script>

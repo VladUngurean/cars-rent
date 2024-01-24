@@ -14,7 +14,6 @@ include 'loginLogic.php';
 <body>
     <br /><br />
     <div class="container" style="width:500px;">
-        <h3 align="center">PHP Login Registration Form with md5() Password Encryption</h3>
         <br />
         <h3 align="center">Login</h3>
         <br />

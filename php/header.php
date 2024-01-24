@@ -55,7 +55,10 @@
                                 if ($userRole === 'User') {
                                     echo '<a href="userProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
                                 } elseif ($userRole === 'Manager') {
-                                    echo '<a href="managerProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                    if(!isset($_SESSION["email"])){  
+                                        echo 'Session is not active<br>' ;
+                                    } else { echo 'Session is active<br>' ; }
+                                    echo $userRole.'<a href="managerProfile.php"> <i class="fa-solid fa-user manager" style="color: #000000;"></i> </a>';
                                 } elseif ($userRole === 'Courier'){
                                     echo '<a href="courierProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
                                 } elseif ($userRole === 'Admin'){
