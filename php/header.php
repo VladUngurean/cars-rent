@@ -18,16 +18,56 @@
 
             <div id='user__container'>
                 <div class="user__icon__container">
-                    <a href="register.php">
-                        <?php  
+
+                    <!-- <a href="register.php"> -->
+                    <?php  
+                            include "config.php";
+                        function getUserRole($email) {
+                            global $conn;
+                            $query = "CALL getUserRole('$email')";
+                            $result = mysqli_query($conn, $query);
+                        
+                            if ($result && mysqli_num_rows($result) > 0) {
+                                $row = mysqli_fetch_assoc($result);
+                                return $row['user_role'];
+                            }
+                        
+                            return null;
+                        }
+
                         if(!isset($_SESSION["email"])){  
                             echo '<label><a href="login.php">Login</a></label>';  
                             echo '<label><a href="register.php">Register</a></label>';  
-                        } else {
-                            echo '<i class="fa-solid fa-user" style="color: #000000;"></i>';
-                         }
+                        } 
+                        
+                        if(isset($_SESSION["email"])) {
+                            // echo $_SESSION["email"];
+                            
+                            if(mysqli_num_rows($result) > 0) {
+                                // If user login is successful, get the user role
+                                $userRole = getUserRole($_SESSION["email"]);
+                
+                                // Store user information in the session
+                                $_SESSION['email'] = $_SESSION["email"];
+                                $_SESSION['role'] = $userRole;
+                
+                                // Redirect to the appropriate dashboard or home page
+                                if ($userRole === 'User') {
+                                    echo '<a href="userProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                } elseif ($userRole === 'Manager') {
+                                    echo '<a href="managerProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                } elseif ($userRole === 'Courier'){
+                                    echo '<a href="courierProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                } elseif ($userRole === 'Admin'){
+                                    echo '<a href="adminProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                }
+                            } else {  
+                                    echo '<script>alert("Wrong User Details")</script>';  
+                                }
+
+                        }
                     ?>
-                    </a>
+                    <!-- </a> -->
                 </div>
             </div>
 

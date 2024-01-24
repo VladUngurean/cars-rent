@@ -1,11 +1,11 @@
     <!-- PHP CODE START -->
     <?php
-    include "config.php";
-    session_start();
+include "config.php";
+session_start();
 
-    if(isset($_SESSION["email"])) {  
-        header("location:userProfile.php");  
-    } 
+// if(isset($_SESSION["email"])) {  
+//     header("location:userProfile.php");  
+// } 
 
 if(isset($_POST['submit'])) {  
     $email = mysqli_real_escape_string($conn, $_POST["email"]);  
