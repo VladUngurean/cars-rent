@@ -505,3 +505,36 @@ sendCarToDb.addEventListener("click", function () {
     newMakeRadioInputs.value = radioInputValue;
   }
 });
+
+//show selected images
+
+function displaySelectedImages(input) {
+  let container = document.getElementById("selectedImagesContainer");
+  container.innerHTML = ""; // Clear previous images
+
+  let files = input.files;
+  console.log(files);
+  // Set minimum and maximum constraints
+  let minFiles = 6;
+  let maxFiles = 8;
+
+  // Display an alert if the number of files is below the minimum or above the maximum
+  if (files.length < minFiles) {
+    alert("Please select at least " + minFiles + " file(s).");
+    input.value = "";
+    container.innerHTML = "";
+  } else if (files.length > maxFiles) {
+    alert("Please select no more than " + maxFiles + " file(s).");
+    input.value = "";
+    container.innerHTML = "";
+  } else {
+    // Process the selected files (you can customize this part)
+    for (let i = 0; i < files.length; i++) {
+      let image = document.createElement("img");
+      image.src = URL.createObjectURL(files[i]);
+      image.style.maxWidth = "100px"; // Set maximum width for display
+      image.style.minHeight = "100px"; // Set min height for display
+      container.appendChild(image);
+    }
+  }
+}
