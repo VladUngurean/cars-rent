@@ -13,7 +13,7 @@
 
     <?php
     // session_start();
-// include "config.php";
+    // include "config.php";
 include "ProcGetExistingCarsToShow.php";
 include "ProcGetAllCarsData.php";
 
@@ -21,13 +21,14 @@ include "ProcGetAllCarsData.php";
 // Check if the user is logged in
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
+    // echo "Unauthorized email!";
     exit;
-    echo "Unauthorized email!";
 }
 
 // Check if the user has the correct role
 if ($_SESSION['role'] !== 'Manager') {
-    echo "Unauthorized access!";
+    // echo "Unauthorized access!";
+    header('Location: userProfile.php');
     exit;
 }
 if ($_SESSION['role'] == 'Manager') {
@@ -90,7 +91,26 @@ if(isset($_POST['sendNewCar'])) {
     }
     // Close the statement
     $stmt->close();
+
 };
+
+if(isset($_POST["deleteExistingCar"])) {  
+
+    $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);  
+
+    $stmt = $conn->prepare("CALL deleteCar(?)");
+    
+    // Execute the statement
+    if ($stmt->execute([$carPlate])) {
+        echo '<script>alert("Car successfully deleted from DB")</script>'; 
+        header("Location: managerProfile.php");
+    } else {
+        echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
+    }
+
+    // Close the statement
+    $stmt->close();
+}
 }
 
 ?>
@@ -99,6 +119,13 @@ if(isset($_POST['sendNewCar'])) {
 </head>
 
 <body style="text-align:center">
+    <?php  
+        if(!isset($_SESSION["email"])){  
+            echo 'Session is not active<br>' ;
+        } else { echo 'Session is active<br>' ; }
+        echo $_SESSION['role'];
+    ?>
+
     <br />
 
     <form action="" method="post" enctype="multipart/form-data" style="text-align: center; display: flex; justify-content: center; ailgn-items: center;">
@@ -130,14 +157,10 @@ if(isset($_POST['sendNewCar'])) {
 
     <br>
 
-    <form action="">
+    <form action="" method="post">
 
         <style>
         .table-container {
-            /* display: flex;
-            justify-content: center;
-            align-items: center;
-            max-width: 500px; */
             min-height: 300px;
             overflow-x: auto;
         }
@@ -157,9 +180,8 @@ if(isset($_POST['sendNewCar'])) {
 
         <div class="table-container">
             <table>
-                <thead id='carInfoTable'>
+                <thead>
                     <tr>
-                        <!-- Columns -->
                         <th>Car Plate</th>
                         <th>Make</th>
                         <th>Model</th>
@@ -180,6 +202,9 @@ if(isset($_POST['sendNewCar'])) {
                         <th>Car Description</th>
                     </tr>
                 </thead>
+                <tbody id='carInfoTable'>
+                    <!-- <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="" /> -->
+                </tbody>
             </table>
         </div>
 

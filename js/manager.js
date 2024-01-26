@@ -19,6 +19,14 @@ const allPassengersNumberFromDb = passengersNumberFromDb;
 
 const carsInfoForTable = carData;
 console.log(carsInfoForTable);
+// Check if carData is defined before using it
+if (typeof carData !== "undefined") {
+  // Your existing JavaScript code that uses carData
+  console.log(carData);
+} else {
+  // Handle the case when carData is not defined
+  console.log("carData is not defined");
+}
 // To prevent more than one dropdown opened at the time
 let activeMain = null;
 let activeSecond = null;
@@ -229,25 +237,27 @@ function HTMLpasangersNumberSelectOptions(pasangersNumber) {
 
 function HTMLforTable(carInfo) {
   return `
-    <tr>
-      <th>${carInfo.plate}</th>
-      <th>${carInfo.make}</th>
-      <th>${carInfo.model}</th>
-      <th>${carInfo.registrationYear}</th>
-      <th>${carInfo.transmissionType}</th>
-      <th>${carInfo.engineFuel}</th>
-      <th>${carInfo.engineCapacity}</th>
-      <th>${carInfo.bodyType}</th>
-      <th>${carInfo.dorsNumber}</th>
-      <th>${carInfo.passengersNumber}</th>
-      <th>${carInfo.rentDaysPrice1_2}</th>
-      <th>${carInfo.rentDaysPrice3_7}</th>
-      <th>${carInfo.rentDaysPrice8_20}</th>
-      <th>${carInfo.rentDaysPrice21_45}</th>
-      <th>${carInfo.rentDaysPrice46}</th>
-      <th>${carInfo.rentStatus}</th>
-      <th>${carInfo.carImage}</th>
-      <th>${carInfo.description}</th>
+  <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="${carInfo.plate}" style="display: none;"/>
+  <label for="tableDeleteCarButton">Delete</label>
+  <tr>
+      <td>${carInfo.plate}</td>
+      <td>${carInfo.make}</td>
+      <td>${carInfo.model}</td>
+      <td>${carInfo.registrationYear}</td>
+      <td>${carInfo.transmissionType}</td>
+      <td>${carInfo.engineFuel}</td>
+      <td>${carInfo.engineCapacity}</td>
+      <td>${carInfo.bodyType}</td>
+      <td>${carInfo.dorsNumber}</td>
+      <td>${carInfo.passengersNumber}</td>
+      <td>${carInfo.rentDaysPrice1_2}</td>
+      <td>${carInfo.rentDaysPrice3_7}</td>
+      <td>${carInfo.rentDaysPrice8_20}</td>
+      <td>${carInfo.rentDaysPrice21_45}</td>
+      <td>${carInfo.rentDaysPrice46}</td>
+      <td>${carInfo.rentStatus}</td>
+      <td>${carInfo.carImage}</td>
+      <td>${carInfo.description}</td>
     </tr>
   `;
 }

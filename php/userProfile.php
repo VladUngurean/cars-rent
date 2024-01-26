@@ -8,10 +8,9 @@
 
     <?php
 // userProfile.php
-session_start();
+// session_start();
+// include "config.php";
 
-// Rest of the userProfile.php code
-// ...
 ?>
 
 </head>

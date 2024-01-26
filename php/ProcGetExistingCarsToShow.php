@@ -33,13 +33,16 @@ if ($result->num_rows > 0) {
       'carImage' => $row['images'],
     );
     }
-    echo '<script>';
-    echo 'let carData = ' . json_encode($data) . ';';
-    echo '</script>';
-
+    if (!empty($data)) {
+      echo '<script>';
+      echo 'let carData = ' . json_encode($data) . ';';
+      echo '</script>';
   } else {
-    echo json_encode(["message" => "No data found"]);
+    echo '<script>';
+    echo 'let carData = "";';
+    echo '</script>';
   }
-
+  }
   $conn->close();
+
 ?>
