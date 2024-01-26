@@ -12,10 +12,10 @@
     <title>Manager Account</title>
 
     <?php
-    session_start();
-include "config.php";
-
-include "getAllCarsData.php";
+    // session_start();
+// include "config.php";
+include "ProcGetExistingCarsToShow.php";
+include "ProcGetAllCarsData.php";
 
 // include 'loginLogic.php';
 // Check if the user is logged in
@@ -32,7 +32,7 @@ if ($_SESSION['role'] !== 'Manager') {
 }
 if ($_SESSION['role'] == 'Manager') {
 
-if(isset($_POST['submit'])) {  
+if(isset($_POST['sendNewCar'])) {  
     $make = mysqli_real_escape_string($conn, $_POST["make"]);  
     $model = mysqli_real_escape_string($conn, $_POST["model"]);  
     $transmissionType = mysqli_real_escape_string($conn, $_POST["transmission_type"]);  
@@ -123,13 +123,67 @@ if(isset($_POST['submit'])) {
             <div id="selectedImagesContainer"></div>
 
             <!-- <input id="sendCarToDataBase" onclick="changeRadioValue()" class="button" name="submit" type="submit" value="To DB" /> -->
-            <input id="sendCarToDataBase" class="button" name="submit" type="submit" value="To DB" />
+            <input id="sendCarToDataBase" class="button" name="sendNewCar" type="submit" value="To DB" />
         </div>
 
     </form>
 
     <br>
 
+    <form action="">
+
+        <style>
+        .table-container {
+            /* display: flex;
+            justify-content: center;
+            align-items: center;
+            max-width: 500px; */
+            min-height: 300px;
+            overflow-x: auto;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th,
+        td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        </style>
+
+        <div class="table-container">
+            <table>
+                <thead id='carInfoTable'>
+                    <tr>
+                        <!-- Columns -->
+                        <th>Car Plate</th>
+                        <th>Make</th>
+                        <th>Model</th>
+                        <th>Registration Year</th>
+                        <th>Transmission Type</th>
+                        <th>Engine Fuel</th>
+                        <th>Engine Capacity</th>
+                        <th>Body Type</th>
+                        <th>Doors Number</th>
+                        <th>Passenger Number</th>
+                        <th>Price 1-2</th>
+                        <th>Price 3-7</th>
+                        <th>Price 8-20</th>
+                        <th>Price 21-45</th>
+                        <th>Price 46</th>
+                        <th>Rent Status</th>
+                        <th>Images</th>
+                        <th>Car Description</th>
+                    </tr>
+                </thead>
+            </table>
+        </div>
+
+    </form>
 
     <?php  
         echo '<label><a href="logout.php">Logout</a></label> <br>';  

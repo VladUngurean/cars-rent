@@ -17,6 +17,8 @@ const allDoorsNumberFromDb = doorsNumberFromDb;
 const allPassengersNumberFromDb = passengersNumberFromDb;
 // console.log(allPassengersNumberFromDb);
 
+const carsInfoForTable = carData;
+console.log(carsInfoForTable);
 // To prevent more than one dropdown opened at the time
 let activeMain = null;
 let activeSecond = null;
@@ -223,6 +225,35 @@ function HTMLpasangersNumberSelectOptions(pasangersNumber) {
       `;
 }
 //HTML for do today end-------------------------------------------------------------------------------------
+//HTML for TABLE start-------------------------------------------------------------------------------------
+
+function HTMLforTable(carInfo) {
+  return `
+    <tr>
+      <th>${carInfo.plate}</th>
+      <th>${carInfo.make}</th>
+      <th>${carInfo.model}</th>
+      <th>${carInfo.registrationYear}</th>
+      <th>${carInfo.transmissionType}</th>
+      <th>${carInfo.engineFuel}</th>
+      <th>${carInfo.engineCapacity}</th>
+      <th>${carInfo.bodyType}</th>
+      <th>${carInfo.dorsNumber}</th>
+      <th>${carInfo.passengersNumber}</th>
+      <th>${carInfo.rentDaysPrice1_2}</th>
+      <th>${carInfo.rentDaysPrice3_7}</th>
+      <th>${carInfo.rentDaysPrice8_20}</th>
+      <th>${carInfo.rentDaysPrice21_45}</th>
+      <th>${carInfo.rentDaysPrice46}</th>
+      <th>${carInfo.rentStatus}</th>
+      <th>${carInfo.carImage}</th>
+      <th>${carInfo.description}</th>
+    </tr>
+  `;
+}
+
+//HTML for TABLE end-------------------------------------------------------------------------------------
+
 //Reusble function
 //Render select options
 function renderSelectOptions(addressToRender, functionToRender) {
@@ -351,6 +382,12 @@ renderSelectOptionsForSelect(
   HTMLpasangersNumberSelectOptions
 );
 
+// RENDER TABLE START =====================================================================================
+
+const forRenderTableRows = document.getElementById("carInfoTable");
+renderTableRows(carsInfoForTable, forRenderTableRows, HTMLforTable);
+
+// RENDER TABLE END =====================================================================================
 // ALL FUNCTION CALLS END-----------------------------------------------------------------
 
 //ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT
@@ -401,6 +438,13 @@ function renderSelectOptionsForSelect(
   // console.log(infoAboutCar);
   infoAboutCar.forEach((type) => {
     const HTMLtoRender = functionThatReturnHTML(type[carCharacteristic]);
+    container.insertAdjacentHTML("beforeend", HTMLtoRender);
+  });
+}
+function renderTableRows(infoAboutCar, container, functionThatReturnHTML) {
+  // console.log(infoAboutCar);
+  infoAboutCar.forEach((type) => {
+    const HTMLtoRender = functionThatReturnHTML(type);
     container.insertAdjacentHTML("beforeend", HTMLtoRender);
   });
 }
@@ -520,11 +564,11 @@ function displaySelectedImages(input) {
 
   // Display an alert if the number of files is below the minimum or above the maximum
   if (files.length < minFiles) {
-    alert("Please select at least " + minFiles + " file(s).");
+    alert("Please select at least " + minFiles + " images.");
     input.value = "";
     container.innerHTML = "";
   } else if (files.length > maxFiles) {
-    alert("Please select no more than " + maxFiles + " file(s).");
+    alert("Please select no more than " + maxFiles + " images.");
     input.value = "";
     container.innerHTML = "";
   } else {

@@ -1,5 +1,5 @@
 <?php
-include 'loginLogic.php';
+include 'ProcLoginLogic.php';
 ?>
 <!DOCTYPE html>
 <html>
