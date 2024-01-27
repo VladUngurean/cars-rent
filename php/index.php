@@ -19,16 +19,19 @@
 
 </head>
 
+
 <body>
 
-    <?php include('header.php'); ?>
+    <?php 
+    include('header.php'); 
+    ?>
 
     <?php  
         echo '<label><a href="logout.php">Logout</a></label><br>';  
         if(!isset($_SESSION["email"])){  
             echo 'Session is not active<br>' ;
         } else { echo 'Session is active<br>' ; }
-        echo $userRole
+        echo $_SESSION['role']
     ?>
     <!-- Search car secction START -->
     <!-- NEW SECCTION  -->
@@ -145,9 +148,9 @@
     </section>
     <!-- Comment secction END -->
 
-    <script type='text/javascript' src="/js/filterForCarSelect.js"></script>
+    <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
 
-    <script type='text/javascript' src="/js/main.js"></script>
+    <script type='text/javascript' src="/js/main.js" defer></script>
 
 </body>
 

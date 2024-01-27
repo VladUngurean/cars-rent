@@ -1,5 +1,30 @@
-const carsInfoFromPHP = carData;
+let carsInfoFromPHP = carData;
 console.log(carsInfoFromPHP);
+if (carsInfoFromPHP === "") {
+  console.log("sdfdssf");
+  carsInfoFromPHP = [
+    {
+      plate: "car_plate",
+      make: "make",
+      model: "model",
+      registrationYear: "registration_year",
+      transmissionType: "transmission_type",
+      engineFuel: "engine_fuel",
+      engineCapacity: "engine_capacity",
+      bodyType: "body_type",
+      dorsNumber: "doors_number",
+      passengersNumber: "passengers_number",
+      description: "car_description",
+      rentDaysPrice1_2: "rent_days_price_1_2",
+      rentDaysPrice3_7: "rent_days_price_3_7",
+      rentDaysPrice8_20: "rent_days_price_8_20",
+      rentDaysPrice21_45: "rent_days_price_21_45",
+      rentDaysPrice46: "rent_days_price_46",
+      rentStatus: "rent_status",
+      carImage: "images",
+    },
+  ];
+}
 // To prevent more than one dropdown opened at the time
 let activeMain = null;
 let activeSecond = null;

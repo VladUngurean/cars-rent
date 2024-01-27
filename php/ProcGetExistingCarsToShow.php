@@ -8,6 +8,10 @@ $sql = 'CALL GetCarInformation()';
 
 $result = $conn->query($sql);
 
+  echo '<script>';
+  echo 'let carData = "";';
+  echo '</script>';
+
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
@@ -33,16 +37,18 @@ if ($result->num_rows > 0) {
       'carImage' => $row['images'],
     );
     }
+
     if (!empty($data)) {
       echo '<script>';
       echo 'let carData = ' . json_encode($data) . ';';
       echo '</script>';
-  } else {
-    echo '<script>';
-    echo 'let carData = "";';
-    echo '</script>';
   }
-  }
+}
+// if (empty($data)) {
+//   echo '<script>';
+//   echo 'let carData = "";';
+//   echo '</script>';
+// }
   $conn->close();
 
 ?>

@@ -17,15 +17,32 @@ const allDoorsNumberFromDb = doorsNumberFromDb;
 const allPassengersNumberFromDb = passengersNumberFromDb;
 // console.log(allPassengersNumberFromDb);
 
-const carsInfoForTable = carData;
+let carsInfoForTable = carData;
 console.log(carsInfoForTable);
-// Check if carData is defined before using it
-if (typeof carData !== "undefined") {
-  // Your existing JavaScript code that uses carData
-  console.log(carData);
-} else {
-  // Handle the case when carData is not defined
-  console.log("carData is not defined");
+if (carsInfoForTable === "") {
+  console.log("sdfdssf");
+  carsInfoForTable = [
+    {
+      plate: "car_plate",
+      make: "make",
+      model: "model",
+      registrationYear: "registration_year",
+      transmissionType: "transmission_type",
+      engineFuel: "engine_fuel",
+      engineCapacity: "engine_capacity",
+      bodyType: "body_type",
+      dorsNumber: "doors_number",
+      passengersNumber: "passengers_number",
+      description: "car_description",
+      rentDaysPrice1_2: "rent_days_price_1_2",
+      rentDaysPrice3_7: "rent_days_price_3_7",
+      rentDaysPrice8_20: "rent_days_price_8_20",
+      rentDaysPrice21_45: "rent_days_price_21_45",
+      rentDaysPrice46: "rent_days_price_46",
+      rentStatus: "rent_status",
+      carImage: "images",
+    },
+  ];
 }
 // To prevent more than one dropdown opened at the time
 let activeMain = null;

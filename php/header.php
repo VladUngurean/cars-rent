@@ -43,7 +43,7 @@
                         if(isset($_SESSION["email"])) {
                             // echo $_SESSION["email"];
                             
-                            if(mysqli_num_rows($result) > 0) {
+                            // if(mysqli_num_rows($result) > 0) {
                                 // If user login is successful, get the user role
                                 $userRole = getUserRole($_SESSION["email"]);
                 
@@ -64,10 +64,10 @@
                                 } elseif ($userRole === 'Admin'){
                                     echo '<a href="adminProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
                                 }
-                            } else {  
-                                    echo '<script>alert("Wrong User Details")</script>';  
-                                }
+                            // }
 
+                        } else {  
+                            echo '<script>alert("Wrong User Details")</script>';  
                         }
                     ?>
                     <!-- </a> -->
