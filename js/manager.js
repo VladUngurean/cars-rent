@@ -1,21 +1,15 @@
 // Get data from the database
 const allCarMakesModelsFromDb = makesModelsFromDb;
-// console.log(allCarMakesModelsFromDb);
 
 const allTransmissionTypesFromDb = transmissionsFromDb;
-// console.log(allTransmissionTypesFromDb);
 
 const allEngineFuelsFromDb = engineFuelsFromDb;
-// console.log(allEngineFuelsFromDb);
 
 const allBodyTypesFromDb = bodyTypesFromDb;
-// console.log(allBodyTypesFromDb);
 
 const allDoorsNumberFromDb = doorsNumberFromDb;
-// console.log(allDoorsNumberFromDb);
 
 const allPassengersNumberFromDb = passengersNumberFromDb;
-// console.log(allPassengersNumberFromDb);
 
 let carsInfoForTable = carData;
 console.log(carsInfoForTable);
@@ -84,7 +78,7 @@ function HTMLmodelSelectOptions(model) {
   return `
         <li class="">
           <div class="">
-            <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}">
+            <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}" required>
             <span>${model}</span>
           </div>
         </li>
@@ -400,9 +394,6 @@ if (carsInfoForTable === "") {
 
 //ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT
 function renderCarForSelect(car) {
-  // const carMakesForSelectDropdown =
-  //   document.getElementById("carMakesForSelect");
-
   const make = car.make;
   const model = car.model.split(",");
 
@@ -417,20 +408,19 @@ function renderCarForSelect(car) {
   });
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
-  makeCheckbox.addEventListener("change", function () {
-    toggleMakeCheckbox(makeCheckbox, forRenderModels);
-  });
+  // makeCheckbox.addEventListener("change", function () {
+  //   toggleMakeCheckbox(makeCheckbox, forRenderModels);
+  // });
 
   let modelCheckboxes = forRenderModels.querySelectorAll(".model-checkbox");
   modelCheckboxes.forEach((modelCheckbox) => {
     modelCheckbox.addEventListener("change", function () {
-      handleModelCheckboxChange(modelCheckbox, makeCheckbox, modelCheckboxes);
+      handleModelCheckboxChange(modelCheckbox, makeCheckbox);
     });
   });
 }
 
 function renderCarModelsForSelect(models, container) {
-  // console.log(models);
   models.forEach((model) => {
     const renderCarForSelectHTML = HTMLmodelSelectOptions(model);
     container.insertAdjacentHTML("beforeend", renderCarForSelectHTML);
@@ -443,14 +433,12 @@ function renderSelectOptionsForSelect(
   carCharacteristic,
   functionThatReturnHTML
 ) {
-  // console.log(infoAboutCar);
   infoAboutCar.forEach((type) => {
     const HTMLtoRender = functionThatReturnHTML(type[carCharacteristic]);
     container.insertAdjacentHTML("beforeend", HTMLtoRender);
   });
 }
 function renderTableRows(infoAboutCar, container, functionThatReturnHTML) {
-  // console.log(infoAboutCar);
   infoAboutCar.forEach((type) => {
     const HTMLtoRender = functionThatReturnHTML(type);
     container.insertAdjacentHTML("beforeend", HTMLtoRender);
@@ -481,36 +469,27 @@ const dropDownForBodyType = document.getElementById("selectBodyType");
 const bodyTypeCheckboxes = document.querySelectorAll(".bodyType-checkbox");
 
 // Applies filter on data from the database
-// const carsFromFilter = filterNestedDataForSelectOptions(carsInfoFromPHP);
 allCarMakesModelsFromDb.forEach(renderCarForSelect);
 
 //GOLBAL VARIABLES END-----------------------------------------------
 
-function toggleMakeCheckbox(makeCheckbox, container) {
-  let modelCheckboxes = container.querySelectorAll(".model-checkbox");
-  modelCheckboxes.forEach((modelCheckbox) => {
-    modelCheckbox.checked = makeCheckbox.checked;
-    console.log(
-      `Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`
-    );
-  });
-}
+// function toggleMakeCheckbox(makeCheckbox, container) {
+//   let modelCheckboxes = container.querySelectorAll(".model-checkbox");
+//   modelCheckboxes.forEach((modelCheckbox) => {
+//     modelCheckbox.checked[0] = makeCheckbox.checked;
+//     console.log(
+//       `Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`
+//     );
+//   });
+// }
 
-function handleModelCheckboxChange(
-  modelCheckbox,
-  makeCheckbox,
-  allModelCheckboxes
-) {
-  const firstModelCheckbox = allModelCheckboxes[0];
-
-  makeCheckbox.checked = firstModelCheckbox.checked;
-
+function handleModelCheckboxChange(modelCheckbox, makeCheckbox) {
+  makeCheckbox.checked = modelCheckbox.checked;
   console.log(
     `Checkbox ${modelCheckbox.id} is checked: ${modelCheckbox.checked}`
   );
 }
 
-//test
 // Initialize checkboxes and models
 const makeCheckboxes = document.querySelectorAll(".make-checkbox");
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");

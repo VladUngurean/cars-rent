@@ -706,7 +706,7 @@ div {
 }
 
 .ulForHideSelectOptions {
-  display: none;
+  // display: none;
   position: relative;
   border: 2px solid rgb(124, 124, 124);
   left: 5px;
@@ -719,4 +719,24 @@ div {
   display: block;
 }
 
+///test for dropdown when add new car
 //SEARH SECCTION END
+$default-opacity: 1;
+
+@mixin fade-out($opacity: $default-opacity) {
+  opacity: $opacity;
+  position: if(
+    $opacity == 0,
+    absolute,
+    static
+  ); // Use static as the default position
+}
+
+.element {
+  @include fade-out; // Use the default opacity
+}
+
+.hidden-element {
+  @include fade-out(0); // Apply the mixin with opacity set to 0
+}
+///test for dropdown when add new car

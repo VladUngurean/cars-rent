@@ -502,7 +502,7 @@ if (carsInfoFromPHP === "") {
   // Render cars on the webpage---------------------------------------------------------------------------------
   const renderCars = (car) => {
     let getImages = car.carImage.split(",");
-    console.log(getImages);
+    // console.log(getImages);
     const productHTML = createCarHTML(car, getImages);
     carsContainer.insertAdjacentHTML("beforeend", productHTML);
   };
@@ -553,38 +553,6 @@ if (carsInfoFromPHP === "") {
     carsInfoFromPHP.forEach(renderCars);
   }
 
-  //test
-  let selectedCarForRent = {};
-
-  // Event listener for "Inchiriaza" button
-  document.addEventListener("click", function (event) {
-    // Check if the clicked element is the "Inchiriaza" button
-    if (event.target.id === "rentThisCar") {
-      // Find the parent car-list__box element
-      const carBox = event.target.closest(".car-list__box");
-      if (carBox) {
-        // Get the index of the selected car based on its position in the list
-        const carIndex = Array.from(carBox.parentElement.children).indexOf(
-          carBox
-        );
-
-        // Retrieve the selected car information
-        const selectedCar = carsInfoFromPHP[carIndex];
-
-        // Store the information in the selectedCarForRent object
-        selectedCarForRent = {
-          make: selectedCar.make,
-          model: selectedCar.model,
-          passangerNumber: selectedCar.passengersNumber,
-          // Add other relevant properties as needed
-        };
-
-        // Log the selected car information
-        console.log("Selected Car for Rent:", selectedCarForRent);
-      }
-    }
-  });
-  //test end
   // Function to render filtered cars based on checked checkboxes
 
   function renderFilteredCars() {

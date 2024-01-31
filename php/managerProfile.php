@@ -85,9 +85,7 @@ if(isset($_POST['sendNewCar'])) {
     // Execute the statement
     if ($stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $allImages])) {
         echo '<script>alert("New car successfully added to DB")</script>'; 
-        // var_dump($imagePaths);
-        // var_dump($fileDestination);
-        header("Location: managerProfile.php");
+        echo '<script> window.location.href = "managerProfile.php";</script>';
     }
     // Close the statement
     $stmt->close();
@@ -129,10 +127,9 @@ if(isset($_POST["deleteExistingCar"])) {
     //delete cars from db
     $stmt = $conn->prepare("CALL deleteCar(?)");
     
-    // Execute the statement
     if ($stmt->execute([$carPlate])) {
         echo '<script>alert("Car successfully deleted from DB")</script>'; 
-        header("Location: managerProfile.php");
+        echo '<script> window.location.href = "managerProfile.php";</script>';
     } else {
         echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
     }
@@ -165,10 +162,10 @@ if(isset($_POST["deleteExistingCar"])) {
             <ul id="bodyTypeToDb"></ul>
             <ul id="carDoorsNumberToDb"></ul>
             <ul id="pasangersNumberToDb"></ul>
-            <input type="text" name="car_plate" placeholder="Car Plate" minlength="7" maxlength="7" required />
-            <input type="number" name="engine_capacity" placeholder="Engine Capacity" minlength="2" maxlength="6" required />
-            <input type="number" name="registration_year" placeholder="Registration Year" minlength="3" maxlength="4" required />
-            <textarea name="description" id="" cols="30" rows="10" placeholder="Description"></textarea>
+            <input type="text" name="car_plate" placeholder="Car Plate ex. AAA 000" minlength="7" maxlength="7" required />
+            <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" minlength="2" maxlength="3" required />
+            <input type="number" name="registration_year" placeholder="Registration Year ex.2002" minlength="3" maxlength="4" required />
+            <textarea name="description" id="" cols="30" rows="10" placeholder="Description" required></textarea>
             <input type="number" name="rentDaysPrice_1_2" placeholder="Pret 1-2" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_3_7" placeholder="Pret 3-7" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_8_20" placeholder="Pret 8-20" minlength="2" maxlength="4" required />
