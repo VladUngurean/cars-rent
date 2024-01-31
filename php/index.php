@@ -31,12 +31,15 @@
         if(!isset($_SESSION["email"])){  
             echo 'Session is not active<br>' ;
         } else { echo 'Session is active<br>' ; }
-        echo $_SESSION['role']
+
+        if(isset($_SESSION["email"])){  
+            echo $_SESSION['role'];
+        }
     ?>
     <!-- Search car secction START -->
     <!-- NEW SECCTION  -->
 
-    <section class="search-form-area">
+    <section id="carFilterSelectors" class="search-form-area">
         <div class="container">
             <div class="search-form">
                 <div class="search-form-box">
@@ -120,7 +123,7 @@
     <!-- Search car secction END -->
 
     <!-- Car list secction START -->
-    <section class="car-list-area">
+    <section id="carRenderContainer" class="car-list-area">
         <div class="container">
             <div class="car-list__container">
                 <div class="car-list__container-text">

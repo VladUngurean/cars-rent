@@ -15,6 +15,12 @@ if(isset($_POST['submit'])) {
     $password = mysqli_real_escape_string($conn, $_POST["password"]); 
     $passwordCheck = mysqli_real_escape_string($conn, $_POST["passwordCheck"]); 
 
+    if (isset($_SESSION['email'])) {
+    if ($_SESSION['role'] === 'Admin') {
+        $role = mysqli_real_escape_string($conn, $_POST["role"]);
+    }
+    }
+
     function catchValues(){
         $_SESSION['email'] = $_POST['email'];
         $_SESSION['firstName'] = $_POST['first_name'];
@@ -41,14 +47,25 @@ if(isset($_POST['submit'])) {
                         } elseif(mysqli_num_rows($checkPhone) > 0){
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
-                        } else {
+                        } 
+                        elseif (($_SESSION['role'] == 'Admin')) {
+
+                            $query = "INSERT INTO users(user_role,first_name,last_name,phone,email,password) 
+                            VALUES('$role','$firstName','$lastName','$phoneNumber','$email','$password')";
+                        if(mysqli_query($conn, $query))  
+                        {  
+                            echo '<script>alert("Registration Done")</script>';  
+                        }  
+                        
+                        }
+                        else {
                             $query = "INSERT INTO users(user_role,first_name,last_name,phone,email,password) 
                             VALUES((SELECT user_role FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                         if(mysqli_query($conn, $query))  
                         {  
                             echo '<script>alert("Registration Done")</script>';  
                         }  
-                        }
+                        } 
                     } else {  
                         list($a,$b,$c,$d) = catchValues();
                         $registerErrorMesage =  "Phone Number should contain only numbers";
@@ -98,6 +115,7 @@ function validateEmail($email) {
     </head>
 
     <body>
+
         <!-- Register secction START -->
         <div class="register-area">
             <div class="container">
@@ -135,6 +153,22 @@ function validateEmail($email) {
                             <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phone" placeholder="Telefon de Contact" minlength="8" maxlength="10" required />
                         </div>
 
+                        <?php
+
+                        if (isset($_SESSION['email'])) {
+                            if ($_SESSION['role'] === 'Admin') {
+                            echo ' 
+                            <div class="register-area__container__input-field">
+                                <p>Alege Rolul</p>
+                                <select name="role" id="">
+                                    <option value="Manager">Manager</option>
+                                    <option value="Courier">Curier</option>
+                                </select>
+                            </div>';
+                            }
+                        }
+
+                    ?>
                         <p><?php if (!empty($registerErrorMesage)) {
                         echo $registerErrorMesage;
                     }?></p>
@@ -149,8 +183,6 @@ function validateEmail($email) {
             </div>
         </div>
         <!-- Register secction END -->
-
-
 
     </body>
 

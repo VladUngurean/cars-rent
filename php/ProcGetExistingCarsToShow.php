@@ -8,9 +8,7 @@ $sql = 'CALL GetCarInformation()';
 
 $result = $conn->query($sql);
 
-  echo '<script>';
-  echo 'let carData = "";';
-  echo '</script>';
+
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -43,6 +41,10 @@ if ($result->num_rows > 0) {
       echo 'let carData = ' . json_encode($data) . ';';
       echo '</script>';
   }
+} else {
+    echo '<script>';
+    echo 'let carData = "";';
+    echo '</script>';
 }
 // if (empty($data)) {
 //   echo '<script>';

@@ -38,9 +38,7 @@
                         if(!isset($_SESSION["email"])){  
                             echo '<label><a href="login.php">Login</a></label>';  
                             echo '<label><a href="register.php">Register</a></label>';  
-                        } 
-                        
-                        if(isset($_SESSION["email"])) {
+                        } elseif(isset($_SESSION["email"])) {
                             // echo $_SESSION["email"];
                             
                             // if(mysqli_num_rows($result) > 0) {
