@@ -78,7 +78,7 @@ if(isset($_POST['sendNewCar'])) {
         echo "You cannot upload files of this type!";
     } 
     }
-    $allImages = rtrim($allImages, ',');
+    // $allImages = rtrim($allImages, ',');
     // Prepare the statement 16
     $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     
@@ -94,10 +94,39 @@ if(isset($_POST['sendNewCar'])) {
 
 };
 
+//funtion for delete local images
+function deleteImage($imageName) {
+    $imagePath = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $imageName;
+
+    // Check if the file exists before attempting to delete
+    if (file_exists($imagePath)) {
+        unlink($imagePath); // Delete the file
+        echo "Image $imageName deleted successfully.";
+    } else {
+        echo "Image $imageName not found.";
+    }
+}
+
+//delete images in cars from DB
 if(isset($_POST["deleteExistingCar"])) {  
 
     $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);  
 
+    //delete local images
+    $stmt = $conn->prepare("CALL getCarImages(?)");
+    $stmt->execute([$carPlate]);
+    $stmt->bind_result($imagePaths);
+    $stmt->fetch();
+
+    $imagesArray = explode(',', $imagePaths);
+    foreach ($imagesArray as $imageName) {
+        deleteImage($imageName);
+    }
+    // Close the statement
+    $stmt->close();
+    
+
+    //delete cars from db
     $stmt = $conn->prepare("CALL deleteCar(?)");
     
     // Execute the statement
