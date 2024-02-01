@@ -116,6 +116,10 @@ function validateEmail($email) {
 
     <body>
 
+        <?php 
+    include('header.php'); 
+    ?>
+
         <!-- Register secction START -->
         <div class="register-area">
             <div class="container">

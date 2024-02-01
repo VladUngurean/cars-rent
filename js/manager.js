@@ -22,13 +22,9 @@ let activeSecond = null;
 function HTMLforMakeModelSelect() {
   return `
       <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <span id="dropDownMakes"> Marca
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
+        <span id="dropDownMakes"> Marca
+          <a href="">&gt;</a>
+        </span>
         <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes">
           <li class="">
             <div class="dropdown__content-second__select-options">
@@ -39,7 +35,7 @@ function HTMLforMakeModelSelect() {
             <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
               <li class="">
                 <div class="">
-                  <input class="newCarMakeModelRadio model-checkbox" type="radio" name="model">
+                  <input class="newCarMakeModelRadio" type="radio" name="model">
                   <input class="newCarMakeModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model" value=""/>
                 </div>
               </li>
@@ -55,17 +51,15 @@ function HTMLmakeSelectOptions(make) {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
             <input id="selectMake${make}" class="make-checkbox" type="radio" name="make" value="${make}">
             <span id="dropDown${make}Models">${make}
               <a href="">&gt;</a>
             </span>
-          </label>
         </div>
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
           <li class="">
             <div class="">
-              <input class="newCarMakeModelRadio model-checkbox" type="radio" name="model">
+              <input class="newCarMakeModelRadio" type="radio" name="model">
               <input class="newCarMakeModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model" value=""/>
             </div>
           </li>
@@ -89,11 +83,9 @@ function HTMLforTransmissionSelect() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
             <span id="selectTransmissionType">Cutie de viteze
               <a href="">&gt;</a>
             </span>
-          </label>
         </div>
         <ul id="transmissionTypeList" class="ulForHideSelectOption ulForTransmissions"></ul>
       </li>
@@ -103,10 +95,10 @@ function HTMLtransmissionSelectOptions(transmissionType) {
   return `
         <li class="">
           <div class="">
-            <label class="" for="1">
+
               <input id="select${transmissionType}" class="transmissionType-checkbox" type="radio" name="transmission_type" value="${transmissionType}">
               <span>${transmissionType}</span>
-            </label>
+
           </div>
         </li>
       `;
@@ -116,11 +108,9 @@ function HTMLforFuelTypeSelect() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
             <span id="selectFuelType">Tip combustibil
               <a href="">&gt;</a>
             </span>
-          </label>
         </div>
         <ul id="fuelTypeList" class="ulForHideSelectOption ulForFuelTypes"></ul>
       </li>
@@ -130,10 +120,10 @@ function HTMLFuelTypeSelectOptions(fuelType) {
   return `
         <li class="">
           <div class="">
-            <label class="" for="1">
+
               <input id="select${fuelType}" class="fuelType-checkbox" type="radio" name="fuel_type" value="${fuelType}">
               <span>${fuelType}</span>
-            </label>
+
           </div>
         </li>
       `;
@@ -143,11 +133,9 @@ function HTMLforBodyTypeSelect() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
             <span id="selectBodyType">Tip caroserie
               <a href="">&gt;</a>
             </span>
-          </label>
         </div>
         <ul id="bodyTypeList" class="ulForHideSelectOption ulForBodyTypes"></ul>
       </li>
@@ -157,10 +145,10 @@ function HTMLBodyTypeSelectOptions(bodyType) {
   return `
         <li class="">
           <div class="">
-            <label class="" for="1">
+
               <input id="select${bodyType}" class="bodyType-checkbox" type="radio" name="body_type" value="${bodyType}">
               <span>${bodyType}</span>
-            </label>
+
           </div>
         </li>
       `;
@@ -170,11 +158,9 @@ function HTMLforDoorsNumberSelect() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
             <span id="selectDoorsNumber">Numarul de Usi
               <a href="">&gt;</a>
             </span>
-          </label>
         </div>
         <ul id="doorsNumberList" class="ulForHideSelectOption ulForDoorsNumbers"></ul>
       </li>
@@ -184,10 +170,10 @@ function HTMLDoorsNumberSelectOptions(doorsNumber) {
   return `
         <li class="">
           <div class="">
-            <label class="" for="1">
+
               <input id="select${doorsNumber}" class="doorsNumber-checkbox" type="radio" name="doors_number" value="${doorsNumber}">
               <span>${doorsNumber}</span>
-            </label>
+
           </div>
         </li>
       `;
@@ -197,11 +183,9 @@ function HTMLforPasangersNumberSelect() {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
             <span id="selectpasangersNumber">Numarul de Pasageri
               <a href="">&gt;</a>
             </span>
-          </label>
         </div>
         <ul id="pasangersNumberList" class="ulForHideSelectOption ulForpasangersNumbers"></ul>
       </li>
@@ -211,10 +195,10 @@ function HTMLpasangersNumberSelectOptions(pasangersNumber) {
   return `
         <li class="">
           <div class="">
-            <label class="" for="1">
+
               <input id="select${pasangersNumber}" class="pasangersNumber-checkbox" type="radio" name="pasangers_number" value="${pasangersNumber}">
               <span>${pasangersNumber}</span>
-            </label>
+
           </div>
         </li>
       `;
@@ -409,11 +393,12 @@ function renderCarForSelect(car) {
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
 
-  // makeCheckbox.addEventListener("change", function () {
-  //   toggleMakeCheckbox(makeCheckbox, forRenderModels);
-  // });
+  makeCheckbox.addEventListener("change", function () {
+    toggleMakeCheckbox(makeCheckbox, forRenderModels);
+  });
 
   let modelCheckboxes = forRenderModels.querySelectorAll(".model-checkbox");
+  
   modelCheckboxes.forEach((modelCheckbox) => {
     modelCheckbox.addEventListener("change", function () {
       handleModelCheckboxChange(modelCheckbox, makeCheckbox);
@@ -474,15 +459,17 @@ allCarMakesModelsFromDb.forEach(renderCarForSelect);
 
 //GOLBAL VARIABLES END-----------------------------------------------
 
-// function toggleMakeCheckbox(makeCheckbox, container) {
-//   let modelCheckboxes = container.querySelectorAll(".model-checkbox");
-//   modelCheckboxes.forEach((modelCheckbox) => {
-//     modelCheckbox.checked[0] = makeCheckbox.checked;
-//     console.log(
-//       `Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`
-//     );
-//   });
-// }
+// Initialize checkboxes and models
+const makeCheckboxes = document.querySelectorAll(".make-checkbox");
+const modelCheckboxes = document.querySelectorAll(".model-checkbox");
+
+function toggleMakeCheckbox(makeCheckbox, container) {
+  let modelCheckboxes = container.querySelectorAll(".model-checkbox");
+  modelCheckboxes.forEach((modelCheckbox) => {
+    modelCheckbox.checked = makeCheckbox.checked;
+    console.log(`Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`);
+  });
+}
 
 function handleModelCheckboxChange(modelCheckbox, makeCheckbox) {
   makeCheckbox.checked = modelCheckbox.checked;
@@ -491,9 +478,6 @@ function handleModelCheckboxChange(modelCheckbox, makeCheckbox) {
   );
 }
 
-// Initialize checkboxes and models
-const makeCheckboxes = document.querySelectorAll(".make-checkbox");
-const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 // Listen for changes in make checkboxes
 
@@ -552,11 +536,15 @@ function displaySelectedImages(input) {
 
   // Display an alert if the number of files is below the minimum or above the maximum
   if (files.length < minFiles) {
-    alert("Please select " + minFiles + " images.");
+    alert(
+      "Please select al least " + minFiles + " and no more than " + maxFiles + " images."
+    );
     input.value = "";
     container.innerHTML = "";
   } else if (files.length > maxFiles) {
-    alert("Please select no more than " + maxFiles + " images.");
+    alert(
+      "Please select al least " + minFiles + " and no more than " + maxFiles + " images."
+    );
     input.value = "";
     container.innerHTML = "";
   } else {
@@ -564,10 +552,10 @@ function displaySelectedImages(input) {
     for (let i = 0; i < files.length; i++) {
       let image = document.createElement("img");
       image.src = URL.createObjectURL(files[i]);
-      image.style.minWidth = "100px"; // Set maximum width for display
-      image.style.maxWidth = "100px"; // Set maximum width for display
-      image.style.minHeight = "100px"; // Set min height for display
-      image.style.maxHeight = "100px"; // Set min height for display
+      image.style.minWidth = "100px";
+      image.style.maxWidth = "100px";
+      image.style.minHeight = "100px"; 
+      image.style.maxHeight = "100px"; 
       container.appendChild(image);
     }
   }
