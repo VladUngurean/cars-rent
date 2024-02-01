@@ -408,6 +408,7 @@ function renderCarForSelect(car) {
   });
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
+
   // makeCheckbox.addEventListener("change", function () {
   //   toggleMakeCheckbox(makeCheckbox, forRenderModels);
   // });
@@ -547,11 +548,11 @@ function displaySelectedImages(input) {
   console.log(files);
   // Set minimum and maximum constraints
   let minFiles = 6;
-  let maxFiles = 8;
+  let maxFiles = 10;
 
   // Display an alert if the number of files is below the minimum or above the maximum
   if (files.length < minFiles) {
-    alert("Please select at least " + minFiles + " images.");
+    alert("Please select " + minFiles + " images.");
     input.value = "";
     container.innerHTML = "";
   } else if (files.length > maxFiles) {
@@ -563,8 +564,10 @@ function displaySelectedImages(input) {
     for (let i = 0; i < files.length; i++) {
       let image = document.createElement("img");
       image.src = URL.createObjectURL(files[i]);
+      image.style.minWidth = "100px"; // Set maximum width for display
       image.style.maxWidth = "100px"; // Set maximum width for display
       image.style.minHeight = "100px"; // Set min height for display
+      image.style.maxHeight = "100px"; // Set min height for display
       container.appendChild(image);
     }
   }
