@@ -398,7 +398,7 @@ function renderCarForSelect(car) {
   });
 
   let modelCheckboxes = forRenderModels.querySelectorAll(".model-checkbox");
-  
+
   modelCheckboxes.forEach((modelCheckbox) => {
     modelCheckbox.addEventListener("change", function () {
       handleModelCheckboxChange(modelCheckbox, makeCheckbox);
@@ -465,10 +465,16 @@ const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 function toggleMakeCheckbox(makeCheckbox, container) {
   let modelCheckboxes = container.querySelectorAll(".model-checkbox");
-  modelCheckboxes.forEach((modelCheckbox) => {
-    modelCheckbox.checked = makeCheckbox.checked;
+  // let firstCheckbox = modelCheckboxes[0]
+console.log(modelCheckboxes[1].checked);
+  if (modelCheckboxes.checked == true) {
+    modelCheckboxes[0].checked = makeCheckbox.checked = true;
     console.log(`Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`);
-  });
+  }
+  // firstCheckbox.forEach((modelCheckbox) => {
+  //   modelCheckbox.checked = makeCheckbox.checked;
+  //   console.log(`Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`);
+  // });
 }
 
 function handleModelCheckboxChange(modelCheckbox, makeCheckbox) {
