@@ -492,41 +492,44 @@ dropDownForNewCarNewModel.addEventListener("click", function () {
   renderNewModels.classList.toggle("show");
 });
 
-const sendCarToDb = document.getElementById("sendCarToDataBase");
-//add new model to existing make
-sendCarToDb.addEventListener("click", function () {
-  let radioInputsValue = document.querySelectorAll(".newCarMakeModelInput");
-  let radioInputValue;
-  let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
 
-  for (let i = 0; i < radioInputsValue.length; i++) {
-    if (
-      radioInputsValue[i].value !== undefined &&
-      radioInputsValue[i].value !== ""
-    ) {
-      radioInputValue = radioInputsValue[i].value;
-      break;
-    }
-  }
-  radioInputs.forEach((e) => {
-    if (e.checked) {
-      e.value = radioInputValue;
-    }
-  });
-});
-// add new make and new model
-sendCarToDb.addEventListener("click", function () {
-  let newMakeInput = document.getElementById("newMakeInput");
-  let radioInputValue;
-  let newMakeRadioInputs = document.getElementById("newMakeRadio");
+// push value from input to radio start
+// const sendCarToDb = document.getElementById("sendCarToDataBase");
+// //add new model to existing make
+// sendCarToDb.addEventListener("click", function () {
+//   let radioInputsValue = document.querySelectorAll(".newCarMakeModelInput");
+//   let radioInputValue;
+//   let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
 
-  if (newMakeInput.value !== undefined && newMakeInput.value !== "") {
-    radioInputValue = newMakeInput.value;
-  }
-  if (newMakeRadioInputs.checked) {
-    newMakeRadioInputs.value = radioInputValue;
-  }
-});
+//   for (let i = 0; i < radioInputsValue.length; i++) {
+//     if (
+//       radioInputsValue[i].value !== undefined &&
+//       radioInputsValue[i].value !== ""
+//     ) {
+//       radioInputValue = radioInputsValue[i].value;
+//       break;
+//     }
+//   }
+//   radioInputs.forEach((e) => {
+//     if (e.checked) {
+//       e.value = radioInputValue;
+//     }
+//   });
+// });
+// // add new make and new model
+// sendCarToDb.addEventListener("click", function () {
+//   let newMakeInput = document.getElementById("newMakeInput");
+//   let radioInputValue;
+//   let newMakeRadioInputs = document.getElementById("newMakeRadio");
+
+//   if (newMakeInput.value !== undefined && newMakeInput.value !== "") {
+//     radioInputValue = newMakeInput.value;
+//   }
+//   if (newMakeRadioInputs.checked) {
+//     newMakeRadioInputs.value = radioInputValue;
+//   }
+// });
+// push value from input to radio end
 
 //show selected images
 
