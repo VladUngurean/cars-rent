@@ -160,9 +160,9 @@ if(isset($_POST["deleteExistingCar"])) {
             <ul id="transmissionTypeToDb"></ul>
             <ul id="engineFuelToDb"></ul>
             <ul id="bodyTypeToDb"></ul>
-            <ul id="carDoorsNumberToDb"></ul>
+            <!-- <ul id="carDoorsNumberToDb"></ul> -->
             <input type="number" name="doors_number" placeholder="Numarul de usi" minlength="1" maxlength="2" required>
-            <ul id="pasangersNumberToDb"></ul>
+            <!-- <ul id="pasangersNumberToDb"></ul> -->
             <input type="number" name="pasangers_number" placeholder="Numarul de pasageri" minlength="1" maxlength="2" required>
             <input type="text" name="car_plate" placeholder="Car Plate ex. AAA 000" minlength="7" maxlength="7" required />
             <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" minlength="2" maxlength="3" required />
