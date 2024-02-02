@@ -35,8 +35,8 @@ function HTMLforMakeModelSelect() {
             <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
               <li class="">
                 <div class="">
-                  <input class="newCarMakeModelRadio" type="radio" name="model">
-                  <input class="newCarMakeModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model" value=""/>
+                  <input class="newCarModelRadio" type="radio" name="model">
+                  <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model" value=""/>
                 </div>
               </li>
             </ul>
@@ -51,16 +51,14 @@ function HTMLmakeSelectOptions(make) {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-            <input id="selectMake${make}" class="make-checkbox" type="radio" name="make" value="${make}">
-            <span id="dropDown${make}Models">${make}
-              <a href="">&gt;</a>
-            </span>
+          <input id="selectMake${make}" class="make-checkbox" type="radio" name="make" value="${make}">
+          <span id="dropDown${make}Models" class="allMakesForDropdowns" >${make}&gt;</span>
         </div>
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
           <li class="">
             <div class="">
-              <input class="newCarMakeModelRadio" type="radio" name="model">
-              <input class="newCarMakeModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model" value=""/>
+              <input class="newCarModelRadio" type="radio" name="model">
+              <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model" value=""/>
             </div>
           </li>
         </ul>
@@ -154,55 +152,55 @@ function HTMLBodyTypeSelectOptions(bodyType) {
       `;
 }
 //HTML for doors number-------------------------------------------------------------------------------------
-function HTMLforDoorsNumberSelect() {
-  return `
-      <li class="">
-        <div class="dropdown__content-second__select-options">
-            <span id="selectDoorsNumber">Numarul de Usi
-              <a href="">&gt;</a>
-            </span>
-        </div>
-        <ul id="doorsNumberList" class="ulForHideSelectOption ulForDoorsNumbers"></ul>
-      </li>
-    `;
-}
-function HTMLDoorsNumberSelectOptions(doorsNumber) {
-  return `
-        <li class="">
-          <div class="">
+// function HTMLforDoorsNumberSelect() {
+//   return `
+//       <li class="">
+//         <div class="dropdown__content-second__select-options">
+//             <span id="selectDoorsNumber">Numarul de Usi
+//               <a href="">&gt;</a>
+//             </span>
+//         </div>
+//         <ul id="doorsNumberList" class="ulForHideSelectOption ulForDoorsNumbers"></ul>
+//       </li>
+//     `;
+// }
+// function HTMLDoorsNumberSelectOptions(doorsNumber) {
+//   return `
+//         <li class="">
+//           <div class="">
 
-              <input id="select${doorsNumber}" class="doorsNumber-checkbox" type="radio" name="doors_number" value="${doorsNumber}">
-              <span>${doorsNumber}</span>
+//               <input id="select${doorsNumber}" class="doorsNumber-checkbox" type="radio" name="doors_number" value="${doorsNumber}">
+//               <span>${doorsNumber}</span>
 
-          </div>
-        </li>
-      `;
-}
-//HTML for pasangersNumber-------------------------------------------------------------------------------------
-function HTMLforPasangersNumberSelect() {
-  return `
-      <li class="">
-        <div class="dropdown__content-second__select-options">
-            <span id="selectpasangersNumber">Numarul de Pasageri
-              <a href="">&gt;</a>
-            </span>
-        </div>
-        <ul id="pasangersNumberList" class="ulForHideSelectOption ulForpasangersNumbers"></ul>
-      </li>
-    `;
-}
-function HTMLpasangersNumberSelectOptions(pasangersNumber) {
-  return `
-        <li class="">
-          <div class="">
+//           </div>
+//         </li>
+//       `;
+// }
+// //HTML for pasangersNumber-------------------------------------------------------------------------------------
+// function HTMLforPasangersNumberSelect() {
+//   return `
+//       <li class="">
+//         <div class="dropdown__content-second__select-options">
+//             <span id="selectpasangersNumber">Numarul de Pasageri
+//               <a href="">&gt;</a>
+//             </span>
+//         </div>
+//         <ul id="pasangersNumberList" class="ulForHideSelectOption ulForpasangersNumbers"></ul>
+//       </li>
+//     `;
+// }
+// function HTMLpasangersNumberSelectOptions(pasangersNumber) {
+//   return `
+//         <li class="">
+//           <div class="">
 
-              <input id="select${pasangersNumber}" class="pasangersNumber-checkbox" type="radio" name="pasangers_number" value="${pasangersNumber}">
-              <span>${pasangersNumber}</span>
+//               <input id="select${pasangersNumber}" class="pasangersNumber-checkbox" type="radio" name="pasangers_number" value="${pasangersNumber}">
+//               <span>${pasangersNumber}</span>
 
-          </div>
-        </li>
-      `;
-}
+//           </div>
+//         </li>
+//       `;
+// }
 //HTML for do today end-------------------------------------------------------------------------------------
 //HTML for TABLE start-------------------------------------------------------------------------------------
 
@@ -266,38 +264,42 @@ function HTMLreturnMainFunction(type) {
 
 // CHECK ACTIVE STATUS
 
-function toggleShowSelectOptions(container, activeStatus) {
-  if (activeStatus === activeMain) {
-    if (activeMain === container) {
-      container.classList.toggle("show");
-    } else {
-      // Hide all activeMain elements
-      if (activeMain) {
-        activeMain.classList.remove("show");
-      }
-      // Hide all activeSecond elements
-      if (activeSecond) {
-        activeSecond.classList.remove("show");
-      }
-      // Show the current container
-      container.classList.add("show");
-      activeMain = container;
-    }
-  } else if (activeStatus === activeSecond) {
-    if (activeSecond === container) {
-      container.classList.toggle("show");
-    } else {
-      // Hide all activeSecond elements
-      if (activeSecond) {
-        activeSecond.classList.remove("show");
-      }
+//old toggle function 
+// function toggleShowSelectOptions(container, activeStatus) {
+//   if (activeStatus === activeMain) {
+//     if (activeMain === container) {
+//       container.classList.toggle("show");;
+//     } else {
+//       // Hide all activeMain elements
+//       if (activeMain) {
+//         activeMain.classList.remove("show");
+//       }
+//       // Hide all activeSecond elements
+//       if (activeSecond) {
+//         activeSecond.classList.remove("show");
+//       }
+//       // Show the current container
+//       container.classList.add("show");
+//       activeMain = container;
+//     }
+//   } else if (activeStatus === activeSecond) {
+//     if (activeSecond === container) {
+//       container.classList.toggle("show");;
+//     } else {
+//       // Hide all activeSecond elements
+//       if (activeSecond) {
+//         activeSecond.classList.remove("show");
+//       }
 
-      // Show the current container
-      container.classList.add("show");
-      activeSecond = container;
-    }
-  }
-}
+//       // Show the current container
+//       container.classList.add("show");
+//       activeSecond = container;
+//     }
+//   }
+// }
+
+//new
+
 // CHECK ACTIVE STATUS END
 //Reusble function END-------------------------------------------------------
 
@@ -307,8 +309,8 @@ renderSelectOptions("makeModelToDb", HTMLforMakeModelSelect);
 renderSelectOptions("transmissionTypeToDb", HTMLforTransmissionSelect);
 renderSelectOptions("engineFuelToDb", HTMLforFuelTypeSelect);
 renderSelectOptions("bodyTypeToDb", HTMLforBodyTypeSelect);
-renderSelectOptions("carDoorsNumberToDb", HTMLforDoorsNumberSelect);
-renderSelectOptions("pasangersNumberToDb", HTMLforPasangersNumberSelect);
+// renderSelectOptions("carDoorsNumberToDb", HTMLforDoorsNumberSelect);
+// renderSelectOptions("pasangersNumberToDb", HTMLforPasangersNumberSelect);
 //ALL THAT RENDER SOMETHING FOR SELECT END
 
 //aplly filter for make model
@@ -345,23 +347,23 @@ renderSelectOptionsForSelect(
 );
 
 // //aplly filter for doors number
-const forRenderDoorsNumberToDb = document.getElementById("doorsNumberList");
-renderSelectOptionsForSelect(
-  allDoorsNumberFromDb,
-  forRenderDoorsNumberToDb,
-  "doorsNumber",
-  HTMLDoorsNumberSelectOptions
-);
-// //aplly filter for pasangersNumberList
-const forRenderPassangerNumberToDb = document.getElementById(
-  "pasangersNumberList"
-);
-renderSelectOptionsForSelect(
-  allPassengersNumberFromDb,
-  forRenderPassangerNumberToDb,
-  "passengersNumber",
-  HTMLpasangersNumberSelectOptions
-);
+// const forRenderDoorsNumberToDb = document.getElementById("doorsNumberList");
+// renderSelectOptionsForSelect(
+//   allDoorsNumberFromDb,
+//   forRenderDoorsNumberToDb,
+//   "doorsNumber",
+//   HTMLDoorsNumberSelectOptions
+// );
+// // //aplly filter for pasangersNumberList
+// const forRenderPassangerNumberToDb = document.getElementById(
+//   "pasangersNumberList"
+// );
+// renderSelectOptionsForSelect(
+//   allPassengersNumberFromDb,
+//   forRenderPassangerNumberToDb,
+//   "passengersNumber",
+//   HTMLpasangersNumberSelectOptions
+// );
 
 // RENDER TABLE START =====================================================================================
 
@@ -381,23 +383,53 @@ function renderCarForSelect(car) {
   const make = car.make;
   const model = car.model.split(",");
 
+  
   const dropDownForCarModel = document.getElementById(`dropDown${make}Models`);
   const forRenderModels = document.getElementById(`renderModels${make}`);
-
   renderCarModelsForSelect(model, forRenderModels);
 
+  let makeCheckbox = document.getElementById(`selectMake${make}`);
+  let modelCheckboxes = forRenderModels.querySelectorAll(".model-checkbox");
+  
+  let allSpansDropdowns = forRenderModels.querySelectorAll(".allMakesForDropdowns");
+
+
+  // dropDownForCarModel.addEventListener("click", function () {
+  //   console.log("second");
+  //   toggleShowSelectOptions(forRenderModels, activeMain);
+  // });
+
+
+  // /--------------------------------------------------------------
+
   dropDownForCarModel.addEventListener("click", function () {
-    console.log("second");
-    toggleShowSelectOptions(forRenderModels, activeMain);
+    toggleShowSelectOptions(allSpansDropdowns, modelCheckboxes)
   });
 
-  let makeCheckbox = document.getElementById(`selectMake${make}`);
+  function toggleShowSelectOptions(allMakesSpans, allRadios) {
+
+
+    allRadios.forEach(e => {
+      if(e.checked){
+
+      } else{
+
+      }
+    })
+    if (container.classList.contains("show")) {
+    } else{
+      allTogglableElements.forEach(e => e.classList.remove("show"))
+      container.classList.toggle("show");
+    }
+  }
+
+  // /--------------------------------------------------------------
+
 
   makeCheckbox.addEventListener("change", function () {
     toggleMakeCheckbox(makeCheckbox, forRenderModels);
   });
 
-  let modelCheckboxes = forRenderModels.querySelectorAll(".model-checkbox");
 
   modelCheckboxes.forEach((modelCheckbox) => {
     modelCheckbox.addEventListener("change", function () {
@@ -435,71 +467,48 @@ function renderTableRows(infoAboutCar, container, functionThatReturnHTML) {
 
 //GOLBAL VARIABLES-----------------------------------------------------------------------
 
-//dropdorns and checboxes for transmission
-const carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
-const dropDownMakes = document.getElementById("dropDownMakes");
-
-//dropdorns and checboxes for transmission
-const dropDownForTransmission = document.getElementById(
-  "selectTransmissionType"
-);
-const transmissionCheckboxes = document.querySelectorAll(
-  ".transmissionType-checkbox"
-);
-
-//dropdorns and checboxes for fuel type
-const dropDownForFuelType = document.getElementById("selectFuelType");
-const fuelTypeCheckboxes = document.querySelectorAll(".fuelType-checkbox");
-//dropdorns and checboxes for fuel type
-const dropDownForBodyType = document.getElementById("selectBodyType");
-const bodyTypeCheckboxes = document.querySelectorAll(".bodyType-checkbox");
-
 // Applies filter on data from the database
 allCarMakesModelsFromDb.forEach(renderCarForSelect);
 
 //GOLBAL VARIABLES END-----------------------------------------------
 
 // Initialize checkboxes and models
-const makeCheckboxes = document.querySelectorAll(".make-checkbox");
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 function toggleMakeCheckbox(makeCheckbox, container) {
-  let modelCheckboxes = container.querySelectorAll(".model-checkbox");
-  // let firstCheckbox = modelCheckboxes[0]
-console.log(modelCheckboxes[1].checked);
-  if (modelCheckboxes.checked == true) {
+  let modelCheckboxes = container.querySelectorAll(".newCarModelRadio");
+  let allTogglableElements = document.querySelectorAll(".ulForHideSelectOptions")
+  if (modelCheckboxes) {
     modelCheckboxes[0].checked = makeCheckbox.checked = true;
-    console.log(`Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`);
   }
-  // firstCheckbox.forEach((modelCheckbox) => {
-  //   modelCheckbox.checked = makeCheckbox.checked;
-  //   console.log(`Checkbox All ${makeCheckbox.id} is checked: ${makeCheckbox.checked}`);
-  // });
+  if (container.classList.contains("show")) {
+  } else{
+    allTogglableElements.forEach(e => e.classList.remove("show"))
+    container.classList.toggle("show");
+  }
 }
 
 function handleModelCheckboxChange(modelCheckbox, makeCheckbox) {
   makeCheckbox.checked = modelCheckbox.checked;
-  console.log(
-    `Checkbox ${modelCheckbox.id} is checked: ${modelCheckbox.checked}`
-  );
 }
 
+// 
+const  newMakeRadio = document.getElementById("newMakeRadio");
+const  renderNewModels = document.getElementById("renderNewModels");
 
-// Listen for changes in make checkboxes
-
-const dropDownForNewCarNewModel = document.getElementById("newMakeInput");
-dropDownForNewCarNewModel.addEventListener("click", function () {
-  renderNewModels.classList.toggle("show");
+newMakeRadio.addEventListener("change", function () {
+  toggleMakeCheckbox(newMakeRadio, renderNewModels);
 });
+
 
 
 // push value from input to radio start
 // const sendCarToDb = document.getElementById("sendCarToDataBase");
 // //add new model to existing make
 // sendCarToDb.addEventListener("click", function () {
-//   let radioInputsValue = document.querySelectorAll(".newCarMakeModelInput");
+//   let radioInputsValue = document.querySelectorAll(".newCarModelInput");
 //   let radioInputValue;
-//   let radioInputs = document.querySelectorAll(".newCarMakeModelRadio");
+//   let radioInputs = document.querySelectorAll(".newCarModelRadio");
 
 //   for (let i = 0; i < radioInputsValue.length; i++) {
 //     if (
