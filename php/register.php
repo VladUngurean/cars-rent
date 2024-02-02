@@ -39,8 +39,8 @@ if(isset($_POST['submit'])) {
             if (preg_match ("/^[a-zA-z]*$/", $firstName) ) {  
                 if (preg_match ("/^[a-zA-z]*$/", $lastName) ) {  
                     if (preg_match ("/^[0-9]*$/", $phoneNumber) ){  
-                        $checkEmail = mysqli_query($conn, "select email from users where email = '$email'");
-                        $checkPhone = mysqli_query($conn, "select phone from users where phone = '$phoneNumber'");
+                        $checkEmail = mysqli_query($conn, "select email from user where email = '$email'");
+                        $checkPhone = mysqli_query($conn, "select phone from user where phone = '$phoneNumber'");
                         if(mysqli_num_rows($checkEmail) > 0){ 
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Email Already exists'; 
@@ -49,9 +49,8 @@ if(isset($_POST['submit'])) {
                             $dataBaseResponse = 'Phone Already exists'; 
                         } 
                         elseif (($_SESSION['role'] == 'Admin')) {
-
-                            $query = "INSERT INTO users(user_role,first_name,last_name,phone,email,password) 
-                            VALUES('$role','$firstName','$lastName','$phoneNumber','$email','$password')";
+                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
+                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                         if(mysqli_query($conn, $query))  
                         {  
                             echo '<script>alert("Registration Done")</script>';  
@@ -59,8 +58,8 @@ if(isset($_POST['submit'])) {
                         
                         }
                         else {
-                            $query = "INSERT INTO users(user_role,first_name,last_name,phone,email,password) 
-                            VALUES((SELECT user_role FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
+                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
+                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                         if(mysqli_query($conn, $query))  
                         {  
                             echo '<script>alert("Registration Done")</script>';  

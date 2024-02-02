@@ -25,7 +25,7 @@ if ($result->num_rows > 0) {
   }
   // get transmissions 
 
-$result = $conn->query('CALL getTransmissions();');
+$result = $conn->query('CALL getTransmissionTypes();');
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -45,7 +45,7 @@ if ($result->num_rows > 0) {
   }
   // getEngineFuels 
 
-$result = $conn->query('CALL getEngineFuels();');
+$result = $conn->query('CALL getEngineFuelTypes();');
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -77,45 +77,6 @@ if ($result->num_rows > 0) {
     }
     echo '<script>';
     echo 'const bodyTypesFromDb = ' . json_encode($dataBodyType) . ';';
-    echo '</script>';
- $result->close();
- $conn->next_result();
-  } else {
-    echo json_encode(["message" => "No data found"]);
-  }
-  // getDoorsNumber 
-
-$result = $conn->query('CALL getDoorsNumber();');
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-
-    $dataDoorsNumber[] = array(
-        'doorsNumber' => $row['doors_number'],
-    );
-    }
-    echo '<script>';
-    echo 'const doorsNumberFromDb = ' . json_encode($dataDoorsNumber) . ';';
-    echo '</script>';
- $result->close();
- $conn->next_result();
-  } else {
-    echo json_encode(["message" => "No data found"]);
-  }
-  // getPassengersNumber 
-
-$result = $conn->query('CALL getPassengersNumber();');
-
-if ($result->num_rows > 0) {
-    // output data of each row
-    while($row = $result->fetch_assoc()) {
-    $dataPassengersNumber[] = array(
-        'passengersNumber' => $row['passengers_number'],
-    );
-    }
-    echo '<script>';
-    echo 'const passengersNumberFromDb = ' . json_encode($dataPassengersNumber) . ';';
     echo '</script>';
  $result->close();
  $conn->next_result();

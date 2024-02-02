@@ -7,10 +7,6 @@ const allEngineFuelsFromDb = engineFuelsFromDb;
 
 const allBodyTypesFromDb = bodyTypesFromDb;
 
-const allDoorsNumberFromDb = doorsNumberFromDb;
-
-const allPassengersNumberFromDb = passengersNumberFromDb;
-
 let carsInfoForTable = carData;
 console.log(carsInfoForTable);
 
@@ -29,14 +25,17 @@ function HTMLforMakeModelSelect() {
           <li class="">
             <div class="dropdown__content-second__select-options">
               <input id="newMakeRadio" class="make-checkbox" type="radio" name="make" value="">
-              <input id="newMakeInput" class="" type="text" name="new_make" placeholder="+Add new Model" value=""/>
-            </div>
-
-            <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
+              <label for="newMakeRadio">+Add New Make&Model</label>
+              </div>
+              
+              <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
               <li class="">
-                <div class="">
-                  <input class="newCarModelRadio" type="radio" name="model">
-                  <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model" value=""/>
+              <div class="">
+                <input type="radio" checked>
+                <input id="newMakeInput" class="" type="text" name="new_make" placeholder="+Add new Make" value=""/>
+                <br>
+                <input class="newCarModelRadio" type="radio" name="model">
+                <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model" value=""/>
                 </div>
               </li>
             </ul>
@@ -503,41 +502,38 @@ newMakeRadio.addEventListener("change", function () {
 
 
 // push value from input to radio start
-// const sendCarToDb = document.getElementById("sendCarToDataBase");
+const sendCarToDb = document.getElementById("sendCarToDataBase");
 // //add new model to existing make
-// sendCarToDb.addEventListener("click", function () {
-//   let radioInputsValue = document.querySelectorAll(".newCarModelInput");
-//   let radioInputValue;
-//   let radioInputs = document.querySelectorAll(".newCarModelRadio");
+sendCarToDb.addEventListener("click", function () {
+  let radioInputsValue = document.querySelectorAll(".newCarModelInput");
+  let radioInputValue;
+  let radioInputs = document.querySelectorAll(".newCarModelRadio");
 
-//   for (let i = 0; i < radioInputsValue.length; i++) {
-//     if (
-//       radioInputsValue[i].value !== undefined &&
-//       radioInputsValue[i].value !== ""
-//     ) {
-//       radioInputValue = radioInputsValue[i].value;
-//       break;
-//     }
-//   }
-//   radioInputs.forEach((e) => {
-//     if (e.checked) {
-//       e.value = radioInputValue;
-//     }
-//   });
-// });
-// // add new make and new model
-// sendCarToDb.addEventListener("click", function () {
-//   let newMakeInput = document.getElementById("newMakeInput");
-//   let radioInputValue;
-//   let newMakeRadioInputs = document.getElementById("newMakeRadio");
+  for (let i = 0; i < radioInputsValue.length; i++) {
+    if (radioInputsValue[i].value !== undefined && radioInputsValue[i].value !== "") {
+      radioInputValue = radioInputsValue[i].value;
+      break;
+    }
+  }
+  radioInputs.forEach((e) => {
+    if (e.checked) {
+      e.value = radioInputValue;
+    }
+  });
+});
+// add new make and new model
+sendCarToDb.addEventListener("click", function () {
+  let newMakeInput = document.getElementById("newMakeInput");
+  let radioInputValue;
+  let newMakeRadioInputs = document.getElementById("newMakeRadio");
 
-//   if (newMakeInput.value !== undefined && newMakeInput.value !== "") {
-//     radioInputValue = newMakeInput.value;
-//   }
-//   if (newMakeRadioInputs.checked) {
-//     newMakeRadioInputs.value = radioInputValue;
-//   }
-// });
+  if (newMakeInput.value !== undefined && newMakeInput.value !== "") {
+    radioInputValue = newMakeInput.value;
+  }
+  if (newMakeRadioInputs.checked) {
+    newMakeRadioInputs.value = radioInputValue;
+  }
+});
 // push value from input to radio end
 
 //show selected images

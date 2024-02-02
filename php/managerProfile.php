@@ -44,7 +44,8 @@ if(isset($_POST['sendNewCar'])) {
     $pasangersNumber = mysqli_real_escape_string($conn, $_POST["pasangers_number"]);  
     $engineCapacity = mysqli_real_escape_string($conn, $_POST["engine_capacity"]);  
     $registrationYear = mysqli_real_escape_string($conn, $_POST["registration_year"]);  
-    $description = mysqli_real_escape_string($conn, $_POST["description"]);  
+    $descriptionRo = mysqli_real_escape_string($conn, $_POST["description_ro"]);  
+    $descriptionEn = mysqli_real_escape_string($conn, $_POST["description_en"]);  
     $rentDaysPrice1_2 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_1_2"]);  
     $rentDaysPrice3_7 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_3_7"]);  
     $rentDaysPrice8_20 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_8_20"]);  
@@ -80,10 +81,10 @@ if(isset($_POST['sendNewCar'])) {
     }
     // $allImages = rtrim($allImages, ',');
     // Prepare the statement 16
-    $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+    $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
     
     // Execute the statement
-    if ($stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $description, $allImages])) {
+    if ($stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $descriptionEn ,$descriptionRo, $allImages])) {
         echo '<script>alert("New car successfully added to DB")</script>'; 
         echo '<script> window.location.href = "managerProfile.php";</script>';
     }
@@ -167,7 +168,8 @@ if(isset($_POST["deleteExistingCar"])) {
             <input type="text" name="car_plate" placeholder="Car Plate ex. AAA 000" minlength="7" maxlength="7" required />
             <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" minlength="2" maxlength="3" required />
             <input type="number" name="registration_year" placeholder="Registration Year ex.2002" minlength="3" maxlength="4" required />
-            <textarea name="description" id="" cols="30" rows="10" placeholder="Description" required></textarea>
+            <textarea name="description_ro" id="" cols="30" rows="10" placeholder="Description in Romanian" required></textarea>
+            <textarea name="description_en" id="" cols="30" rows="10" placeholder="Description in English" required></textarea>
             <input type="number" name="rentDaysPrice_1_2" placeholder="Pret 1-2" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_3_7" placeholder="Pret 3-7" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_8_20" placeholder="Pret 8-20" minlength="2" maxlength="4" required />
