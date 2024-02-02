@@ -52,13 +52,13 @@ function HTMLmakeSelectOptions(make) {
       <li class="">
         <div class="dropdown__content-second__select-options">
           <input id="selectMake${make}" class="make-checkbox" type="radio" name="make" value="${make}">
-          <span id="dropDown${make}Models" class="allMakesForDropdowns" >${make}&gt;</span>
+          <label for="selectMake${make}" id="dropDown${make}Models" class="allMakesForDropdowns" >${make}&gt;</label>
         </div>
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
           <li class="">
             <div class="">
-              <input class="newCarModelRadio" type="radio" name="model">
-              <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model" value=""/>
+              <input id="newModelRadio" class="newCarModelRadio" type="radio" name="model">
+              <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model" value=""/> 
             </div>
           </li>
         </ul>
@@ -71,7 +71,7 @@ function HTMLmodelSelectOptions(model) {
         <li class="">
           <div class="">
             <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}" required>
-            <span>${model}</span>
+            <label for="select${model}" >${model}</label>
           </div>
         </li>
       `;
@@ -95,7 +95,7 @@ function HTMLtransmissionSelectOptions(transmissionType) {
           <div class="">
 
               <input id="select${transmissionType}" class="transmissionType-checkbox" type="radio" name="transmission_type" value="${transmissionType}">
-              <span>${transmissionType}</span>
+              <label for="select${transmissionType}">${transmissionType}</label>
 
           </div>
         </li>
@@ -120,7 +120,7 @@ function HTMLFuelTypeSelectOptions(fuelType) {
           <div class="">
 
               <input id="select${fuelType}" class="fuelType-checkbox" type="radio" name="fuel_type" value="${fuelType}">
-              <span>${fuelType}</span>
+              <label for="select${fuelType}">${fuelType}</label>
 
           </div>
         </li>
@@ -145,7 +145,7 @@ function HTMLBodyTypeSelectOptions(bodyType) {
           <div class="">
 
               <input id="select${bodyType}" class="bodyType-checkbox" type="radio" name="body_type" value="${bodyType}">
-              <span>${bodyType}</span>
+              <label for="select${bodyType}">${bodyType}</label>
 
           </div>
         </li>
@@ -402,26 +402,26 @@ function renderCarForSelect(car) {
 
   // /--------------------------------------------------------------
 
-  dropDownForCarModel.addEventListener("click", function () {
-    toggleShowSelectOptions(allSpansDropdowns, modelCheckboxes)
-  });
+  // dropDownForCarModel.addEventListener("click", function () {
+  //   toggleShowSelectOptions(allSpansDropdowns, modelCheckboxes)
+  // });
 
-  function toggleShowSelectOptions(allMakesSpans, allRadios) {
+  // function toggleShowSelectOptions(allMakesSpans, allRadios) {
 
 
-    allRadios.forEach(e => {
-      if(e.checked){
+  //   allRadios.forEach(e => {
+  //     if(e.checked){
 
-      } else{
+  //     } else{
 
-      }
-    })
-    if (container.classList.contains("show")) {
-    } else{
-      allTogglableElements.forEach(e => e.classList.remove("show"))
-      container.classList.toggle("show");
-    }
-  }
+  //     }
+  //   })
+  //   if (container.classList.contains("show")) {
+  //   } else{
+  //     allTogglableElements.forEach(e => e.classList.remove("show"))
+  //     container.classList.toggle("show");
+  //   }
+  // }
 
   // /--------------------------------------------------------------
 
