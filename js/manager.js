@@ -34,7 +34,7 @@ function HTMLmakeSelectOptions(make) {
   return `
       <li class="">
         <div class="dropdown__content-second__select-options">
-          <input id="selectMake${make}" class="make-checkbox" type="radio" name="make" value="${make}">
+          <input id="selectMake${make}" class="make-checkbox" type="radio" name="make" value="${make}" required>
           <label for="selectMake${make}" id="dropDown${make}Models" class="allMakesForDropdowns" >${make}&gt;</label>
         </div>
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
@@ -77,7 +77,7 @@ function HTMLtransmissionSelectOptions(transmissionType) {
         <li class="">
           <div class="">
 
-              <input id="select${transmissionType}" class="transmissionType-checkbox" type="radio" name="transmission_type" value="${transmissionType}">
+              <input id="select${transmissionType}" class="transmissionType-checkbox" type="radio" name="transmission_type" value="${transmissionType}" required>
               <label for="select${transmissionType}">${transmissionType}</label>
 
           </div>
@@ -102,7 +102,7 @@ function HTMLFuelTypeSelectOptions(fuelType) {
         <li class="">
           <div class="">
 
-              <input id="select${fuelType}" class="fuelType-checkbox" type="radio" name="fuel_type" value="${fuelType}">
+              <input id="select${fuelType}" class="fuelType-checkbox" type="radio" name="fuel_type" value="${fuelType}" required>
               <label for="select${fuelType}">${fuelType}</label>
 
           </div>
@@ -127,7 +127,7 @@ function HTMLBodyTypeSelectOptions(bodyType) {
         <li class="">
           <div class="">
 
-              <input id="select${bodyType}" class="bodyType-checkbox" type="radio" name="body_type" value="${bodyType}">
+              <input id="select${bodyType}" class="bodyType-checkbox" type="radio" name="body_type" value="${bodyType}" required>
               <label for="select${bodyType}">${bodyType}</label>
 
           </div>
@@ -203,7 +203,6 @@ renderSelectOptionsForSelect(allTransmissionTypesFromDb,forRenderTransmission,"t
 
 // //aplly filter for fuel type
 const allEngineFuelsFromDb = engineFuelsFromDb;
-console.log(allEngineFuelsFromDb);
 if (allEngineFuelsFromDb === '') {
 } else {
   const forRenderFuelType = document.getElementById("fuelTypeList");
@@ -241,6 +240,8 @@ function renderCarForSelect(car) {
   let makeCheckbox = document.getElementById(`selectMake${make}`);
   
   makeCheckbox.addEventListener("change", function () {
+
+
     toggleMakeCheckbox(makeCheckbox, forRenderModels);
   });
 
@@ -276,13 +277,22 @@ function renderTableRows(infoAboutCar, container, functionThatReturnHTML) {
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 function toggleMakeCheckbox(makeCheckbox, container) {
-  let modelCheckboxes = container.querySelectorAll(".newCarModelRadio");
+  let newModelCheckboxes = container.querySelectorAll(".newCarModelRadio");
   let modelInputs = container.querySelectorAll(".newCarModelInput");
+  let allModelInputs = document.querySelectorAll(".newCarModelInput");
   let allTogglableElements = document.querySelectorAll(".ulForHideSelectOptions")
   let newMakeInput = document.getElementById("newMakeInput")
-
-  if (modelCheckboxes) {
-    modelCheckboxes[0].checked = makeCheckbox.checked = true;
+  
+  newMakeInput.removeAttribute('required');
+  allModelInputs.forEach(e => e.removeAttribute('required') );
+  
+  if (newMakeInput) {
+    newModelCheckboxes[0].checked = makeCheckbox.checked = true;
+    newMakeInput.setAttribute('required', '');
+  }
+  if (newModelCheckboxes) {
+    newModelCheckboxes[0].checked = makeCheckbox.checked = true;
+    modelInputs.forEach(e =>e.setAttribute('required', ''));
   }
   if (container.classList.contains("show")) {
   } else{
@@ -300,7 +310,7 @@ newMakeRadio.addEventListener("change", function () {
   toggleMakeCheckbox(newMakeRadio, renderNewModels);
 });
 
-// push value from input to radio start
+// // push value from input to radio start
 const sendCarToDb = document.getElementById("sendCarToDataBase");
 // //add new model to existing make
 sendCarToDb.addEventListener("click", function () {
@@ -335,32 +345,18 @@ sendCarToDb.addEventListener("click", function () {
 });
 // push value from input to radio end
 
+// push test ================================================================================
+
+
+// push test ================================================================================
+
 //show selected images
 
 function displaySelectedImages(input) {
   let container = document.getElementById("selectedImagesContainer");
   container.innerHTML = ""; // Clear previous images
-
   let files = input.files;
   console.log(files);
-  // Set minimum and maximum constraints
-  let minFiles = 6;
-  let maxFiles = 10;
-
-  // Display an alert if the number of files is below the minimum or above the maximum
-  if (files.length < minFiles) {
-    alert(
-      "Please select al least " + minFiles + " and no more than " + maxFiles + " images."
-    );
-    input.value = "";
-    container.innerHTML = "";
-  } else if (files.length > maxFiles) {
-    alert(
-      "Please select al least " + minFiles + " and no more than " + maxFiles + " images."
-    );
-    input.value = "";
-    container.innerHTML = "";
-  } else {
     // Process the selected files (you can customize this part)
     for (let i = 0; i < files.length; i++) {
       let image = document.createElement("img");
@@ -370,6 +366,25 @@ function displaySelectedImages(input) {
       image.style.minHeight = "100px"; 
       image.style.maxHeight = "100px"; 
       container.appendChild(image);
-    }
   }
+}
+
+function checkIfImagesSelected() {
+  var fileInput = document.getElementById('fileInput');
+  var selectedFiles = fileInput.files;
+  // Display an alert if the number of files is below the minimum or above the maximum
+  if (selectedFiles.length < 6) {
+    alert(
+      "Please select al least " + 6 + " and no more than " + 10 + " images."
+    );
+    return false; // Prevent form submission
+  } else if (selectedFiles.length > 10) {
+    alert(
+      "Please select al least " + 6 + " and no more than " + 10 + " images."
+    );
+    return false; // Prevent form submission
+  } 
+
+  // Continue with form submission if the condition is met
+  return true;
 }

@@ -155,15 +155,13 @@ if(isset($_POST["deleteExistingCar"])) {
 
     <br />
 
-    <form action="" method="post" enctype="multipart/form-data" style="text-align: center; display: flex; justify-content: center; ailgn-items: center;">
+    <form action="" method="post" onsubmit="return checkIfImagesSelected()" enctype="multipart/form-data" style="text-align: center; display: flex; justify-content: center; ailgn-items: center;">
         <div class="addNewCar" style="text-align: start; display: flex; justify-content: center; ailgn-items: center; flex-direction: column; max-width:320px;">
             <ul id="makeModelToDb"></ul>
             <ul id="transmissionTypeToDb"></ul>
             <ul id="engineFuelToDb"></ul>
             <ul id="bodyTypeToDb"></ul>
-            <!-- <ul id="carDoorsNumberToDb"></ul> -->
             <input type="number" name="doors_number" placeholder="Numarul de usi" minlength="1" maxlength="2" required>
-            <!-- <ul id="pasangersNumberToDb"></ul> -->
             <input type="number" name="pasangers_number" placeholder="Numarul de pasageri" minlength="1" maxlength="2" required>
             <input type="text" name="car_plate" placeholder="Car Plate ex. AAA 000" minlength="7" maxlength="7" required />
             <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" minlength="2" maxlength="3" required />
@@ -176,7 +174,7 @@ if(isset($_POST["deleteExistingCar"])) {
             <input type="number" name="rentDaysPrice_21_4" placeholder="Pret 21-45" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_46" placeholder="Pret 46" minlength="2" maxlength="4" required />
 
-            <label for="fileInput">Choose 6> Images</label>
+            <label for="fileInput" required>Choose at least 6 Images</label>
             <input type="file" id="fileInput" name="image_paths[]" multiple onchange="displaySelectedImages(this)" style="display: none;" />
 
             <div id="selectedImagesContainer"></div>
