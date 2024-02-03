@@ -1,19 +1,3 @@
-// Get data from the database
-const allCarMakesModelsFromDb = makesModelsFromDb;
-
-const allTransmissionTypesFromDb = transmissionsFromDb;
-
-const allEngineFuelsFromDb = engineFuelsFromDb;
-
-const allBodyTypesFromDb = bodyTypesFromDb;
-
-let carsInfoForTable = carData;
-console.log(carsInfoForTable);
-
-// To prevent more than one dropdown opened at the time
-let activeMain = null;
-let activeSecond = null;
-
 //HTML for make and model
 function HTMLforMakeModelSelect() {
   return `
@@ -26,16 +10,16 @@ function HTMLforMakeModelSelect() {
             <div class="dropdown__content-second__select-options">
               <input id="newMakeRadio" class="make-checkbox" type="radio" name="make" value="">
               <label for="newMakeRadio">+Add New Make&Model</label>
-              </div>
+            </div>
               
-              <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
+            <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
               <li class="">
-              <div class="">
-                <input type="radio" checked>
-                <input id="newMakeInput" class="" type="text" name="new_make" placeholder="+Add new Make" value=""/>
-                <br>
-                <input class="newCarModelRadio" type="radio" name="model">
-                <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model" value=""/>
+                <div class="">
+                  <input type="radio" checked>
+                  <input id="newMakeInput" type="text" name="new_make" placeholder="+Add new Make" value=""/>
+                  <br>
+                  <input class="newCarModelRadio" type="radio" name="model">
+                  <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model"/>
                 </div>
               </li>
             </ul>
@@ -57,7 +41,7 @@ function HTMLmakeSelectOptions(make) {
           <li class="">
             <div class="">
               <input id="newModelRadio" class="newCarModelRadio" type="radio" name="model">
-              <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model" value=""/> 
+              <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model"/> 
             </div>
           </li>
         </ul>
@@ -150,59 +134,9 @@ function HTMLBodyTypeSelectOptions(bodyType) {
         </li>
       `;
 }
-//HTML for doors number-------------------------------------------------------------------------------------
-// function HTMLforDoorsNumberSelect() {
-//   return `
-//       <li class="">
-//         <div class="dropdown__content-second__select-options">
-//             <span id="selectDoorsNumber">Numarul de Usi
-//               <a href="">&gt;</a>
-//             </span>
-//         </div>
-//         <ul id="doorsNumberList" class="ulForHideSelectOption ulForDoorsNumbers"></ul>
-//       </li>
-//     `;
-// }
-// function HTMLDoorsNumberSelectOptions(doorsNumber) {
-//   return `
-//         <li class="">
-//           <div class="">
 
-//               <input id="select${doorsNumber}" class="doorsNumber-checkbox" type="radio" name="doors_number" value="${doorsNumber}">
-//               <span>${doorsNumber}</span>
-
-//           </div>
-//         </li>
-//       `;
-// }
-// //HTML for pasangersNumber-------------------------------------------------------------------------------------
-// function HTMLforPasangersNumberSelect() {
-//   return `
-//       <li class="">
-//         <div class="dropdown__content-second__select-options">
-//             <span id="selectpasangersNumber">Numarul de Pasageri
-//               <a href="">&gt;</a>
-//             </span>
-//         </div>
-//         <ul id="pasangersNumberList" class="ulForHideSelectOption ulForpasangersNumbers"></ul>
-//       </li>
-//     `;
-// }
-// function HTMLpasangersNumberSelectOptions(pasangersNumber) {
-//   return `
-//         <li class="">
-//           <div class="">
-
-//               <input id="select${pasangersNumber}" class="pasangersNumber-checkbox" type="radio" name="pasangers_number" value="${pasangersNumber}">
-//               <span>${pasangersNumber}</span>
-
-//           </div>
-//         </li>
-//       `;
-// }
 //HTML for do today end-------------------------------------------------------------------------------------
 //HTML for TABLE start-------------------------------------------------------------------------------------
-
 function HTMLforTable(carInfo) {
   return `
   <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="${carInfo.plate}" style="display: none;"/>
@@ -225,7 +159,8 @@ function HTMLforTable(carInfo) {
       <td>${carInfo.rentDaysPrice46}</td>
       <td>${carInfo.rentStatus}</td>
       <td>${carInfo.carImage}</td>
-      <td>${carInfo.description}</td>
+      <td>${carInfo.descriptionEn}</td>
+      <td>${carInfo.descriptionRo}</td>
     </tr>
   `;
 }
@@ -240,140 +175,58 @@ function renderSelectOptions(addressToRender, functionToRender) {
   addressToRenderHTML.insertAdjacentHTML("beforeend", renderToSelectHTML);
 }
 
-// // Applies filter on data from the database
-function applyFiltersAndRenderForSelectOption(
-  filteredData,
-  container,
-  infoAboutCar,
-  HTMLreturnMainFunction
-) {
-  filteredData.forEach((car) => {
-    renderSelectOptionsForSelect(
-      car[infoAboutCar],
-      container,
-      HTMLreturnMainFunction
-    );
-  });
-}
-
-function HTMLreturnMainFunction(type) {
-  return `<option value="${type}">${type}</option>`;
-}
-// Applies filter on data from the database END
-
-// CHECK ACTIVE STATUS
-
-//old toggle function 
-// function toggleShowSelectOptions(container, activeStatus) {
-//   if (activeStatus === activeMain) {
-//     if (activeMain === container) {
-//       container.classList.toggle("show");;
-//     } else {
-//       // Hide all activeMain elements
-//       if (activeMain) {
-//         activeMain.classList.remove("show");
-//       }
-//       // Hide all activeSecond elements
-//       if (activeSecond) {
-//         activeSecond.classList.remove("show");
-//       }
-//       // Show the current container
-//       container.classList.add("show");
-//       activeMain = container;
-//     }
-//   } else if (activeStatus === activeSecond) {
-//     if (activeSecond === container) {
-//       container.classList.toggle("show");;
-//     } else {
-//       // Hide all activeSecond elements
-//       if (activeSecond) {
-//         activeSecond.classList.remove("show");
-//       }
-
-//       // Show the current container
-//       container.classList.add("show");
-//       activeSecond = container;
-//     }
-//   }
-// }
-
-//new
-
-// CHECK ACTIVE STATUS END
-//Reusble function END-------------------------------------------------------
-
 // ALL FUNCTION CALLS--------------------------------------------------------------------
 //ALL THAT RENDER SOMETHING FOR SELECT
 renderSelectOptions("makeModelToDb", HTMLforMakeModelSelect);
 renderSelectOptions("transmissionTypeToDb", HTMLforTransmissionSelect);
 renderSelectOptions("engineFuelToDb", HTMLforFuelTypeSelect);
 renderSelectOptions("bodyTypeToDb", HTMLforBodyTypeSelect);
-// renderSelectOptions("carDoorsNumberToDb", HTMLforDoorsNumberSelect);
-// renderSelectOptions("pasangersNumberToDb", HTMLforPasangersNumberSelect);
 //ALL THAT RENDER SOMETHING FOR SELECT END
 
+const allCarMakesModelsFromDb = makesModelsFromDb;
+if (allCarMakesModelsFromDb === '') {
+} else{
 //aplly filter for make model
 const forRenderMake = document.getElementById("carMakesForSelect");
-renderSelectOptionsForSelect(
-  allCarMakesModelsFromDb,
-  forRenderMake,
-  "make",
-  HTMLmakeSelectOptions
-);
+renderSelectOptionsForSelect(allCarMakesModelsFromDb,forRenderMake,"make",HTMLmakeSelectOptions);
+  // Show all car makes options
+  allCarMakesModelsFromDb.forEach(renderCarForSelect);
+}
+
 //aplly filter for transmission
+const allTransmissionTypesFromDb = transmissionsFromDb;
+if (allTransmissionTypesFromDb === '') {
+} else{
 const forRenderTransmission = document.getElementById("transmissionTypeList");
-renderSelectOptionsForSelect(
-  allTransmissionTypesFromDb,
-  forRenderTransmission,
-  "transmissionType",
-  HTMLtransmissionSelectOptions
-);
+renderSelectOptionsForSelect(allTransmissionTypesFromDb,forRenderTransmission,"transmissionType",HTMLtransmissionSelectOptions);
+}
+
 // //aplly filter for fuel type
-const forRenderFuelType = document.getElementById("fuelTypeList");
-renderSelectOptionsForSelect(
-  allEngineFuelsFromDb,
-  forRenderFuelType,
-  "engineFuel",
-  HTMLFuelTypeSelectOptions
-);
+const allEngineFuelsFromDb = engineFuelsFromDb;
+console.log(allEngineFuelsFromDb);
+if (allEngineFuelsFromDb === '') {
+} else {
+  const forRenderFuelType = document.getElementById("fuelTypeList");
+  renderSelectOptionsForSelect(allEngineFuelsFromDb,forRenderFuelType,"engineFuel",HTMLFuelTypeSelectOptions);
+}
+
 // //aplly filter for body type
-const forRenderBodyType = document.getElementById("bodyTypeList");
-renderSelectOptionsForSelect(
-  allBodyTypesFromDb,
-  forRenderBodyType,
-  "bodyType",
-  HTMLBodyTypeSelectOptions
-);
-
-// //aplly filter for doors number
-// const forRenderDoorsNumberToDb = document.getElementById("doorsNumberList");
-// renderSelectOptionsForSelect(
-//   allDoorsNumberFromDb,
-//   forRenderDoorsNumberToDb,
-//   "doorsNumber",
-//   HTMLDoorsNumberSelectOptions
-// );
-// // //aplly filter for pasangersNumberList
-// const forRenderPassangerNumberToDb = document.getElementById(
-//   "pasangersNumberList"
-// );
-// renderSelectOptionsForSelect(
-//   allPassengersNumberFromDb,
-//   forRenderPassangerNumberToDb,
-//   "passengersNumber",
-//   HTMLpasangersNumberSelectOptions
-// );
-
+const allBodyTypesFromDb = bodyTypesFromDb;
+if (allBodyTypesFromDb === '') {
+} else {
+  const forRenderBodyType = document.getElementById("bodyTypeList");
+  renderSelectOptionsForSelect(allBodyTypesFromDb,forRenderBodyType,"bodyType",HTMLBodyTypeSelectOptions);
+}
 // RENDER TABLE START =====================================================================================
-
+// Get data from the database
+let carsInfoForTable = carData;
 const forRenderTableRows = document.getElementById("carInfoTable");
 if (carsInfoForTable === "") {
   forRenderTableRows.insertAdjacentHTML("beforeend", "No cars in Data Base");
-  console.log("No cas available");
+  console.log("No cars available");
 } else {
   renderTableRows(carsInfoForTable, forRenderTableRows, HTMLforTable);
 }
-
 // RENDER TABLE END =====================================================================================
 // ALL FUNCTION CALLS END-----------------------------------------------------------------
 
@@ -382,59 +235,15 @@ function renderCarForSelect(car) {
   const make = car.make;
   const model = car.model.split(",");
 
-  
-  const dropDownForCarModel = document.getElementById(`dropDown${make}Models`);
   const forRenderModels = document.getElementById(`renderModels${make}`);
   renderCarModelsForSelect(model, forRenderModels);
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
-  let modelCheckboxes = forRenderModels.querySelectorAll(".model-checkbox");
   
-  let allSpansDropdowns = forRenderModels.querySelectorAll(".allMakesForDropdowns");
-
-
-  // dropDownForCarModel.addEventListener("click", function () {
-  //   console.log("second");
-  //   toggleShowSelectOptions(forRenderModels, activeMain);
-  // });
-
-
-  // /--------------------------------------------------------------
-
-  // dropDownForCarModel.addEventListener("click", function () {
-  //   toggleShowSelectOptions(allSpansDropdowns, modelCheckboxes)
-  // });
-
-  // function toggleShowSelectOptions(allMakesSpans, allRadios) {
-
-
-  //   allRadios.forEach(e => {
-  //     if(e.checked){
-
-  //     } else{
-
-  //     }
-  //   })
-  //   if (container.classList.contains("show")) {
-  //   } else{
-  //     allTogglableElements.forEach(e => e.classList.remove("show"))
-  //     container.classList.toggle("show");
-  //   }
-  // }
-
-  // /--------------------------------------------------------------
-
-
   makeCheckbox.addEventListener("change", function () {
     toggleMakeCheckbox(makeCheckbox, forRenderModels);
   });
 
-
-  modelCheckboxes.forEach((modelCheckbox) => {
-    modelCheckbox.addEventListener("change", function () {
-      handleModelCheckboxChange(modelCheckbox, makeCheckbox);
-    });
-  });
 }
 
 function renderCarModelsForSelect(models, container) {
@@ -463,43 +272,33 @@ function renderTableRows(infoAboutCar, container, functionThatReturnHTML) {
 }
 
 //ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT END
-
-//GOLBAL VARIABLES-----------------------------------------------------------------------
-
-// Applies filter on data from the database
-allCarMakesModelsFromDb.forEach(renderCarForSelect);
-
-//GOLBAL VARIABLES END-----------------------------------------------
-
 // Initialize checkboxes and models
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
 function toggleMakeCheckbox(makeCheckbox, container) {
   let modelCheckboxes = container.querySelectorAll(".newCarModelRadio");
+  let modelInputs = container.querySelectorAll(".newCarModelInput");
   let allTogglableElements = document.querySelectorAll(".ulForHideSelectOptions")
+  let newMakeInput = document.getElementById("newMakeInput")
+
   if (modelCheckboxes) {
     modelCheckboxes[0].checked = makeCheckbox.checked = true;
   }
   if (container.classList.contains("show")) {
   } else{
     allTogglableElements.forEach(e => e.classList.remove("show"))
+    newMakeInput.value="";
+    modelInputs.forEach(e => e.value="");
     container.classList.toggle("show");
   }
 }
 
-function handleModelCheckboxChange(modelCheckbox, makeCheckbox) {
-  makeCheckbox.checked = modelCheckbox.checked;
-}
-
-// 
 const  newMakeRadio = document.getElementById("newMakeRadio");
 const  renderNewModels = document.getElementById("renderNewModels");
 
 newMakeRadio.addEventListener("change", function () {
   toggleMakeCheckbox(newMakeRadio, renderNewModels);
 });
-
-
 
 // push value from input to radio start
 const sendCarToDb = document.getElementById("sendCarToDataBase");

@@ -231,7 +231,8 @@ if(isset($_POST["deleteExistingCar"])) {
                         <th>Price 46</th>
                         <th>Rent Status</th>
                         <th>Images</th>
-                        <th>Car Description</th>
+                        <th>Car Description Eng</th>
+                        <th>Car Description Ro</th>
                     </tr>
                 </thead>
                 <tbody id='carInfoTable'>

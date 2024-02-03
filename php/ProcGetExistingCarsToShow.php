@@ -4,9 +4,8 @@ include "config.php";
 session_start();
 // echo isset($_SESSION["email"]) ? 'Session is active' : 'Session is not active';
 
-$sql = 'CALL GetCarInformation()';
 
-$result = $conn->query($sql);
+$result = $conn->query('CALL GetCarInformation()');
 
 
 
@@ -53,5 +52,4 @@ if ($result->num_rows > 0) {
 //   echo '</script>';
 // }
   $conn->close();
-
 ?>
