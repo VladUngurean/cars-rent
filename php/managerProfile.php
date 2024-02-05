@@ -161,10 +161,10 @@ if(isset($_POST["deleteExistingCar"])) {
             <ul id="transmissionTypeToDb"></ul>
             <ul id="engineFuelToDb"></ul>
             <ul id="bodyTypeToDb"></ul>
-            <input type="number" name="doors_number" placeholder="Numarul de usi" minlength="1" maxlength="2" required>
+            <input type="number" name="doors_number" placeholder="Numarul de usi" required>
             <input type="number" name="pasangers_number" placeholder="Numarul de pasageri" minlength="1" maxlength="2" required>
             <input type="text" name="car_plate" placeholder="Car Plate ex. AAA 000" minlength="7" maxlength="7" required />
-            <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" minlength="2" maxlength="3" required />
+            <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" pattern="^(\d*\.\d{0,1}|\d{0,4})$" title="Please enter a valid Engine Capacity (e.g., 1.8)" required />
             <input type="number" name="registration_year" placeholder="Registration Year ex.2002" minlength="3" maxlength="4" required />
             <textarea name="description_ro" id="" cols="30" rows="10" placeholder="Description in Romanian" required></textarea>
             <textarea name="description_en" id="" cols="30" rows="10" placeholder="Description in English" required></textarea>

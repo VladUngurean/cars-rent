@@ -279,28 +279,36 @@ const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 function toggleMakeCheckbox(makeCheckbox, container) {
   let newModelCheckboxes = container.querySelectorAll(".newCarModelRadio");
   let modelInputs = container.querySelectorAll(".newCarModelInput");
+  
   let allModelInputs = document.querySelectorAll(".newCarModelInput");
   let allTogglableElements = document.querySelectorAll(".ulForHideSelectOptions")
   let newMakeInput = document.getElementById("newMakeInput")
+  let newMakeRadio = document.getElementById("newMakeRadio")
+
   
   newMakeInput.removeAttribute('required');
   allModelInputs.forEach(e => e.removeAttribute('required') );
   
-  if (newMakeInput) {
-    newModelCheckboxes[0].checked = makeCheckbox.checked = true;
-    newMakeInput.setAttribute('required', '');
+  if(newModelCheckboxes.checked === false){
+    modelInputs[0].removeAttribute('required');
+  }
+  if (newMakeRadio.checked) {
+      newMakeInput.setAttribute('required', '');
   }
   if (newModelCheckboxes) {
+    console.log(newModelCheckboxes);
+    modelInputs[0].setAttribute('required', '');
+    // modelInputs[0].setAttribute('required', '');
     newModelCheckboxes[0].checked = makeCheckbox.checked = true;
-    modelInputs.forEach(e =>e.setAttribute('required', ''));
   }
-  if (container.classList.contains("show")) {
-  } else{
+    if (container.classList.contains("show")) {
+    } else{
     allTogglableElements.forEach(e => e.classList.remove("show"))
     newMakeInput.value="";
     modelInputs.forEach(e => e.value="");
     container.classList.toggle("show");
   }
+
 }
 
 const  newMakeRadio = document.getElementById("newMakeRadio");
