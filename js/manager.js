@@ -251,9 +251,9 @@ modelSelecetOptions.addEventListener("change",function (){
   }
 })
 
-  makeCheckbox.addEventListener("change", function () {
-    toggleMakeCheckbox(makeCheckbox, forRenderModels);
-    newMakeModelInput.setAttribute("required", "");
+makeCheckbox.addEventListener("change", function () {
+  toggleMakeCheckbox(makeCheckbox, forRenderModels);
+  newMakeModelInput.setAttribute("required", "");
   });
 }
 
@@ -299,6 +299,7 @@ function toggleMakeCheckbox(makeCheckbox, container) {
     modelInputs.forEach(e => e.value="");
     container.classList.toggle("show");
   }
+  modelInputs.forEach(e => e.removeAttribute("required"));
   newMakeInput.removeAttribute("required");
   newModelForNewMakeInput.removeAttribute("required");
 }
@@ -326,10 +327,13 @@ newMakeRadio.addEventListener("change", function () {
 });
 // 2 event listeer for add and remove required
 newMakeRadio.addEventListener("change", function(){
+  let newCarModelInput = document.querySelectorAll(".newCarModelInput");
     if (newMakeRadio.checked === true) {
 
       newMakeInput.setAttribute("required", "");
       newModelForNewMakeInput.setAttribute("required", "");
+
+      newCarModelInput.forEach(e => e.removeAttribute("required"));
     }
   })
 
