@@ -564,12 +564,12 @@ div {
 }
 
 .ulForHideSelectOptions {
-  opacity: 0.5;
+  display: none;
   position: relative;
   border: 2px solid rgb(124, 124, 124);
   left: 5px;
 }
 
 .show {
-  opacity: 1;
+  display: block;
 }/*# sourceMappingURL=style.css.map */

@@ -18,8 +18,8 @@ function HTMLforMakeModelSelect() {
                   <input type="radio" checked>
                   <input id="newMakeInput" type="text" name="new_make" placeholder="+Add new Make" value=""/>
                   <br>
-                  <input class="newCarModelRadio" type="radio" name="model">
-                  <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model"/>
+                  <input id="newModelForNewMakeRadio" class="newCarModelRadio" type="radio" name="model">
+                  <input id="newModelForNewMakeInput" class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model"/>
                 </div>
               </li>
             </ul>
@@ -40,8 +40,8 @@ function HTMLmakeSelectOptions(make) {
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
           <li class="">
             <div class="">
-              <input id="newModelRadio" class="newCarModelRadio" type="radio" name="model">
-              <input class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new ${make} Model"/> 
+              <input id="new${make}ModelRadio" class="newCarModelRadio" type="radio" name="model">
+              <input id="new${make}Model" class="newCarModelInput" type="text" name="new_model" placeholder="+Add new ${make} Model"/> 
             </div>
           </li>
         </ul>
@@ -53,7 +53,7 @@ function HTMLmodelSelectOptions(model) {
   return `
         <li class="">
           <div class="">
-            <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}" required>
+            <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}">
             <label for="select${model}" >${model}</label>
           </div>
         </li>
@@ -237,11 +237,24 @@ function renderCarForSelect(car) {
   renderCarModelsForSelect(model, forRenderModels);
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
-  
+
+  let newMakeModelInput = document.getElementById(`new${make}Model`);
+  let newMakeModelRadio = document.getElementById(`new${make}ModelRadio`)
+
+newMakeModelRadio.addEventListener("change", function(){
+  newMakeModelInput.setAttribute("required", "");
+})
+  let modelSelecetOptions = forRenderModels.querySelector(`#select${model}`)
+modelSelecetOptions.addEventListener("change",function (){
+  if (modelSelecetOptions.checked === true) {
+    newMakeModelInput.removeAttribute("required");
+  }
+})
+
   makeCheckbox.addEventListener("change", function () {
     toggleMakeCheckbox(makeCheckbox, forRenderModels);
+    newMakeModelInput.setAttribute("required", "");
   });
-
 }
 
 function renderCarModelsForSelect(models, container) {
@@ -269,71 +282,15 @@ function renderTableRows(infoAboutCar, container, functionThatReturnHTML) {
   });
 }
 
-//ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT END
-// Initialize checkboxes and models
-const modelCheckboxes = document.querySelectorAll(".model-checkbox");
-
-// let newModelRadio = document.getElementById("newModelRadio")
-// console.log(newModelRadio);
-// newModelRadio.addEventListener('change',function(){
-//   console.log('hi');
-// })
-
-
-
-// function toggleRequiredStatus(){
-//   let allModelInputs = document.querySelectorAll(".newCarModelInput");
-  
-
-//   if(newModelRadio.checked){
-//     console.log('hi');
-//     // allModelInputs[0].removeAttribute('required');
-//   }
-//   // if (newMakeRadio.checked) {
-//   //     newMakeInput.setAttribute('required', '');
-//   // }
-// }
-// let allNewModelCheckboxes = document.querySelectorAll(".newCarModelRadio");
-// console.log(allNewModelCheckboxes);
-// allNewModelCheckboxes.forEach(e => e.addEventListener('change',function(){
-//   if(e.checked){
-//     console.log('hi');
-//   }
-// }))
-
-// document.addEventListener("DOMContentLoaded", function() {
-//   const newModelRadios = document.querySelectorAll(".newCarModelRadio");
-//   const newCarModelInputs = document.querySelectorAll(".newCarModelInput");
-
-//   function updateRequiredStatus() {
-//       newCarModelInputs.forEach(function(input) {
-//           if (input.previousElementSibling.checked) {
-//             console.log(input.previousElementSibling.checked);
-//               input.setAttribute("required", "");
-//           }
-//           if(input.previousElementSibling.checked === false){
-//               input.removeAttribute("required");
-//           }
-//       });
-//   }
-
-//   newModelRadios.forEach(function(radio) {
-//       radio.addEventListener("change", updateRequiredStatus);
-//   });
-
-//   // Initial call to set required status based on initial state
-//   updateRequiredStatus();
-// });
-
 function toggleMakeCheckbox(makeCheckbox, container) {
   let newModelCheckboxes = container.querySelectorAll(".newCarModelRadio");
   let modelInputs = document.querySelectorAll(".newCarModelInput");
+  let newMakeInput = document.getElementById("newMakeInput");
   
   let allTogglableElements = document.querySelectorAll(".ulForHideSelectOptions")
-  let newMakeInput = document.getElementById("newMakeInput")
 
-  if (newModelCheckboxes) {
-    newModelCheckboxes[0].checked = makeCheckbox.checked = true;
+  if (makeCheckbox.checked = true) {
+    newModelCheckboxes[0].checked = true;
   }
     if (container.classList.contains("show")) {
     } else{
@@ -342,15 +299,41 @@ function toggleMakeCheckbox(makeCheckbox, container) {
     modelInputs.forEach(e => e.value="");
     container.classList.toggle("show");
   }
-
+  newMakeInput.removeAttribute("required");
+  newModelForNewMakeInput.removeAttribute("required");
 }
 
 const  newMakeRadio = document.getElementById("newMakeRadio");
 const  renderNewModels = document.getElementById("renderNewModels");
+const  newModelForNewMakeInput = document.getElementById("newModelForNewMakeInput");
+const  newModelForNewMakeRadio = document.getElementById("newModelForNewMakeRadio");
 
+let allTogglableElements = document.querySelectorAll(".ulForHideSelectOptions");
+let newMakeInput = document.getElementById("newMakeInput");
+let modelInputs = document.querySelectorAll(".newCarModelInput");
 newMakeRadio.addEventListener("change", function () {
-  toggleMakeCheckbox(newMakeRadio, renderNewModels);
+
+  if (newMakeRadio.checked = true) {
+    newModelForNewMakeRadio.checked = true;
+  }
+    if (renderNewModels.classList.contains("show")) {
+    } else{
+    allTogglableElements.forEach(e => e.classList.remove("show"))
+    newMakeInput.value="";
+    modelInputs.forEach(e => e.value="");
+    renderNewModels.classList.toggle("show");
+  }
 });
+// 2 event listeer for add and remove required
+newMakeRadio.addEventListener("change", function(){
+    if (newMakeRadio.checked === true) {
+
+      newMakeInput.setAttribute("required", "");
+      newModelForNewMakeInput.setAttribute("required", "");
+    }
+  })
+
+
 
 
 
