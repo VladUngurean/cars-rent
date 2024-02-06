@@ -559,17 +559,17 @@ div {
   margin: 20px 30px;
 }
 
+.ulForHideSelectOption {
+  margin-bottom: 20px;
+}
+
 .ulForHideSelectOptions {
-  display: none;
+  opacity: 0.5;
   position: relative;
   border: 2px solid rgb(124, 124, 124);
   left: 5px;
 }
 
-.ulForHideSelectOption {
-  margin-bottom: 20px;
-}
-
 .show {
-  display: block;
+  opacity: 1;
 }/*# sourceMappingURL=style.css.map */

@@ -186,7 +186,6 @@ renderSelectOptions("bodyTypeToDb", HTMLforBodyTypeSelect);
 const allCarMakesModelsFromDb = makesModelsFromDb;
 if (allCarMakesModelsFromDb === '') {
 } else{
-//aplly filter for make model
 const forRenderMake = document.getElementById("carMakesForSelect");
 renderSelectOptionsForSelect(allCarMakesModelsFromDb,forRenderMake,"make",HTMLmakeSelectOptions);
   // Show all car makes options
@@ -240,8 +239,6 @@ function renderCarForSelect(car) {
   let makeCheckbox = document.getElementById(`selectMake${make}`);
   
   makeCheckbox.addEventListener("change", function () {
-
-
     toggleMakeCheckbox(makeCheckbox, forRenderModels);
   });
 
@@ -276,29 +273,66 @@ function renderTableRows(infoAboutCar, container, functionThatReturnHTML) {
 // Initialize checkboxes and models
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
 
+// let newModelRadio = document.getElementById("newModelRadio")
+// console.log(newModelRadio);
+// newModelRadio.addEventListener('change',function(){
+//   console.log('hi');
+// })
+
+
+
+// function toggleRequiredStatus(){
+//   let allModelInputs = document.querySelectorAll(".newCarModelInput");
+  
+
+//   if(newModelRadio.checked){
+//     console.log('hi');
+//     // allModelInputs[0].removeAttribute('required');
+//   }
+//   // if (newMakeRadio.checked) {
+//   //     newMakeInput.setAttribute('required', '');
+//   // }
+// }
+// let allNewModelCheckboxes = document.querySelectorAll(".newCarModelRadio");
+// console.log(allNewModelCheckboxes);
+// allNewModelCheckboxes.forEach(e => e.addEventListener('change',function(){
+//   if(e.checked){
+//     console.log('hi');
+//   }
+// }))
+
+// document.addEventListener("DOMContentLoaded", function() {
+//   const newModelRadios = document.querySelectorAll(".newCarModelRadio");
+//   const newCarModelInputs = document.querySelectorAll(".newCarModelInput");
+
+//   function updateRequiredStatus() {
+//       newCarModelInputs.forEach(function(input) {
+//           if (input.previousElementSibling.checked) {
+//             console.log(input.previousElementSibling.checked);
+//               input.setAttribute("required", "");
+//           }
+//           if(input.previousElementSibling.checked === false){
+//               input.removeAttribute("required");
+//           }
+//       });
+//   }
+
+//   newModelRadios.forEach(function(radio) {
+//       radio.addEventListener("change", updateRequiredStatus);
+//   });
+
+//   // Initial call to set required status based on initial state
+//   updateRequiredStatus();
+// });
+
 function toggleMakeCheckbox(makeCheckbox, container) {
   let newModelCheckboxes = container.querySelectorAll(".newCarModelRadio");
-  let modelInputs = container.querySelectorAll(".newCarModelInput");
+  let modelInputs = document.querySelectorAll(".newCarModelInput");
   
-  let allModelInputs = document.querySelectorAll(".newCarModelInput");
   let allTogglableElements = document.querySelectorAll(".ulForHideSelectOptions")
   let newMakeInput = document.getElementById("newMakeInput")
-  let newMakeRadio = document.getElementById("newMakeRadio")
 
-  
-  newMakeInput.removeAttribute('required');
-  allModelInputs.forEach(e => e.removeAttribute('required') );
-  
-  if(newModelCheckboxes.checked === false){
-    modelInputs[0].removeAttribute('required');
-  }
-  if (newMakeRadio.checked) {
-      newMakeInput.setAttribute('required', '');
-  }
   if (newModelCheckboxes) {
-    console.log(newModelCheckboxes);
-    modelInputs[0].setAttribute('required', '');
-    // modelInputs[0].setAttribute('required', '');
     newModelCheckboxes[0].checked = makeCheckbox.checked = true;
   }
     if (container.classList.contains("show")) {
@@ -317,6 +351,8 @@ const  renderNewModels = document.getElementById("renderNewModels");
 newMakeRadio.addEventListener("change", function () {
   toggleMakeCheckbox(newMakeRadio, renderNewModels);
 });
+
+
 
 // // push value from input to radio start
 const sendCarToDb = document.getElementById("sendCarToDataBase");

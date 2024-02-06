@@ -705,16 +705,22 @@ div {
   }
 }
 
-.ulForHideSelectOptions {
-  display: none;
-  position: relative;
-  border: 2px solid rgb(124, 124, 124);
-  left: 5px;
-}
 .ulForHideSelectOption {
   margin-bottom: 20px;
 }
 
+.ulForHideSelectOptions {
+  opacity: 0.5;
+  // position: absolute;
+  // pointer-events: none;
+  // display: none;
+  position: relative;
+  border: 2px solid rgb(124, 124, 124);
+  left: 5px;
+}
+
 .show {
-  display: block;
+  opacity: 1;
+  // pointer-events: all;
+  // display: block;
 }
