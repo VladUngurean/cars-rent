@@ -1,13 +1,8 @@
 <?php
 include "config.php";
-
 session_start();
-// echo isset($_SESSION["email"]) ? 'Session is active' : 'Session is not active';
-
 
 $result = $conn->query('CALL GetCarInformation()');
-
-
 
 if ($result->num_rows > 0) {
     // output data of each row
@@ -35,7 +30,6 @@ if ($result->num_rows > 0) {
       'carImage' => $row['images'],
     );
     }
-
     if (!empty($data)) {
       echo '<script>';
       echo 'let carData = ' . json_encode($data) . ';';
@@ -46,10 +40,5 @@ if ($result->num_rows > 0) {
     echo 'let carData = "";';
     echo '</script>';
 }
-// if (empty($data)) {
-//   echo '<script>';
-//   echo 'let carData = "";';
-//   echo '</script>';
-// }
   $conn->close();
 ?>

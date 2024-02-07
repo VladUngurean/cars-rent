@@ -12,22 +12,16 @@
     <title>Manager Account</title>
 
     <?php
-    // session_start();
-    // include "config.php";
 include "ProcGetExistingCarsToShow.php";
 include "ProcGetAllCarsData.php";
 
-// include 'loginLogic.php';
-// Check if the user is logged in
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
-    // echo "Unauthorized email!";
     exit;
 }
 
 // Check if the user has the correct role
 if ($_SESSION['role'] !== 'Manager') {
-    // echo "Unauthorized access!";
     header('Location: userProfile.php');
     exit;
 }
@@ -106,7 +100,7 @@ function deleteImage($imageName) {
     }
 }
 
-//delete images in cars from DB
+//delete images and car from DB
 if(isset($_POST["deleteExistingCar"])) {  
 
     $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);  

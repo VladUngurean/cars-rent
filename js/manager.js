@@ -137,10 +137,10 @@ function HTMLBodyTypeSelectOptions(bodyType) {
 
 //HTML for do today end-------------------------------------------------------------------------------------
 //HTML for TABLE start-------------------------------------------------------------------------------------
-function HTMLforTable(carInfo) {
+function HTMLforCarsTable(carInfo) {
   return `
-  <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="${carInfo.plate}" style="display: none;"/>
-  <label for="tableDeleteCarButton">Delete</label>
+  <input id="tableDelete${carInfo.plate}Button" class="button" name="deleteExistingCar" type="submit" value="${carInfo.plate}" style="display: none;"/>
+  <label for="tableDelete${carInfo.plate}Button">Delete</label>
   <tr>
       <td>${carInfo.plate}</td>
       <td>${carInfo.make}</td>
@@ -223,7 +223,7 @@ if (carsInfoForTable === "") {
   forRenderTableRows.insertAdjacentHTML("beforeend", "No cars in Data Base");
   console.log("No cars available");
 } else {
-  renderTableRows(carsInfoForTable, forRenderTableRows, HTMLforTable);
+  renderTableRows(carsInfoForTable, forRenderTableRows, HTMLforCarsTable);
 }
 // RENDER TABLE END =====================================================================================
 // ALL FUNCTION CALLS END-----------------------------------------------------------------
