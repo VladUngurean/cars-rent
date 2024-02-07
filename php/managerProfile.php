@@ -161,20 +161,21 @@ if(isset($_POST["deleteExistingCar"])) {
             <ul id="transmissionTypeToDb"></ul>
             <ul id="engineFuelToDb"></ul>
             <ul id="bodyTypeToDb"></ul>
-            <input type="number" name="doors_number" placeholder="Numarul de usi" required>
-            <input type="number" name="pasangers_number" placeholder="Numarul de pasageri" minlength="1" maxlength="2" required>
-            <input type="text" name="car_plate" placeholder="Car Plate ex. AAA 000" minlength="7" maxlength="7" required />
-            <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" pattern="^(\d*\.\d{0,1}|\d{0,4})$" title="Please enter a valid Engine Capacity (e.g., 1.8)" required />
-            <input type="number" name="registration_year" placeholder="Registration Year ex.2002" minlength="3" maxlength="4" required />
+            <input type="text" name="car_plate" placeholder="Car Plate ex. AAA 000" pattern="^[A-Z]{3}\s[0-9]{3}$" title="Please enter a valid Car Plate number ex. (AAA 000)" minlength="7" maxlength="7" required />
+            <input type="text" name="doors_number" placeholder="Numarul de usi" pattern="^\d{1}$" title="Please enter a valid Doors Number ex. (5)" inputmode="numeric" maxlength="1" required>
+            <input type="text" name="pasangers_number" placeholder="Numarul de pasageri" pattern="^\d{1,2}$" title="Please enter a valid Passangers Number ex. (5)" inputmode="numeric" maxlength="2" required>
+            <input type="text" name="engine_capacity" placeholder="Engine Capacity ex. 1.8" pattern="^\d\.\d$" title="Please enter a valid Engine Capacity ex. (1.8)" maxlength="3" required />
+            <input type="text" name="registration_year" placeholder="Registration Year ex.2002" pattern="^(198\d|199\d|200\d|201\d|202[0-3])$" title="Please enter a valid Registration Year ex. (2020)" maxlength="4" required />
             <textarea name="description_ro" id="" cols="30" rows="10" placeholder="Description in Romanian" required></textarea>
             <textarea name="description_en" id="" cols="30" rows="10" placeholder="Description in English" required></textarea>
-            <input type="number" name="rentDaysPrice_1_2" placeholder="Pret 1-2" minlength="2" maxlength="4" required />
-            <input type="number" name="rentDaysPrice_3_7" placeholder="Pret 3-7" minlength="2" maxlength="4" required />
-            <input type="number" name="rentDaysPrice_8_20" placeholder="Pret 8-20" minlength="2" maxlength="4" required />
-            <input type="number" name="rentDaysPrice_21_4" placeholder="Pret 21-45" minlength="2" maxlength="4" required />
-            <input type="number" name="rentDaysPrice_46" placeholder="Pret 46" minlength="2" maxlength="4" required />
+            <input type="number" name="rentDaysPrice_1_2" placeholder="Pret 1-2 Zile" minlength="2" maxlength="4" required />
+            <input type="number" name="rentDaysPrice_3_7" placeholder="Pret 3-7 Zile" minlength="2" maxlength="4" required />
+            <input type="number" name="rentDaysPrice_8_20" placeholder="Pret 8-20 Zile" minlength="2" maxlength="4" required />
+            <input type="number" name="rentDaysPrice_21_4" placeholder="Pret 21-45 Zile" minlength="2" maxlength="4" required />
+            <input type="number" name="rentDaysPrice_46" placeholder="Pret 46+ Zile" minlength="2" maxlength="4" required />
 
-            <label for="fileInput" required>Choose at least 6 Images</label>
+            <label for="fileInput" tabindex="0" onkeypress="handleLabelKeyPress(event)" required>Choose at least 6 Images</label>
+
             <input type="file" id="fileInput" name="image_paths[]" multiple onchange="displaySelectedImages(this)" style="display: none;" />
 
             <div id="selectedImagesContainer"></div>
@@ -188,7 +189,6 @@ if(isset($_POST["deleteExistingCar"])) {
     <br>
 
     <form action="" method="post">
-
         <style>
         .table-container {
             min-height: 300px;
@@ -207,7 +207,6 @@ if(isset($_POST["deleteExistingCar"])) {
             text-align: left;
         }
         </style>
-
         <div class="table-container">
             <table>
                 <thead>
@@ -239,6 +238,24 @@ if(isset($_POST["deleteExistingCar"])) {
             </table>
         </div>
 
+    </form>
+
+
+    <form action="" method="post">
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Nume</th>
+                        <th>Prenume</th>
+                        <th>Email</th>
+                        <th>Nr. telefon</th>
+                    </tr>
+                </thead>
+                <tbody id='usesrInfoTable'>
+                </tbody>
+            </table>
+        </div>
     </form>
 
     <?php  

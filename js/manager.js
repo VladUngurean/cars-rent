@@ -376,10 +376,15 @@ sendCarToDb.addEventListener("click", function () {
 });
 // push value from input to radio end
 
-// push test ================================================================================
+// // allow manager tab and activate label with space and enter button ================================================================================
+function handleLabelKeyPress(event) {
+  if (event.key === ' ' || event.key === 'Enter') {
+      event.preventDefault();
+      document.getElementById('fileInput').click();
+  }
+}
 
-
-// push test ================================================================================
+// // allow manager tab and activate label with space and enter button ================================================================================
 
 //show selected images
 
