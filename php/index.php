@@ -35,6 +35,7 @@
 
         if(isset($_SESSION["email"])){  
             echo $_SESSION['role'];
+            echo $_SESSION['first_name'];
         }
     ?>
     <!-- Search car secction START -->

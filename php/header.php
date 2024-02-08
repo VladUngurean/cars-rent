@@ -50,6 +50,32 @@
                     
                         return null;
                     }
+                    function getUserData($email) {
+                        global $conn;
+                        $query = "CALL getUserData('$email')";
+                        $result = mysqli_query($conn, $query);
+
+                    
+                        // if ($result && mysqli_num_rows($result) > 0) {
+                        //     while($row = $result->fetch_assoc()) {
+                        //         $data[] = array(
+                        //             'firstName' => $row['first_name']
+                        //         );
+                        //     }
+                        //     if (!empty($data)) {
+                        //         echo '<script>';
+                        //         echo 'let userData = ' . json_encode($data) . ';';
+                        //         echo 'console.log(userData);';
+                        //         echo '</script>';
+                        //     }
+                        // }
+                        if ($result && mysqli_num_rows($result) > 0) {
+                            $row = mysqli_fetch_assoc($result);
+                            return $row['first_name'];
+                        }
+                        
+                        return null;
+                        }
 
                     if(!isset($_SESSION["email"])){  
                         echo '<div class="login-register-container">';  
@@ -61,22 +87,32 @@
                     } elseif(isset($_SESSION["email"])) {
 
                             $userRole = getUserRole($_SESSION["email"]);
+                            $conn->next_result();
+                            $firstName = getUserData($_SESSION["email"]);
+                            $conn->next_result();
                             // Store user information in the session
                             $_SESSION['email'] = $_SESSION["email"];
                             $_SESSION['role'] = $userRole;
+                            $_SESSION['first_name'] = $firstName;
             
                             // Redirect to the appropriate dashboard or home page
-                            if ($userRole === 'User') {
-                                echo '<a href="userProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                            if ($userRole === 'User' || isset($firstName)) {
+                                echo '<div class="logged-user">'; 
+                                echo '<a href="userProfile.php">' .$firstName . '<i class="fa-solid fa-user" style="color: #000000; margin-left: 5px"></i> </a>';
+                                echo '</div>';  
                             } elseif ($userRole === 'Manager') {
-                                if(!isset($_SESSION["email"])){  
-                                    echo 'Session is not active<br>' ;
-                                } else { echo 'Session is active<br>' ; }
-                                echo $userRole.'<a href="managerProfile.php"> <i class="fa-solid fa-user manager" style="color: #000000;"></i> </a>';
+                                // else { echo 'Session is active<br>' ; }
+                                echo '<div class="logged-user">'; 
+                                echo '<a href="managerProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                echo '</div>';  
                             } elseif ($userRole === 'Courier'){
+                                echo '<div class="logged-user">'; 
                                 echo '<a href="courierProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                echo '</div>';  
                             } elseif ($userRole === 'Admin'){
+                                echo '<div class="logged-user">'; 
                                 echo '<a href="adminProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                echo '</div>';  
                             }
 
                     } else {  
