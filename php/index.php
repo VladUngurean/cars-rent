@@ -17,6 +17,7 @@
         include "ProcGetExistingCarsToShow.php";
     ?>
 
+
 </head>
 
 
@@ -78,50 +79,6 @@
             </div>
     </section>
 
-    <!-- OLD SECCTION START -->
-    <!-- <section class="search-form-area">
-        <div class="container">
-            <div class="search-form">
-                <div class="search-form-box">
-
-                    <div class="search-form__text">
-                        <h2>Cauta Masina Potrivita</h2>
-                    </div>
-
-                    <div class="search-form__date">
-                        <input type="date" id="datePicker" placeholder="Data Inchirierii">
-                        <input type="time" id="timePicker" placeholder="Ora Inchirierii">
-                        <input type="date" id="datePickerReturn" placeholder="Data Returnarii">
-                        <input type="time" id="timePickerReturn" placeholder="Ora Returnarii">
-                    </div>
-
-                    <div class="search-form__insurance">
-                        <p>Alege timpul de asigurare</p>
-                        <div class="search-form__insurance__labels">
-
-                            <label>
-                                <input name="insurance" type="radio">
-                                Asigurare simpla RCA
-                            </label>
-                            <label>
-                                <input name="insurance" type="radio">
-                                Asigurare Casco
-                            </label>
-                        </div>
-
-                    </div>
-
-                    <div class="search-form__button">
-
-                        <button type="submit" class="check2">Caută</button>
-
-                    </div>
-
-                </div>
-            </div>
-    </section> -->
-    <!-- Search car secction END -->
-
     <!-- Car list secction START -->
     <section id="carRenderContainer" class="car-list-area">
         <div class="container">
@@ -151,9 +108,11 @@
     </section>
     <!-- Comment secction END -->
 
+
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
 
-    <script type='text/javascript' src="/js/main.js" defer></script>
+    <!-- <script type='text/javascript' src="/js/main.js" defer></script> -->
+    <script type='text/javascript' src="/js/rentCar.js" defer></script>
 
 </body>
 

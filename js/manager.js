@@ -245,6 +245,7 @@ newMakeModelRadio.addEventListener("change", function(){
   newMakeModelInput.setAttribute("required", "");
 })
   let modelSelecetOptions = forRenderModels.querySelector(`#select${model}`)
+  console.log(modelSelecetOptions);
 modelSelecetOptions.addEventListener("change",function (){
   if (modelSelecetOptions.checked === true) {
     newMakeModelInput.removeAttribute("required");
