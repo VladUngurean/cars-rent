@@ -12,8 +12,6 @@
     <title>Cars Rent</title>
 
     <?php
-        // include "getCarDetails.php";
-        // include "getAllCarsData.php";
         include "ProcGetExistingCarsToShow.php";
     ?>
 
@@ -42,68 +40,61 @@
     <!-- NEW SECCTION  -->
 
     <section id="carFilterSelectors" class="search-form-area">
-        <div class="container">
-            <div class="search-form">
-                <div class="search-form-box">
+        <div class="search-form">
+            <div class="search-form-box">
 
-                    <div class="search-form__text">
-                        <h2>Cauta Masina Potrivita</h2>
-                    </div>
+                <div class="search-form__text">
+                    <h2>Cauta Masina Potrivita</h2>
+                </div>
 
-                    <section class="search-test">
+                <section class="search-test">
 
-                        <div class="container">
-                            <div class="search-container">
+                    <div class="search-container">
 
-                                <div class="search__select-options">
+                        <div class="search__select-options">
 
-                                    <ul id="renderCarMakeSelect"></ul>
-                                    <ul id="renderCarTransmissionSelect"></ul>
-                                    <ul id="renderCarFuelTypeSelect"></ul>
-                                    <ul id="renderCarBodyTypeSelect"></ul>
-                                    <ul id="renderCarRentStatusSelect"></ul>
+                            <ul id="renderCarMakeSelect"></ul>
+                            <ul id="renderCarTransmissionSelect"></ul>
+                            <ul id="renderCarFuelTypeSelect"></ul>
+                            <ul id="renderCarBodyTypeSelect"></ul>
+                            <ul id="renderCarRentStatusSelect"></ul>
 
-                                </div>
-
-                            </div>
                         </div>
 
-                    </section>
-
-                    <div class="search-form__button">
-
-                        <button id="tessst" type="submit" class="check2">Caută</button>
-
                     </div>
 
+                </section>
+
+                <div class="search-form__button">
+
+                    <button id="tessst" type="submit" class="check2">Caută</button>
+
                 </div>
+
             </div>
+        </div>
     </section>
 
     <!-- Car list secction START -->
     <section id="carRenderContainer" class="car-list-area">
-        <div class="container">
-            <div class="car-list__container">
-                <div class="car-list__container-text">
-                    <h2>Inchiriere Masini</h2>
-                </div>
-                <div id="car-list-render"></div>
+        <div class="car-list__container">
+            <div class="car-list__container-text">
+                <h2>Inchiriere Masini</h2>
             </div>
+            <div id="car-list-render"></div>
         </div>
     </section>
     <!-- Car list secction END -->
 
     <!-- Comment secction START -->
     <section class="comment-area">
-        <div class="container">
-            <div class="comment-area__container">
-                <div class="comment-area__container-text">
-                    <h3>Recomandarile Clientilor Nostri</h3>
-                </div>
+        <div class="comment-area__container">
+            <div class="comment-area__container-text">
+                <h3>Recomandarile Clientilor Nostri</h3>
+            </div>
 
-                <div class="comment-area__container-comment-carousel">
+            <div class="comment-area__container-comment-carousel">
 
-                </div>
             </div>
         </div>
     </section>

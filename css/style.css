@@ -40,13 +40,13 @@ body {
 
 .header-area {
   min-width: 1563px;
-  min-height: 500px;
   margin-top: 15px;
+  margin-bottom: 126px;
 }
 
 .header__top {
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   align-items: center;
 }
 
@@ -72,10 +72,11 @@ body {
 }
 .nav__container > nav > ul > li {
   margin: 10px;
+  padding: 0 24px;
 }
 .nav__container > nav > ul > li > a {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Inter", sans-serif;
 }
 
@@ -93,6 +94,9 @@ body {
   height: 24px;
   border: 2px solid black;
   border-radius: 50%;
+  background: -webkit-linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+  background: -o-linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+  background: -moz-linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
   background: linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
 }
 
@@ -100,15 +104,10 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 164px;
-  height: 50px;
-  margin: 0 24px;
-  background: rgba(255, 255, 255, 0.2);
-  border-radius: 10px;
 }
 .login-register-container > a {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Inter", sans-serif;
 }
 
@@ -116,15 +115,15 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
-  width: 100%;
   height: 50px;
   margin: 0 24px;
+  padding: 0 13px;
   background: rgba(255, 255, 255, 0.2);
   border-radius: 10px;
 }
 #user__container .logged-user > a {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Inter", sans-serif;
 }
 
@@ -139,10 +138,109 @@ body {
 }
 .language__container > select {
   font-size: 20px;
-  font-weight: 500;
+  font-weight: 600;
   font-family: "Inter", sans-serif;
   background: none;
   border: none;
+}
+
+.bonus-programm-area {
+  min-width: 1563px;
+  display: flex;
+  justify-content: end;
+  align-items: center;
+}
+.bonus-programm-area > .bonus-programm-container {
+  width: 390px;
+  height: 236px;
+  display: flex;
+  align-items: start;
+  justify-content: start;
+  flex-direction: column;
+  background: -webkit-linear-gradient(top left, rgba(254, 254, 254, 0.2), rgba(254, 254, 254, 0.6));
+  background: -o-linear-gradient(top left, rgba(254, 254, 254, 0.2), rgba(254, 254, 254, 0.6));
+  background: -moz-linear-gradient(top left, rgba(254, 254, 254, 0.2), rgba(254, 254, 254, 0.6));
+  background: linear-gradient(to top left, rgba(254, 254, 254, 0.2), rgba(254, 254, 254, 0.6));
+  border-radius: 10px;
+}
+
+.bonus-programm-top {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+  padding: 0 25px;
+  margin: 25px 0 0;
+}
+.bonus-programm-top > div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: row;
+}
+.bonus-programm-top > div > i {
+  color: #07005A;
+}
+
+.bonus-programm-text {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 25px;
+  margin: 25px 0;
+}
+.bonus-programm-text-container {
+  width: 340px;
+}
+.bonus-programm-text-container > p {
+  color: rgba(33, 33, 33, 0.7);
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
+  font-family: "Inter", sans-serif;
+}
+
+.bonus-programm-bottom {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 25px;
+}
+.bonus-programm-bottom-container {
+  width: 340px;
+}
+.bonus-programm-bottom-container > p {
+  color: #07005A;
+  font-family: "Inter", sans-serif;
+  font-size: 15px;
+  line-height: 18px;
+  font-weight: 600;
+}
+
+.bonus-programm-bottom-register {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  padding: 0 25px;
+}
+.bonus-programm-bottom-register-container {
+  width: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: end;
+}
+.bonus-programm-bottom-register-container > a {
+  color: #07005A;
+  text-decoration: underline;
+  font-family: "Inter", sans-serif;
+  font-size: 20px;
+  line-height: 24px;
+  font-weight: 600;
 }
 
 .ulForHideSelectOption {

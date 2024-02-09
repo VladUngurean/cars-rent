@@ -54,26 +54,10 @@
                         global $conn;
                         $query = "CALL getUserData('$email')";
                         $result = mysqli_query($conn, $query);
-
-                    
-                        // if ($result && mysqli_num_rows($result) > 0) {
-                        //     while($row = $result->fetch_assoc()) {
-                        //         $data[] = array(
-                        //             'firstName' => $row['first_name']
-                        //         );
-                        //     }
-                        //     if (!empty($data)) {
-                        //         echo '<script>';
-                        //         echo 'let userData = ' . json_encode($data) . ';';
-                        //         echo 'console.log(userData);';
-                        //         echo '</script>';
-                        //     }
-                        // }
                         if ($result && mysqli_num_rows($result) > 0) {
                             $row = mysqli_fetch_assoc($result);
                             return $row['first_name'];
                         }
-                        
                         return null;
                         }
 
@@ -96,22 +80,22 @@
                             $_SESSION['first_name'] = $firstName;
             
                             // Redirect to the appropriate dashboard or home page
-                            if ($userRole === 'User' || isset($firstName)) {
+                            if ($_SESSION['role'] == 'User' && !empty($_SESSION['first_name'])) {
                                 echo '<div class="logged-user">'; 
-                                echo '<a href="userProfile.php">' .$firstName . '<i class="fa-solid fa-user" style="color: #000000; margin-left: 5px"></i> </a>';
+                                echo '<a href="userProfile.php">' .  $firstName . '<i class="fa-solid fa-user" style="color: #000000; margin-left: 5px"></i> </a>';
                                 echo '</div>';  
-                            } elseif ($userRole === 'Manager') {
+                            } elseif ($_SESSION['role'] == 'Manager' && !empty($_SESSION['first_name'])) {
                                 // else { echo 'Session is active<br>' ; }
                                 echo '<div class="logged-user">'; 
-                                echo '<a href="managerProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                echo '<a href="managerProfile.php">' .  $firstName . ' <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
                                 echo '</div>';  
-                            } elseif ($userRole === 'Courier'){
+                            } elseif ($_SESSION['role'] === 'Courier' && !empty($_SESSION['first_name'])){
                                 echo '<div class="logged-user">'; 
-                                echo '<a href="courierProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                echo '<a href="courierProfile.php">' .  $firstName . ' <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
                                 echo '</div>';  
-                            } elseif ($userRole === 'Admin'){
+                            } elseif ($_SESSION['role'] === 'Admin' && !empty($_SESSION['first_name'])){
                                 echo '<div class="logged-user">'; 
-                                echo '<a href="adminProfile.php"> <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
+                                echo '<a href="adminProfile.php">' .  $firstName . ' <i class="fa-solid fa-user" style="color: #000000;"></i> </a>';
                                 echo '</div>';  
                             }
 
@@ -136,5 +120,36 @@
             </div>
 
         </div>
+</section>
+
+<section class="bonus-programm-area">
+    <div class="bonus-programm-container">
+
+        <div class="bonus-programm-top">
+
+            <img src="/images/headerInfo.svg" alt="logo">
+
+        </div>
+
+        <div class="bonus-programm-text">
+            <div class="bonus-programm-text-container">
+                <p>
+                    Alăturați-vă programei noastre de bonusuri, pentru a primi oferte și reduceri exclusive.
+                </p>
+            </div>
+        </div>
+        <div class="bonus-programm-bottom">
+            <div class="bonus-programm-bottom-container">
+                <p>Luni-Duminică 24/7</p>
+            </div>
+        </div>
+
+        <div class="bonus-programm-bottom-register">
+            <div class="bonus-programm-bottom-register-container">
+                <a href="register.php">Aplică</a>
+            </div>
+        </div>
+    </div>
+
 </section>
 <!-- Header secction END -->
