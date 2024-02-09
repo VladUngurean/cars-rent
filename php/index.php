@@ -26,65 +26,51 @@
     ?>
 
     <?php  
-        echo '<label><a href="logout.php">Logout</a></label><br>';  
+        echo '<label><a style="color:white;" href="logout.php">Logout</a></label><br>';  
         if(!isset($_SESSION["email"])){  
-            echo 'Session is not active<br>' ;
-        } else { echo 'Session is active<br>' ; }
+            echo '<p style="color:white;">Session is not active<p/><br>' ;
+        } else { echo '<p style="color:white;">Session is active<p/><br>' ; }
 
-        if(isset($_SESSION["email"])){  
-            echo $_SESSION['role'];
-            echo $_SESSION['first_name'];
-        }
     ?>
     <!-- Search car secction START -->
     <!-- NEW SECCTION  -->
 
     <section id="carFilterSelectors" class="search-form-area">
+        <!-- Car list secction START -->
+        <div class="car-list__container">
+            <div class="car-list__container-text">
+                <h2>Închiriere Mașini</h2>
+            </div>
+            <div id="car-list-render"></div>
+        </div>
+        <!-- Car list secction END -->
+
+
         <div class="search-form">
             <div class="search-form-box">
 
                 <div class="search-form__text">
-                    <h2>Cauta Masina Potrivita</h2>
+                    <h2>Selectează Mașina Potrivtă:</h2>
                 </div>
 
-                <section class="search-test">
+                <div class="search-container">
 
-                    <div class="search-container">
+                    <div class="search__select-options">
 
-                        <div class="search__select-options">
-
-                            <ul id="renderCarMakeSelect"></ul>
-                            <ul id="renderCarTransmissionSelect"></ul>
-                            <ul id="renderCarFuelTypeSelect"></ul>
-                            <ul id="renderCarBodyTypeSelect"></ul>
-                            <ul id="renderCarRentStatusSelect"></ul>
-
-                        </div>
+                        <ul id="renderCarMakeSelect"></ul>
+                        <ul id="renderCarTransmissionSelect"></ul>
+                        <ul id="renderCarFuelTypeSelect"></ul>
+                        <ul id="renderCarBodyTypeSelect"></ul>
+                        <ul id="renderCarRentStatusSelect"></ul>
 
                     </div>
 
-                </section>
-
-                <div class="search-form__button">
-
-                    <button id="tessst" type="submit" class="check2">Caută</button>
-
                 </div>
-
             </div>
         </div>
     </section>
 
-    <!-- Car list secction START -->
-    <section id="carRenderContainer" class="car-list-area">
-        <div class="car-list__container">
-            <div class="car-list__container-text">
-                <h2>Inchiriere Masini</h2>
-            </div>
-            <div id="car-list-render"></div>
-        </div>
-    </section>
-    <!-- Car list secction END -->
+
 
     <!-- Comment secction START -->
     <section class="comment-area">

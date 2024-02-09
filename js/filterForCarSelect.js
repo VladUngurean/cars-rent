@@ -511,17 +511,19 @@ if (carsInfoFromPHP === "") {
   const createCarHTML = (car, getImages) => `
     <div class="car-list__box">
         <img src="/images/carsList/${getImages[0]}" alt="carImage">
-        <h4>${car.make} - ${car.model}</h4>
+        <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
         <div class="car-list__box-details">
-            <div class="car-list__box-details__price">De la <span>${
-              car.rentDaysPrice46
-            } €</span>/Zi</div>
-            <div class="car-list__box-details-tech">
-                ${createCarDetailsHTML(car)}
+          <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
+          <div class="car-list__box-details-hr"></div>
+          <div class="car-list__box-details__price-button">
+            <div class="car-list__box-details__price-button__price">
+              <div class="price-text">De la:</div>
+              <div class="price">${car.rentDaysPrice46}€/Zi</div>
             </div>
-        </div>
-        <div class="car-list__box-link">
-            <button id="rentThisCar">Inchiriaza</button>
+            <div class="car-list__box-details__price-button__button">
+              <button id="rentThisCar">Închriază</button>
+            </div>
+          </div>
         </div>
     </div>
   `;
@@ -532,7 +534,7 @@ if (carsInfoFromPHP === "") {
         <img src="/images/icons/calendarIcon.png" alt="time">
         <div>An: ${car.registrationYear}</div>
     </div>
-    <div class="car-list__box-details-tech__item">
+    <div class="car-list__box-details-tech__item-mid">
         <img src="/images/icons/gear.png" alt="transmission">
         <div>${car.transmissionType}</div>
     </div>

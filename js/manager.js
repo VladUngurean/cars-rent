@@ -232,6 +232,8 @@ if (carsInfoForTable === "") {
 function renderCarForSelect(car) {
   const make = car.make;
   const model = car.model.split(",");
+  // const model = car.model.split(",");
+  console.log(model);
 
   const forRenderModels = document.getElementById(`renderModels${make}`);
   renderCarModelsForSelect(model, forRenderModels);
@@ -384,9 +386,7 @@ function handleLabelKeyPress(event) {
       document.getElementById('fileInput').click();
   }
 }
-
 // // allow manager tab and activate label with space and enter button ================================================================================
-
 //show selected images
 
 function displaySelectedImages(input) {
@@ -409,19 +409,16 @@ function displaySelectedImages(input) {
 function checkIfImagesSelected() {
   var fileInput = document.getElementById('fileInput');
   var selectedFiles = fileInput.files;
-  // Display an alert if the number of files is below the minimum or above the maximum
   if (selectedFiles.length < 6) {
     alert(
       "Please select al least " + 6 + " and no more than " + 10 + " images."
     );
-    return false; // Prevent form submission
+    return false;
   } else if (selectedFiles.length > 10) {
     alert(
       "Please select al least " + 6 + " and no more than " + 10 + " images."
     );
-    return false; // Prevent form submission
+    return false;
   } 
-
-  // Continue with form submission if the condition is met
   return true;
 }
