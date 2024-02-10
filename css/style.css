@@ -62,18 +62,12 @@ body {
   height: 60px;
 }
 
-.nav__container {
-  margin: 0 70px 0 200px;
-}
 .nav__container > nav > ul {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: row;
-}
-.nav__container > nav > ul > li {
-  margin: 10px;
-  padding: 0 24px;
+  gap: 24px;
 }
 .nav__container > nav > ul > li > a {
   font-size: 20px;
@@ -246,25 +240,39 @@ body {
 }
 
 .search-form-area {
+  max-width: 1563px;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: row;
+  position: relative;
 }
 .search-form-area .car-list__container {
+  width: 1146px;
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: column;
 }
+.search-form-area .car-list__container-text {
+  margin-bottom: 40px;
+}
 .search-form-area .car-list__container-text > h2 {
+  font-weight: 500;
+  font-size: 50px;
   color: #fefefe;
   font-family: "Kanit", sans-serif;
 }
 .search-form-area .car-list__container #car-list-render {
   display: flex;
-  justify-content: center;
-  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  gap: 24px;
+}
+.search-form-area .search-form {
+  position: relative;
+  top: 115px;
+  margin-left: 24px;
 }
 
 .car-list__box {
@@ -275,7 +283,6 @@ body {
   width: 366px;
   height: 352px;
   padding: 10px;
-  margin: 12px;
   border: 2px solid rgba(254, 254, 254, 0.2);
   border-radius: 10px;
 }
@@ -376,6 +383,79 @@ body {
   font-family: "Inter", sans-serif;
   border: 2px solid rgba(254, 254, 254, 0.2);
   border-radius: 10px;
+}
+
+.search-form-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: column;
+}
+.search-form-box > .search-form__text {
+  width: 100%;
+  background-color: rgba(254, 254, 254, 0.2);
+  border-radius: 10px;
+  padding: 9px;
+  margin-bottom: 20px;
+}
+.search-form-box > .search-form__text > h2 {
+  color: #fefefe;
+  font-size: 22px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.search-form-box > .search-container {
+  width: 100%;
+  background-color: rgba(254, 254, 254, 0.2);
+  border-radius: 10px;
+}
+.search-form-box > .search-container > .search__select-options {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-direction: column;
+  padding: 10px;
+  gap: 20px;
+}
+.search-form-box > .search-container > .search__select-options > ul > li span {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: row;
+}
+.search-form-box > .search-container > .search__select-options > ul > li span > p {
+  color: #fefefe;
+  font-size: 20px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+  margin-right: 20px;
+}
+.search-form-box > .search-container > .search__select-options > ul > li > ul > li {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.search-form-box > .search-container > .search__select-options > ul > li > ul > li > label {
+  display: flex;
+  flex-direction: row;
+}
+.search-form-box > .search-container > .search__select-options > ul > li > ul > li > label > p {
+  margin: 0 15px 0 5px;
+  color: #fefefe;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
+}
+.search-form-box > .search-container > .search__select-options > ul > li > ul > li > ul {
+  width: 100%;
+}
+.search-form-box > .search-container > .search__select-options > ul > li > ul > li > ul > li > label {
+  margin: 0 15px 0 0;
+  color: #fefefe;
+  font-size: 18px;
+  font-weight: 500;
+  font-family: "Inter", sans-serif;
 }
 
 .ulForHideSelectOption {

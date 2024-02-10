@@ -14,13 +14,7 @@ if (carsInfoFromPHP === "") {
   function HTMLforMakeModelSelect() {
     return `
       <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <span id="dropDownMakes"> Marca
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
+            <span id="dropDownMakes"> <p>Marca</p> <img src="/images/arrow.svg" alt="arrow"> </span>
         <ul id="carMakesForSelect" class="ulForHideSelectOptions ulForCarMakes"></ul>
       </li>
     `;
@@ -28,14 +22,10 @@ if (carsInfoFromPHP === "") {
   function HTMLmakeSelectOptions(make) {
     return `
       <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
-            <span id="dropDown${make}Models">${make}
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
+
+          <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
+          <label for="selectMake${make}" id="dropDown${make}Models"> <p>${make}</p> <img src="/images/arrow.svg" alt="arrow"> </label>
+
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels"></ul>
       </li>
     `;
@@ -43,12 +33,10 @@ if (carsInfoFromPHP === "") {
   function HTMLmodelSelectOptions(model) {
     return `
         <li class="">
-          <div class="">
-            <label class="" for="1">
-              <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
-              <span>${model}</span>
-            </label>
-          </div>
+
+          <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
+          <label for="select${model}">${model}</label>
+
         </li>
       `;
   }
@@ -56,13 +44,7 @@ if (carsInfoFromPHP === "") {
   function HTMLforTransmissionSelect() {
     return `
       <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <span id="selectTransmissionType">Cutie de viteze
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
+        <span id="selectTransmissionType"> <p>Cutie de viteze</p> <img src="/images/arrow.svg" alt="arrow"> </span>
         <ul id="transmissionTypeList" class="ulForHideSelectOptions ulForTransmissions"></ul>
       </li>
     `;
@@ -70,12 +52,8 @@ if (carsInfoFromPHP === "") {
   function HTMLtransmissionSelectOptions(transmissionType) {
     return `
         <li class="">
-          <div class="">
-            <label class="" for="1">
-              <input id="select${transmissionType}" class="transmissionType-checkbox" type="checkbox" name="" value="">
-              <span>${transmissionType}</span>
-            </label>
-          </div>
+          <input id="select${transmissionType}" class="transmissionType-checkbox" type="checkbox" name="" value="">
+          <span>${transmissionType}</span>
         </li>
       `;
   }
@@ -86,13 +64,7 @@ if (carsInfoFromPHP === "") {
   function HTMLforFuelTypeSelect() {
     return `
       <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <span id="selectFuelType">Tip combustibil
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
+        <span id="selectFuelType"> <p>Tip combustibil</p><img src="/images/arrow.svg" alt="arrow"> </span>
         <ul id="fuelTypeList" class="ulForHideSelectOptions ulForFuelTypes"></ul>
       </li>
     `;
@@ -100,12 +72,8 @@ if (carsInfoFromPHP === "") {
   function HTMLFuelTypeSelectOptions(fuelType) {
     return `
         <li class="">
-          <div class="">
-            <label class="" for="1">
-              <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
-              <span>${fuelType}</span>
-            </label>
-          </div>
+          <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
+          <span>${fuelType}</span>
         </li>
       `;
   }
@@ -113,13 +81,7 @@ if (carsInfoFromPHP === "") {
   function HTMLforBodyTypeSelect() {
     return `
       <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <span id="selectBodyType">Tip caroserie
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
+        <span id="selectBodyType"> <p>Tip caroserie</p> <img src="/images/arrow.svg" alt="arrow"> </span>
         <ul id="BodyTypeList" class="ulForHideSelectOptions ulForBodyTypes"></ul>
       </li>
     `;
@@ -127,12 +89,8 @@ if (carsInfoFromPHP === "") {
   function HTMLBodyTypeSelectOptions(bodyType) {
     return `
         <li class="">
-          <div class="">
-            <label class="" for="1">
-              <input id="select${bodyType}" class="bodyType-checkbox" type="checkbox" name="" value="">
-              <span>${bodyType}</span>
-            </label>
-          </div>
+          <input id="select${bodyType}" class="bodyType-checkbox" type="checkbox" name="" value="">
+          <span>${bodyType}</span>
         </li>
       `;
   }
@@ -140,13 +98,7 @@ if (carsInfoFromPHP === "") {
   function HTMLforRentStatusSelect() {
     return `
       <li class="">
-        <div class="dropdown__content-second__select-options">
-          <label class="" for="1">
-            <span id="selectRentStatus">Statut Arenda
-              <a href="">&gt;</a>
-            </span>
-          </label>
-        </div>
+        <span id="selectRentStatus"> <p>Statut Arenda</p> <img src="/images/arrow.svg" alt="arrow"> </span>
         <ul id="rentStatusList" class="ulForHideSelectOptions ulForRentStatus"></ul>
       </li>
     `;
@@ -154,12 +106,8 @@ if (carsInfoFromPHP === "") {
   function HTMLRentStatusSelectOptions(rentStatus) {
     return `
         <li class="">
-          <div class="">
-            <label class="" for="1">
-              <input id="select${rentStatus}" class="rentStatus-checkbox" type="checkbox" name="" value="">
-              <span>${rentStatus}</span>
-            </label>
-          </div>
+          <input id="select${rentStatus}" class="rentStatus-checkbox" type="checkbox" name="" value="">
+          <span>${rentStatus}</span>
         </li>
       `;
   }

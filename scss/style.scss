@@ -67,6 +67,7 @@ background-repeat: no-repeat;
 background-color: #212121;
 min-width: 320px;
 overflow-x: hidden;
+// max-width: 1560px;
 }
 
 // header styling start 
@@ -101,19 +102,16 @@ overflow-x: hidden;
 
 // nav links stylig
 .nav__container{
-  margin: 0 70px 0 200px;
+  // margin: 0 70px 0 200px;
  &>nav>ul{
   @include flex-center;
    flex-direction: row;
 
-  &>li{
-     margin: 10px;
-     padding:0 24px;
+   gap: 24px;
 
-     &>a{
-      @include links-font;
-     }
-   }
+  &>li>a{
+    @include links-font;
+  }
  }
 }
 
@@ -144,12 +142,7 @@ overflow-x: hidden;
 // user login register style
 .login-register-container{
   @include flex-center;
-  // width: 164px;
-  // height: 50px;
-  // margin: 0 24px;
-  
-  // background: rgba(255, 255, 255, 0.2);
-  // border-radius: 10px;
+
   &>a {
     @include links-font;
   }
@@ -306,37 +299,55 @@ overflow-x: hidden;
 // search-form-area start
 
 .search-form-area{
+  max-width: 1563px;
   // @include flex-center;
   display: flex;
   align-items: flex-start;
   justify-content: center;
   flex-direction: row;
+  position: relative;
   
   .car-list__container{
+    width: 1146px;
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     flex-direction: column;
     
-    &-text>h2{
-      color: #fefefe;
-      font-family: 'Kanit', sans-serif;
+    &-text{
+      margin-bottom: 40px;
+
+      &>h2{
+        font-weight: 500;
+        font-size: 50px;
+        // line-height: 75px;
+        color: #fefefe;
+        font-family: 'Kanit', sans-serif;
+      }
     }
     #car-list-render{
-      @include flex-center;
-      // float: left;
+      display: flex;
+      justify-content: flex-start;
 
+      flex-wrap: wrap;
+      gap: 24px;
     }
+  }
+
+  .search-form{
+    position: relative;
+    top: 115px;
+    margin-left: 24px;
   }
 }
 
+// all cars cards styling start
 .car-list__box{
   @include flex-between;
   flex-direction: column;
   width: 366px;
   height: 352px;
   padding: 10px;
-  margin: 12px;
 
   border: 2px solid rgba(254,254,254, 0.2);
   border-radius: 10px;
@@ -471,7 +482,100 @@ overflow-x: hidden;
   }
 
 }
+// all cars cards styling end
+.search-form-box{
+  @include flex-between;
+  flex-direction: column;
+  
+  &>.search-form__text{
+    width: 100%;
 
+    background-color: rgba(254,254,254, 0.2);
+    border-radius: 10px;
+
+    padding: 9px;
+    margin-bottom: 20px;
+
+    &>h2{
+      color: #fefefe;
+      font-size: 22px;
+      font-weight: 500;
+      font-family: 'Inter', sans-serif;
+    }
+  }
+
+  &>.search-container{
+    width: 100%;
+    background-color: rgba(254,254,254, 0.2);
+    border-radius: 10px;
+
+    &>.search__select-options{
+      display: flex;
+      align-items: flex-start;
+      justify-content: center;
+      flex-direction: column;
+
+      padding: 10px;
+      gap: 20px;
+
+      &>ul>li{
+        & span{
+          // text-align: center;
+          // @include flex-center;
+          display: flex;
+          justify-content: flex-start;
+          align-items: center;
+          flex-direction: row;
+          
+          &>p{
+            color: #fefefe;
+            font-size: 20px;
+            font-weight: 500;
+            font-family: 'Inter', sans-serif;
+  
+            margin-right: 20px;
+          }
+        }
+        &>ul>li{
+          width: 100%;
+          display: flex;
+          flex-direction: row;
+          flex-wrap: wrap;
+
+          &>label {
+            // width: 100%;
+            display: flex;
+            flex-direction: row;
+
+            &>p{
+              margin: 0 15px 0 5px;
+              color: #fefefe;
+              font-size: 18px;
+              font-weight: 500;
+              font-family: 'Inter', sans-serif;
+            }
+          }
+
+          &>ul {
+            width: 100%;
+
+            &>li>label{
+              margin: 0 15px 0 0;
+              color: #fefefe;
+              font-size: 18px;
+              font-weight: 500;
+              font-family: 'Inter', sans-serif;
+            }
+          }
+        }
+      }
+
+    }
+  }
+}
+//car select options start
+
+//car select options end
 
 // search-form-area END
 
