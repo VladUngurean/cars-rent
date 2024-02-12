@@ -15,9 +15,7 @@
         include "ProcGetExistingCarsToShow.php";
     ?>
 
-
 </head>
-
 
 <body>
 
@@ -57,11 +55,11 @@
 
                     <div class="search__select-options">
 
-                        <ul id="renderCarMakeSelect"></ul>
-                        <ul id="renderCarTransmissionSelect"></ul>
-                        <ul id="renderCarFuelTypeSelect"></ul>
-                        <ul id="renderCarBodyTypeSelect"></ul>
-                        <ul id="renderCarRentStatusSelect"></ul>
+                        <ul id="renderCarMakeSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarTransmissionSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarFuelTypeSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarBodyTypeSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarRentStatusSelect" class="select-options-for-rent"></ul>
 
                     </div>
 

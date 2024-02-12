@@ -25,16 +25,16 @@ a {
   color: #212121;
 }
 
+button, ul, li, label {
+  cursor: pointer;
+}
+
 body {
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  background: url(/images/headerBanner.png);
-  background-size: auto 1014px;
-  background-position: top;
-  background-repeat: no-repeat;
-  background-color: #212121;
+  background-color: #696969;
   min-width: 320px;
   overflow-x: hidden;
 }
@@ -417,47 +417,6 @@ body {
   padding: 10px;
   gap: 20px;
 }
-.search-form-box > .search-container > .search__select-options > ul > li span {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-  flex-direction: row;
-}
-.search-form-box > .search-container > .search__select-options > ul > li span > p {
-  color: #fefefe;
-  font-size: 20px;
-  font-weight: 500;
-  font-family: "Inter", sans-serif;
-  margin-right: 20px;
-}
-.search-form-box > .search-container > .search__select-options > ul > li > ul > li {
-  width: 100%;
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-}
-.search-form-box > .search-container > .search__select-options > ul > li > ul > li > label {
-  display: flex;
-  flex-direction: row;
-}
-.search-form-box > .search-container > .search__select-options > ul > li > ul > li > label > p {
-  margin: 0 15px 0 5px;
-  color: #fefefe;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: "Inter", sans-serif;
-}
-.search-form-box > .search-container > .search__select-options > ul > li > ul > li > ul {
-  width: 100%;
-}
-.search-form-box > .search-container > .search__select-options > ul > li > ul > li > ul > li > label {
-  margin: 0 15px 0 0;
-  color: #fefefe;
-  font-size: 18px;
-  font-weight: 500;
-  font-family: "Inter", sans-serif;
-}
-
 .ulForHideSelectOption {
   margin-bottom: 20px;
 }
