@@ -24,7 +24,7 @@ if (carsInfoFromPHP === "") {
       <li class="">
 
           <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
-          <label for="selectMake${make}" id="dropDown${make}Models"> <p>${make}</p> <img src="/images/arrow.svg" alt="arrow"> </label>
+          <sapn id="dropDown${make}Models"> <p>${make}</p> <img src="/images/arrow.svg" alt="arrow"> </sapn>
 
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels"></ul>
       </li>
@@ -53,7 +53,7 @@ if (carsInfoFromPHP === "") {
     return `
         <li class="">
           <input id="select${transmissionType}" class="transmissionType-checkbox" type="checkbox" name="" value="">
-          <span>${transmissionType}</span>
+          <label for="select${transmissionType}">${transmissionType}</label>
         </li>
       `;
   }
@@ -73,7 +73,7 @@ if (carsInfoFromPHP === "") {
     return `
         <li class="">
           <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
-          <span>${fuelType}</span>
+          <label for="select${fuelType}">${fuelType}</label>
         </li>
       `;
   }
@@ -90,7 +90,7 @@ if (carsInfoFromPHP === "") {
     return `
         <li class="">
           <input id="select${bodyType}" class="bodyType-checkbox" type="checkbox" name="" value="">
-          <span>${bodyType}</span>
+          <label for="select${bodyType}">${bodyType}</label>
         </li>
       `;
   }
@@ -98,7 +98,7 @@ if (carsInfoFromPHP === "") {
   function HTMLforRentStatusSelect() {
     return `
       <li class="">
-        <span id="selectRentStatus"> <p>Statut Arenda</p> <img src="/images/arrow.svg" alt="arrow"> </span>
+        <span id="selectRentStatus"> <p>Statut Arenda 24h</p> <img src="/images/arrow.svg" alt="arrow"> </span>
         <ul id="rentStatusList" class="ulForHideSelectOptions ulForRentStatus"></ul>
       </li>
     `;
@@ -107,7 +107,7 @@ if (carsInfoFromPHP === "") {
     return `
         <li class="">
           <input id="select${rentStatus}" class="rentStatus-checkbox" type="checkbox" name="" value="">
-          <span>${rentStatus}</span>
+          <label for="select${rentStatus}">${rentStatus}</label>
         </li>
       `;
   }
