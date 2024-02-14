@@ -19,6 +19,7 @@
                         <li><a href="#">Contacte</a></li>
                         <li><a href="#">Termeni și condiții</a></li>
                         <li><a href="#">Mașini</a></li>
+                        <li><a href="#">Recenzii</a></li>
                     </ul>
                 </nav>
 
@@ -27,11 +28,16 @@
 
             <div class="header__right">
 
-                <!-- theme switch start -->
-                <div class="theme__switch-container">
-                    <div class="theme__switch-circle"></div>
+
+                <!-- language start -->
+
+                <div class="language__container">
+                    <p>ROM</p>
+                    <p>ENG</p>
                 </div>
-                <!-- theme switch end -->
+
+                <!-- language end -->
+
 
                 <!-- user login, register start -->
                 <div id='user__container'>
@@ -107,49 +113,21 @@
                 </div>
                 <!-- user login, register end -->
 
-                <!-- language start -->
 
-                <div class="language__container">
-                    <select id="languages" class="languages__options">
-                        <option value="ro">Ro</option>
-                        <option value="en">En</option>
-                    </select>
+                <!-- theme switch start -->
+                <div class="theme__switch-container">
+                    <div class="theme__switch-circle"></div>
                 </div>
+                <!-- theme switch end -->
 
-                <!-- language end -->
+                <!-- phone start -->
+                <div class="theme__switch-container">
+                    <a href="tel:+373 67 242 877">+373 67 242 877</a>
+                </div>
+                <!-- phone end -->
             </div>
 
         </div>
 </section>
 
-<section class="bonus-programm-area">
-    <div class="bonus-programm-container">
-
-        <div class="bonus-programm-top">
-
-            <img src="/images/headerInfo.svg" alt="logo">
-
-        </div>
-
-        <div class="bonus-programm-text">
-            <div class="bonus-programm-text-container">
-                <p>
-                    Alăturați-vă programei noastre de bonusuri, pentru a primi oferte și reduceri exclusive.
-                </p>
-            </div>
-        </div>
-        <div class="bonus-programm-bottom">
-            <div class="bonus-programm-bottom-container">
-                <p>Luni-Duminică 24/7</p>
-            </div>
-        </div>
-
-        <div class="bonus-programm-bottom-register">
-            <div class="bonus-programm-bottom-register-container">
-                <a href="register.php">Aplică</a>
-            </div>
-        </div>
-    </div>
-
-</section>
 <!-- Header secction END -->
