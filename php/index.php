@@ -19,6 +19,12 @@
 
 <body>
 
+    <div class="banner__video">
+        <video preload="auto" playsinline="" autoplay="" loop="" muted="">
+            <source src="/images/videoBanner.mp4" type="video/mp4">
+        </video>
+    </div>
+
     <?php 
     include('header.php'); 
     ?>
@@ -33,15 +39,14 @@
     <!-- Search car secction START -->
     <!-- NEW SECCTION  -->
 
-    <section id="carFilterSelectors" class="search-form-area">
-        <!-- Car list secction START -->
+    <!-- <section id="carFilterSelectors" class="search-form-area">
+
         <div class="car-list__container">
             <div class="car-list__container-text">
                 <h2>Închiriere Mașini</h2>
             </div>
             <div id="car-list-render"></div>
         </div>
-        <!-- Car list secction END -->
 
 
         <div class="search-form">
@@ -66,12 +71,12 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
 
     <!-- Comment secction START -->
-    <section class="comment-area">
+    <!-- <section class="comment-area">
         <div class="comment-area__container">
             <div class="comment-area__container-text">
                 <h3>Recomandarile Clientilor Nostri</h3>
@@ -81,7 +86,7 @@
 
             </div>
         </div>
-    </section>
+    </section> -->
     <!-- Comment secction END -->
 
 

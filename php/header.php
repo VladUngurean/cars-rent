@@ -14,12 +14,12 @@
             <!-- Nav START -->
             <div class="nav__container">
                 <nav>
-                    <ul>
-                        <li><a href="#">Despre noi</a></li>
-                        <li><a href="#">Contacte</a></li>
-                        <li><a href="#">Termeni și condiții</a></li>
-                        <li><a href="#">Mașini</a></li>
-                        <li><a href="#">Recenzii</a></li>
+                    <ul class="nav__ul">
+                        <li class="nav__li"><a href="#">Despre noi</a></li>
+                        <li class="nav__li"><a href="#">Contacte</a></li>
+                        <li class="nav__li"><a href="#">Termeni și condiții</a></li>
+                        <li class="nav__li"><a href="#">Mașini</a></li>
+                        <li class="nav__li"><a href="#">Recenzii</a></li>
                     </ul>
                 </nav>
 

@@ -37,4 +37,25 @@ body {
   background-color: #696969;
   min-width: 320px;
   overflow-x: hidden;
+}
+
+.banner__video {
+  transform-origin: center center;
+  position: absolute;
+  top: 0;
+  z-index: -100;
+  margin-bottom: 20px;
+}
+.banner__video::after {
+  box-shadow: inset 0px 300px 100px 0 #000000;
+  content: "";
+  display: block;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  width: 100%;
+}
+.banner__video > video {
+  object-fit: cover;
+  background-size: cover;
 }/*# sourceMappingURL=style.css.map */

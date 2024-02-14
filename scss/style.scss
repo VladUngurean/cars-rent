@@ -63,8 +63,8 @@ body {
 @include flex-center;
 flex-direction: column;
 
-// background: url(/images/headerBanner.png);
-// background-size: auto 1014px;
+// background: url(/images/carForBanner.gif);
+// // background-size: auto 1014px;
 // background-position: top; 
 // background-repeat: no-repeat;
 
@@ -72,4 +72,29 @@ background-color: #696969;
 min-width: 320px;
 overflow-x: hidden;
 // max-width: 1560px;
+}
+
+.banner__video{
+  // @include flex-center;
+  transform-origin: center center; 
+  position: absolute; 
+  top: 0; 
+  z-index: -100;
+  margin-bottom:20px;
+
+  &::after {
+    box-shadow: inset 0px 300px 100px 0 #000000;
+    content: '';
+    display: block;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    width: 100%;
+  }
+
+
+  &>video{
+    object-fit: cover;
+    background-size: cover;
+  }
 }
