@@ -1,6 +1,8 @@
 @import "vars";
 @import "fonts";
 
+// font-family: "Bai Jamjuree", sans-serif;
+// font-family: "Jura", sans-serif;
 //GENERAL STYLING START
 html {
   box-sizing: border-box;
@@ -27,7 +29,7 @@ a{
   padding: 0;
   text-decoration: none;
 
-  color: $text-dark;
+  color: $text-light;
 }
 
 button, ul, li, label {
@@ -50,28 +52,24 @@ button, ul, li, label {
   justify-content: space-between;
   align-items: center;
   }
-@mixin links-font {
-  font-size: 20px;
-  font-weight: 600;
-  font-family: 'Inter', sans-serif;
-  }
-
 
   // mixins end
 
 body {
-@include flex-center;
-flex-direction: column;
+  background-color: $background-color;
+  min-width: 320px;
+  // overflow-x: hidden;
+  // max-width: 1560px;
 
-// background: url(/images/carForBanner.gif);
-// // background-size: auto 1014px;
-// background-position: top; 
-// background-repeat: no-repeat;
 
-background-color: #696969;
-min-width: 320px;
-overflow-x: hidden;
-// max-width: 1560px;
+  &>.wrapper{
+    @include flex-center;
+    flex-direction: column;
+
+    max-width: 1537px;
+    width: 100%;
+    margin: 0 auto;
+  }
 }
 
 .banner__video{
@@ -79,22 +77,252 @@ overflow-x: hidden;
   transform-origin: center center; 
   position: absolute; 
   top: 0; 
-  z-index: -100;
-  margin-bottom:20px;
+  left: 0;
+  z-index: -10;
+  // margin-bottom:20px;
+  width: 100%;
+  height: auto;
 
   &::after {
-    box-shadow: inset 0px 300px 100px 0 #000000;
+    background: linear-gradient(180deg, rgba(29,29,29,0.4), $background-color);
     content: '';
-    display: block;
-    height: 100%;
+    // display: block;
     position: absolute;
     top: 0;
+    left: 0;
+
+    height: 100%;
     width: 100%;
   }
 
 
   &>video{
-    object-fit: cover;
-    background-size: cover;
+    // object-fit: contain;
+    // background-size: cover;
+    width: 100%;
+    height: 100%;
+  }
+
+  &>p{
+    position: relative;
+    top: -100px;
+    right: 0;
+    z-index: 2;
+    text-wrap: nowrap;
+    color: $text-light;
+    font-family: "Jura", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 21px;
   }
 }
+
+// header start
+
+.header-area{
+  @include flex-center;
+  width: 100%;
+  height: 100vh;
+
+  margin-top: 30px;
+
+  &>.header__container{
+    @include flex-between;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
+  }
+
+  & .header__top{
+    @include flex-between;
+    width: 100%;
+
+    &>.header__left{
+      @include flex-between;
+
+      
+    .logo__container{
+      margin-right: 40px;
+      &>img{
+        width: 107px;
+        height: 64px;
+      }
+    }
+
+      &>.nav__container{
+
+        &>nav{
+
+          &>.nav__ul{
+            display: flex;
+            flex-direction: row;
+            gap: 30px;
+      
+            &>.nav__li>a{
+              text-wrap: nowrap;
+              color: $text-light;
+              font-family: "Jura", sans-serif;
+              font-weight: 500;
+              font-size: 18px;
+              line-height: 21px;
+            }
+          }
+        }
+      }
+    }
+
+    &>.header__right{
+      @include flex-between;
+
+      gap: 30px;
+      &>.language__container{
+        display: flex;
+        flex-direction: row;
+        gap: 10px;
+
+        &>p{
+          text-wrap: nowrap;
+          text-align: center;
+          color: $text-light;
+          font-family: "Jura", sans-serif;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 21px;
+        }
+      }
+
+      &>#user__container{
+
+        &>.login-register-container{
+          @include flex-center;
+
+          &>a{
+            text-wrap: nowrap;
+            height: 100%;
+            color: $text-light;
+            font-family: "Jura", sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+            line-height: 21px;
+          }
+        }
+      }
+
+      &>.phone__number-container{
+        @include flex-center;
+
+        &>a{
+          display: flex;
+          flex-direction: row;
+          align-items: center;
+
+          &>p{
+            text-wrap: nowrap;
+            height: 100%;
+            color: $text-light;
+            font-family: "Bai Jamjuree", sans-serif;
+            font-weight: 400;
+            font-size: 18px;
+            line-height: 21px;
+          }
+        }
+      }
+
+      &>.theme__switch-container {
+        @include flex-center;
+        &>.theme__switch-circle {
+          width: 24px;
+          height: 24px;
+          border: 1px solid rgb(255, 255, 255);
+          border-radius: 50%;
+          background: -webkit-linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+          background: -o-linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+          background: -moz-linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+          background: linear-gradient(-90deg, rgb(255, 255, 255) 50%, rgb(0, 0, 0) 50%);
+        }
+      }
+
+    }
+  }
+
+  & .header__bottom{
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    flex-direction: column;
+    width: 100%;
+
+    position: relative;
+    top: -160px;
+
+    &>h1{
+      text-wrap: nowrap;
+      height: 100%;
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      // font-family: "Jura", sans-serif;
+      font-weight: 500;
+      font-size: 70px;
+      line-height: 86px;
+    }
+
+    &>p{
+      text-wrap: nowrap;
+      height: 100%;
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 500;
+      font-size: 35px;
+      line-height: 44px;
+
+      margin:40px 0 35px;
+    }
+
+    &>.park__links{
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+
+      gap: 40px;
+
+      &>a{
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 50px;
+        padding: 10px 32px;
+
+        text-wrap: nowrap;
+        height: 100%;
+        color: $text-light;
+        font-family: "Jura", sans-serif;
+        font-weight: 600;
+        font-size: 22px;
+        line-height: 26px;
+      }
+    }
+  }
+}
+
+
+
+
+
+
+// header end
+
+
+
+// select options ==============================================
+.ulForHideSelectOption {
+  margin-bottom: 20px;
+}
+
+.ulForHideSelectOptions {
+  display: none;
+  position: relative;
+  border: 2px solid rgb(124, 124, 124);
+  left: 5px;
+}
+
+.show {
+  display: block;
+}/*# sourceMappingURL=style.css.map */

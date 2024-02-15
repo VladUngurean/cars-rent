@@ -25,69 +25,72 @@
         </video>
     </div>
 
-    <?php 
-    include('header.php'); 
-    ?>
+    <div class="wrapper">
 
-    <?php  
-        echo '<label><a style="color:white;" href="logout.php">Logout</a></label><br>';  
-        if(!isset($_SESSION["email"])){  
-            echo '<p style="color:white;">Session is not active<p/><br>' ;
-        } else { echo '<p style="color:white;">Session is active<p/><br>' ; }
+        <?php 
+            include('header.php'); 
+        ?>
 
-    ?>
-    <!-- Search car secction START -->
-    <!-- NEW SECCTION  -->
+        <?php  
+            echo '<label><a style="color:white;" href="logout.php">Logout</a></label><br>';  
+            if(!isset($_SESSION["email"])){  
+                echo '<p style="color:white;">Session is not active<p/><br>' ;
+            } else { echo '<p style="color:white;">Session is active<p/><br>' ; }
+        ?>
+        <!-- Search car secction START -->
+        <!-- NEW SECCTION  -->
 
-    <!-- <section id="carFilterSelectors" class="search-form-area">
+        <section id="carFilterSelectors" class="search-form-area">
 
-        <div class="car-list__container">
-            <div class="car-list__container-text">
-                <h2>Închiriere Mașini</h2>
-            </div>
-            <div id="car-list-render"></div>
-        </div>
-
-
-        <div class="search-form">
-            <div class="search-form-box">
-
-                <div class="search-form__text">
-                    <h2>Selectează Mașina Potrivtă:</h2>
+            <div class="car-list__container">
+                <div class="car-list__container-text">
+                    <h2>Închiriere Mașini</h2>
                 </div>
+                <div id="car-list-render"></div>
+            </div>
 
-                <div class="search-container">
 
-                    <div class="search__select-options">
+            <div class="search-form">
+                <div class="search-form-box">
 
-                        <ul id="renderCarMakeSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarTransmissionSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarFuelTypeSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarBodyTypeSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarRentStatusSelect" class="select-options-for-rent"></ul>
-
+                    <div class="search-form__text">
+                        <h2>Selectează Mașina Potrivtă:</h2>
                     </div>
 
+                    <div class="search-container">
+
+                        <div class="search__select-options">
+
+                            <ul id="renderCarMakeSelect" class="select-options-for-rent"></ul>
+                            <ul id="renderCarTransmissionSelect" class="select-options-for-rent"></ul>
+                            <ul id="renderCarFuelTypeSelect" class="select-options-for-rent"></ul>
+                            <ul id="renderCarBodyTypeSelect" class="select-options-for-rent"></ul>
+                            <ul id="renderCarRentStatusSelect" class="select-options-for-rent"></ul>
+
+                        </div>
+
+                    </div>
                 </div>
             </div>
-        </div>
-    </section> -->
+        </section>
 
 
 
-    <!-- Comment secction START -->
-    <!-- <section class="comment-area">
-        <div class="comment-area__container">
-            <div class="comment-area__container-text">
-                <h3>Recomandarile Clientilor Nostri</h3>
+        <!-- Comment secction START -->
+        <section class="comment-area">
+            <div class="comment-area__container">
+                <div class="comment-area__container-text">
+                    <h3>Recomandarile Clientilor Nostri</h3>
+                </div>
+
+                <div class="comment-area__container-comment-carousel">
+
+                </div>
             </div>
+        </section>
+        <!-- Comment secction END -->
 
-            <div class="comment-area__container-comment-carousel">
-
-            </div>
-        </div>
-    </section> -->
-    <!-- Comment secction END -->
+    </div>
 
 
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>

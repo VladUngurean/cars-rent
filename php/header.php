@@ -1,43 +1,40 @@
 <!-- Header secction START -->
 
 <section class="header-area">
-    <div class="container">
+
+    <div class="header__container">
 
         <div class="header__top">
+            <div class="header__left">
+                <!-- Logo START -->
+                <div class="logo__container">
+                    <img src="/images/logo.svg" alt="logo">
+                </div>
+                <!-- Logo END -->
 
-            <!-- Logo START -->
-            <div class="logo__container">
-                <img src="/images/logo.svg" alt="logo">
+                <!-- Nav START -->
+                <div class="nav__container">
+                    <nav>
+                        <ul class="nav__ul">
+                            <li class="nav__li"><a href="#">Despre noi</a></li>
+                            <li class="nav__li"><a href="#">Contacte</a></li>
+                            <li class="nav__li"><a href="#">Termeni și condiții</a></li>
+                            <li class="nav__li"><a href="#">Recenzii</a></li>
+                            <li class="nav__li"><a href="#">Mașini</a></li>
+                        </ul>
+                    </nav>
+
+                </div>
+                <!-- nav END -->
             </div>
-            <!-- Logo END -->
-
-            <!-- Nav START -->
-            <div class="nav__container">
-                <nav>
-                    <ul class="nav__ul">
-                        <li class="nav__li"><a href="#">Despre noi</a></li>
-                        <li class="nav__li"><a href="#">Contacte</a></li>
-                        <li class="nav__li"><a href="#">Termeni și condiții</a></li>
-                        <li class="nav__li"><a href="#">Mașini</a></li>
-                        <li class="nav__li"><a href="#">Recenzii</a></li>
-                    </ul>
-                </nav>
-
-            </div>
-            <!-- nav END -->
 
             <div class="header__right">
-
-
                 <!-- language start -->
-
                 <div class="language__container">
-                    <p>ROM</p>
-                    <p>ENG</p>
+                    <p>Rom</p>
+                    <p>Eng</p>
                 </div>
-
                 <!-- language end -->
-
 
                 <!-- user login, register start -->
                 <div id='user__container'>
@@ -70,7 +67,7 @@
                     if(!isset($_SESSION["email"])){  
                         echo '<div class="login-register-container">';  
                         echo '<a href="login.php">Log in</a>';  
-                        echo '<span style="pointer-events:none; font-size: 23px; margin:0 2px; font-weight: 500;"> / </span>';  
+                        echo '<span style="pointer-events:none; color:#FEFEFE; font-size: 18px; margin:0 2px; font-weight: 600;"> / </span>';  
                         echo '<a href="register.php">Register</a>';  
                         echo '</div>';  
 
@@ -113,21 +110,34 @@
                 </div>
                 <!-- user login, register end -->
 
+                <!-- phone start -->
+                <div class="phone__number-container">
+                    <a href="tel:+373 00 000 000">
+                        <img src="/images/icons/phone.svg" alt="" srcset="">
+                        <p>+373 00 000 000</p>
+                    </a>
+                </div>
+                <!-- phone end -->
 
                 <!-- theme switch start -->
                 <div class="theme__switch-container">
                     <div class="theme__switch-circle"></div>
                 </div>
                 <!-- theme switch end -->
-
-                <!-- phone start -->
-                <div class="theme__switch-container">
-                    <a href="tel:+373 67 242 877">+373 67 242 877</a>
-                </div>
-                <!-- phone end -->
             </div>
-
         </div>
+
+        <div class="header__bottom">
+            <h1>Închiriere mașini 24/7 în Chișinău</h1>
+            <p>Alege autopacul:</p>
+            <div class="park__links">
+                <a href="#">Chișinău</a>
+                <a href="#">Bălți</a>
+            </div>
+        </div>
+
+    </div>
+
 </section>
 
 <!-- Header secction END -->

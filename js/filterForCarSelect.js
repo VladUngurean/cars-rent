@@ -458,7 +458,7 @@ if (carsInfoFromPHP === "") {
   // Create HTML for a single car
   const createCarHTML = (car, getImages) => `
     <div class="car-list__box">
-        <img src="/images/carsList/${getImages[0]}" alt="carImage">
+        <img style="width:300px;" src="/images/carsList/${getImages[0]}" alt="carImage">
         <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
         <div class="car-list__box-details">
           <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
