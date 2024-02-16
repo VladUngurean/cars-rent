@@ -2,7 +2,7 @@
 
 <section class="header-area">
 
-    <div class="header__container">
+    <div id="headerArea" class="header__container">
 
         <div class="header__top">
             <div class="header__left">

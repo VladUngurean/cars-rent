@@ -20,98 +20,96 @@
 <body>
 
     <div class="banner__video">
-        <video preload="auto" playsinline="" autoplay="" loop="" muted="">
+        <video id="bannerVideo" preload="auto" playsinline="" autoplay="" loop="" muted="">
             <source src="/images/videoBanner.mp4" type="video/mp4">
         </video>
     </div>
 
-    <div class="wrapper">
 
-        <?php 
+    <?php 
             include('header.php'); 
         ?>
 
-        <?php  
+    <?php  
             echo '<label><a style="color:white;" href="logout.php">Logout</a></label><br>';  
             if(!isset($_SESSION["email"])){  
                 echo '<p style="color:white;">Session is not active<p/><br>' ;
             } else { echo '<p style="color:white;">Session is active<p/><br>' ; }
         ?>
-        <!-- Search car secction START -->
-        <!-- NEW SECCTION  -->
+    <!-- Search car secction START -->
+    <!-- NEW SECCTION  -->
 
-        <section class="aboutus-area">
-            <div class="aboutus-area-container">
-                <div class="aboutus-area-container__el">
-                    <img src="/images/6ani.svg" alt="">
-                    <p>Pe piața de chirie auto din Moldova</p>
-                </div>
-                <div class="aboutus-area-container__el">
-                    <img src="/images/72.svg" alt="">
-                    <p>Mașini în atuoparcul nostru</p>
-                </div>
-                <div class="aboutus-area-container__el">
-                    <img src="/images/2filiale.svg" alt="">
-                    <p>În Chișinău și bălți</p>
-                </div>
+    <section class="aboutus-area">
+        <div class="aboutus-area-container">
+            <div class="aboutus-area-container__el">
+                <img src="/images/6ani.svg" alt="">
+                <p>Pe piața de chirie auto din Moldova</p>
             </div>
-        </section>
+            <div class="aboutus-area-container__el">
+                <img src="/images/72.svg" alt="">
+                <p>Mașini în atuoparcul nostru</p>
+            </div>
+            <div class="aboutus-area-container__el">
+                <img src="/images/2filiale.svg" alt="">
+                <p>În Chișinău și bălți</p>
+            </div>
+        </div>
+    </section>
 
-        <section id="carFilterSelectors" class="search-form-area">
+    <section id="carFilterSelectors" class="search-form-area">
 
-            <div class="search-form">
-                <div class="search-form-box">
+        <div class="search-form">
+            <div class="search-form-box">
 
-                    <div class="search-form__text">
-                        <h2>Selectează Mașina Potrivtă:</h2>
+                <div class="search-form__text">
+                    <h2>Selectează Mașina Potrivtă:</h2>
+                </div>
+
+                <div class="search-container">
+
+                    <div class="search__select-options">
+
+                        <ul id="renderCarMakeSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarTransmissionSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarFuelTypeSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarBodyTypeSelect" class="select-options-for-rent"></ul>
+                        <ul id="renderCarRentStatusSelect" class="select-options-for-rent"></ul>
+
                     </div>
 
-                    <div class="search-container">
-
-                        <div class="search__select-options">
-
-                            <ul id="renderCarMakeSelect" class="select-options-for-rent"></ul>
-                            <ul id="renderCarTransmissionSelect" class="select-options-for-rent"></ul>
-                            <ul id="renderCarFuelTypeSelect" class="select-options-for-rent"></ul>
-                            <ul id="renderCarBodyTypeSelect" class="select-options-for-rent"></ul>
-                            <ul id="renderCarRentStatusSelect" class="select-options-for-rent"></ul>
-
-                        </div>
-
-                    </div>
                 </div>
             </div>
+        </div>
 
-            <div class="car-list__container">
-                <div class="car-list__container-text">
-                    <h2>Închiriere Mașini</h2>
-                </div>
-                <div id="car-list-render"></div>
+        <div class="car-list__container">
+            <div class="car-list__container-text">
+                <h2>Închiriere Mașini</h2>
+            </div>
+            <div id="car-list-render"></div>
+        </div>
+
+    </section>
+
+
+
+    <!-- Comment secction START -->
+    <section class="comment-area">
+        <div class="comment-area__container">
+            <div class="comment-area__container-text">
+                <h3>Recomandarile Clientilor Nostri</h3>
             </div>
 
-        </section>
+            <div class="comment-area__container-comment-carousel">
 
-
-
-        <!-- Comment secction START -->
-        <section class="comment-area">
-            <div class="comment-area__container">
-                <div class="comment-area__container-text">
-                    <h3>Recomandarile Clientilor Nostri</h3>
-                </div>
-
-                <div class="comment-area__container-comment-carousel">
-
-                </div>
             </div>
-        </section>
-        <!-- Comment secction END -->
+        </div>
+    </section>
+    <!-- Comment secction END -->
 
-    </div>
 
 
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
-    <!-- <script type='text/javascript' src="/js/main.js" defer></script> -->
+    <script type='text/javascript' src="/js/main.js" defer></script>
     <script type='text/javascript' src="/js/rentCar.js" defer></script>
 
 </body>

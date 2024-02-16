@@ -32,8 +32,6 @@ button, ul, li, label {
 body {
   background-color: #1D1D1D;
   min-width: 320px;
-}
-body > .wrapper {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -84,7 +82,7 @@ body > .wrapper {
   justify-content: center;
   align-items: center;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   margin-top: 30px;
 }
 .header-area > .header__container {
@@ -93,7 +91,7 @@ body > .wrapper {
   align-items: center;
   flex-direction: column;
   width: 100%;
-  height: 100%;
+  height: 900px;
 }
 .header-area .header__top {
   display: flex;
