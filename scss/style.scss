@@ -322,22 +322,134 @@ body {
   background-image: url(/images/BgInfoAboutUs.svg);
   background-size: cover;
   background-repeat: no-repeat;
+  pointer-events: none;
+
+  &-container{
+    @include flex-center;
+    height: 100%;
+    gap: 140px;
+
+    &__el{
+      @include flex-center;
+      flex-direction: column;
+      width: 260px;
+
+      &>p{
+        text-align: center;
+        height: 100%;
+        color: $text-light;
+        font-family: "Bai Jamjuree", sans-serif;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 23px;
+
+        margin-top: 30px;
+      }
+    }
+  }
 }
 
 //about us area end
 
-// select options ==============================================
-.ulForHideSelectOption {
-  margin-bottom: 20px;
+//search form area start
+
+.search-form-area{
+  @include flex-center;
+  flex-direction: column;
+  width: 100%;
+
+  &>.search-form{
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    flex-direction: column;
+    width: 100%;
+
+    &>.search-form__text{
+      width: 100%;
+      margin-bottom: 40px;
+
+      &>h2{
+        height: 100%;
+        color: $text-light;
+        font-family: "Bai Jamjuree", sans-serif;
+        font-weight: 500;
+        font-size: 40px;
+        line-height: 50px;
+      }
+    }
+    &>.search-container{
+      width: 100%;
+
+      &>.search__select-options{
+        @include flex-between;
+        flex-direction: row;
+      }
+    }
+  }
 }
 
-.ulForHideSelectOptions {
+//select option start
+.select-options-for-rent{
+  @include flex-center;
+  flex-direction: column;
+  width: 280px;
+  height: 150px;
+  background-color: rgba(255, 255, 255, 0.05);
+
+  &>span{
+    @include flex-center;
+    flex-direction: row;
+    height: 30px;
+    gap: 16px;
+    
+    &>p{
+      text-align: center;
+      white-space: nowrap;
+      height: 100%;
+      color: $text-light;
+      font-family: "Jura", sans-serif;
+      font-weight: 500;
+      font-size: 24px;
+      line-height: 28px;
+    }
+
+    &>img{
+      height: 100%;
+    }
+  }
+
+  // &>.ul-for-hide-selectoptions {
+  //   display: none;
+  //   position: relative;
+  //   left: 5px;
+  //   margin-bottom: 20px;
+  // }
+}
+//select option end
+
+//search form area end
+// .ul-for-hide-selectoptions {
+//   opacity: 0;
+//   transition: opacity 2s;
+//   display: none;
+// }
+// // select options ==============================================
+
+// .show {
+//   opacity: 1;
+//   transition: opacity 2s;
+//   display: block;
+// }
+
+.ul-for-hide-selectoptions {
   display: none;
-  position: relative;
-  border: 2px solid rgb(124, 124, 124);
-  left: 5px;
+  opacity: 0;
+  transition: opacity 1s;
 }
 
 .show {
-  display: block;
-}/*# sourceMappingURL=style.css.map */
+  // opacity: 1;
+  // display: block;
+  transition: opacity 2s;
+}

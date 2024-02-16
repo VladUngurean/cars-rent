@@ -13,48 +13,47 @@ if (carsInfoFromPHP === "") {
   //HTML for make and model
   function HTMLforMakeModelSelect() {
     return `
-      <li class="">
-            <span id="dropDownMakes"> <p>Marca</p> <img src="/images/arrow.svg" alt="arrow"> </span>
-        <ul id="carMakesForSelect" class="ulForHideSelectOptions ulForCarMakes"></ul>
-      </li>
+          <span id="dropDownMakes"> 
+            <p>Marca</p> 
+            <img src="/images/arrow.svg" alt="arrow">
+          </span>
+        <ul id="carMakesForSelect" class="ul-for-hide-selectoptions ulForCarMakes"></ul>
     `;
   }
   function HTMLmakeSelectOptions(make) {
     return `
-      <li class="">
+      <div class="select-option">
 
           <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
           <sapn id="dropDown${make}Models"> <p>${make}</p> <img src="/images/arrow.svg" alt="arrow"> </sapn>
 
-        <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels"></ul>
-      </li>
+        <ul id="renderModels${make}" class="ul-for-hide-selectoptions ulForCarModels"></ul>
+      </div>
     `;
   }
   function HTMLmodelSelectOptions(model) {
     return `
-        <li class="">
+        <div class="select-option">
 
           <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
           <label for="select${model}">${model}</label>
 
-        </li>
+        </div>
       `;
   }
   //HTML for transmission
   function HTMLforTransmissionSelect() {
     return `
-      <li class="">
-        <span id="selectTransmissionType"> <p>Cutie de viteze</p> <img src="/images/arrow.svg" alt="arrow"> </span>
-        <ul id="transmissionTypeList" class="ulForHideSelectOptions ulForTransmissions"></ul>
-      </li>
+      <span id="selectTransmissionType"> <p>Cutie de viteze</p> <img src="/images/arrow.svg" alt="arrow"> </span>
+      <ul id="transmissionTypeList" class="ul-for-hide-selectoptions ulForTransmissions"></ul>
     `;
   }
   function HTMLtransmissionSelectOptions(transmissionType) {
     return `
-        <li class="">
+        <div class="select-option">
           <input id="select${transmissionType}" class="transmissionType-checkbox" type="checkbox" name="" value="">
           <label for="select${transmissionType}">${transmissionType}</label>
-        </li>
+        </div>
       `;
   }
 
@@ -63,52 +62,46 @@ if (carsInfoFromPHP === "") {
   //HTML for fuel type-------------------------------------------------------------------------------------
   function HTMLforFuelTypeSelect() {
     return `
-      <li class="">
-        <span id="selectFuelType"> <p>Tip combustibil</p><img src="/images/arrow.svg" alt="arrow"> </span>
-        <ul id="fuelTypeList" class="ulForHideSelectOptions ulForFuelTypes"></ul>
-      </li>
+      <span id="selectFuelType"> <p>Tip combustibil</p><img src="/images/arrow.svg" alt="arrow"> </span>
+      <ul id="fuelTypeList" class="ul-for-hide-selectoptions ulForFuelTypes"></ul>
     `;
   }
   function HTMLFuelTypeSelectOptions(fuelType) {
     return `
-        <li class="">
+        <div class="select-option">
           <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
           <label for="select${fuelType}">${fuelType}</label>
-        </li>
+        </div>
       `;
   }
   //HTML for body type-------------------------------------------------------------------------------------
   function HTMLforBodyTypeSelect() {
     return `
-      <li class="">
-        <span id="selectBodyType"> <p>Tip caroserie</p> <img src="/images/arrow.svg" alt="arrow"> </span>
-        <ul id="BodyTypeList" class="ulForHideSelectOptions ulForBodyTypes"></ul>
-      </li>
+      <span id="selectBodyType"> <p>Tip caroserie</p> <img src="/images/arrow.svg" alt="arrow"> </span>
+      <ul id="BodyTypeList" class="ul-for-hide-selectoptions ulForBodyTypes"></ul>
     `;
   }
   function HTMLBodyTypeSelectOptions(bodyType) {
     return `
-        <li class="">
+        <div class="select-option">
           <input id="select${bodyType}" class="bodyType-checkbox" type="checkbox" name="" value="">
           <label for="select${bodyType}">${bodyType}</label>
-        </li>
+        </div>
       `;
   }
   //HTML for rent status-------------------------------------------------------------------------------------
   function HTMLforRentStatusSelect() {
     return `
-      <li class="">
-        <span id="selectRentStatus"> <p>Statut Arenda 24h</p> <img src="/images/arrow.svg" alt="arrow"> </span>
-        <ul id="rentStatusList" class="ulForHideSelectOptions ulForRentStatus"></ul>
-      </li>
+      <span id="selectRentStatus"> <p>Statut Arenda 24h</p> <img src="/images/arrow.svg" alt="arrow"> </span>
+      <ul id="rentStatusList" class="ul-for-hide-selectoptions ulForRentStatus"></ul>
     `;
   }
   function HTMLRentStatusSelectOptions(rentStatus) {
     return `
-        <li class="">
+        <div class="select-option">
           <input id="select${rentStatus}" class="rentStatus-checkbox" type="checkbox" name="" value="">
           <label for="select${rentStatus}">${rentStatus}</label>
-        </li>
+        </div>
       `;
   }
   //HTML for do today end-------------------------------------------------------------------------------------

@@ -31,10 +31,10 @@
         ?>
 
     <?php  
-            echo '<label><a style="color:white;" href="logout.php">Logout</a></label><br>';  
+            echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:white;" href="logout.php">Logout</a></label><br>';  
             if(!isset($_SESSION["email"])){  
-                echo '<p style="color:white;">Session is not active<p/><br>' ;
-            } else { echo '<p style="color:white;">Session is active<p/><br>' ; }
+                echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/><br>' ;
+            } else { echo '<p style="color:white; position:absolute; bottom:20px;">Session is active<p/><br>' ; }
         ?>
     <!-- Search car secction START -->
     <!-- NEW SECCTION  -->
@@ -59,25 +59,23 @@
     <section id="carFilterSelectors" class="search-form-area">
 
         <div class="search-form">
-            <div class="search-form-box">
 
-                <div class="search-form__text">
-                    <h2>Selectează Mașina Potrivtă:</h2>
-                </div>
+            <div class="search-form__text">
+                <h2>Selectează Mașina Potrivtă:</h2>
+            </div>
 
-                <div class="search-container">
+            <div class="search-container">
 
-                    <div class="search__select-options">
+                <div class="search__select-options">
 
-                        <ul id="renderCarMakeSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarTransmissionSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarFuelTypeSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarBodyTypeSelect" class="select-options-for-rent"></ul>
-                        <ul id="renderCarRentStatusSelect" class="select-options-for-rent"></ul>
-
-                    </div>
+                    <div id="renderCarMakeSelect" class="select-options-for-rent"></div>
+                    <div id="renderCarTransmissionSelect" class="select-options-for-rent"></div>
+                    <div id="renderCarFuelTypeSelect" class="select-options-for-rent"></div>
+                    <div id="renderCarBodyTypeSelect" class="select-options-for-rent"></div>
+                    <div id="renderCarRentStatusSelect" class="select-options-for-rent"></div>
 
                 </div>
+
             </div>
         </div>
 
