@@ -40,15 +40,24 @@
         <!-- Search car secction START -->
         <!-- NEW SECCTION  -->
 
-        <section id="carFilterSelectors" class="search-form-area">
-
-            <div class="car-list__container">
-                <div class="car-list__container-text">
-                    <h2>Închiriere Mașini</h2>
+        <section class="aboutus-area">
+            <div class="aboutus-area-container">
+                <div class="aboutus-area-container__el">
+                    <img src="/images/6ani.svg" alt="">
+                    <p>Pe piața de chirie auto din Moldova</p>
                 </div>
-                <div id="car-list-render"></div>
+                <div class="aboutus-area-container__el">
+                    <img src="/images/72.svg" alt="">
+                    <p>Mașini în atuoparcul nostru</p>
+                </div>
+                <div class="aboutus-area-container__el">
+                    <img src="/images/2filiale.svg" alt="">
+                    <p>În Chișinău și bălți</p>
+                </div>
             </div>
+        </section>
 
+        <section id="carFilterSelectors" class="search-form-area">
 
             <div class="search-form">
                 <div class="search-form-box">
@@ -72,6 +81,14 @@
                     </div>
                 </div>
             </div>
+
+            <div class="car-list__container">
+                <div class="car-list__container-text">
+                    <h2>Închiriere Mașini</h2>
+                </div>
+                <div id="car-list-render"></div>
+            </div>
+
         </section>
 
 

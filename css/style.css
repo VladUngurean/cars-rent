@@ -38,9 +38,10 @@ body > .wrapper {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  max-width: 1637px;
+  max-width: 1534px;
   width: 100%;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 .banner__video {
@@ -70,7 +71,7 @@ body > .wrapper {
   top: -100px;
   right: 0;
   z-index: 2;
-  text-wrap: nowrap;
+  white-space: nowrap;
   color: #FFFFFF;
   font-family: "Jura", sans-serif;
   font-weight: 500;
@@ -118,7 +119,7 @@ body > .wrapper {
   gap: 30px;
 }
 .header-area .header__top > .header__left > .nav__container > nav > .nav__ul > .nav__li > a {
-  text-wrap: nowrap;
+  white-space: nowrap;
   color: #FFFFFF;
   font-family: "Jura", sans-serif;
   font-weight: 500;
@@ -137,7 +138,7 @@ body > .wrapper {
   gap: 10px;
 }
 .header-area .header__top > .header__right > .language__container > p {
-  text-wrap: nowrap;
+  white-space: nowrap;
   text-align: center;
   color: #FFFFFF;
   font-family: "Jura", sans-serif;
@@ -151,7 +152,7 @@ body > .wrapper {
   align-items: center;
 }
 .header-area .header__top > .header__right > #user__container > .login-register-container > a {
-  text-wrap: nowrap;
+  white-space: nowrap;
   height: 100%;
   color: #FFFFFF;
   font-family: "Jura", sans-serif;
@@ -170,7 +171,7 @@ body > .wrapper {
   align-items: center;
 }
 .header-area .header__top > .header__right > .phone__number-container > a > p {
-  text-wrap: nowrap;
+  white-space: nowrap;
   height: 100%;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
@@ -203,7 +204,7 @@ body > .wrapper {
   top: -160px;
 }
 .header-area .header__bottom > h1 {
-  text-wrap: nowrap;
+  white-space: nowrap;
   height: 100%;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
@@ -212,7 +213,7 @@ body > .wrapper {
   line-height: 86px;
 }
 .header-area .header__bottom > p {
-  text-wrap: nowrap;
+  white-space: nowrap;
   height: 100%;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
@@ -231,13 +232,21 @@ body > .wrapper {
   background: rgba(255, 255, 255, 0.2);
   border-radius: 50px;
   padding: 10px 32px;
-  text-wrap: nowrap;
+  white-space: nowrap;
   height: 100%;
   color: #FFFFFF;
   font-family: "Jura", sans-serif;
   font-weight: 600;
   font-size: 22px;
   line-height: 26px;
+}
+
+.aboutus-area {
+  width: 100%;
+  height: 404px;
+  background-image: url(/images/BgInfoAboutUs.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .ulForHideSelectOption {

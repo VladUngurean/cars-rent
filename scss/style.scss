@@ -1,5 +1,6 @@
 @import "vars";
 @import "fonts";
+@import "media";
 
 // font-family: "Bai Jamjuree", sans-serif;
 // font-family: "Jura", sans-serif;
@@ -66,9 +67,11 @@ body {
     @include flex-center;
     flex-direction: column;
 
-    max-width: 1637px;
+    max-width: 1534px;
     width: 100%;
     margin: 0 auto;
+    padding: 0 10px;
+
   }
 }
 
@@ -108,7 +111,8 @@ body {
     top: -100px;
     right: 0;
     z-index: 2;
-    text-wrap: nowrap;
+   
+    white-space: nowrap;
     color: $text-light;
     font-family: "Jura", sans-serif;
     font-weight: 500;
@@ -131,6 +135,7 @@ body {
     flex-direction: column;
     width: 100%;
     height: 100%;
+
   }
 
   & .header__top{
@@ -159,7 +164,8 @@ body {
             gap: 30px;
       
             &>.nav__li>a{
-              text-wrap: nowrap;
+    
+              white-space: nowrap;
               color: $text-light;
               font-family: "Jura", sans-serif;
               font-weight: 500;
@@ -181,7 +187,8 @@ body {
         gap: 10px;
 
         &>p{
-          text-wrap: nowrap;
+
+          white-space: nowrap;
           text-align: center;
           color: $text-light;
           font-family: "Jura", sans-serif;
@@ -197,7 +204,8 @@ body {
           @include flex-center;
 
           &>a{
-            text-wrap: nowrap;
+  
+            white-space: nowrap;
             height: 100%;
             color: $text-light;
             font-family: "Jura", sans-serif;
@@ -217,7 +225,8 @@ body {
           align-items: center;
 
           &>p{
-            text-wrap: nowrap;
+  
+            white-space: nowrap;
             height: 100%;
             color: $text-light;
             font-family: "Bai Jamjuree", sans-serif;
@@ -256,7 +265,7 @@ body {
     top: -160px;
 
     &>h1{
-      text-wrap: nowrap;
+      white-space: nowrap;
       height: 100%;
       color: $text-light;
       font-family: "Bai Jamjuree", sans-serif;
@@ -267,7 +276,7 @@ body {
     }
 
     &>p{
-      text-wrap: nowrap;
+      white-space: nowrap;
       height: 100%;
       color: $text-light;
       font-family: "Bai Jamjuree", sans-serif;
@@ -290,7 +299,7 @@ body {
         border-radius: 50px;
         padding: 10px 32px;
 
-        text-wrap: nowrap;
+        white-space: nowrap;
         height: 100%;
         color: $text-light;
         font-family: "Jura", sans-serif;
@@ -309,7 +318,17 @@ body {
 
 // header end
 
+//about us area start
 
+.aboutus-area{
+  width: 100%;
+  height: 404px;
+  background-image: url(/images/BgInfoAboutUs.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+//about us area end
 
 // select options ==============================================
 .ulForHideSelectOption {
