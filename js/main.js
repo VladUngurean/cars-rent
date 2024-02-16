@@ -21,7 +21,8 @@ function setHeightOnResize(sourceSelector, targetSelector) {
 setHeightOnResize('bannerVideo', 'headerArea');
 
 
-let checkOpacity = document.getElementById("carMakesForSelect");
+// let checkOpacity = document.getElementById("carMakesForSelect");
+let checkOpacityForAll = document.querySelectorAll(".forObserver");
 
 
 const observer = new MutationObserver((mutations) => { 
@@ -30,8 +31,8 @@ const observer = new MutationObserver((mutations) => {
 
         if (mutation.attributeName === 'class') {
             const currentState = mutation.target.classList.contains('show');
-            if (checkOpacity !== currentState) {
-                checkOpacity = currentState;
+            if (checkOpacityForAll !== currentState) {
+                checkOpacityForAll = currentState;
                 // mutation.target.style.display="none"
                 if (currentState) {
                     setTimeout(() => {
@@ -43,14 +44,21 @@ const observer = new MutationObserver((mutations) => {
                     mutation.target.style.opacity=0
                     setTimeout(() => {
                         mutation.target.style.display="none"
-                      }, 1000);
+                    }, 1000);
                 }
             }
         }
     });
 });
 
-observer.observe(checkOpacity, {
-    attributes : true,
-    attributeFilter : ['style', 'class']
-   });
+// observer.observe(checkOpacity, {
+//     attributes : true,
+//     attributeFilter : ['style', 'class']
+// });
+
+checkOpacityForAll.forEach(e =>{
+    observer.observe(e, {
+        attributes : true,
+        attributeFilter : ['style', 'class']
+    });
+})
