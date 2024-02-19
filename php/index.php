@@ -88,8 +88,6 @@
 
     </section>
 
-
-
     <!-- Comment secction START -->
     <section class="comment-area">
         <div class="comment-area__container">

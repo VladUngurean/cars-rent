@@ -22,39 +22,55 @@ setHeightOnResize('bannerVideo', 'headerArea');
 
 
 // let checkOpacity = document.getElementById("carMakesForSelect");
-let checkOpacityForAll = document.querySelectorAll(".forObserver");
+// let checkOpacityForAll = document.querySelectorAll(".forObserver");
 
 
-const observer = new MutationObserver((mutations) => { 
-    mutations.forEach((mutation) => {
-        const { target } = mutation;
+// const observer = new MutationObserver((mutations) => { 
+//     mutations.forEach((mutation) => {
+//         const { target } = mutation;
 
-        if (mutation.attributeName === 'class') {
-            const currentState = mutation.target.classList.contains('show');
-            if (checkOpacityForAll !== currentState) {
-                checkOpacityForAll = currentState;
-                if (currentState) {
-                    setTimeout(() => {
-                        mutation.target.style.opacity=1
-                    }, 500);
-                    // setTimeout(() => {
-                    //     mutation.target.style.display="flex"
-                    // }, 0);
+//         if (mutation.attributeName === 'class') {
+//             const currentState = mutation.target.classList.contains('show');
+//             if (checkOpacityForAll !== currentState) {
+//                 checkOpacityForAll = currentState;
+//                 if (currentState) {
+//                         mutation.target.style.opacity=1
+//                 } else{
+//                     mutation.target.style.opacity=0
+//                 }
+//             }
+//         }
+//     });
+// });
 
-                } else{
-                    mutation.target.style.opacity=0
-                    // setTimeout(() => {
-                    //     mutation.target.style.display="none"
-                    // }, 600);
-                }
-            }
-        }
-    });
-});
+// checkOpacityForAll.forEach(e =>{
+//     observer.observe(e, {
+//         attributes : true,
+//         attributeFilter : ['style', 'class']
+//     });
+// })
 
-checkOpacityForAll.forEach(e =>{
-    observer.observe(e, {
-        attributes : true,
-        attributeFilter : ['style', 'class']
-    });
-})
+// const targetElement = document.querySelector(".forObserver");
+
+// const observer = new MutationObserver((mutations) => { 
+//     mutations.forEach((mutation) => {
+//         const { target } = mutation;
+
+//         if (mutation.attributeName === 'class') {
+//             const currentState = mutation.target.classList.contains('show');
+//             if (targetElement !== currentState) {
+//                 targetElement = currentState;
+//                 if (currentState) {
+//                     mutation.target.style.opacity = 1;
+//                 } else {
+//                     mutation.target.style.opacity = 0;
+//                 }
+//             }
+//         }
+//     });
+// });
+
+// observer.observe(targetElement, {
+//     attributes: true,
+//     attributeFilter: ['style', 'class']
+// });
