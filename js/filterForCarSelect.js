@@ -22,22 +22,26 @@ if (carsInfoFromPHP === "") {
   }
   function HTMLmakeSelectOptions(make) {
     return `
-      <div class="select-option">
-
+      <div class="select-option-make">
+        <div class="select-option-container">
           <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
-          <sapn id="dropDown${make}Models"> <p>${make}</p> <img src="/images/arrow.svg" alt="arrow"> </sapn>
+          <span id="dropDown${make}Models"> 
+            <p>${make}</p> 
+            <img src="/images/arrow.svg" alt="arrow"> 
+          </span>
+        </div>
 
-        <ul id="renderModels${make}" class="ul-for-hide-selectoptions forObserver ulForCarModels"></ul>
+        <ul id="renderModels${make}" class="ul-for-hide-selectoptions forObserver ulForCarModels" style="margin-top: 0;"></ul>
       </div>
     `;
   }
   function HTMLmodelSelectOptions(model) {
     return `
         <div class="select-option">
-
-          <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
-          <label for="select${model}">${model}</label>
-
+          <div class="select-option-container">
+            <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
+            <label for="select${model}">${model}</label>
+          </div>
         </div>
       `;
   }

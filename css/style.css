@@ -304,7 +304,7 @@ body {
 .search-form-area > .search-form > .search-container > .search__select-options {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   flex-direction: row;
 }
 
@@ -314,15 +314,17 @@ body {
   align-items: center;
   flex-direction: column;
   width: 280px;
-  height: 150px;
+  min-height: 150px;
+  padding: 60px 0;
   background-color: rgba(255, 255, 255, 0.05);
+  animation: increaseHeight 1s ease-in-out;
 }
 .select-options-for-rent > span {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: row;
+  min-width: 130px;
   height: 30px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: row;
   gap: 16px;
 }
 .select-options-for-rent > span > p {
@@ -340,11 +342,124 @@ body {
 }
 
 .ul-for-hide-selectoptions {
-  display: none;
+  min-width: 130px;
   opacity: 0;
-  transition: opacity 1s;
+  pointer-events: none;
+  position: absolute;
+  z-index: -999;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 15px;
+  margin-top: 15px;
+}
+.ul-for-hide-selectoptions > .select-option-make {
+  width: 100%;
+  animation: increaseHeight 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+}
+.ul-for-hide-selectoptions > .select-option-make input {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background-color: transparent;
+}
+.ul-for-hide-selectoptions > .select-option-make label {
+  white-space: nowrap;
+  height: 100%;
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+}
+.ul-for-hide-selectoptions > .select-option-make > .ulForCarModels {
+  margin-left: 11px;
+  gap: 10px;
+}
+.ul-for-hide-selectoptions > .select-option-make .select-option-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.ul-for-hide-selectoptions > .select-option-make .select-option-container > span {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+.ul-for-hide-selectoptions > .select-option-make .select-option-container > span > p {
+  white-space: nowrap;
+  height: 100%;
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 24px;
+}
+.ul-for-hide-selectoptions > .select-option {
+  width: 100%;
+  animation: increaseHeight 1s ease-in-out;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.ul-for-hide-selectoptions > .select-option > input {
+  width: 22px;
+  height: 22px;
+  border: none;
+  background-color: transparent;
+}
+.ul-for-hide-selectoptions > .select-option > label {
+  white-space: nowrap;
+  height: 100%;
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+  line-height: 21px;
+}
+.ul-for-hide-selectoptions > .select-option > .ulForCarModels {
+  margin-left: 11px;
+  gap: 10px;
+}
+.ul-for-hide-selectoptions > .select-option .select-option-container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
 }
 
+@keyframes increaseHeight {
+  0% {
+    height: 0;
+  }
+  100% {
+    height: 24px;
+  }
+}
+@keyframes fadeInFromTop {
+  from {
+    transform: translateY(-20px);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
 .show {
-  transition: opacity 2s;
+  opacity: 1;
+  pointer-events: all;
+  position: static;
+  z-index: 2;
+  transition: 2s ease-in;
+  animation: fadeInFromTop 2s ease forwards;
 }/*# sourceMappingURL=style.css.map */

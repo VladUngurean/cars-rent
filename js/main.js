@@ -33,28 +33,24 @@ const observer = new MutationObserver((mutations) => {
             const currentState = mutation.target.classList.contains('show');
             if (checkOpacityForAll !== currentState) {
                 checkOpacityForAll = currentState;
-                // mutation.target.style.display="none"
                 if (currentState) {
                     setTimeout(() => {
                         mutation.target.style.opacity=1
-                    }, 200);
-                        mutation.target.style.display="block"
+                    }, 500);
+                    // setTimeout(() => {
+                    //     mutation.target.style.display="flex"
+                    // }, 0);
 
                 } else{
                     mutation.target.style.opacity=0
-                    setTimeout(() => {
-                        mutation.target.style.display="none"
-                    }, 1000);
+                    // setTimeout(() => {
+                    //     mutation.target.style.display="none"
+                    // }, 600);
                 }
             }
         }
     });
 });
-
-// observer.observe(checkOpacity, {
-//     attributes : true,
-//     attributeFilter : ['style', 'class']
-// });
 
 checkOpacityForAll.forEach(e =>{
     observer.observe(e, {
