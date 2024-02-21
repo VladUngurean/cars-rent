@@ -77,8 +77,7 @@ body {
   width: 100%;
 }
 .banner__video > video {
-  width: 100%;
-  height: 100%;
+  min-height: 100%;
 }
 .banner__video > p {
   position: relative;
@@ -94,9 +93,6 @@ body {
 }
 
 .header-area {
-  display: flex;
-  justify-content: center;
-  align-items: center;
   width: 100%;
   height: 100%;
   margin-top: 30px;
@@ -258,7 +254,7 @@ body {
 .aboutus-area {
   width: 100%;
   height: 404px;
-  background-image: url(/images/BgInfoAboutUs.svg);
+  background-image: url(/images/backgrounds/BgInfoAboutUs.svg);
   background-size: cover;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -332,6 +328,7 @@ body {
   align-items: flex-start;
 }
 .search-form-area .car-list__container > #car-list-render {
+  width: 100%;
   display: flex;
   flex-direction: row;
   align-items: flex-start;
@@ -339,14 +336,14 @@ body {
   gap: 30px;
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box {
-  width: 730px;
+  width: 480px;
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box > img {
   width: 100%;
-  height: 388px;
+  height: 300px;
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box > .car-list__box-make-model {
-  margin: 30px 0;
+  margin: 10px 0;
   text-align: start;
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box > .car-list__box-make-model > h4 {
@@ -354,7 +351,7 @@ body {
   color: #FFFFFF;
   font-family: "Jura", sans-serif;
   font-weight: 600;
-  font-size: 28px;
+  font-size: 25px;
   line-height: 33px;
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box > .car-list__box-details {
@@ -368,7 +365,7 @@ body {
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 600;
-  font-size: 25px;
+  font-size: 22px;
   line-height: 31px;
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box .car-list__box-details-tech {
@@ -385,7 +382,7 @@ body {
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box .car-list__box-details-tech .car-list__box-details-tech__item > img {
   width: 100%;
-  height: 24px;
+  height: 23px;
 }
 .search-form-area .car-list__container > #car-list-render > .car-list__box .car-list__box-details-tech .car-list__box-details-tech__item > h6 {
   white-space: nowrap;
@@ -393,8 +390,29 @@ body {
   opacity: 60%;
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 600;
-  font-size: 20px;
+  font-size: 17px;
   line-height: 23px;
+}
+
+.show-more-cars {
+  width: 100%;
+  height: 100px;
+  margin-top: 30px;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: transparent;
+  border: 2px #FFFFFF solid;
+}
+.show-more-cars > p {
+  white-space: nowrap;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+  line-height: 37px;
 }
 
 .select-options-for-rent {
@@ -527,6 +545,51 @@ body {
   align-items: center;
   flex-direction: row;
   gap: 10px;
+}
+
+.aditional-info-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.aditional-info-area .aditional-info-area-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.info-about-bonus-programm {
+  width: 100%;
+  height: 100vh;
+  max-height: 423px;
+  padding: 74px;
+  display: flex;
+  align-items: flex-start;
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.info-about-bonus-programm .info-about-bonus-programm-container p:first-child {
+  white-space: nowrap;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 50px;
+}
+.info-about-bonus-programm .info-about-bonus-programm-container p:nth-child(2) {
+  white-space: nowrap;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 25px;
 }
 
 .ulForHideSelectOptions {

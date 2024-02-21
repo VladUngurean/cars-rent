@@ -15,7 +15,7 @@ if (carsInfoFromPHP === "") {
     return `
           <span id="dropDownMakes"> 
             <p>Marca</p> 
-            <img src="/images/arrow.svg" alt="arrow">
+            <img src="/images/aditionalElements/arrow.svg" alt="arrow">
           </span>
         <ul id="carMakesForSelect" class="ul-for-hide-selectoptions forObserver ulForCarMakes"></ul>
     `;
@@ -27,7 +27,7 @@ if (carsInfoFromPHP === "") {
           <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
           <span id="dropDown${make}Models"> 
             <p>${make}</p> 
-            <img src="/images/arrow.svg" alt="arrow"> 
+            <img src="/images/aditionalElements/arrow.svg" alt="arrow"> 
           </span>
         </div>
 
@@ -48,7 +48,7 @@ if (carsInfoFromPHP === "") {
   //HTML for transmission
   function HTMLforTransmissionSelect() {
     return `
-      <span id="selectTransmissionType"> <p>Cutie de viteze</p> <img src="/images/arrow.svg" alt="arrow"> </span>
+      <span id="selectTransmissionType"> <p>Cutie de viteze</p> <img src="/images/aditionalElements/arrow.svg" alt="arrow"> </span>
       <ul id="transmissionTypeList" class="ul-for-hide-selectoptions forObserver ulForTransmissions"></ul>
     `;
   }
@@ -66,7 +66,7 @@ if (carsInfoFromPHP === "") {
   //HTML for fuel type-------------------------------------------------------------------------------------
   function HTMLforFuelTypeSelect() {
     return `
-      <span id="selectFuelType"> <p>Tip combustibil</p><img src="/images/arrow.svg" alt="arrow"> </span>
+      <span id="selectFuelType"> <p>Tip combustibil</p><img src="/images/aditionalElements/arrow.svg" alt="arrow"> </span>
       <ul id="fuelTypeList" class="ul-for-hide-selectoptions forObserver ulForFuelTypes"></ul>
     `;
   }
@@ -81,7 +81,7 @@ if (carsInfoFromPHP === "") {
   //HTML for body type-------------------------------------------------------------------------------------
   function HTMLforBodyTypeSelect() {
     return `
-      <span id="selectBodyType"> <p>Tip caroserie</p> <img src="/images/arrow.svg" alt="arrow"> </span>
+      <span id="selectBodyType"> <p>Tip caroserie</p> <img src="/images/aditionalElements/arrow.svg" alt="arrow"> </span>
       <ul id="BodyTypeList" class="ul-for-hide-selectoptions forObserver ulForBodyTypes"></ul>
     `;
   }
@@ -96,7 +96,7 @@ if (carsInfoFromPHP === "") {
   //HTML for rent status-------------------------------------------------------------------------------------
   function HTMLforRentStatusSelect() {
     return `
-      <span id="selectRentStatus"> <p>Statut Arenda 24h</p> <img src="/images/arrow.svg" alt="arrow"> </span>
+      <span id="selectRentStatus"> <p>Statut Arenda 24h</p> <img src="/images/aditionalElements/arrow.svg" alt="arrow"> </span>
       <ul id="rentStatusList" class="ul-for-hide-selectoptions forObserver ulForRentStatus"></ul>
     `;
   }

@@ -119,8 +119,8 @@ body {
   &>video{
     // object-fit: contain;
     // background-size: cover;
-    width: 100%;
-    height: 100%;
+    // width: 100%;
+    min-height: 100%;
   }
 
   &>p{
@@ -141,7 +141,6 @@ body {
 // header start
 
 .header-area{
-  @include flex-center;
   width: 100%;
   // height: 100vh;
   height: 100%;
@@ -335,7 +334,7 @@ body {
 .aboutus-area{
   width: 100%;
   height: 404px;
-  background-image: url(/images/BgInfoAboutUs.svg);
+  background-image: url(/images/backgrounds/BgInfoAboutUs.svg);
   background-size: cover;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -422,23 +421,25 @@ body {
   align-items: flex-start;
 
   &>#car-list-render{
+    width: 100%;
     display: flex;
     flex-direction: row;
+    // justify-content: center;
     align-items: flex-start;
     flex-wrap: wrap;
 
     gap: 30px;
 
     &>.car-list__box{
-      width: 730px;
+      width: 480px;
 
       &>img{
         width: 100%;
-        height: 388px;
+        height: 300px;
       }
 
       &>.car-list__box-make-model{
-        margin: 30px 0;
+        margin: 10px 0;
         text-align: start;
 
         &>h4{
@@ -446,7 +447,7 @@ body {
           color: $text-light;
           font-family: "Jura", sans-serif;
           font-weight: 600;
-          font-size: 28px;
+          font-size: 25px;
           line-height: 33px;
         }
       }
@@ -463,7 +464,7 @@ body {
             color: $text-light;
             font-family: "Bai Jamjuree", sans-serif;
             font-weight: 600;
-            font-size: 25px;
+            font-size: 22px;
             line-height: 31px;
           }
         }
@@ -484,7 +485,7 @@ body {
 
           &>img{
             width: 100%;
-            height: 24px;
+            height: 23px;
           }
 
           &>h6{
@@ -493,7 +494,7 @@ body {
             opacity: 60%;
             font-family: "Bai Jamjuree", sans-serif;
             font-weight: 600;
-            font-size: 20px;
+            font-size: 17px;
             line-height: 23px;
           }
         }
@@ -502,8 +503,29 @@ body {
   }
 }
 
+}
+.show-more-cars{
+  width: 100%;
+  height: 100px;
 
+  margin-top: 30px;
+  padding: 0 80px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
 
+  background-color: transparent;
+  border: 2px $text-light solid;
+
+  &>p{
+    white-space: nowrap;
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+    line-height: 37px;
+  }
 }
 
 //select option start
@@ -677,6 +699,59 @@ body {
 
 }
 
+//select options and car end
+
+// aditional-info-area start
+
+.aditional-info-area{
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  flex-direction: column;
+  .aditional-info-area-container{
+    width: 100%;
+
+    @include flex-center;
+    flex-direction: column;
+  }
+}
+.info-about-bonus-programm{
+  width: 100%;
+  height: 100vh;
+  max-height: 423px;
+  padding: 74px;
+  display: flex;
+  align-items: flex-start;
+
+
+  // background-image: url(/images/backgrounds/bgForBonusInfo.svg);
+  background-color: black;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+
+  .info-about-bonus-programm-container{
+    
+    p:first-child{
+      white-space: nowrap;
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 50px;
+    }
+    p:nth-child(2){
+      white-space: nowrap;
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+}
+
+// aditional-info-area end
 
 //for manager start
 .ulForHideSelectOptions {

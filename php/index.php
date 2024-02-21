@@ -21,7 +21,7 @@
 
     <div class="banner__video">
         <video id="bannerVideo" preload="auto" playsinline="" autoplay="" loop="" muted="">
-            <source src="/images/videoBanner.mp4" type="video/mp4">
+            <source src="/images/backgrounds/videoBanner.mp4" type="video/mp4">
         </video>
     </div>
 
@@ -42,15 +42,15 @@
     <section class="aboutus-area">
         <div class="aboutus-area-container">
             <div class="aboutus-area-container__el">
-                <img src="/images/6ani.svg" alt="">
+                <img src="/images/aditionalElements/6ani.svg" alt="">
                 <p>Pe piața de chirie auto din Moldova</p>
             </div>
             <div class="aboutus-area-container__el">
-                <img src="/images/72.svg" alt="">
+                <img src="/images/aditionalElements/72.svg" alt="">
                 <p>Mașini în atuoparcul nostru</p>
             </div>
             <div class="aboutus-area-container__el">
-                <img src="/images/2filiale.svg" alt="">
+                <img src="/images/aditionalElements/2filiale.svg" alt="">
                 <p>În Chișinău și bălți</p>
             </div>
         </div>
@@ -86,16 +86,33 @@
             <div id="car-list-render"></div>
         </div>
 
+        <button class="show-more-cars">
+            <p>Vezi mai multe</p>
+            <img src="/images/aditionalElements/voidarrow.svg" alt="arrow">
+        </button>
+
     </section>
 
     <!-- Comment secction START -->
-    <section class="comment-area">
-        <div class="comment-area__container">
-            <div class="comment-area__container-text">
-                <h3>Recomandarile Clientilor Nostri</h3>
+    <section class="aditional-info-area">
+        <div class="aditional-info-area-container">
+
+            <div class="info-about-bonus-programm">
+                <div class="info-about-bonus-programm-container">
+                    <p>About bonus program</p>
+                    <p>About discounts</p>
+                </div>
             </div>
 
-            <div class="comment-area__container-comment-carousel">
+            <div class="info-about-company">
+
+            </div>
+
+            <div class="info-about-aditioal-rent-options">
+
+            </div>
+
+            <div class="info-about-contacts">
 
             </div>
         </div>
@@ -105,7 +122,7 @@
 
 
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
-    <script type='text/javascript' src="/js/main.js" defer></script>
+    <!-- <script type='text/javascript' src="/js/main.js" defer></script> -->
     <script type='text/javascript' src="/js/rentCar.js" defer></script>
 
 </body>
