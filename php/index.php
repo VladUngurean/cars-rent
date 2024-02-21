@@ -80,7 +80,7 @@
         </div>
 
         <div class="car-list__container">
-            <div class="car-list__container-text">
+            <div class="search-form__text">
                 <h2>Închiriere Mașini</h2>
             </div>
             <div id="car-list-render"></div>

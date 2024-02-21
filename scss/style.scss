@@ -384,16 +384,8 @@ body {
     &>.search-form__text{
       width: 100%;
       margin-bottom: 40px;
-
-      &>h2{
-        height: 100%;
-        color: $text-light;
-        font-family: "Bai Jamjuree", sans-serif;
-        font-weight: 500;
-        font-size: 40px;
-        line-height: 50px;
-      }
     }
+
     &>.search-container{
       width: 100%;
 
@@ -406,6 +398,30 @@ body {
       }
     }
   }
+
+
+  & h2{
+    height: 100%;
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+    line-height: 50px;
+  }
+//select car end
+//rendered cars for rent start
+.car-list__container{
+  width: 100%;
+  margin-top: 70px;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start
+}
+
+
+
 }
 
 //select option start

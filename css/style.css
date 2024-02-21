@@ -306,14 +306,6 @@ body {
   width: 100%;
   margin-bottom: 40px;
 }
-.search-form-area > .search-form > .search-form__text > h2 {
-  height: 100%;
-  color: #FFFFFF;
-  font-family: "Bai Jamjuree", sans-serif;
-  font-weight: 500;
-  font-size: 40px;
-  line-height: 50px;
-}
 .search-form-area > .search-form > .search-container {
   width: 100%;
 }
@@ -322,6 +314,22 @@ body {
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
+}
+.search-form-area h2 {
+  height: 100%;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+  line-height: 50px;
+}
+.search-form-area .car-list__container {
+  width: 100%;
+  margin-top: 70px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
 }
 
 .select-options-for-rent {
