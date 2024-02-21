@@ -140,7 +140,7 @@ function HTMLBodyTypeSelectOptions(bodyType) {
 function HTMLforCarsTable(carInfo) {
   return `
   <input id="tableDelete${carInfo.plate}Button" class="button" name="deleteExistingCar" type="submit" value="${carInfo.plate}" style="display: none;"/>
-  <label for="tableDelete${carInfo.plate}Button">Delete</label>
+  <label style="color: white; cursor:pointer;" for="tableDelete${carInfo.plate}Button">Delete</label>
   <tr>
       <td>${carInfo.plate}</td>
       <td>${carInfo.make}</td>
@@ -295,12 +295,12 @@ function toggleMakeCheckbox(makeCheckbox, container) {
   if (makeCheckbox.checked = true) {
     newModelCheckboxes[0].checked = true;
   }
-    if (container.classList.contains("show")) {
+    if (container.classList.contains("showOptions")) {
     } else{
-    allTogglableElements.forEach(e => e.classList.remove("show"))
+    allTogglableElements.forEach(e => e.classList.remove("showOptions"))
     newMakeInput.value="";
     modelInputs.forEach(e => e.value="");
-    container.classList.toggle("show");
+    container.classList.toggle("showOptions");
   }
   modelInputs.forEach(e => e.removeAttribute("required"));
   newMakeInput.removeAttribute("required");
@@ -320,12 +320,12 @@ newMakeRadio.addEventListener("change", function () {
   if (newMakeRadio.checked = true) {
     newModelForNewMakeRadio.checked = true;
   }
-    if (renderNewModels.classList.contains("show")) {
+    if (renderNewModels.classList.contains("showOptions")) {
     } else{
-    allTogglableElements.forEach(e => e.classList.remove("show"))
+    allTogglableElements.forEach(e => e.classList.remove("showOptions"))
     newMakeInput.value="";
     modelInputs.forEach(e => e.value="");
-    renderNewModels.classList.toggle("show");
+    renderNewModels.classList.toggle("showOptions");
   }
 });
 // 2 event listeer for add and remove required

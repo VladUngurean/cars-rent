@@ -455,37 +455,30 @@ if (carsInfoFromPHP === "") {
   // Create HTML for a single car
   const createCarHTML = (car, getImages) => `
     <div class="car-list__box">
-        <img style="width:300px;" src="/images/carsList/${getImages[0]}" alt="carImage">
-        <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
-        <div class="car-list__box-details">
-          <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
-          <div class="car-list__box-details-hr"></div>
-          <div class="car-list__box-details__price-button">
-            <div class="car-list__box-details__price-button__price">
-              <div class="price-text">De la:</div>
-              <div class="price">${car.rentDaysPrice46}€/Zi</div>
-            </div>
-            <div class="car-list__box-details__price-button__button">
-              <button id="rentThisCar">Închriază</button>
-            </div>
-          </div>
-        </div>
+      <img src="/images/carsList/${getImages[0]}" alt="carImage">
+      <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
+      <div class="car-list__box-details">
+      <div class="car-list__box-details-price">
+        <h5>${car.rentDaysPrice46}€/Zi</h5>
+      </div>
+        <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
+      </div>
     </div>
   `;
 
   // Create HTML for car details
   const createCarDetailsHTML = (car) => `
     <div class="car-list__box-details-tech__item">
-        <img src="/images/icons/calendarIcon.png" alt="time">
-        <div>An: ${car.registrationYear}</div>
-    </div>
-    <div class="car-list__box-details-tech__item-mid">
-        <img src="/images/icons/gear.png" alt="transmission">
-        <div>${car.transmissionType}</div>
+        <img src="/images/icons/calendar.svg" alt="time">
+        <h6>An: ${car.registrationYear}</h6>
     </div>
     <div class="car-list__box-details-tech__item">
-        <img src="/images/icons/fuel.png" alt="fuelType">
-        <div>${car.engineFuel}</div>
+        <img src="/images/icons/gearbox.svg" alt="transmission">
+        <h6>${car.transmissionType}</h6>
+    </div>
+    <div class="car-list__box-details-tech__item">
+        <img src="/images/icons/gasstation.svg" alt="fuelType">
+        <h6>${car.engineFuel}</h6>
     </div>
   `;
 

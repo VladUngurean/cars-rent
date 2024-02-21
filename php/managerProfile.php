@@ -185,12 +185,13 @@ if(isset($_POST["deleteExistingCar"])) {
     <form action="" method="post">
         <style>
         .table-container {
+            width: 100%;
             min-height: 300px;
-            overflow-x: auto;
+            overflow-x: scroll;
         }
 
         table {
-            width: 100%;
+            max-width: 100vw;
             border-collapse: collapse;
         }
 
@@ -198,7 +199,7 @@ if(isset($_POST["deleteExistingCar"])) {
         td {
             border: 1px solid #ddd;
             padding: 8px;
-            text-align: left;
+            /* text-align: left; */
         }
         </style>
         <div class="table-container">

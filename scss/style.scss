@@ -374,17 +374,19 @@ body {
   flex-direction: column;
   width: 100%;
 
+    
+  .search-form__text{
+    width: 100%;
+    margin-bottom: 40px;
+  }
+
+
   &>.search-form{
     display: flex;
     justify-content: flex-start;
     align-items: center;
     flex-direction: column;
     width: 100%;
-
-    &>.search-form__text{
-      width: 100%;
-      margin-bottom: 40px;
-    }
 
     &>.search-container{
       width: 100%;
@@ -417,7 +419,87 @@ body {
   display:flex;
   flex-direction: column;
   justify-content: flex-start;
-  align-items: flex-start
+  align-items: flex-start;
+
+  &>#car-list-render{
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    &>.car-list__box{
+      width: 730px;
+
+      &>img{
+        width: 100%;
+        height: 388px;
+      }
+
+      &>.car-list__box-make-model{
+        margin: 30px 0;
+        text-align: start;
+
+        &>h4{
+          white-space: nowrap;
+          color: $text-light;
+          font-family: "Jura", sans-serif;
+          font-weight: 600;
+          font-size: 28px;
+          line-height: 33px;
+        }
+      }
+
+      &>.car-list__box-details{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        .car-list__box-details-price{
+          &>h5{
+            white-space: nowrap;
+            color: $text-light;
+            font-family: "Bai Jamjuree", sans-serif;
+            font-weight: 600;
+            font-size: 25px;
+            line-height: 31px;
+          }
+        }
+      }
+
+      .car-list__box-details-tech{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+
+        gap: 20px;
+
+        .car-list__box-details-tech__item{
+          display: flex;
+          flex-direction: row;
+          gap: 10px;
+
+          &>img{
+            width: 100%;
+            height: 24px;
+          }
+
+          &>h6{
+            white-space: nowrap;
+            color: $text-light;
+            opacity: 60%;
+            font-family: "Bai Jamjuree", sans-serif;
+            font-weight: 600;
+            font-size: 20px;
+            line-height: 23px;
+          }
+        }
+      }
+    }
+  }
 }
 
 
@@ -595,8 +677,18 @@ body {
 
 }
 
+
+//for manager start
+.ulForHideSelectOptions {
+  display: none;
+}
+.showOptions{
+  display: block;
+}
+//for manager end
+
 .show {
-  // display: flex; 
+  display: flex; 
   opacity: 1;
   pointer-events: all;
   position: static;
