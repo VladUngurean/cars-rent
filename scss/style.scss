@@ -81,7 +81,7 @@ button, ul, li, label {
 body {
   background-color: $background-color;
   min-width: 320px;
-  // overflow-x: hidden;
+  overflow-x: hidden;
   @include flex-center;
   flex-direction: column;
 
@@ -717,18 +717,20 @@ body {
 }
 .info-about-bonus-programm{
   width: 100%;
-  height: 100vh;
-  max-height: 423px;
+  height: 416px;
+  // height: 100vh;
+  // max-height: 423px;
   padding: 74px;
   display: flex;
   align-items: flex-start;
 
 
-  // background-image: url(/images/backgrounds/bgForBonusInfo.svg);
-  background-color: black;
-  background-size: cover;
-  background-position: center;
+  background-image: url(/images/backgrounds/bgForBonusInfo.svg);
+  // background-color: black;
+  background-size: contain;
+  background-position: center top;
   background-repeat: no-repeat;
+  
 
   .info-about-bonus-programm-container{
     
@@ -737,15 +739,15 @@ body {
       color: $text-light;
       font-family: "Bai Jamjuree", sans-serif;
       font-weight: 700;
-      font-size: 40px;
-      line-height: 50px;
+      font-size: 5vw;
+      // line-height: 50px;
     }
     p:nth-child(2){
       white-space: nowrap;
       color: $text-light;
       font-family: "Bai Jamjuree", sans-serif;
       font-weight: 600;
-      font-size: 20px;
+      font-size: 2em;
       line-height: 25px;
     }
   }
