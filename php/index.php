@@ -105,7 +105,12 @@
             </div>
 
             <div class="info-about-company">
-
+                <div class="info-about-company-container">
+                    <img src="/images/aditionalElements/chisinauDreamCarsText.svg" alt="ChisnauDreamCars">
+                    <button class="info-about-company-button"><img src="/images/aditionalElements/bigvoidarrow.svg" alt="arrow">
+                        <p>Despre companie</p>
+                    </button>
+                </div>
             </div>
 
             <div class="info-about-aditioal-rent-options">
