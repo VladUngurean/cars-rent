@@ -99,8 +99,8 @@
 
             <div class="info-about-bonus-programm">
                 <div class="info-about-bonus-programm-container">
-                    <p>About bonus program</p>
-                    <p>About discounts</p>
+                    <p>Card de fidelitate Chișinău Dream Cars</p>
+                    <p>Reduceri presonale pâna la 40% doar pentru proprietarii de card</p>
                 </div>
             </div>
 
