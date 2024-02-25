@@ -46,12 +46,12 @@
                 <p>Pe piața de chirie auto din Moldova</p>
             </div>
             <div class="aboutus-area-container__el">
-                <img src="/images/aditionalElements/72.svg" alt="">
-                <p>Mașini în atuoparcul nostru</p>
-            </div>
-            <div class="aboutus-area-container__el">
                 <img src="/images/aditionalElements/2filiale.svg" alt="">
                 <p>În Chișinău și bălți</p>
+            </div>
+            <div class="aboutus-area-container__el">
+                <img src="/images/aditionalElements/72.svg" alt="">
+                <p>Mașini în atuoparcul nostru</p>
             </div>
         </div>
     </section>
@@ -114,7 +114,37 @@
             </div>
 
             <div class="info-about-aditioal-rent-options">
+                <div class="info-about-aditioal-rent-options-container">
+                    <div class="info-about__aditioal-rent-option">
+                        <text>Livrare în raza orașului</text>
+                        <img src="/images/icons/mapPointsIcon.svg" alt="mapPoints">
+                    </div>
 
+                    <div class="info-about__aditioal-rent-option">
+                        <text>Transport la aeroport</text>
+                        <img src="/images/icons/carIcon.svg" alt="aeroport">
+                    </div>
+
+                    <div class="info-about__aditioal-rent-option">
+                        <text>Confidențialitate deplină. Nu există înregistrare video sau audio în mașină</text>
+                        <img src="/images/icons/confIcon.svg" alt="aeroport">
+                    </div>
+
+                    <div class="info-about__aditioal-rent-option">
+                        <text>Livrare extra-program</text>
+                        <img src="/images/icons/clockIcon.svg" alt="clock">
+                    </div>
+
+                    <div class="info-about__aditioal-rent-option">
+                        <text>Scaunel pentru copil</text>
+                        <img src="/images/icons/childIcon.svg" alt="child">
+                    </div>
+
+                    <div class="info-about__aditioal-rent-option">
+                        <text>Asistență tehnică 24/24</text>
+                        <img src="/images/icons/supportIcon.svg" alt="clock">
+                    </div>
+                </div>
             </div>
 
             <div class="info-about-contacts">
