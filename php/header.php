@@ -13,18 +13,15 @@
                 <!-- Logo END -->
 
                 <!-- Nav START -->
-                <div class="nav__container">
-                    <nav>
-                        <ul class="nav__ul">
-                            <li class="nav__li"><a href="#">Despre noi</a></li>
-                            <li class="nav__li"><a href="#">Contacte</a></li>
-                            <li class="nav__li"><a href="#">Termeni și condiții</a></li>
-                            <li class="nav__li"><a href="#">Recenzii</a></li>
-                            <li class="nav__li"><a href="#">Mașini</a></li>
-                        </ul>
-                    </nav>
-
-                </div>
+                <nav>
+                    <ul class="nav__ul">
+                        <li class="nav__li"><a href="#">Despre noi</a></li>
+                        <li class="nav__li"><a href="#">Contacte</a></li>
+                        <li class="nav__li"><a href="#">Termeni și condiții</a></li>
+                        <li class="nav__li"><a href="#">Recenzii</a></li>
+                        <li class="nav__li status-active-link"><a href="#">Mașini</a></li>
+                    </ul>
+                </nav>
                 <!-- nav END -->
             </div>
 
