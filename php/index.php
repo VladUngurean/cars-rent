@@ -149,7 +149,7 @@
                 <div class="info-about-contacts-container">
                     <h2>Ai întrebări?</h2>
                     <p>Primește consultație telefonică de la expert și ajuor în alegerea aumombilului potrivit:</p>
-                    <a href="tel:+37300000000">+373 00 000 000</a>
+                    <a href="tel:+37300000000">(+373) 00 000 000</a>
                     <div class="info-about-contacts-buttons">
                         <a class="info-about-contacts-buttons-whatsapp" href="https://www.pexels.com/search/cat/" target="_blank">Scrie pe WhatsApp</a>
                         <a class="info-about-contacts-buttons-telegram" href="https://www.pexels.com/search/cat/" target="_blank">Scrie pe Telegram</a>

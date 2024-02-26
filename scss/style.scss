@@ -240,9 +240,10 @@ body {
           display: flex;
           flex-direction: row;
           align-items: center;
+          gap: 5px;
 
           &>p{
-  
+
             white-space: nowrap;
             height: 100%;
             color: $text-light;
@@ -1092,7 +1093,7 @@ body {
       font-family: "Bai Jamjuree", sans-serif;
       font-weight: 600;
       font-size: 24px;
-    pointer-events: none;
+      pointer-events: none;
     }
   }
 

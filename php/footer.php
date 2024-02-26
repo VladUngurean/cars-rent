@@ -23,7 +23,7 @@
                 </div>
                 <a href="tel:+37300000000">
                     <img src="/images/icons/phone.svg" alt="cellPhone">
-                    <p> +373 00 000 000</p>
+                    <p>(+373) 00 000 000</p>
                 </a>
                 <div class="footer-right-map-links"><img src="/images/icons/mapPointIcon.svg" alt="mapPoint">
                     <p>Chișinău, Lorem ipsum dolor</p>

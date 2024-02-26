@@ -112,9 +112,9 @@
 
                 <!-- phone start -->
                 <div class="phone__number-container">
-                    <a href="tel:+373 00 000 000">
+                    <a href="tel:+37300000000">
                         <img src="/images/icons/phone.svg" alt="" srcset="">
-                        <p>+373 00 000 000</p>
+                        <p> (+373) 00 000 000</p>
                     </a>
                 </div>
                 <!-- phone end -->
