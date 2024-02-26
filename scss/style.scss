@@ -838,7 +838,6 @@ body {
         font-family: "Jura", sans-serif;
         font-weight: 700;
         font-size: 28px;
-        line-height: 33px;
       }
     }
   }
@@ -883,6 +882,256 @@ body {
   }
 }
 // aditional-info-area end
+// info-about-contacts start
+
+.info-about-contacts{
+  width: 100%;
+  height: 416px;
+  padding: 74px;
+
+  position: relative;
+
+  display: flex;
+  // justify-content: flex-start;
+  align-items: flex-start;
+
+  background-image: url(/images/backgrounds/bgOurContacts.jpg);
+  background-color: black;
+  background-size: 800px auto;
+  background-repeat: no-repeat;
+  // pointer-events: none;
+  background-position: right;
+
+  
+  &::before{
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 30px;
+    width: 120px;
+    height: 120px;
+    border-top: 2px solid $text-light;
+    border-left: 2px solid $text-light;
+
+  }
+  &::after{
+    content: "";
+    position: absolute;
+    bottom: 30px;
+    right: 30px;
+    width: 120px;
+    height: 120px;
+    border-bottom: 2px solid $text-light;
+    border-right: 2px solid $text-light;
+  }
+
+  &>.info-about-contacts-container{
+    display: flex;
+    align-items: flex-start;
+    justify-content: flex-start;
+    flex-direction: column;
+
+    &>h2{
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 700;
+      font-size: 40px;
+      line-height: 50px;
+    }
+    &>p{
+      max-width: 422px;
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 600;
+      font-size: 20px;
+      line-height: 25px;
+      margin: 20px 0 5px;
+    }
+    &>a{
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 400;
+      font-size: 24px;
+      line-height: 30px;
+
+      border-bottom: 1px solid $text-light;
+    }
+
+    &>.info-about-contacts-buttons{
+      margin-top: 30px;
+      display: flex;
+      flex-direction: row;
+      gap: 24px;
+
+      &>.info-about-contacts-buttons-whatsapp{
+        width: 250px;
+        height: 50px;
+        background-color: rgba(27, 102, 40, 0.25);
+        
+        text-align: center;
+        padding: 13px 0;
+        color: rgba(55, 198, 52, 1);
+        font-family: "Jura", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+      }
+
+      &>.info-about-contacts-buttons-telegram{
+        width: 250px;
+        height: 50px;
+        background-color:rgba(38, 165, 196, 0.25);
+        
+        text-align: center;
+        padding: 13px 0;
+        color: rgba(38, 165, 196, 1);
+        font-family: "Jura", sans-serif;
+        font-weight: 700;
+        font-size: 20px;
+      }
+    }
+  }
+}
+
+// info-about-contacts end
+
+
+//footer start
+
+.footer-area{
+  width: 100%;
+  margin-bottom: 50px;
+
+  &>.footer-area__container{
+    display: flex;
+    flex-direction: column;
+
+    &>hr{
+      margin:40px 0 20px ;
+    }
+    &>.footer-top, .footer-bottom{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      flex-direction: row;
+
+      &>a{
+        color: $text-light-transparent;
+        font-family: "Bai Jamjuree", sans-serif;
+        font-weight: 400;
+        font-size: 18px;
+      }
+    }
+  }
+}
+
+.footer-left{
+  max-width: 390px;
+  gap: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  &>img{
+    width: 130px;
+    height: 78px;
+  }
+  &>p{
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 400;
+    font-size: 18px;
+  }
+}
+
+.footer-center{
+  max-width: 265px;
+  gap: 20px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  &>h5{
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 600;
+    font-size: 24px;
+  }
+  &>a{
+    color: $text-light-transparent;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+  }
+}
+
+.footer-right{
+  max-width: 290px;
+  gap: 30px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  
+  &>.footer-right-top-container{
+    display: flex;
+    flex-direction: row;
+    gap: 24px;
+
+    &>h5{
+      margin-right: 26px;
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 600;
+      font-size: 24px;
+    }
+  }
+
+  &>a{
+    display: flex;
+    align-items: center;
+    flex-direction: row;
+    gap: 5px;
+
+    color: $text-light-transparent;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 25px;
+
+    &>img{
+      width: 25px;
+      height: 25px;
+    }
+
+    &>p{
+      white-space: nowrap;
+    }
+  }
+
+  .footer-right-map-links{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 5px;
+
+    &>img{
+      width: 20px;
+      height: 25px;
+    }
+
+    &>p{
+      color: $text-light-transparent;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 400;
+      font-size: 20px;
+      line-height: 25px;
+    }
+  }
+}
+
+
+//footer end
 
 //for manager start
 .ulForHideSelectOptions {
