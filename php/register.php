@@ -85,7 +85,7 @@ if(isset($_POST['submit'])) {
         list($a,$b,$c,$d) = catchValues();
         $registerErrorMesage =  "Email is not valid";
     }
-} 
+}
 function validateEmail($email) {
     // Define a regular expression pattern for email validation
     $pattern = '/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/';
@@ -114,49 +114,59 @@ function validateEmail($email) {
 
     <body>
 
+
+        <?php
+            //on pag refresh should set input values to ""
+            $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
+
+            if($pageWasRefreshed ) {
+                $inputs = $dom->getElementsByTagName('input');
+                foreach ($inputs as $input) {
+                    foreach ($input->attributes as $attr) {
+                    $attr->nodeValue = "";
+                    echo "Attribute succcesss'<br />";
+                    }
+                }
+            }
+        ?>
+
         <!-- Register secction START -->
         <section class="register-area">
-            <div class="container">
-                <div class="register-area__container">
-                    <div class="register-area__container-text">
-                        <h2>Comanda Masina Online</h2>
+            <div class="register-area__container">
+                <h1>Comanda Masina Online</h1>
+
+                <form id="registerForm" action="" method="post">
+                    <div class="register-area__input-field">
+                        <p>Already have an account? <a href="login.php">Log in</a></p>
+                        <input value="<?php if(isset($a)){ echo $a;}?>" type="email" name="email" placeholder="E-mail" minlength="5" maxlength="40" required />
+                    </div>
+                    <div class="register-area__input-field">
+                        <div class="show-password"><img src="/images/icons/regularEyeIcon.svg" alt="opendedeye">Show</div>
+                        <input type="password" name="password" placeholder="Password" minlength="5" maxlength="40" required />
+                    </div>
+                    <div class="register-area__input-field">
+                        <div class="show-password"><img src="/images/icons/regularEyeIcon.svg" alt="opendedeye">Show</div>
+                        <input type="password" name="passwordCheck" placeholder="Repeat Password" minlength="5" maxlength="40" required />
                     </div>
 
-                    <form action="" method="post">
-                        <div class="register-area__container__input-field">
-                            <span><i aria-hidden="true" class="fa fa-envelope"></i></span>
-                            <input value="<?php if(isset($a)){ echo $a;}?>" type="email" name="email" placeholder="Email" minlength="5" maxlength="40" required />
-                        </div>
-                        <div class="register-area__container__input-field">
-                            <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            <input type="password" name="password" placeholder="Parola" minlength="5" maxlength="40" required />
-                        </div>
-                        <div class="register-area__container__input-field">
-                            <span><i aria-hidden="true" class="fa fa-lock"></i></span>
-                            <input type="password" name="passwordCheck" placeholder="Repeta Parola" minlength="5" maxlength="40" required />
-                        </div>
+                    <div class="register-area__input-field">
+                        <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="first_name" placeholder="First Name" minlength="3" maxlength="40" required />
+                    </div>
 
-                        <div class="register-area__container__input-field">
-                            <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                            <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="first_name" placeholder="Nume" minlength="3" maxlength="40" required />
-                        </div>
+                    <div class="register-area__input-field">
+                        <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="last_name" placeholder="Last Name" minlength="3" maxlength="40" required />
+                    </div>
 
-                        <div class="register-area__container__input-field">
-                            <span><i aria-hidden="true" class="fa fa-user"></i></span>
-                            <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="last_name" placeholder="Prenume" minlength="3" maxlength="40" required />
-                        </div>
+                    <div class="register-area__input-field">
+                        <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phone" placeholder="Phone Number" minlength="8" maxlength="10" required />
+                    </div>
 
-                        <div class="register-area__container__input-field">
-                            <span><i aria-hidden="true" class="fa fa-phone"></i></span>
-                            <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phone" placeholder="Telefon de Contact" minlength="8" maxlength="10" required />
-                        </div>
-
-                        <?php
+                    <?php
 
                         if (isset($_SESSION['email'])) {
                             if ($_SESSION['role'] === 'Admin') {
                             echo ' 
-                            <div class="register-area__container__input-field">
+                            <div class="register-area__input-field">
                                 <p>Alege Rolul</p>
                                 <select name="role" id="">
                                     <option value="Manager">Manager</option>
@@ -167,17 +177,16 @@ function validateEmail($email) {
                         }
 
                     ?>
-                        <p><?php if (!empty($registerErrorMesage)) {
-                        echo $registerErrorMesage;
-                    }?></p>
-                        <p><?php if (!empty($dataBaseResponse)) {
-                        echo $dataBaseResponse;
-                    }?></p>
-                        <input class="button" name="submit" type="submit" value="Register" />
-                        <p align="center"><a href="login.php">Login</a></p>
-                    </form>
+                    <?php if (!empty($registerErrorMesage)) {
+                        echo "<p>$registerErrorMesage</p>";
+                    }?>
+                    <?php if (!empty($dataBaseResponse)) {
+                        echo "<p>$dataBaseResponse</p>";
+                    }?>
+                    <input class="button" name="submit" type="submit" value="Register" />
+                    <p align="center"><a href="login.php">Login</a></p>
+                </form>
 
-                </div>
             </div>
         </section>
         <!-- Register secction END -->

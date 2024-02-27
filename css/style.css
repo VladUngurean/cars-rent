@@ -48,6 +48,7 @@ button, ul, li, label {
 body {
   background-color: #1D1D1D;
   min-width: 320px;
+  min-height: 100vh;
   overflow-x: hidden;
   display: flex;
   justify-content: center;
@@ -966,6 +967,105 @@ nav > .nav__ul .nav__li:hover .nav__li::before {
   font-weight: 400;
   font-size: 20px;
   line-height: 25px;
+}
+
+.register-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.register-area .register-area__container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+.register-area .register-area__container > h1 {
+  white-space: nowrap;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+  font-size: 50px;
+  line-height: 63px;
+}
+
+#registerForm {
+  width: 100%;
+  max-width: 390px;
+  gap: 27px;
+  display: flex;
+  flex-direction: column;
+}
+
+.register-area__input-field {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+}
+.register-area__input-field > p {
+  margin-right: 8px;
+  text-align: end;
+  white-space: nowrap;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+}
+.register-area__input-field > p a {
+  font-weight: bold;
+  text-decoration: underline;
+}
+.register-area__input-field > .show-password {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 62px;
+  height: 19px;
+  position: absolute;
+  top: -19px;
+  right: 0;
+  gap: 4px;
+  margin-right: 8px;
+  border: none;
+  background: none;
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+.register-area__input-field > input {
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+}
+.register-area__input-field > input::-webkit-input-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.register-area__input-field > input:-ms-input-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.register-area__input-field > input:-moz-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+}
+.register-area__input-field > input::-moz-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
 }
 
 .ulForHideSelectOptions {

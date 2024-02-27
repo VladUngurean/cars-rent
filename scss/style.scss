@@ -21,6 +21,12 @@
   justify-content: space-between;
   align-items: center;
   }
+@mixin input-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  }
 
   // mixins end
   // keyframes start
@@ -81,6 +87,7 @@ button, ul, li, label {
 body {
   background-color: $background-color;
   min-width: 320px;
+  min-height: 100vh;
   overflow-x: hidden;
   @include flex-center;
   flex-direction: column;
@@ -1140,6 +1147,110 @@ nav{
 }
 //footer end
 
+
+
+//register start
+
+.register-area{
+  width: 100%;
+  @include flex-center;
+  .register-area__container{
+    // max-width: 400px;
+    @include flex-center;
+    flex-direction: column;
+
+    &>h1{
+      white-space: nowrap;
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 500;
+      font-size: 50px;
+      line-height: 63px;
+    }
+  }
+}
+
+#registerForm{
+  width: 100%;
+  max-width: 390px;
+  gap: 27px;
+
+  display: flex;
+  flex-direction: column;
+}
+.register-area__input-field{
+  width: 100%;
+  
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-end;
+  position: relative;
+
+  &>p{
+    margin-right: 8px;
+    text-align: end;
+    white-space: nowrap;
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 20px;
+
+    a{
+      font-weight: bold;
+      text-decoration: underline;
+    }
+
+  }
+  &>.show-password{
+    @include flex-center;
+    width: 62px;
+    height: 19px;
+
+    position: absolute;
+    top: -19px;
+    right: 0;
+
+    gap: 4px;
+    margin-right: 8px;
+
+
+    border: none;
+    background: none;
+
+    color: $text-light;
+    font-family: "Jura", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+  }
+
+  &>input{
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+  }
+  
+  &>input::-webkit-input-placeholder {
+    @include input-placeholder;
+  }
+
+  &>input:-ms-input-placeholder {
+    @include input-placeholder;
+  }
+
+  &>input:-moz-placeholder {
+    @include input-placeholder;
+  }
+
+  &>input::-moz-placeholder {
+    @include input-placeholder;
+  }
+
+
+}
+
+//register end
 //for manager start
 .ulForHideSelectOptions {
   display: none;
