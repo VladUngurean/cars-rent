@@ -994,7 +994,9 @@ nav > .nav__ul .nav__li:hover .nav__li::before {
   width: 100%;
   max-width: 390px;
   gap: 27px;
+  margin-top: 30px;
   display: flex;
+  align-items: center;
   flex-direction: column;
 }
 
@@ -1015,6 +1017,7 @@ nav > .nav__ul .nav__li:hover .nav__li::before {
   font-weight: 400;
   font-size: 16px;
   line-height: 20px;
+  margin-bottom: 5px;
 }
 .register-area__input-field > p a {
   font-weight: bold;
@@ -1027,21 +1030,20 @@ nav > .nav__ul .nav__li:hover .nav__li::before {
   width: 62px;
   height: 19px;
   position: absolute;
-  top: -19px;
+  top: -21px;
   right: 0;
-  gap: 4px;
   margin-right: 8px;
-  border: none;
-  background: none;
-  color: #FFFFFF;
-  font-family: "Jura", sans-serif;
-  font-weight: 500;
-  font-size: 16px;
+  cursor: pointer;
 }
 .register-area__input-field > input {
   width: 100%;
   height: 50px;
   padding-left: 10px;
+  border: none;
+  border-radius: 2px;
+}
+.register-area__input-field > input:focus {
+  outline: gray solid 2px;
 }
 .register-area__input-field > input::-webkit-input-placeholder {
   font-family: "Jura", sans-serif;
@@ -1066,6 +1068,50 @@ nav > .nav__ul .nav__li:hover .nav__li::before {
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
+}
+
+.password-show-option {
+  width: 100%;
+  height: 100%;
+  flex-direction: row;
+  align-items: center;
+  gap: 4px;
+}
+.password-show-option > img {
+  width: 16px;
+  height: 15px;
+}
+.password-show-option > p {
+  width: 42px;
+  text-align: left;
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+}
+
+.register-button {
+  max-width: 236px;
+  width: 100%;
+  height: 50px;
+  color: black;
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.register-error-message {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 50px;
+  background-color: rgba(255, 0, 0, 0.3);
+  border-radius: 2px;
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 700;
+  font-size: 16px;
 }
 
 .ulForHideSelectOptions {
