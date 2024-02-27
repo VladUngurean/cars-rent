@@ -173,8 +173,10 @@ nav{
     pointer-events: none;
 
     &>.nav__li{
+      position: relative;
       pointer-events: all;
-      transition: 2s ease-in;
+      border-bottom: 1px solid transparent;
+      transition: border-bottom 0.3s ease-in-out;
       &>a{
         white-space: nowrap;
         color: $text-light;
@@ -184,13 +186,32 @@ nav{
         line-height: 21px;
       }
     }
-    &>.nav__li:hover{
-      border-bottom: 1px solid red;
-      transition: 2s ease-in;
+
+    .nav__li::before{
+      content: '';
+      position: absolute;
+      left: 0;
+      bottom: 0;
+      width: 0;
+      border-bottom: solid 2px #000;
+    }
+    .nav__li:hover{
+      .nav__li::before{
+        animation: border_anim 1s linear forwards;
+      }
+      // border-bottom: 1px solid white;
+      // transition: border-bottom 0.3s ease-in-out;
     }
   }
 }
-
+@keyframes border_anim {
+	0%{
+		width: 0%;
+	}
+	100%{
+		width: 100%;
+	}
+}
 
 .header__right{
   @include flex-between;
@@ -323,10 +344,7 @@ nav{
     }
   }
 }
-//header active link status
-.status-active-link{
-  border-bottom: 1px solid $text-light;
-}
+
 
 // header end
 

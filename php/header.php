@@ -19,7 +19,7 @@
                         <li class="nav__li"><a href="#">Contacte</a></li>
                         <li class="nav__li"><a href="#">Termeni și condiții</a></li>
                         <li class="nav__li"><a href="#">Recenzii</a></li>
-                        <li class="nav__li status-active-link"><a href="#">Mașini</a></li>
+                        <li class="nav__li" style="pointer-events:none; border-bottom: 1px solid white;"><a href="#">Mașini</a></li>
                     </ul>
                 </nav>
                 <!-- nav END -->
@@ -63,9 +63,9 @@
 
                     if(!isset($_SESSION["email"])){  
                         echo '<div class="login-register-container">';  
-                        echo '<a href="login.php">Log in</a>';  
+                        echo '<a href="register.php">Sign Up</a>';  
                         echo '<span style="pointer-events:none; color:#FEFEFE; font-size: 18px; margin:0 2px; font-weight: 600;"> / </span>';  
-                        echo '<a href="register.php">Register</a>';  
+                        echo '<a href="login.php">Log in</a>';  
                         echo '</div>';  
 
                     } elseif(isset($_SESSION["email"])) {
