@@ -34,26 +34,11 @@
   @keyframes increaseHeight {
     0% {
       opacity: 0;
-      height: 0px;
-    }
-    50% {
-      height: 20px;
     }
     100% {
       opacity: 1;
-      height: 100%;
     }
   }
-  
-  @keyframes fadeInFromTop {
-    0% {
-      transform: translateX(-50px);
-    }
-    100% {
-      transform: translateX(0);
-    }
-  }
-  
     // keyframes end
 
 //GENERAL STYLING START
@@ -187,8 +172,6 @@ nav{
     &>.nav__li{
       position: relative;
       pointer-events: all;
-      border-bottom: 1px solid transparent;
-      transition: border-bottom 0.3s ease-in-out;
       &>a{
         white-space: nowrap;
         color: $text-light;
@@ -206,11 +189,10 @@ nav{
       left: 0;
       bottom: 0;
       width: 0;
-      border-bottom: solid 1px $text-light;
+      border-bottom: solid 1px white;
     }
     .nav__li:hover::before{
-      
-        animation: border_hover_animation 0.3s linear forwards;
+      animation: border_hover_animation 0.3s linear forwards;
     }
   }
 }
@@ -355,6 +337,13 @@ nav{
       font-weight: 600;
       font-size: 22px;
       line-height: 26px;
+
+      transition: background 0.3s ease-in-out;
+    }
+
+    &>a:hover{
+      background: rgba(255, 255, 255, 0.35);
+      transition: background 0.3s ease-in-out;
     }
   }
 }
@@ -1327,6 +1316,6 @@ nav{
   pointer-events: all;
   position: relative;
   z-index: 2;
-  // animation: increaseHeight 2s ease-in-out;
+  animation: increaseHeight 0.4s ease-in-out;
   overflow: scroll;
 }
