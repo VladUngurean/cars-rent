@@ -22,7 +22,7 @@ if (carsInfoFromPHP === "") {
   }
   function HTMLmakeSelectOptions(make) {
     return `
-      <div class="select-option-make">
+      <div class="${make} select-option-make">
         <div class="select-option-container">
           <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
           <span id="dropDown${make}Models"> 
@@ -37,13 +37,13 @@ if (carsInfoFromPHP === "") {
   }
   function HTMLmodelSelectOptions(model) {
     return `
-        <div class="select-option">
-          <div class="select-option-container">
-            <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
-            <label for="select${model}">${model}</label>
-          </div>
+      <div class="select-option">
+        <div class="select-option-container">
+          <input id="select${model}" class="model-checkbox" type="checkbox" name="" value="">
+          <label for="select${model}">${model}</label>
         </div>
-      `;
+      </div>
+    `;
   }
   //HTML for transmission
   function HTMLforTransmissionSelect() {
@@ -54,11 +54,11 @@ if (carsInfoFromPHP === "") {
   }
   function HTMLtransmissionSelectOptions(transmissionType) {
     return `
-        <div class="select-option">
-          <input id="select${transmissionType}" class="transmissionType-checkbox" type="checkbox" name="" value="">
-          <label for="select${transmissionType}">${transmissionType}</label>
-        </div>
-      `;
+      <div class="select-option">
+        <input id="select${transmissionType}" class="transmissionType-checkbox" type="checkbox" name="" value="">
+        <label for="select${transmissionType}">${transmissionType}</label>
+      </div>
+    `;
   }
 
   //HTML for do today-------------------------------------------------------------------------------------
@@ -72,11 +72,11 @@ if (carsInfoFromPHP === "") {
   }
   function HTMLFuelTypeSelectOptions(fuelType) {
     return `
-        <div class="select-option">
-          <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
-          <label for="select${fuelType}">${fuelType}</label>
-        </div>
-      `;
+      <div class="select-option">
+        <input id="select${fuelType}" class="fuelType-checkbox" type="checkbox" name="" value="">
+        <label for="select${fuelType}">${fuelType}</label>
+      </div>
+    `;
   }
   //HTML for body type-------------------------------------------------------------------------------------
   function HTMLforBodyTypeSelect() {

@@ -33,10 +33,15 @@
   
   @keyframes increaseHeight {
     0% {
-      height: 0;
+      opacity: 0;
+      height: 0px;
+    }
+    50% {
+      height: 20px;
     }
     100% {
-      height: 129px;
+      opacity: 1;
+      height: 100%;
     }
   }
   
@@ -196,22 +201,20 @@ nav{
 
     .nav__li::before{
       content: '';
+      width: 0px;
       position: absolute;
       left: 0;
       bottom: 0;
       width: 0;
-      border-bottom: solid 2px #000;
+      border-bottom: solid 1px $text-light;
     }
-    .nav__li:hover{
-      .nav__li::before{
-        animation: border_anim 1s linear forwards;
-      }
-      // border-bottom: 1px solid white;
-      // transition: border-bottom 0.3s ease-in-out;
+    .nav__li:hover::before{
+      
+        animation: border_hover_animation 0.3s linear forwards;
     }
   }
 }
-@keyframes border_anim {
+@keyframes border_hover_animation {
 	0%{
 		width: 0%;
 	}
@@ -232,11 +235,15 @@ nav{
     &>p{
       white-space: nowrap;
       text-align: center;
-      color: $text-light;
+      color: $text-light-half-transparent;
       font-family: "Jura", sans-serif;
       font-weight: 500;
       font-size: 18px;
       line-height: 21px;
+      cursor: pointer;
+    }
+    &>.language-active{
+      color: $text-light;
     }
   }
 
@@ -564,6 +571,7 @@ nav{
   flex-direction: column;
   width: 280px;
   min-height: 150px;
+  position: relative;
   
   padding: 60px 0;
   background-color: rgba(255, 255, 255, 0.05);
@@ -599,13 +607,13 @@ nav{
 
 .ul-for-hide-selectoptions {
   min-width: 130px;
+  // max-height: 0;
   opacity: 0;
   pointer-events: none;
   position: absolute;
   z-index: -999;
   
   display: flex;
-  justify-content: center;
   align-items: flex-start;
   flex-direction: column;
 
@@ -1281,6 +1289,8 @@ nav{
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
+
+  cursor: pointer;
 }
 
 
@@ -1307,12 +1317,16 @@ nav{
 .showOptions{
   display: block;
 }
+
 //for manager end
+
 .show {
+  max-height: 300px;
   display: flex; 
   opacity: 1;
   pointer-events: all;
-  position: static;
+  position: relative;
   z-index: 2;
-  animation: increaseHeight 0.3s ease-in-out;
+  // animation: increaseHeight 2s ease-in-out;
+  overflow: scroll;
 }

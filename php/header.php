@@ -28,8 +28,8 @@
             <div class="header__right">
                 <!-- language start -->
                 <div class="language__container">
-                    <p>Rom</p>
-                    <p>Eng</p>
+                    <p class="language-active">Rom</p>
+                    <p class="">Eng</p>
                 </div>
                 <!-- language end -->
 
