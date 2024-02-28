@@ -1,10 +1,10 @@
 <?php  
     include "config.php";
 
-    session_start();  
-    if(isset($_SESSION["email"])) {  
-        header("location:index.php");  
-    } 
+    session_start();
+    // if(isset($_SESSION["email"])) {  
+    //     header("location:index.php");  
+    // } 
 
     if(isset($_POST["login"])) {  
         if(empty($_POST["email"]) && empty($_POST["password"])) {  
@@ -33,7 +33,6 @@
                 } elseif ($userRole === 'Admin') {
                     header("location:adminProfile.php");
                 } else {
-                    // Handle other roles or scenarios
                     echo "Unknown user role!";
                 }
             }

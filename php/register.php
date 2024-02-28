@@ -1,11 +1,7 @@
     <!-- PHP CODE START -->
     <?php
 include "config.php";
-session_start();
 
-// if(isset($_SESSION["email"])) {  
-//     header("location:userProfile.php");  
-// } 
 
 if(isset($_POST['submit'])) {  
     $email = mysqli_real_escape_string($conn, $_POST["email"]);  
@@ -62,6 +58,7 @@ if(isset($_POST['submit'])) {
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                         if(mysqli_query($conn, $query))  
                         {  
+                            // session_start();
                             echo '<script>alert("Registration Done")</script>';  
                         }  
                         } 

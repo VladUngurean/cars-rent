@@ -162,7 +162,6 @@ body {
 
 
 nav{
-
   &>.nav__ul{
     display: flex;
     flex-direction: row;
@@ -196,6 +195,7 @@ nav{
     }
   }
 }
+
 @keyframes border_hover_animation {
 	0%{
 		width: 0%;
