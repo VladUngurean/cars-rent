@@ -10,6 +10,7 @@
 }
 html {
   box-sizing: border-box;
+  scroll-behavior: smooth;
 }
 
 *,
@@ -376,6 +377,7 @@ nav > .nav__ul .nav__li:hover::before {
 
 .car-list__box {
   width: 480px;
+  height: 100%;
   cursor: pointer;
 }
 .car-list__box > img {
@@ -453,6 +455,10 @@ nav > .nav__ul .nav__li:hover::before {
   font-weight: 500;
   font-size: 30px;
   line-height: 37px;
+}
+
+.show-more-cars:hover {
+  background-color: rgba(255, 255, 255, 0.05);
 }
 
 .select-options-for-rent {
@@ -809,6 +815,9 @@ nav > .nav__ul .nav__li:hover::before {
   line-height: 30px;
   border-bottom: 1px solid #FFFFFF;
 }
+.info-about-contacts-container > a:hover {
+  color: rgba(255, 255, 255, 0.5);
+}
 
 .info-about-contacts-buttons {
   margin-top: 30px;
@@ -817,28 +826,33 @@ nav > .nav__ul .nav__li:hover::before {
   gap: 24px;
 }
 
-.info-about-contacts-buttons-whatsapp {
+.contacts-button {
   width: 250px;
   height: 50px;
-  background-color: rgba(27, 102, 40, 0.25);
   text-align: center;
   padding: 13px 0;
-  color: rgb(55, 198, 52);
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 20px;
 }
 
-.info-about-contacts-buttons-telegram {
-  width: 250px;
-  height: 50px;
+.whatsapp {
+  background-color: rgba(27, 102, 40, 0.25);
+  color: rgb(55, 198, 52);
+}
+
+.whatsapp:hover {
+  background-color: rgba(27, 102, 40, 0.4);
+}
+
+.telegram {
   background-color: rgba(38, 165, 196, 0.25);
-  text-align: center;
-  padding: 13px 0;
   color: rgb(38, 165, 196);
-  font-family: "Jura", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
+}
+
+.telegram:hover {
+  background-color: rgba(38, 165, 196, 0.3);
+  color: rgb(38, 165, 196);
 }
 
 .footer-area {
@@ -998,6 +1012,7 @@ nav > .nav__ul .nav__li:hover::before {
   display: flex;
   justify-content: center;
   align-items: center;
+  margin-bottom: 50px;
 }
 
 .register-area__container, .login-area-container {
@@ -1008,7 +1023,7 @@ nav > .nav__ul .nav__li:hover::before {
   flex-direction: column;
 }
 .register-area__container > h1, .login-area-container > h1 {
-  white-space: nowrap;
+  text-align: center;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 500;
@@ -1143,6 +1158,18 @@ nav > .nav__ul .nav__li:hover::before {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
+}
+
+.scroll-to-top {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  cursor: pointer;
+}
+
+.scroll-to-top:hover > svg > g > path {
+  fill-opacity: 0.2;
 }
 
 .ulForHideSelectOptions {

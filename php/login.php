@@ -92,7 +92,7 @@
             <form id="logInForm" method="post">
                 <div class="register-area__input-field">
                     <p>Need an account? <a href="register.php">Sign Up</a></p>
-                    <input type="text" name="email" placeholder="E-mail" />
+                    <input type="text" name="email" placeholder="E-mail" minlength="5" maxlength="40" required />
                 </div>
                 <div class="register-area__input-field">
                     <div class="show-password" onclick="togglePassrwordVisability('passwordInput', 'passwordShow', 'passwordHide')">
@@ -105,7 +105,7 @@
                             <p>Hide</p>
                         </div>
                     </div>
-                    <input id="passwordInput" type="password" name="password" placeholder="Password" />
+                    <input id="passwordInput" type="password" name="password" placeholder="Password" minlength="5" maxlength="40" required />
 
                 </div>
                 <?php

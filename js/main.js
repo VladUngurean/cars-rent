@@ -12,3 +12,18 @@ function togglePassrwordVisability(inputId, passwordShowIcon, passwordHideIcon) 
         passInput.type = "password";
     }
   } 
+
+    // Get the button element
+    var scrollToTopButton = document.querySelector('.scroll-to-top');
+
+    // Function to show or hide the button based on scroll position
+    function toggleScrollToTopButton() {
+      if (window.scrollY > 600) {
+        scrollToTopButton.style.display = 'block';
+      } else {
+        scrollToTopButton.style.display = 'none';
+      }
+    }
+  
+    // Add event listener for scroll event
+    window.addEventListener('scroll', toggleScrollToTopButton);
