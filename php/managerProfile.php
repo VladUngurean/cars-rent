@@ -49,6 +49,9 @@ if(isset($_POST['sendNewCar'])) {
     $fileCount = count($imagePaths);
     $allImages = '';
 
+    $allowed = array('jpg', 'jpeg', 'png');
+
+
     for ($i = 0; $i < $fileCount; $i++) {
         $fileName = $_FILES['image_paths']['name'][$i];
         $fileTmpName = $_FILES['image_paths']['tmp_name'][$i];
@@ -57,8 +60,6 @@ if(isset($_POST['sendNewCar'])) {
 
         $fileExt = explode('.', $fileName);
         $fileActualExt = strtolower(end($fileExt));
-
-        $allowed = array('jpg', 'jpeg', 'png');
 
     if (in_array($fileActualExt, $allowed)) {
         if ($fileError === 0) {
@@ -70,7 +71,9 @@ if(isset($_POST['sendNewCar'])) {
             echo "There was an error uploading your file!";
         }
     } else {
-        echo "You cannot upload files of this type!";
+        echo '<script>alert("You cannot upload files of this type!")</script>';
+        exit();
+        echo '<script> window.location.href = "managerProfile.php";</script>';
     } 
     }
     // $allImages = rtrim($allImages, ',');
@@ -139,7 +142,7 @@ if(isset($_POST["deleteExistingCar"])) {
     <script type='text/javascript' src="/js/manager.js" defer></script>
 </head>
 
-<body style="text-align:center">
+<body>
     <?php  
         if(!isset($_SESSION["email"])){  
             echo 'Session is not active<br>' ;
@@ -168,7 +171,7 @@ if(isset($_POST["deleteExistingCar"])) {
             <input type="number" name="rentDaysPrice_21_4" placeholder="Pret 21-45 Zile" minlength="2" maxlength="4" required />
             <input type="number" name="rentDaysPrice_46" placeholder="Pret 46+ Zile" minlength="2" maxlength="4" required />
 
-            <label for="fileInput" tabindex="0" onkeypress="handleLabelKeyPress(event)" required>Choose at least 6 Images</label>
+            <label for="fileInput" tabindex="0" onkeypress="handleLabelKeyPress(event)" required>Choose at least 6 Images <br> Only jpg, jpeg, png are allowed!!</label>
 
             <input type="file" id="fileInput" name="image_paths[]" multiple onchange="displaySelectedImages(this)" style="display: none;" />
 
@@ -185,13 +188,13 @@ if(isset($_POST["deleteExistingCar"])) {
     <form action="" method="post">
         <style>
         .table-container {
-            width: 100%;
+            max-width: 1560px;
             min-height: 300px;
-            overflow-x: scroll;
+            overflow-x: auto;
         }
 
         table {
-            max-width: 100vw;
+            width: 100%;
             border-collapse: collapse;
         }
 
@@ -199,7 +202,8 @@ if(isset($_POST["deleteExistingCar"])) {
         td {
             border: 1px solid #ddd;
             padding: 8px;
-            /* text-align: left; */
+            text-align: left;
+            color: white;
         }
         </style>
         <div class="table-container">

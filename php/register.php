@@ -12,9 +12,9 @@ if(isset($_POST['submit'])) {
     $passwordCheck = mysqli_real_escape_string($conn, $_POST["passwordCheck"]); 
 
     if (isset($_SESSION['email'])) {
-    if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin') {
-        $role = mysqli_real_escape_string($conn, $_POST["role"]);
-    }
+        if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin') {
+            $role = mysqli_real_escape_string($conn, $_POST["role"]);
+        }
     }
 
     function catchValues(){
