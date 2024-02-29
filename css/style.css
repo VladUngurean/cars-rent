@@ -43,7 +43,7 @@ body {
   min-height: 100vh;
   overflow-x: hidden;
   display: flex;
-  justify-content: center;
+  justify-content: flex-start;
   align-items: center;
   flex-direction: column;
   max-width: 1534px;
@@ -114,10 +114,6 @@ body {
 }
 .header__top > .header__left .logo__container {
   margin-right: 40px;
-}
-.header__top > .header__left .logo__container > img {
-  width: 107px;
-  height: 64px;
 }
 
 nav > .nav__ul {
@@ -969,19 +965,49 @@ nav > .nav__ul .nav__li:hover::before {
   line-height: 25px;
 }
 
-.register-area {
+.header-register-area {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 30px 0 100px;
+}
+.header-register-area .header-register-area-container {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-direction: row;
+}
+
+.header-register-close-button {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+}
+.header-register-close-button > p {
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 20px;
+}
+
+.register-area, .login-area {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
-.register-area .register-area__container {
+
+.register-area__container, .login-area-container {
+  width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.register-area .register-area__container > h1 {
+.register-area__container > h1, .login-area-container > h1 {
   white-space: nowrap;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
@@ -990,9 +1016,9 @@ nav > .nav__ul .nav__li:hover::before {
   line-height: 63px;
 }
 
-#registerForm {
+#registerForm, #logInForm {
   width: 100%;
-  max-width: 390px;
+  max-width: 320px;
   gap: 27px;
   margin-top: 30px;
   display: flex;
@@ -1000,7 +1026,11 @@ nav > .nav__ul .nav__li:hover::before {
   flex-direction: column;
 }
 
-.register-area__input-field {
+#logInForm {
+  gap: 40px;
+}
+
+.register-area__input-field, .login-area__input-field {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1008,7 +1038,7 @@ nav > .nav__ul .nav__li:hover::before {
   align-items: flex-end;
   position: relative;
 }
-.register-area__input-field > p {
+.register-area__input-field > p, .login-area__input-field > p {
   margin-right: 8px;
   text-align: end;
   white-space: nowrap;
@@ -1019,11 +1049,11 @@ nav > .nav__ul .nav__li:hover::before {
   line-height: 20px;
   margin-bottom: 5px;
 }
-.register-area__input-field > p a {
+.register-area__input-field > p a, .login-area__input-field > p a {
   font-weight: bold;
   text-decoration: underline;
 }
-.register-area__input-field > .show-password {
+.register-area__input-field > .show-password, .login-area__input-field > .show-password {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1035,35 +1065,35 @@ nav > .nav__ul .nav__li:hover::before {
   margin-right: 8px;
   cursor: pointer;
 }
-.register-area__input-field > input {
+.register-area__input-field > input, .login-area__input-field > input {
   width: 100%;
   height: 50px;
   padding-left: 10px;
   border: none;
   border-radius: 2px;
 }
-.register-area__input-field > input:focus {
+.register-area__input-field > input:focus, .login-area__input-field > input:focus {
   outline: gray solid 2px;
 }
-.register-area__input-field > input::-webkit-input-placeholder {
+.register-area__input-field > input::-webkit-input-placeholder, .login-area__input-field > input::-webkit-input-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
 }
-.register-area__input-field > input:-ms-input-placeholder {
+.register-area__input-field > input:-ms-input-placeholder, .login-area__input-field > input:-ms-input-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
 }
-.register-area__input-field > input:-moz-placeholder {
+.register-area__input-field > input:-moz-placeholder, .login-area__input-field > input:-moz-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
 }
-.register-area__input-field > input::-moz-placeholder {
+.register-area__input-field > input::-moz-placeholder, .login-area__input-field > input::-moz-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -1090,7 +1120,7 @@ nav > .nav__ul .nav__li:hover::before {
   font-size: 16px;
 }
 
-.register-button {
+.register-button, .login-button {
   max-width: 236px;
   width: 100%;
   height: 50px;

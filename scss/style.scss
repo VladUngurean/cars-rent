@@ -79,7 +79,10 @@ body {
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
-  @include flex-center;
+
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   flex-direction: column;
 
   max-width: 1534px;
@@ -152,10 +155,6 @@ body {
     @include flex-between;
     .logo__container{
       margin-right: 40px;
-      &>img{
-        width: 107px;
-        height: 64px;
-      }
     }
   }
 }
@@ -1148,28 +1147,58 @@ nav{
 
 //register start
 
-.register-area{
+//register header start
+.header-register-area{
   width: 100%;
   @include flex-center;
-  .register-area__container{
-    // max-width: 400px;
-    @include flex-center;
-    flex-direction: column;
+  margin: 30px 0 100px;
 
-    &>h1{
-      white-space: nowrap;
-      color: $text-light;
-      font-family: "Bai Jamjuree", sans-serif;
-      font-weight: 500;
-      font-size: 50px;
-      line-height: 63px;
-    }
+  .header-register-area-container{
+    width: 100%;
+    @include flex-between;
+    flex-direction: row;
   }
 }
 
-#registerForm{
+.header-register-close-button{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  gap: 10px;
+
+  &>p{
+    color: $text-light;
+    font-family: "Jura", sans-serif;
+    font-weight: 500;
+    font-size: 20px;
+  }
+}
+//register header end
+
+.register-area, .login-area{
   width: 100%;
-  max-width: 390px;
+  @include flex-center;
+}
+
+.register-area__container, .login-area-container{
+  // max-width: 400px;
+  width: 100%;
+  @include flex-center;
+  flex-direction: column;
+
+  &>h1{
+    white-space: nowrap;
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 500;
+    font-size: 50px;
+    line-height: 63px;
+  }
+}
+
+#registerForm, #logInForm{
+  width: 100%;
+  max-width: 320px;
   gap: 27px;
   margin-top: 30px;
 
@@ -1177,7 +1206,11 @@ nav{
   align-items: center;
   flex-direction: column;
 }
-.register-area__input-field{
+#logInForm{
+  gap: 40px;
+}
+
+.register-area__input-field, .login-area__input-field{
   width: 100%;
   
   display: flex;
@@ -1269,7 +1302,7 @@ nav{
   }
 }
 
-.register-button{
+.register-button, .login-button{
   max-width: 236px;
   width: 100%;
   height: 50px;

@@ -110,22 +110,17 @@ function validateEmail($email) {
     </head>
 
     <body>
-
-
-        <?php
-            //on pag refresh should set input values to ""
-            $pageWasRefreshed = isset($_SERVER['HTTP_CACHE_CONTROL']) && $_SERVER['HTTP_CACHE_CONTROL'] === 'max-age=0';
-
-            if($pageWasRefreshed ) {
-                $inputs = $dom->getElementsByTagName('input');
-                foreach ($inputs as $input) {
-                    foreach ($input->attributes as $attr) {
-                    $attr->nodeValue = "";
-                    echo "Attribute succcesss'<br />";
-                    }
-                }
-            }
-        ?>
+        <section class="header-register-area">
+            <div class="header-register-area-container">
+                <a href="index.php" class="header-register-close-button">
+                    <img src="/images/logo.svg" alt="icon">
+                </a>
+                <a href="index.php" class="header-register-close-button">
+                    <p>Închide</p>
+                    <img src="/images/icons/cross.svg" alt="X">
+                </a>
+            </div>
+        </section>
 
         <!-- Register secction START -->
         <section class="register-area">
@@ -191,13 +186,9 @@ function validateEmail($email) {
                             }
                         }
 
+                        if (!empty($registerErrorMesage)) echo "<p class='register-error-message'>$registerErrorMesage</p>";
+                        if (!empty($dataBaseResponse)) echo "<p class='register-error-message'>$dataBaseResponse</p>";
                     ?>
-                    <?php 
-                    if (!empty($registerErrorMesage)) echo "<p class='register-error-message'>$registerErrorMesage</p>";
-                    ?>
-                    <?php if (!empty($dataBaseResponse)) {
-                        echo "<p class='register-error-message'>$dataBaseResponse</p>";
-                    }?>
                     <input class="register-button" name="submit" type="submit" value="Register" />
                 </form>
 

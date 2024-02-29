@@ -8,7 +8,9 @@
             <div class="header__left">
                 <!-- Logo START -->
                 <div class="logo__container">
-                    <img src="/images/logo.svg" alt="logo">
+                    <a href="index.php" class="header-register-close-button">
+                        <img src="/images/logo.svg" alt="icon">
+                    </a>
                 </div>
                 <!-- Logo END -->
 
