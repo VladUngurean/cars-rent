@@ -1,7 +1,9 @@
     <!-- PHP CODE START -->
     <?php
 include "config.php";
+session_start();
 
+$_SESSION['role'] = 'Guest';
 
 if(isset($_POST['submit'])) {  
     $email = mysqli_real_escape_string($conn, $_POST["email"]);  
@@ -43,44 +45,46 @@ if(isset($_POST['submit'])) {
                         } elseif(mysqli_num_rows($checkPhone) > 0){
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
-                        } 
-                        elseif (($_SESSION['role'] == 'Admin')) {
-                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
-                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
-                        if(mysqli_query($conn, $query))  
-                        {  
-                            echo '<script>alert("Registration Done")</script>';  
-                        }  
-                        
                         }
-                        else {
+                        elseif ($checkEmail && $checkPhone){
                             $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
-                        if(mysqli_query($conn, $query))  
-                        {  
-                            // session_start();
-                            echo '<script>alert("Registration Done")</script>';  
-                        }  
-                        } 
+                            if(mysqli_query($conn, $query)) {  
+                                echo '<script>alert("Registration Done")</script>';  
+                                echo '<script> window.location.href = "login.php";</script>';
+                            }
+                            }
+                        elseif (($_SESSION['role'] == 'Admin')) {
+                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password)
+                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
+                            if(mysqli_query($conn, $query)) {  
+                                echo '<script>alert("Registration Done")</script>';
+                            }  
+                        }
                     } else {  
                         list($a,$b,$c,$d) = catchValues();
                         $registerErrorMesage =  "Phone Number should contain only numbers";
+                        session_destroy();  
                     }  
                 } else {  
                     list($a,$b,$c,$d) = catchValues();
                     $registerErrorMesage =  "Last name should contain only alphabetical characters";
+                    session_destroy();  
                 }  
             } else {  
                 list($a,$b,$c,$d) = catchValues();
                 $registerErrorMesage =  "First name should contain only alphabetical characters";
+                session_destroy();  
             }  
         } else { 
             list($a,$b,$c,$d) = catchValues(); 
             $registerErrorMesage =  "Passwords does not matches";
+            session_destroy();  
         }  
     } else {
         list($a,$b,$c,$d) = catchValues();
         $registerErrorMesage =  "Email is not valid";
+        session_destroy();  
     }
 }
 function validateEmail($email) {

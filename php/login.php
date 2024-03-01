@@ -2,9 +2,6 @@
     include "config.php";
 
     session_start();
-    // if(isset($_SESSION["email"])) {  
-    //     header("location:index.php");  
-    // } 
     $loginErrorMesage = '';
 
     if(isset($_POST["login"])) {  
@@ -39,6 +36,7 @@
             }
             else {  
                 $loginErrorMesage = "Wrong User Details";  
+                session_destroy();
             }
         }
     }
