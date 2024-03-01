@@ -19,9 +19,17 @@ function togglePassrwordVisability(inputId, passwordShowIcon, passwordHideIcon) 
     // Function to show or hide the button based on scroll position
     function toggleScrollToTopButton() {
       if (window.scrollY > 600) {
-        scrollToTopButton.style.display = 'block';
+        // scrollToTopButton.style.display = 'block';
+        scrollToTopButton.style.opacity = 1;
+        scrollToTopButton.style.zIndex = 10;
+        scrollToTopButton.style.pointerEvents = "all";
+        
       } else {
-        scrollToTopButton.style.display = 'none';
+        // scrollToTopButton.style.display = 'none';
+        scrollToTopButton.style.opacity = 0;
+        scrollToTopButton.style.zIndex = -10;
+        scrollToTopButton.style.pointerEvents = "none";
+
       }
     }
   

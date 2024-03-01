@@ -54,6 +54,10 @@ html {
   padding: 0;
   margin: 0;
 
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
   // outline: auto;
 }
 
@@ -230,6 +234,9 @@ nav{
   }
 
   &>#user__container{
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+    padding: 5px;
 
     &>.login-register-container{
       @include flex-center;
@@ -243,6 +250,22 @@ nav{
         font-size: 18px;
         line-height: 21px;
       }
+    }
+  }
+
+  & .logged-user{
+    @include flex-center;
+
+    a{
+      @include flex-center;
+      gap: 5px;
+      white-space: nowrap;
+      height: 100%;
+      color: $text-light;
+      font-family: "Jura", sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 21px;
     }
   }
 
@@ -1347,11 +1370,17 @@ nav{
 //register end
 
 .scroll-to-top {
-  display: none;
+  // display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -10;
+
   position: fixed;
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+
+  transition: opacity 1s ease-in;
 }
 
 .scroll-to-top:hover>svg>g>path {

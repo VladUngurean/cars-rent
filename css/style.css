@@ -19,6 +19,10 @@ html {
   box-sizing: inherit;
   padding: 0;
   margin: 0;
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none; /* Standard syntax */
 }
 
 ul, li {
@@ -180,12 +184,35 @@ nav > .nav__ul .nav__li:hover::before {
 .header__right > .language__container > .language-active {
   color: #FFFFFF;
 }
+.header__right > #user__container {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 3px;
+  padding: 5px;
+}
 .header__right > #user__container > .login-register-container {
   display: flex;
   justify-content: center;
   align-items: center;
 }
 .header__right > #user__container > .login-register-container > a {
+  white-space: nowrap;
+  height: 100%;
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+}
+.header__right .logged-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.header__right .logged-user a {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 5px;
   white-space: nowrap;
   height: 100%;
   color: #FFFFFF;
@@ -1161,11 +1188,14 @@ nav > .nav__ul .nav__li:hover::before {
 }
 
 .scroll-to-top {
-  display: none;
+  opacity: 0;
+  pointer-events: none;
+  z-index: -10;
   position: fixed;
   bottom: 20px;
   right: 20px;
   cursor: pointer;
+  transition: opacity 1s ease-in;
 }
 
 .scroll-to-top:hover > svg > g > path {
