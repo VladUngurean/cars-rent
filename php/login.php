@@ -71,8 +71,7 @@
 
 <body>
 
-    <?php include "headerMini.php"
-        ?>
+    <?php include "headerMini.php"; ?>
 
     <section class="login-area">
         <div class="login-area-container">

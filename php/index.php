@@ -6,12 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/style.css">
 
-    <title>Cars Rent</title>
+    <title>Chișinău Dream Cars</title>
     <link rel="icon" type="image/x-icon" href="/images/logo.svg">
 
-    <?php
-        include "ProcGetExistingCarsToShow.php";
-    ?>
+    <?php include "ProcGetExistingCarsToShow.php"; ?>
 
 </head>
 
@@ -54,7 +52,7 @@
     </section>
 
     <div class="forScrollToTop"></div>
-    <a href="#top" class="scroll-to-top">
+    <a href="#" class="scroll-to-top">
 
         <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
             <g clip-path="url(#clip0_2058_1288)">
@@ -65,7 +63,7 @@
     </a>
 
     <section id="carFilterSelectors" class="search-form-area">
-        <main>
+        <main style="width: 100%;">
             <div class="search-form">
 
                 <div class="search-form__text">

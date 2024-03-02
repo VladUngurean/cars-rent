@@ -115,8 +115,7 @@ function validateEmail($email) {
 
     <body>
 
-        <?php include "headerMini.php"
-        ?>
+        <?php include "headerMini.php"; ?>
 
         <!-- Register secction START -->
         <section class="register-area">
