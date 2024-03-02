@@ -53,6 +53,17 @@
         </div>
     </section>
 
+    <div class="forScrollToTop"></div>
+    <a href="#top" class="scroll-to-top">
+
+        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <g clip-path="url(#clip0_2058_1288)">
+                <path d="M30 60C46.568 60 60 46.568 60 30C60 13.432 46.568 0 30 0C13.432 0 0 13.432 0 30C0 46.568 13.432 60 30 60ZM30 13L46 28.305L35.143 28.305V47H24.858L24.858 28.305L14 28.305L30 13Z" fill="#FEFEFE" fill-opacity="0.1" />
+            </g>
+        </svg>
+
+    </a>
+
     <section id="carFilterSelectors" class="search-form-area">
 
         <div class="search-form">
@@ -159,17 +170,6 @@
     </section>
     <!-- Comment secction END -->
     <?php include('footer.php'); ?>
-    <a href="#top" class="scroll-to-top">
-
-        <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <g clip-path="url(#clip0_2058_1288)">
-                <path d="M30 60C46.568 60 60 46.568 60 30C60 13.432 46.568 0 30 0C13.432 0 0 13.432 0 30C0 46.568 13.432 60 30 60ZM30 13L46 28.305L35.143 28.305V47H24.858L24.858 28.305L14 28.305L30 13Z" fill="#FEFEFE" fill-opacity="0.1" />
-            </g>
-        </svg>
-
-    </a>
-
-
 
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
     <script type='text/javascript' src="/js/main.js" defer></script>

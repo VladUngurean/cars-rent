@@ -233,7 +233,6 @@ function renderCarForSelect(car) {
   const make = car.make;
   const model = car.model.split(",");
   // const model = car.model.split(",");
-  console.log(model);
 
   const forRenderModels = document.getElementById(`renderModels${make}`);
   renderCarModelsForSelect(model, forRenderModels);
@@ -247,8 +246,7 @@ newMakeModelRadio.addEventListener("change", function(){
   newMakeModelInput.setAttribute("required", "");
 })
   let modelSelecetOptions = forRenderModels.querySelector(`#select${model}`)
-  console.log(modelSelecetOptions);
-modelSelecetOptions.addEventListener("change",function (){
+  modelSelecetOptions.addEventListener("change",function (){
   if (modelSelecetOptions.checked === true) {
     newMakeModelInput.removeAttribute("required");
   }

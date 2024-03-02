@@ -13,25 +13,36 @@ function togglePassrwordVisability(inputId, passwordShowIcon, passwordHideIcon) 
     }
   } 
 
-    // Get the button element
-    var scrollToTopButton = document.querySelector('.scroll-to-top');
 
-    // Function to show or hide the button based on scroll position
-    function toggleScrollToTopButton() {
-      if (window.scrollY > 600) {
-        // scrollToTopButton.style.display = 'block';
-        scrollToTopButton.style.opacity = 1;
-        scrollToTopButton.style.zIndex = 10;
-        scrollToTopButton.style.pointerEvents = "all";
-        
-      } else {
-        // scrollToTopButton.style.display = 'none';
-        scrollToTopButton.style.opacity = 0;
-        scrollToTopButton.style.zIndex = -10;
-        scrollToTopButton.style.pointerEvents = "none";
+// Get the button element
+let scrollToTopButton = document.querySelector('.scroll-to-top');
+let scrollToTop = document.querySelector('.forScrollToTop');
 
-      }
-    }
-  
-    // Add event listener for scroll event
-    window.addEventListener('scroll', toggleScrollToTopButton);
+// Function to show or hide the button based on scroll position
+function toggleScrollToTopButton(entries) {
+  const [entry] = entries;
+  if (entry.isIntersecting) {
+    scrollToTopButton.style.opacity = 1;
+    scrollToTopButton.style.zIndex = 10;
+    scrollToTopButton.style.position = 'fixed';
+    
+    scrollToTopButton.style.pointerEvents = "all";
+    console.log('hi');
+  } else {
+    scrollToTopButton.style.opacity = 0;
+    scrollToTopButton.style.zIndex = -10;
+    // scrollToTopButton.style.position = 'absolute';
+    scrollToTopButton.style.pointerEvents = "none";
+    console.log('bie');
+  }
+}
+
+// Create an IntersectionObserver
+const observer = new IntersectionObserver(toggleScrollToTopButton, {
+  threshold: 0,
+});
+
+// Observe the target element
+if (scrollToTop) {
+  observer.observe(scrollToTop);
+}
