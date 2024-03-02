@@ -1,12 +1,10 @@
 //HTML for make and model
 function HTMLforMakeModelSelect() {
   return `
-      <li class="">
-        <span id="dropDownMakes"> Marca
-          <a href="">&gt;</a>
-        </span>
+      <li class="new-car-select-option">
+        <span id="dropDownMakes">&#x2022; Marca </span>
         <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes">
-          <li class="">
+          <li class="new-car-select-option">
             <div class="dropdown__content-second__select-options">
               <input id="newMakeRadio" class="make-checkbox" type="radio" name="make" value="">
               <label for="newMakeRadio">+Add New Make&Model</label>
@@ -14,13 +12,11 @@ function HTMLforMakeModelSelect() {
               
             <ul id="renderNewModels" class="ulForHideSelectOptions ulForCarModels">
               <li class="">
-                <div class="">
-                  <input type="radio" checked>
-                  <input id="newMakeInput" type="text" name="new_make" placeholder="+Add new Make" value=""/>
-                  <br>
-                  <input id="newModelForNewMakeRadio" class="newCarModelRadio" type="radio" name="model">
-                  <input id="newModelForNewMakeInput" class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model"/>
-                </div>
+                <input type="radio" checked>
+                <input id="newMakeInput" type="text" name="new_make" placeholder="+Add new Make" value=""/>
+                <br>
+                <input id="newModelForNewMakeRadio" class="newCarModelRadio" type="radio" name="model">
+                <input id="newModelForNewMakeInput" class="newCarModelInput model-checkbox" type="text" name="new_model" placeholder="+Add new Model"/>
               </li>
             </ul>
 
@@ -32,17 +28,15 @@ function HTMLforMakeModelSelect() {
 
 function HTMLmakeSelectOptions(make) {
   return `
-      <li class="">
+      <li class="new-car-select-option">
         <div class="dropdown__content-second__select-options">
           <input id="selectMake${make}" class="make-checkbox" type="radio" name="make" value="${make}" required>
-          <label for="selectMake${make}" id="dropDown${make}Models" class="allMakesForDropdowns" >${make}&gt;</label>
+          <label for="selectMake${make}" id="dropDown${make}Models" class="allMakesForDropdowns" >${make} &gt;</label>
         </div>
         <ul id="renderModels${make}" class="ulForHideSelectOptions ulForCarModels">
           <li class="">
-            <div class="">
-              <input id="new${make}ModelRadio" class="newCarModelRadio" type="radio" name="model">
-              <input id="new${make}Model" class="newCarModelInput" type="text" name="new_model" placeholder="+Add new ${make} Model"/> 
-            </div>
+            <input id="new${make}ModelRadio" class="newCarModelRadio" type="radio" name="model">
+            <input id="new${make}Model" class="newCarModelInput" type="text" name="new_model" placeholder="+Add new ${make} Model"/> 
           </li>
         </ul>
       </li>
@@ -51,22 +45,18 @@ function HTMLmakeSelectOptions(make) {
 
 function HTMLmodelSelectOptions(model) {
   return `
-        <li class="">
-          <div class="">
-            <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}">
-            <label for="select${model}" >${model}</label>
-          </div>
+        <li class="new-car-select-option">
+          <input id="select${model}" class="model-checkbox" type="radio" name="model" value="${model}">
+          <label for="select${model}" >${model}</label>
         </li>
       `;
 }
 //HTML for transmission
 function HTMLforTransmissionSelect() {
   return `
-      <li class="">
+      <li class="new-car-select-options">
         <div class="dropdown__content-second__select-options">
-            <span id="selectTransmissionType">Cutie de viteze
-              <a href="">&gt;</a>
-            </span>
+            <span id="selectTransmissionType">Cutie de viteze </span>
         </div>
         <ul id="transmissionTypeList" class="ulForHideSelectOption ulForTransmissions"></ul>
       </li>
@@ -74,24 +64,18 @@ function HTMLforTransmissionSelect() {
 }
 function HTMLtransmissionSelectOptions(transmissionType) {
   return `
-        <li class="">
-          <div class="">
-
-              <input id="select${transmissionType}" class="transmissionType-checkbox" type="radio" name="transmission_type" value="${transmissionType}" required>
-              <label for="select${transmissionType}">${transmissionType}</label>
-
-          </div>
+        <li class="new-car-select-option">
+          <input id="select${transmissionType}" class="transmissionType-checkbox" type="radio" name="transmission_type" value="${transmissionType}" required>
+          <label for="select${transmissionType}">${transmissionType}</label>
         </li>
       `;
 }
 //HTML for fuel type-------------------------------------------------------------------------------------
 function HTMLforFuelTypeSelect() {
   return `
-      <li class="">
+      <li class="new-car-select-options">
         <div class="dropdown__content-second__select-options">
-            <span id="selectFuelType">Tip combustibil
-              <a href="">&gt;</a>
-            </span>
+            <span id="selectFuelType">Tip combustibil </span>
         </div>
         <ul id="fuelTypeList" class="ulForHideSelectOption ulForFuelTypes"></ul>
       </li>
@@ -99,24 +83,18 @@ function HTMLforFuelTypeSelect() {
 }
 function HTMLFuelTypeSelectOptions(fuelType) {
   return `
-        <li class="">
-          <div class="">
-
-              <input id="select${fuelType}" class="fuelType-checkbox" type="radio" name="fuel_type" value="${fuelType}" required>
-              <label for="select${fuelType}">${fuelType}</label>
-
-          </div>
+        <li class="new-car-select-option">
+          <input id="select${fuelType}" class="fuelType-checkbox" type="radio" name="fuel_type" value="${fuelType}" required>
+          <label for="select${fuelType}">${fuelType}</label>
         </li>
       `;
 }
 //HTML for body type-------------------------------------------------------------------------------------
 function HTMLforBodyTypeSelect() {
   return `
-      <li class="">
+      <li class="new-car-select-options">
         <div class="dropdown__content-second__select-options">
-            <span id="selectBodyType">Tip caroserie
-              <a href="">&gt;</a>
-            </span>
+          <span id="selectBodyType">Tip caroserie </span>
         </div>
         <ul id="bodyTypeList" class="ulForHideSelectOption ulForBodyTypes"></ul>
       </li>
@@ -124,13 +102,9 @@ function HTMLforBodyTypeSelect() {
 }
 function HTMLBodyTypeSelectOptions(bodyType) {
   return `
-        <li class="">
-          <div class="">
-
-              <input id="select${bodyType}" class="bodyType-checkbox" type="radio" name="body_type" value="${bodyType}" required>
-              <label for="select${bodyType}">${bodyType}</label>
-
-          </div>
+        <li class="new-car-select-option">
+          <input id="select${bodyType}" class="bodyType-checkbox" type="radio" name="body_type" value="${bodyType}" required>
+          <label for="select${bodyType}">${bodyType}</label>
         </li>
       `;
 }

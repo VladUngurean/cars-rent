@@ -1222,6 +1222,14 @@ nav > .nav__ul .nav__li:hover::before {
   display: block;
 }
 
+.addNewCar {
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 600;
+  font-size: 24px;
+  gap: 6px;
+}
+
 .show {
   max-height: 300px;
   display: flex;

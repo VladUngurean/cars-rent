@@ -65,40 +65,41 @@
     </a>
 
     <section id="carFilterSelectors" class="search-form-area">
+        <main>
+            <div class="search-form">
 
-        <div class="search-form">
-
-            <div class="search-form__text">
-                <h2>Selectează Mașina Potrivtă:</h2>
-            </div>
-
-            <div class="search-container">
-
-                <div class="search__select-options">
-
-                    <div id="renderCarMakeSelect" class="select-options-for-rent"></div>
-                    <div id="renderCarTransmissionSelect" class="select-options-for-rent"></div>
-                    <div id="renderCarFuelTypeSelect" class="select-options-for-rent"></div>
-                    <div id="renderCarBodyTypeSelect" class="select-options-for-rent"></div>
-                    <div id="renderCarRentStatusSelect" class="select-options-for-rent"></div>
-
+                <div class="search-form__text">
+                    <h2>Selectează Mașina Potrivtă:</h2>
                 </div>
 
+                <div class="search-container">
+
+                    <div class="search__select-options">
+
+                        <div id="renderCarMakeSelect" class="select-options-for-rent"></div>
+                        <div id="renderCarTransmissionSelect" class="select-options-for-rent"></div>
+                        <div id="renderCarFuelTypeSelect" class="select-options-for-rent"></div>
+                        <div id="renderCarBodyTypeSelect" class="select-options-for-rent"></div>
+                        <div id="renderCarRentStatusSelect" class="select-options-for-rent"></div>
+
+                    </div>
+
+                </div>
             </div>
-        </div>
 
-        <div class="car-list__container">
-            <div class="search-form__text">
-                <h2>Închiriere Mașini</h2>
+            <div class="car-list__container">
+                <div class="search-form__text">
+                    <h2>Închiriere Mașini</h2>
+                </div>
+                <div id="car-list-render"></div>
             </div>
-            <div id="car-list-render"></div>
-        </div>
 
-        <button class="show-more-cars">
-            <p>Vezi mai multe</p>
-            <img src="/images/aditionalElements/voidarrow.svg" alt="arrow">
-        </button>
+            <button class="show-more-cars">
+                <p>Vezi mai multe</p>
+                <img src="/images/aditionalElements/voidarrow.svg" alt="arrow">
+            </button>
 
+        </main>
     </section>
 
     <!-- Comment secction START -->
