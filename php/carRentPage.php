@@ -7,10 +7,15 @@
     <title>Chișinău Dream Cars</title>
     <link rel="icon" type="image/x-icon" href="/images/logo.svg">
 
+    <link rel="stylesheet" href="/css/style.css">
+
 </head>
 
 <body>
+    <?php include('header.php'); ?>
 
+
+    <?php include('footer.php'); ?>
 </body>
 
 </html>

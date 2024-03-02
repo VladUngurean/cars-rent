@@ -14,14 +14,13 @@
 </head>
 
 <body>
-    <a id="top" style="position:absolute; opacity:0;"></a>
+    <p id="top" style="position:absolute; opacity:0;"></p>
 
     <div class="banner__video">
         <video id="bannerVideo" preload="auto" playsinline="" autoplay="" loop="" muted="">
             <source src="/images/backgrounds/videoBanner.mp4" type="video/mp4">
         </video>
     </div>
-
 
     <?php include('header.php'); ?>
 
