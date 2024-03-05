@@ -8,27 +8,9 @@
 
     <title>Chișinău Dream Cars</title>
     <link rel="icon" type="image/x-icon" href="/images/logo.svg">
-
     <?php include "ProcGetExistingCarsToShow.php"; ?>
 
 </head>
-<!-- <script>
-function getIds(element) {
-    console.log(element);
-};
-</script> -->
-<?php
-    $element = '';
-    echo '<script>
-        let elements = {};
-        function getIds(elementId) {
-            elements['. json_encode($element).'] = elementId;
-            console.log(elements);
-        };
-    </script>';
-?>
-
-<button id="getMyId" onclick="getIds(this.id)">Click me</button>
 
 <body>
     <p id="top" style="position:absolute; opacity:0;"></p>
