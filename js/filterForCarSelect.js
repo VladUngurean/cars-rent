@@ -6,7 +6,9 @@ let ifNoCarsRenderContainer = document.getElementById("carRenderContainer");
 ifNoCarsSelect.innerHTML = "";
 ifNoCarsRenderContainer.innerHTML = "";
 } else {
+
 // To prevent more than one dropdown opened at the time
+
 let activeMain = null;
 let activeSecond = null;
 
@@ -445,16 +447,10 @@ modelCheckboxes.forEach((modelCheckbox) => {
   });
 });
 // Render cars on the webpage---------------------------------------------------------------------------------
-const renderCars = (car) => {
-  let getImages = car.carImage.split(",");
-  // console.log(getImages);
-  const productHTML = createCarHTML(car, getImages);
-  carsContainer.insertAdjacentHTML("beforeend", productHTML);
-};
 
 // Create HTML for a single car
 const createCarHTML = (car, getImages) => `
-  <a href="carRentPage.php">
+  <a id="${car.plate}" class="car-to-rent" href="carRentPage.php">
     <div class="car-list__box">
       <img src="/images/carsList/${getImages[0]}" alt="carImage">
       <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
@@ -486,6 +482,13 @@ const createCarDetailsHTML = (car) => `
 
 // Get the container to render cars
 const carsContainer = document.querySelector("#car-list-render");
+
+const renderCars = (car) => {
+  let getImages = car.carImage.split(",");
+  const productHTML = createCarHTML(car, getImages);
+  carsContainer.insertAdjacentHTML("beforeend", productHTML);
+};
+
 // Render all cars initially
 renderAllCars();
 

@@ -12,6 +12,23 @@
     <?php include "ProcGetExistingCarsToShow.php"; ?>
 
 </head>
+<!-- <script>
+function getIds(element) {
+    console.log(element);
+};
+</script> -->
+<?php
+    $element = '';
+    echo '<script>
+        let elements = {};
+        function getIds(elementId) {
+            elements['. json_encode($element).'] = elementId;
+            console.log(elements);
+        };
+    </script>';
+?>
+
+<button id="getMyId" onclick="getIds(this.id)">Click me</button>
 
 <body>
     <p id="top" style="position:absolute; opacity:0;"></p>
@@ -25,13 +42,13 @@
     <?php include('header.php'); ?>
 
     <?php  
-            echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';  
-            if(!isset($_SESSION["email"])){  
-                echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
-            } else { echo '<p style="color:white; position:absolute; bottom:20px;">Session is active<p/>' ; }
-        ?>
-    <!-- Search car secction START -->
-    <!-- NEW SECCTION  -->
+        echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
+        if(!isset($_SESSION["email"])){  
+            echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
+        } else { echo '<p style="color:white; position:absolute; bottom:20px;">Session is active <p/>' ; }
+    ?>
+
+    <!-- About us secction START -->
 
     <section class="aboutus-area">
         <div class="aboutus-area-container">
@@ -49,6 +66,8 @@
             </div>
         </div>
     </section>
+    <!-- About us secction END -->
+
 
     <div class="forScrollToTop"></div>
     <a href="#" class="scroll-to-top">
@@ -60,6 +79,8 @@
         </svg>
 
     </a>
+
+    <!-- Rent car secction START -->
 
     <section id="carFilterSelectors" class="search-form-area">
         <main style="width: 100%;">
@@ -98,6 +119,7 @@
 
         </main>
     </section>
+    <!-- Rent car secction END -->
 
     <!-- Comment secction START -->
     <section class="aditional-info-area">
@@ -167,6 +189,7 @@
         </div>
     </section>
     <!-- Comment secction END -->
+
     <?php include('footer.php'); ?>
 
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
