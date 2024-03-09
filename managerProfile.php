@@ -1,3 +1,6 @@
+<?php 
+    session_start();
+?>
 <!DOCTYPE html>
 <html>
 
@@ -11,100 +14,103 @@
 
     <title>Manager Account</title>
 
-    <?php
-include "ProcGetExistingCarsToShow.php";
-include "ProcGetAllCarsData.php";
 
-if (!isset($_SESSION['email'])) {
-    // header('Location: login.php');
-    exit;
-}
+    <script type='text/javascript' src="/js/manager.js" defer></script>
+</head>
+<?php
+    include "ProcGetExistingCarsToShow.php";
+    include "ProcGetAllCarsData.php";
 
-// Check if the user has the correct role
-if ($_SESSION['role'] !== 'Manager') {
-    header('Location: userProfile.php');
-    exit;
-}
-if ($_SESSION['role'] == 'Manager') {
+    if (!isset($_SESSION['email'])) {
+        header('Location: login.php');
+        exit;
+    }
 
-if(isset($_POST['sendNewCar'])) {  
-    $make = mysqli_real_escape_string($conn, $_POST["make"]);  
-    $model = mysqli_real_escape_string($conn, $_POST["model"]);  
-    $transmissionType = mysqli_real_escape_string($conn, $_POST["transmission_type"]);  
-    $fuelType = mysqli_real_escape_string($conn, $_POST["fuel_type"]);  
-    $bodyType = mysqli_real_escape_string($conn, $_POST["body_type"]);  
-    $carPlate = mysqli_real_escape_string($conn, $_POST["car_plate"]);  
-    $doorsNumber = mysqli_real_escape_string($conn, $_POST["doors_number"]);  
-    $pasangersNumber = mysqli_real_escape_string($conn, $_POST["pasangers_number"]);  
-    $engineCapacity = mysqli_real_escape_string($conn, $_POST["engine_capacity"]);  
-    $registrationYear = mysqli_real_escape_string($conn, $_POST["registration_year"]);  
-    $descriptionRo = mysqli_real_escape_string($conn, $_POST["description_ro"]);  
-    $descriptionEn = mysqli_real_escape_string($conn, $_POST["description_en"]);  
-    $rentDaysPrice1_2 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_1_2"]);  
-    $rentDaysPrice3_7 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_3_7"]);  
-    $rentDaysPrice8_20 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_8_20"]);  
-    $rentDaysPrice21_4 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_21_4"]);  
-    $rentDaysPrice46 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_46"]);  
-    $imagePaths = $_FILES['image_paths']['name'];
-    $fileCount = count($imagePaths);
-    $allImages = '';
+    // Check if the user has the correct role
+    if ($_SESSION['role'] !== 'Manager') {
+        header('Location: index.php');
+        exit;
+    }
+    if ($_SESSION['role'] == 'Manager') {
 
-    $allowed = array('jpg', 'jpeg', 'png');
+    if(isset($_POST['sendNewCar'])) {  
+        $make = mysqli_real_escape_string($conn, $_POST["make"]);  
+        $model = mysqli_real_escape_string($conn, $_POST["model"]);  
+        $transmissionType = mysqli_real_escape_string($conn, $_POST["transmission_type"]);  
+        $fuelType = mysqli_real_escape_string($conn, $_POST["fuel_type"]);  
+        $bodyType = mysqli_real_escape_string($conn, $_POST["body_type"]);  
+        $carPlate = mysqli_real_escape_string($conn, $_POST["car_plate"]);  
+        $doorsNumber = mysqli_real_escape_string($conn, $_POST["doors_number"]);  
+        $pasangersNumber = mysqli_real_escape_string($conn, $_POST["pasangers_number"]);  
+        $engineCapacity = mysqli_real_escape_string($conn, $_POST["engine_capacity"]);  
+        $registrationYear = mysqli_real_escape_string($conn, $_POST["registration_year"]);  
+        $descriptionRo = mysqli_real_escape_string($conn, $_POST["description_ro"]);  
+        $descriptionEn = mysqli_real_escape_string($conn, $_POST["description_en"]);  
+        $rentDaysPrice1_2 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_1_2"]);  
+        $rentDaysPrice3_7 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_3_7"]);  
+        $rentDaysPrice8_20 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_8_20"]);  
+        $rentDaysPrice21_4 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_21_4"]);  
+        $rentDaysPrice46 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_46"]);  
+        $imagePaths = $_FILES['image_paths']['name'];
+        $fileCount = count($imagePaths);
+        $allImages = '';
+
+        $allowed = array('jpg', 'jpeg', 'png');
 
 
-    for ($i = 0; $i < $fileCount; $i++) {
-        $fileName = $_FILES['image_paths']['name'][$i];
-        $fileTmpName = $_FILES['image_paths']['tmp_name'][$i];
-        $fileSize = $_FILES['image_paths']['size'][$i];
-        $fileError = $_FILES['image_paths']['error'][$i];
+        for ($i = 0; $i < $fileCount; $i++) {
+            $fileName = $_FILES['image_paths']['name'][$i];
+            $fileTmpName = $_FILES['image_paths']['tmp_name'][$i];
+            $fileSize = $_FILES['image_paths']['size'][$i];
+            $fileError = $_FILES['image_paths']['error'][$i];
 
-        $fileExt = explode('.', $fileName);
-        $fileActualExt = strtolower(end($fileExt));
+            $fileExt = explode('.', $fileName);
+            $fileActualExt = strtolower(end($fileExt));
 
-    if (in_array($fileActualExt, $allowed)) {
-        if ($fileError === 0) {
-            $uniqueFileName = uniqid('', true) . '_' . $fileName;  // Generate a unique filename
-            $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $uniqueFileName;
-            move_uploaded_file($fileTmpName, $fileDestination);
-            $allImages .= $uniqueFileName . ',';  // Store the unique filename in the list
+        if (in_array($fileActualExt, $allowed)) {
+            if ($fileError === 0) {
+                $uniqueFileName = uniqid('', true) . '_' . $fileName;  // Generate a unique filename
+                $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $uniqueFileName;
+                move_uploaded_file($fileTmpName, $fileDestination);
+                $allImages .= $uniqueFileName . ',';  // Store the unique filename in the list
+            } else {
+                echo "There was an error uploading your file!";
+            }
         } else {
-            echo "There was an error uploading your file!";
+            echo '<script>alert("You cannot upload files of this type!")</script>';
+            exit();
+            echo '<script> window.location.href = "managerProfile.php";</script>';
+        } 
         }
-    } else {
-        echo '<script>alert("You cannot upload files of this type!")</script>';
-        exit();
-        echo '<script> window.location.href = "managerProfile.php";</script>';
-    } 
+        // $allImages = rtrim($allImages, ',');
+        // Prepare the statement 16
+        $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
+        
+        // Execute the statement
+        if ($stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $descriptionEn ,$descriptionRo, $allImages])) {
+            echo '<script>alert("New car successfully added to DB")</script>'; 
+            echo '<script> window.location.href = "managerProfile.php";</script>';
+        }
+        // Close the statement
+        $stmt->close();
+
+    };
+
+    //funtion for delete local images
+    function deleteImage($imageName) {
+        $imagePath = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $imageName;
+
+        // Check if the file exists before attempting to delete
+        if (file_exists($imagePath)) {
+            unlink($imagePath); // Delete the file
+            echo "Image $imageName deleted successfully.";
+        } else {
+            echo "Image $imageName not found.";
+        }
     }
-    // $allImages = rtrim($allImages, ',');
-    // Prepare the statement 16
-    $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-    
-    // Execute the statement
-    if ($stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $descriptionEn ,$descriptionRo, $allImages])) {
-        echo '<script>alert("New car successfully added to DB")</script>'; 
-        echo '<script> window.location.href = "managerProfile.php";</script>';
-    }
-    // Close the statement
-    $stmt->close();
 
-};
-
-//funtion for delete local images
-function deleteImage($imageName) {
-    $imagePath = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $imageName;
-
-    // Check if the file exists before attempting to delete
-    if (file_exists($imagePath)) {
-        unlink($imagePath); // Delete the file
-        echo "Image $imageName deleted successfully.";
-    } else {
-        echo "Image $imageName not found.";
-    }
-}
-
-//delete images and car from DB
-if(isset($_POST["deleteExistingCar"])) {  
+    //delete images and car from DB
+    if(isset($_POST["deleteExistingCar"])) {  
 
     $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);  
 
@@ -134,13 +140,10 @@ if(isset($_POST["deleteExistingCar"])) {
 
     // Close the statement
     $stmt->close();
-}
-}
+    }
+    }
 
 ?>
-
-    <script type='text/javascript' src="/js/manager.js" defer></script>
-</head>
 
 <body>
 

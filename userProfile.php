@@ -1,3 +1,6 @@
+<?php 
+  session_start();
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -7,10 +10,7 @@
     <title>User</title>
 
     <?php
-// userProfile.php
-// session_start();
-// include "config.php";
-
+include "header.php";
 ?>
 
 </head>

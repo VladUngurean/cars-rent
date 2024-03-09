@@ -450,7 +450,7 @@ modelCheckboxes.forEach((modelCheckbox) => {
 
 // Create HTML for a single car
 const createCarHTML = (car, getImages) => `
-  <a id="${car.plate}" class="car-to-rent" href="carRentPage.php">
+  <div id="${car.plate}" class="car-to-rent" href="carRentPage.php">
     <div class="car-list__box">
       <img src="/images/carsList/${getImages[0]}" alt="carImage">
       <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
@@ -461,7 +461,7 @@ const createCarHTML = (car, getImages) => `
         <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
       </div>
     </div>
-  </a>
+  </div>
 `;
 
 // Create HTML for car details
@@ -556,3 +556,22 @@ function renderFilteredCars() {
   }
 }
 }
+
+let globalValue = document.querySelectorAll(".car-to-rent");
+
+// Get the button element
+
+let buttonToClick = document.getElementById("buttonToClick");
+
+// Attach a click event listener to the button
+globalValue.forEach(e => {
+    e.onclick = function() {
+      console.log('gf');
+        // Encode the value and set it to hidden input field
+        // let getValue = document.getElementById("")
+        document.getElementById("hiddenValue").value = encodeURIComponent(e.id);
+        // e.id = encodeURIComponent();
+        // Submit the form
+        document.getElementById("myForm").submit();
+    }
+})

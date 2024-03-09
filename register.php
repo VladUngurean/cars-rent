@@ -1,7 +1,9 @@
-    <!-- PHP CODE START -->
-    <?php
+<!-- PHP CODE START -->
+<?php 
+  session_start();
+?>
+<?php
 include "config.php";
-session_start();
 
 $_SESSION['role'] = 'Guest';
 
@@ -98,75 +100,75 @@ function validateEmail($email) {
     }
 }
     ?>
-    <!-- PHP CODE END -->
+<!-- PHP CODE END -->
 
-    <!DOCTYPE html>
-    <html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 
 
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Sign Up</title>
-        <link rel="stylesheet" href="/css/style.css">
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
-    </head>
+</head>
 
-    <body>
+<body>
 
-        <?php include "headerMini.php"; ?>
+    <?php include "headerMini.php"; ?>
 
-        <!-- Register secction START -->
-        <section class="register-area">
-            <div class="register-area__container">
-                <h1>Comanda Masina Online</h1>
+    <!-- Register secction START -->
+    <section class="register-area">
+        <div class="register-area__container">
+            <h1>Comanda Masina Online</h1>
 
-                <form id="registerForm" action="" method="post">
-                    <div class="register-area__input-field">
-                        <p>Already have an account? <a href="login.php">Log in</a></p>
-                        <input value="<?php if(isset($a)){ echo $a;}?>" type="email" name="email" placeholder="E-mail" minlength="5" maxlength="40" required />
-                    </div>
-                    <div class="register-area__input-field">
-                        <div class="show-password" onclick="togglePassrwordVisability('passwordInput', 'passwordShow', 'passwordHide')">
-                            <div id="passwordShow" class="password-show-option" style="display:flex;">
-                                <img src="/images/icons/regularEyeIcon.svg" alt="opendedeye">
-                                <p>Show</p>
-                            </div>
-                            <div id="passwordHide" class="password-show-option" style="display:none;">
-                                <img src="/images/icons/slashedEyeIcon.svg" alt="opendedeye">
-                                <p>Hide</p>
-                            </div>
+            <form id="registerForm" action="" method="post">
+                <div class="register-area__input-field">
+                    <p>Already have an account? <a href="login.php">Log in</a></p>
+                    <input value="<?php if(isset($a)){ echo $a;}?>" type="email" name="email" placeholder="E-mail" minlength="5" maxlength="40" required />
+                </div>
+                <div class="register-area__input-field">
+                    <div class="show-password" onclick="togglePassrwordVisability('passwordInput', 'passwordShow', 'passwordHide')">
+                        <div id="passwordShow" class="password-show-option" style="display:flex;">
+                            <img src="/images/icons/regularEyeIcon.svg" alt="opendedeye">
+                            <p>Show</p>
                         </div>
-                        <input id="passwordInput" type="password" name="password" placeholder="Password" minlength="5" maxlength="40" required />
-                    </div>
-                    <div class="register-area__input-field">
-                        <div class="show-password" onclick="togglePassrwordVisability('repreatPasswordInput', 'repeatPasswordShow', 'repeatPasswordHide')">
-                            <div id="repeatPasswordShow" class="password-show-option" style="display:flex;">
-                                <img src="/images/icons/regularEyeIcon.svg" alt="opendedeye">
-                                <p>Show</p>
-                            </div>
-                            <div id="repeatPasswordHide" class="password-show-option" style="display:none;">
-                                <img src="/images/icons/slashedEyeIcon.svg" alt="opendedeye">
-                                <p>Hide</p>
-                            </div>
+                        <div id="passwordHide" class="password-show-option" style="display:none;">
+                            <img src="/images/icons/slashedEyeIcon.svg" alt="opendedeye">
+                            <p>Hide</p>
                         </div>
-                        <input id="repreatPasswordInput" type="password" name="passwordCheck" placeholder="Repeat Password" minlength="5" maxlength="40" required />
                     </div>
-
-                    <div class="register-area__input-field">
-                        <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="first_name" placeholder="First Name" minlength="3" maxlength="40" required />
+                    <input id="passwordInput" type="password" name="password" placeholder="Password" minlength="5" maxlength="40" required />
+                </div>
+                <div class="register-area__input-field">
+                    <div class="show-password" onclick="togglePassrwordVisability('repreatPasswordInput', 'repeatPasswordShow', 'repeatPasswordHide')">
+                        <div id="repeatPasswordShow" class="password-show-option" style="display:flex;">
+                            <img src="/images/icons/regularEyeIcon.svg" alt="opendedeye">
+                            <p>Show</p>
+                        </div>
+                        <div id="repeatPasswordHide" class="password-show-option" style="display:none;">
+                            <img src="/images/icons/slashedEyeIcon.svg" alt="opendedeye">
+                            <p>Hide</p>
+                        </div>
                     </div>
+                    <input id="repreatPasswordInput" type="password" name="passwordCheck" placeholder="Repeat Password" minlength="5" maxlength="40" required />
+                </div>
 
-                    <div class="register-area__input-field">
-                        <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="last_name" placeholder="Last Name" minlength="3" maxlength="40" required />
-                    </div>
+                <div class="register-area__input-field">
+                    <input value="<?php if(isset($b)){ echo $b;}?>" type="text" name="first_name" placeholder="First Name" minlength="3" maxlength="40" required />
+                </div>
 
-                    <div class="register-area__input-field">
-                        <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phone" placeholder="Phone Number" minlength="8" maxlength="10" required />
-                    </div>
+                <div class="register-area__input-field">
+                    <input value="<?php if(isset($c)){ echo $c;}?>" type="text" name="last_name" placeholder="Last Name" minlength="3" maxlength="40" required />
+                </div>
 
-                    <?php
+                <div class="register-area__input-field">
+                    <input value="<?php if(isset($d)){ echo $d;}?>" type="text" name="phone" placeholder="Phone Number" minlength="8" maxlength="10" required />
+                </div>
+
+                <?php
 
                         if (isset($_SESSION['email'])) {
                             if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin') {
@@ -184,14 +186,14 @@ function validateEmail($email) {
                         if (!empty($registerErrorMesage)) echo "<p class='register-error-message'>$registerErrorMesage</p>";
                         if (!empty($dataBaseResponse)) echo "<p class='register-error-message'>$dataBaseResponse</p>";
                     ?>
-                    <input class="register-button" name="submit" type="submit" value="Register" />
-                </form>
+                <input class="register-button" name="submit" type="submit" value="Register" />
+            </form>
 
-            </div>
-        </section>
-        <!-- Register secction END -->
+        </div>
+    </section>
+    <!-- Register secction END -->
 
-        <script type='text/javascript' src="/js/main.js" defer></script>
-    </body>
+    <script type='text/javascript' src="/js/main.js" defer></script>
+</body>
 
-    </html>
+</html>

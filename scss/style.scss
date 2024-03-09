@@ -54,10 +54,10 @@ html {
   padding: 0;
   margin: 0;
 
-  -webkit-user-select: none; 
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
+  // -webkit-user-select: none; 
+  // -moz-user-select: none;
+  // -ms-user-select: none;
+  // user-select: none;
   // outline: black solid 1px auto;
 }
 
@@ -80,8 +80,8 @@ button, ul, li, label {
 }
 
 body {
-  // background-color: $background-color;
-  background-color: blue;
+  background-color: $background-color;
+  // background-color: blue;
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;

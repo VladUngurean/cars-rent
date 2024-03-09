@@ -1,6 +1,5 @@
 <?php
 include "config.php";
-// session_start();
 
 $result = $conn->query('CALL GetCarInformation()');
 
@@ -40,5 +39,5 @@ if ($result->num_rows > 0) {
     echo 'let carData = "";';
     echo '</script>';
 }
-  $conn->close();
+  $conn->next_result();
 ?>

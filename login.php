@@ -1,7 +1,9 @@
+<?php 
+    session_start();
+?>
 <?php  
     include "config.php";
 
-    session_start();
     $loginErrorMesage = '';
 
     if(isset($_POST["login"])) {  
@@ -36,7 +38,7 @@
             }
             else {  
                 $loginErrorMesage = "Wrong User Details";  
-                session_destroy();
+                // session_destroy();
             }
         }
     }

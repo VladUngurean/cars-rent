@@ -1,3 +1,7 @@
+<?php 
+    session_start();
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,12 +15,17 @@
 
 </head>
 
+<?php
+include "save_value.php"; 
+?>
+
 <body>
-    <?php include('header.php'); 
-            include('save_value.php'); 
-        $currentPage= $_SERVER['SCRIPT_NAME'];
+    <?php
+        include('header.php'); 
+
+        $currentPage = $_SERVER['SCRIPT_NAME'];
         echo $currentPage;
-        if ($currentPage == "/php/carRentPage.php"){
+        if ($currentPage == "/carRentPage.php"){
             echo '
             <style>
             .header_container {
@@ -36,7 +45,6 @@
             echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
         } else { echo '<p style="color:white; position:absolute; left:20px; bottom:20px;">Session is active <p/>' ; }
     ?>
-    <?php echo "Value saved in session: ".$_SESSION['savedValue']; ?>
 
     <section calss="selected-car-area">
         <div class="selected-car-container">

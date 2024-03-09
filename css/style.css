@@ -19,10 +19,6 @@ html {
   box-sizing: inherit;
   padding: 0;
   margin: 0;
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
 }
 
 ul, li {
@@ -43,7 +39,7 @@ button, ul, li, label {
 }
 
 body {
-  background-color: blue;
+  background-color: #1D1D1D;
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
