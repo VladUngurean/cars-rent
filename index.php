@@ -1,6 +1,3 @@
-<?php
-    // phpinfo();
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,12 +8,66 @@
 
     <title>Chișinău Dream Cars</title>
     <link rel="icon" type="image/x-icon" href="/images/logo.svg">
-    <?php include "ProcGetExistingCarsToShow.php"; ?>
+    <?php include "ProcGetExistingCarsToShow.php"; 
+        include "save_value.php";
+    ?>
 
 </head>
 
 <body>
     <p id="top" style="position:absolute; opacity:0;"></p>
+
+    <!-- <button id="sendToSession">Click me</button> -->
+
+    <!-- HTML code -->
+    <form id="myForm" action="index.php" method="GET">
+        <input type="hidden" name="value" id="hiddenValue">
+    </form>
+
+    <button id="buttonToClick">Click Me</button> <!-- Add a button to trigger the form submission -->
+
+    <script>
+    // Assume you have a global variable named 'globalValue'
+    let globalValue = document.querrySelectorAll(".car-to-rent").id;
+
+    // Get the button element
+
+    let buttonToClick = document.getElementById("buttonToClick");
+
+    // Attach a click event listener to the button
+    globalValue.foreach(e => {
+        e.onclick = function() {
+            // Encode the value and set it to hidden input field
+            // let getValue = document.getElementById("")
+            e.id = encodeURIComponent(globalValue);
+            // e.id = encodeURIComponent();
+            // Submit the form
+            document.getElementById("myForm").submit();
+        }
+    })
+    </script>
+
+
+    <?php
+// session_start();
+
+// Retrieve the value from the query parameter
+if(isset($_GET['value'])) {
+    $value = $_GET['value'];
+
+    // Set the value in the PHP session
+    $_SESSION['savedValue'] = $value;
+
+    // Optionally, you can send a response back to JavaScript
+    echo "Value saved in session: ".$_SESSION['savedValue'];
+} else {
+    // Handle error if value not received
+    echo "Error: Value not received.";
+}
+?>
+
+
+
 
     <div class="banner__video">
         <video id="bannerVideo" preload="auto" playsinline="" autoplay="" loop="" muted="">
@@ -27,10 +78,10 @@
     <?php include('header.php'); ?>
 
     <?php  
-        // echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
-        // if(!isset($_SESSION["email"])){  
-        //     echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
-        // } else { echo '<p style="color:white; position:absolute; bottom:20px;">Session is active <p/>' ; }
+        echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
+        if(!isset($_SESSION["email"])){  
+            echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
+        } else { echo '<p style="color:white; position:absolute; bottom:20px;">Session is active <p/>' ; }
     ?>
 
     <!-- About us secction START -->

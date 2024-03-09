@@ -43,7 +43,7 @@ button, ul, li, label {
 }
 
 body {
-  background-color: #1D1D1D;
+  background-color: blue;
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
