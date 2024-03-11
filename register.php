@@ -55,7 +55,7 @@ if(isset($_POST['submit'])) {
                                 echo '<script>alert("Registration Done")</script>';
                                 echo '<script> window.location.href = "adminProfile.php";</script>';
                                 exit;
-                            }  
+                        }  
                         elseif ($checkEmail && $checkPhone){
                             $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
@@ -63,7 +63,7 @@ if(isset($_POST['submit'])) {
                                 echo '<script>alert("Registration Done")</script>';  
                                 echo '<script> window.location.href = "login.php";</script>';
                             }
-                            }
+                        }
                         }
                     } else {  
                         list($a,$b,$c,$d) = catchValues();

@@ -153,8 +153,9 @@
     <?php  
             if(!isset($_SESSION["email"])){  
                 echo 'Session is not active<br>' ;
-            } else { echo 'Session is active<br>' ; }
-            echo $_SESSION['role'];
+            } else { echo 'Session is active<br>' ; 
+                echo $_SESSION['role'];
+            }
         ?>
 
     <br />

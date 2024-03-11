@@ -30,14 +30,10 @@ if ($result->num_rows > 0) {
     );
     }
     if (!empty($data)) {
-      echo '<script>';
-      echo 'let carData = ' . json_encode($data) . ';';
-      echo '</script>';
-  }
+      echo '<script> let carData = ' . json_encode($data) . '; </script>';
+    }
 } else {
-    echo '<script>';
-    echo 'let carData = "";';
-    echo '</script>';
-}
+    echo '<script> let carData = ""; </script>';
+  }
   $conn->next_result();
 ?>

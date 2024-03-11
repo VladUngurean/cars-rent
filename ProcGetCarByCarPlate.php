@@ -37,15 +37,13 @@ if ($result->num_rows > 0) {
     );
     }
     if (!empty($data)) {
-      echo '<script>';
-      echo 'let carToRent = ' . json_encode($data) . ';';
-      echo 'console.log(carToRent);';
-      echo '</script>';
+      echo '<script>
+      let carToRent = ' . json_encode($data) . ';
+      console.log(carToRent);
+      </script>';
   }
 } else {
-    echo '<script>';
-    echo 'let carToRent = "";';
-    echo '</script>';
+    echo '<script> let carToRent = ""; </script>';
 }
   $stmt->close();
   $conn->next_result();
