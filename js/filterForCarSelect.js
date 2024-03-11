@@ -429,7 +429,6 @@ function handleModelCheckboxChange(
   );
 }
 
-//test
 // Initialize checkboxes and models
 const makeCheckboxes = document.querySelectorAll(".make-checkbox");
 const modelCheckboxes = document.querySelectorAll(".model-checkbox");
@@ -489,15 +488,14 @@ const renderCars = (car) => {
   carsContainer.insertAdjacentHTML("beforeend", productHTML);
 };
 
-// Render all cars initially
-renderAllCars();
-
 // Function to render all cars
 function renderAllCars() {
   carsContainer.innerHTML = "";
   carsInfoFromPHP.forEach(renderCars);
 }
 
+// Render all cars initially
+renderAllCars();
 // Function to render filtered cars based on checked checkboxes
 
 function renderFilteredCars() {

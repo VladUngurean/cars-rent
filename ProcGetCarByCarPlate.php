@@ -4,9 +4,8 @@ include "config.php";
 
 $stmt = $conn->prepare("CALL getCar(?)");
 $stmt->bind_param("s", $_SESSION['global_car_plate']);
-
 $stmt->execute();
-$result = $stmt->get_result(); // Get the result set from the stored procedure
+$result = $stmt->get_result();
 
 // ==============================================================
 
