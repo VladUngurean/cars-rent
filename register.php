@@ -5,7 +5,7 @@
 <?php
 include "config.php";
 
-$_SESSION['role'] = 'Guest';
+// $_SESSION['role'] = 'Guest';
 
 if(isset($_POST['submit'])) {  
     $email = mysqli_real_escape_string($conn, $_POST["email"]);  
@@ -48,6 +48,14 @@ if(isset($_POST['submit'])) {
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
                         }
+                        elseif (($_SESSION['role'] === 'Admin')) {
+                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password)
+                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
+                            if(mysqli_query($conn, $query)) {  
+                                echo '<script>alert("Registration Done")</script>';
+                                echo '<script> window.location.href = "adminProfile.php";</script>';
+                                exit;
+                            }  
                         elseif ($checkEmail && $checkPhone){
                             $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
@@ -56,12 +64,6 @@ if(isset($_POST['submit'])) {
                                 echo '<script> window.location.href = "login.php";</script>';
                             }
                             }
-                        elseif (($_SESSION['role'] == 'Admin')) {
-                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password)
-                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
-                            if(mysqli_query($conn, $query)) {  
-                                echo '<script>alert("Registration Done")</script>';
-                            }  
                         }
                     } else {  
                         list($a,$b,$c,$d) = catchValues();

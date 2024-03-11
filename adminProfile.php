@@ -1,5 +1,5 @@
 <?php 
-    session_start();
+    // session_start();
 ?>
 
 <!DOCTYPE html>
@@ -39,7 +39,18 @@ if(isset($_POST["deleteUser"])) {
 <body>
     <?php
     include "register.php";
-    ?>
+
+    $currentPage = $_SERVER['SCRIPT_NAME'];
+    echo $currentPage;
+    if ($currentPage == "/adminProfile.php"){
+        echo '
+        <style>
+        .register-area__input-field>p {
+            display: none;
+        }
+        </style>';
+    }
+?>
 
     <form action="" method="post">
 

@@ -17,6 +17,7 @@
 
 <?php
 include "save_value.php"; 
+include "ProcGetCarByCarPlate.php"; 
 ?>
 
 <body>
@@ -39,7 +40,6 @@ include "save_value.php";
     ?>
 
     <?php  
-    // session_start();
         echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
         if(!isset($_SESSION["email"])){  
             echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
