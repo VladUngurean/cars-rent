@@ -190,7 +190,6 @@
 
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
     <script type='text/javascript' src="/js/main.js" defer></script>
-    <script type='text/javascript' src="/js/rentCar.js" defer></script>
 </body>
 
 </html>
