@@ -1,8 +1,16 @@
-// const carImagesForSwiper = (getImages) =>{
-//   for (let i = 0; i < getImages.length; i++) {
-//     return `<img src="/images/carsList/${getImages[i]}" alt="carImage">`    
-//   }
-// }
+const selecterCarToRent = carToRent;
+
+
+// Get the container to render cars
+const swiperContainer = document.querySelector(".swiper-wrapper");
+const carsContainer = document.querySelector("#selected-car-images");
+
+const carImagesForSwiper = (car) =>{
+  let getImages = car.carImage.split(",");
+  for (let i = 0; i < getImages.length; i++) {
+    return `<img src="/images/carsList/${getImages[i]}" alt="carImage">`    
+  }
+}
 // Create HTML for a single car
 const createCarHTML = (car, getImages) => `
   <div id="${car.plate}" class="car-to-rent" href="carRentPage.php">
@@ -34,22 +42,45 @@ const createCarDetailsHTML = (car) => `
   </div>
 `;
 
-// Get the container to render cars
-// const swiperContainer = document.querySelector(".swiper-wrapper");
-const carsContainer = document.querySelector("#selected-car-images");
 
 const renderCars = (car) => {
   let getImages = car.carImage.split(",");
   const productHTML = createCarHTML(car, getImages);
-  // const carImages = createCarHTML(car);
+  // const carImages = carImagesForSwiper(car);
   carsContainer.insertAdjacentHTML("beforeend", productHTML);
   // swiperContainer.insertAdjacentHTML("beforeend", carImages);
+
+
+  const parent = document.querySelector(".swiper");
+
+  // Create swiper wrapper div
+  const swiperWrapperDiv = document.createElement('div');
+  swiperWrapperDiv.classList.add('swiper-wrapper');
+  // Create swiper wrapper div
+  const swiperPaginationDiv = document.createElement('div');
+  swiperPaginationDiv.classList.add('swiper-pagination');
+  // Create swiper wrapper div
+  const swiperButtonPrevDiv = document.createElement('div');
+  swiperButtonPrevDiv.classList.add('swiper-button-prev');
+  // Create swiper wrapper div
+  const swiperButtonNextDiv = document.createElement('div');
+  swiperButtonNextDiv.classList.add('swiper-button-next');
+
+  // Append wrapper div to swiper div
+  parent.appendChild(swiperWrapperDiv);
+  parent.appendChild(swiperPaginationDiv);
+  parent.appendChild(swiperButtonPrevDiv);
+  parent.appendChild(swiperButtonNextDiv);
+
+  getImages.forEach(e => {
+    swiperWrapperDiv.insertAdjacentHTML("beforeend", `<div class="swiper-slide"><img src="/images/carsList/${e}" alt="carImage"></div>` );
+  })
 };
 
 // Function to render all cars
 function renderAllCars() {
   // carsContainer.innerHTML = "";
-  carToRent.forEach(renderCars);
+  selecterCarToRent.forEach(renderCars);
 }
 
 // Render all cars initially

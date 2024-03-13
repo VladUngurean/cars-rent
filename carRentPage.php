@@ -48,26 +48,22 @@ include "ProcGetCarByCarPlate.php";
         } else { echo '<p style="color:white; position:absolute; left:20px; bottom:20px;">Session is active <p/>' ; }
     ?>
 
+    <div id="here" class="swiper">
 
-    <div class="swiper">
-        <!-- Additional required wrapper -->
-        <div calss="swiper-wrapper">
-            <!-- Slides -->
+    </div>
+    <!-- <div class="swiper">
+        <div class="swiper-wrapper">
             <div class="swiper-slide">Slide 1</div>
             <div class="swiper-slide">Slide 2</div>
             <div class="swiper-slide">Slide 3</div>
-            ...
         </div>
-        <!-- If we need pagination -->
         <div class="swiper-pagination"></div>
 
-        <!-- If we need navigation buttons -->
         <div class="swiper-button-prev"></div>
         <div class="swiper-button-next"></div>
 
-        <!-- If we need scrollbar -->
-        <!-- <div class="swiper-scrollbar"></div> -->
-    </div>
+        <div class="swiper-scrollbar"></div>
+    </div> -->
 
     <section calss="selected-car-area">
         <div class="selected-car-container">
@@ -90,37 +86,45 @@ include "ProcGetCarByCarPlate.php";
 
     <?php include('footer.php'); ?>
 
-    <!-- <script type='text/javascript' src="/js/carRent.js" defer></script> -->
+    <script type='text/javascript' src="/js/carRent.js" defer></script>
 
     <style>
     .swiper {
-        width: 600px;
-        height: 300px;
+        width: 626px;
+        height: 425px;
+    }
+
+    .swiper-slide>img {
+        width: 626px;
+        height: 425px;
     }
     </style>
 
     <script>
-    const swiper = new Swiper('.swiper', {
-        // Optional parameters
-        direction: 'vertical',
-        loop: true,
+    setTimeout(() => {
 
-        // If we need pagination
-        pagination: {
-            el: '.swiper-pagination',
-        },
+        const swiper = new Swiper('.swiper', {
+            // Optional parameters
+            direction: 'horizontal',
+            loop: true,
 
-        // Navigation arrows
-        navigation: {
-            nextEl: '.swiper-button-next',
-            prevEl: '.swiper-button-prev',
-        },
+            // If we need pagination
+            pagination: {
+                el: '.swiper-pagination',
+            },
 
-        // And if we need scrollbar
-        scrollbar: {
-            el: '.swiper-scrollbar',
-        },
-    });
+            // Navigation arrows
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+
+            // And if we need scrollbar
+            scrollbar: {
+                el: '.swiper-scrollbar',
+            },
+        });
+    }, 0);
     </script>
 </body>
 
