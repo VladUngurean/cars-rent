@@ -1421,3 +1421,122 @@ nav{
   animation: increaseHeight 0.4s ease-in-out;
   overflow: scroll;
 }
+
+// car to rent on carRentPage START
+.selected-car-area{
+  width: 100%;
+  height: 100%;
+  @include flex-center;
+  margin-bottom: 200px;
+}
+.selected-car-container{
+  width: 100%;
+  @include flex-center;
+  flex-direction: column;
+}
+.selected-car-top-side{
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+
+  gap: 24px;
+}
+
+//swiper START
+.swiper {
+  width: 626px;
+  height: 425px;
+}
+
+.swiper-slide>img {
+  width: 626px;
+  height: 425px;
+}
+
+.swiper-button {
+  color: rgba(255, 255, 255, 0.8) !important;
+  top: auto !important;
+  bottom: 50px !important;
+  margin: 0 40px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+//swiper END
+
+#selected-car-description{
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+
+  gap: 20px;
+
+  div{
+    display: flex;
+    flex-direction: row;
+  }
+
+  .selected-car-make-model{
+
+    h1{
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 500;
+      font-size: 40px;
+    }
+  }
+
+  .selected-car-characteristics{
+    width: 100%;
+    min-width: 470px;
+    max-width: 550px;
+    min-height: 125px;
+    display: flex;
+    flex-wrap: wrap;
+
+    row-gap: 15px;
+    column-gap: 30px;
+
+    .selected-car-characteristics-item{
+      // width: 220px;
+      height: 20px;
+      gap: 10px;
+
+      &>img{
+        width: 20px;
+        height: 20px;
+        
+      }
+      &>h6{
+        min-width: 200px;
+        white-space: nowrap;
+        color: $text-light;
+        font-family: "Bai Jamjuree", sans-serif;
+        font-weight: 600;
+        font-size: 16px;
+      }
+    }
+  }
+
+  .selected-car-description{
+    max-width: 800px;
+    &>p{
+      color: $text-light;
+      font-family: "Bai Jamjuree", sans-serif;
+      font-weight: 500;
+      font-size: 18px;
+    }
+  }
+
+//Bottom side START
+}
+.selected-car-bottom-side{
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
+}
+//Bottom side END
+// car to rent on carRentPage END

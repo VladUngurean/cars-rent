@@ -31,8 +31,11 @@ include "ProcGetCarByCarPlate.php";
         if ($currentPage == "/carRentPage.php"){
             echo '
             <style>
-            .header_container {
-                flex-direction: flex-start;
+            .header-area{
+                margin-bottom:100px;
+            }
+            .header__container {
+                height: 65px;
             }
             .header__bottom {
                 display: none;
@@ -48,38 +51,35 @@ include "ProcGetCarByCarPlate.php";
         } else { echo '<p style="color:white; position:absolute; left:20px; bottom:20px;">Session is active <p/>' ; }
     ?>
 
-    <div id="here" class="swiper">
-
-    </div>
-    <!-- <div class="swiper">
-        <div class="swiper-wrapper">
-            <div class="swiper-slide">Slide 1</div>
-            <div class="swiper-slide">Slide 2</div>
-            <div class="swiper-slide">Slide 3</div>
-        </div>
-        <div class="swiper-pagination"></div>
-
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-
-        <div class="swiper-scrollbar"></div>
-    </div> -->
-
-    <section calss="selected-car-area">
+    <section class="selected-car-area">
         <div class="selected-car-container">
             <div class="selected-car-top-side">
                 <div id="selected-car-images">
-
+                    <div id="here" class="swiper"></div>
                 </div>
 
-                <div class="selected-car-description">
-
-                </div>
+                <div id="selected-car-description"></div>
 
             </div>
-
             <div class="selected-car-bottom-side">
+                <h2>Prețuri chirie auto</h2>
 
+                <div class="table-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>1-1 Zile</th>
+                                <th>3-7 Zile</th>
+                                <th>8-20 Zile</th>
+                                <th>21-45 Zile</th>
+                                <th>46+ Zile</th>
+                            </tr>
+                        </thead>
+                        <tbody id='carInfoTable'>
+                            <!-- <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="" /> -->
+                        </tbody>
+                    </table>
+                </div>
             </div>
         </div>
     </section>
@@ -88,26 +88,20 @@ include "ProcGetCarByCarPlate.php";
 
     <script type='text/javascript' src="/js/carRent.js" defer></script>
 
-    <style>
-    .swiper {
-        width: 626px;
-        height: 425px;
-    }
-
-    .swiper-slide>img {
-        width: 626px;
-        height: 425px;
-    }
-    </style>
-
     <script>
     setTimeout(() => {
-
         const swiper = new Swiper('.swiper', {
             // Optional parameters
             direction: 'horizontal',
             loop: true,
-
+            spaceBetween: 20,
+            keyboard: {
+                enabled: true,
+            },
+            autoplay: {
+                delay: 4000,
+                disableOnInteraction: false,
+            },
             // If we need pagination
             pagination: {
                 el: '.swiper-pagination',
@@ -119,10 +113,6 @@ include "ProcGetCarByCarPlate.php";
                 prevEl: '.swiper-button-prev',
             },
 
-            // And if we need scrollbar
-            scrollbar: {
-                el: '.swiper-scrollbar',
-            },
         });
     }, 0);
     </script>

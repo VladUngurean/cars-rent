@@ -1230,4 +1230,109 @@ nav > .nav__ul .nav__li:hover::before {
   z-index: 2;
   animation: increaseHeight 0.4s ease-in-out;
   overflow: scroll;
+}
+
+.selected-car-area {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 200px;
+}
+
+.selected-car-container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.selected-car-top-side {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  gap: 24px;
+}
+
+.swiper {
+  width: 626px;
+  height: 425px;
+}
+
+.swiper-slide > img {
+  width: 626px;
+  height: 425px;
+}
+
+.swiper-button {
+  color: rgba(255, 255, 255, 0.8) !important;
+  top: auto !important;
+  bottom: 50px !important;
+  margin: 0 40px !important;
+}
+
+.swiper-pagination-bullet-active {
+  background: rgba(255, 255, 255, 0.5) !important;
+}
+
+#selected-car-description {
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 20px;
+}
+#selected-car-description div {
+  display: flex;
+  flex-direction: row;
+}
+#selected-car-description .selected-car-make-model h1 {
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+}
+#selected-car-description .selected-car-characteristics {
+  width: 100%;
+  min-width: 470px;
+  max-width: 550px;
+  min-height: 125px;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 15px;
+  column-gap: 30px;
+}
+#selected-car-description .selected-car-characteristics .selected-car-characteristics-item {
+  height: 20px;
+  gap: 10px;
+}
+#selected-car-description .selected-car-characteristics .selected-car-characteristics-item > img {
+  width: 20px;
+  height: 20px;
+}
+#selected-car-description .selected-car-characteristics .selected-car-characteristics-item > h6 {
+  min-width: 200px;
+  white-space: nowrap;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+}
+#selected-car-description .selected-car-description {
+  max-width: 800px;
+}
+#selected-car-description .selected-car-description > p {
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.selected-car-bottom-side {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+  flex-direction: column;
 }/*# sourceMappingURL=style.css.map */
