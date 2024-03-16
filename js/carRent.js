@@ -13,7 +13,7 @@ const carImagesForSwiper = (car) =>{
 }
 // Create HTML for a single car
 const createCarHTML = (car, getImages) => `
-  <div id="${car.plate}" class="car-to-rent" href="carRentPage.php">
+  <div id="${car.plate}" class="car-to-rent">
     <div class="car-list__box">
       <img src="/images/carsList/${getImages[0]}" alt="carImage">
       <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
