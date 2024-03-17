@@ -556,19 +556,10 @@ function renderFilteredCars() {
 }
 
 let globalValue = document.querySelectorAll(".car-to-rent");
-
-// Get the button element
-
-let buttonToClick = document.getElementById("buttonToClick");
-
 // Attach a click event listener to the button
 globalValue.forEach(e => {
     e.onclick = function() {
-      // ev.preventDefault();
       document.getElementById("hiddenValue").value = encodeURIComponent(e.id);
-      // Submit the form
       document.getElementById("myForm").submit();
-      // window.location.href = "carRentPage.php";
-      // window.location.href = 'success.html'
     }
 })

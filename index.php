@@ -38,12 +38,7 @@
 
     <?php include('header.php'); ?>
 
-    <?php  
-        echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
-        if(!isset($_SESSION["email"])){  
-            echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
-        } else { echo '<p style="color:white; position:absolute; bottom:20px;">Session is active <p/>' ; }
-    ?>
+
 
     <!-- About us secction START -->
 

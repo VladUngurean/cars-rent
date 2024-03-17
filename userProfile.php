@@ -9,14 +9,14 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User</title>
 
-    <?php
-include "header.php";
-?>
+    <link rel="stylesheet" href="/css/style.css">
+
 
 </head>
 
 <body>
-    <h2>Hello user</h2>
+    <?php include "header.php"; ?>
+    <h1 style="margin-bottom:150px; color:white;">Hello, User</h1>
 </body>
 
 </html>

@@ -148,6 +148,103 @@
             </div>
         </div>
 
+        <!-- // accounts start -->
+        <style>
+        .accounts {
+            width: 505px;
+            display: flex;
+            flex-direction: column;
+            position: absolute;
+            top: 150px;
+            background-color: rgba(255, 255, 255, 0.5);
+            padding: 15px;
+            border-radius: 5px;
+
+            color: black;
+            font-family: white, sans-serif;
+            font-weight: 500;
+            font-size: 18px;
+        }
+
+        .accounts-header {
+            display: flex;
+            flex-direction: row;
+            align-items: center;
+            justify-content: space-between;
+            cursor: pointer;
+        }
+
+        .accounts-header>h5 {
+            font-family: "Jura", sans-serif;
+            font-weight: 600;
+            font-size: 22px;
+        }
+
+        tr {
+            text-align: left;
+            font-family: "Jura", sans-serif;
+            /* font-weight: 600; */
+            font-size: 22px;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 5px
+        }
+
+        .accounts-table {
+            display: none;
+        }
+
+        .show-accounts-table {
+            display: block;
+        }
+        </style>
+        <!-- /* // accounts end */ -->
+
+        <div class="accounts">
+            <div class="accounts-header">
+                <h5>Accounts:</h5>
+                <svg width="31" height="33" viewBox="0 0 31 33" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <path d="M7.9917 5.12635L22.1864 16.1667L7.9917 27.207" stroke="black" stroke-width="2.36579" />
+                </svg>
+
+            </div>
+            <table class="accounts-table">
+                <thead>
+                    <tr>
+                        <th>Role</th>
+                        <th>Email</th>
+                        <th>Password</th>
+                    </tr>
+                </thead>
+
+                <tbody>
+                    <tr>
+                        <td>Admin</td>
+                        <td>admin@gmail.com</td>
+                        <td>112233</td>
+                    </tr>
+                    <tr>
+                        <td>Manager</td>
+                        <td>manager@gmail.com</td>
+                        <td>112233</td>
+                    </tr>
+                    <tr>
+                        <td>User</td>
+                        <td>user@gmail.com</td>
+                        <td>112233</td>
+                    </tr>
+                </tbody>
+            </table>
+            <?php  
+                echo '<label style="position:absolute; left:20px; bottom:-65px;"><a style="color:#fa2f2f; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
+                if(!isset($_SESSION["email"])){  
+                    echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">Session is not active<p/>' ;
+                } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">Session is active <p/>' ; }
+            ?>
+        </div>
         <div class="header__bottom">
             <h1>Închiriere mașini 24/7 în Chișinău</h1>
             <p>Alege autopacul:</p>
@@ -159,6 +256,17 @@
 
     </div>
 
+    <style>
+    .show-accounts-table {
+        display: block;
+    }
+    </style>
+    <script>
+    let getAccountsTable = document.querySelector(".accounts-table");
+    document.querySelector(".accounts-header").onclick = function() {
+        getAccountsTable.classList.toggle("show-accounts-table");
+    };
+    </script>
 </section>
 
 <!-- Header secction END -->
