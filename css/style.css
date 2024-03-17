@@ -1205,6 +1205,18 @@ nav > .nav__ul .nav__li:hover::before {
   fill-opacity: 0.2;
 }
 
+#manager-form-add-new-car {
+  width: 100%;
+}
+#manager-form-add-new-car .addNewCar {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+#manager-form-add-new-car .addNewCar > * {
+  width: 320px;
+}
+
 .ulForHideSelectOptions {
   display: none;
 }

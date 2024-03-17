@@ -160,8 +160,8 @@
 
     <br />
 
-    <form action="" method="post" onsubmit="return checkIfImagesSelected()" enctype="multipart/form-data" style="text-align: center; display: flex; justify-content: center; ailgn-items: center;">
-        <div class="addNewCar" style="text-align: start; display: flex; justify-content: center; ailgn-items: center; flex-direction: column; max-width:320px;">
+    <form id="manager-form-add-new-car" action="" method="post" onsubmit="return checkIfImagesSelected()" enctype="multipart/form-data">
+        <div class="addNewCar">
             <ul id="makeModelToDb"></ul>
             <ul id="transmissionTypeToDb"></ul>
             <ul id="engineFuelToDb"></ul>
@@ -193,7 +193,7 @@
 
     <br>
 
-    <form action="" method="post">
+    <form id="manager-form-table" action="" method="post">
         <style>
         .table-container {
             max-width: 1560px;
@@ -239,9 +239,7 @@
                         <th>Car Description Ro</th>
                     </tr>
                 </thead>
-                <tbody id='carInfoTable'>
-                    <!-- <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="" /> -->
-                </tbody>
+                <tbody id='carInfoTable'></tbody>
             </table>
         </div>
 

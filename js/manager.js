@@ -2,7 +2,7 @@
 function HTMLforMakeModelSelect() {
   return `
       <li class="new-car-select-option">
-        <span id="dropDownMakes">&#x2022; Marca </span>
+        <span id="dropDownMakes">1. Marca </span>
         <ul id="carMakesForSelect" class="ulForHideSelectOption ulForCarMakes">
           <li class="new-car-select-option">
             <div class="dropdown__content-second__select-options">
@@ -56,7 +56,7 @@ function HTMLforTransmissionSelect() {
   return `
       <li class="new-car-select-options">
         <div class="dropdown__content-second__select-options">
-            <span id="selectTransmissionType">Cutie de viteze </span>
+            <span id="selectTransmissionType">2. Cutie de viteze </span>
         </div>
         <ul id="transmissionTypeList" class="ulForHideSelectOption ulForTransmissions"></ul>
       </li>
@@ -75,7 +75,7 @@ function HTMLforFuelTypeSelect() {
   return `
       <li class="new-car-select-options">
         <div class="dropdown__content-second__select-options">
-            <span id="selectFuelType">Tip combustibil </span>
+            <span id="selectFuelType">3. Tip combustibil </span>
         </div>
         <ul id="fuelTypeList" class="ulForHideSelectOption ulForFuelTypes"></ul>
       </li>
@@ -94,7 +94,7 @@ function HTMLforBodyTypeSelect() {
   return `
       <li class="new-car-select-options">
         <div class="dropdown__content-second__select-options">
-          <span id="selectBodyType">Tip caroserie </span>
+          <span id="selectBodyType">4. Tip caroserie </span>
         </div>
         <ul id="bodyTypeList" class="ulForHideSelectOption ulForBodyTypes"></ul>
       </li>
