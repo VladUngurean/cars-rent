@@ -451,7 +451,9 @@ modelCheckboxes.forEach((modelCheckbox) => {
 const createCarHTML = (car, getImages) => `
   <div id="${car.plate}" class="car-to-rent">
     <div class="car-list__box">
-      <img src="/images/carsList/${getImages[0]}" alt="carImage">
+      <div class="car-list__box-image">
+        <img src="/images/carsList/${getImages[0]}" alt="Car Image(get images from a local storage, don't work with cars posted from Webhost)">
+      </div>
       <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
       <div class="car-list__box-details">
       <div class="car-list__box-details-price">

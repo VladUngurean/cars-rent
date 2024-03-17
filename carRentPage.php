@@ -40,6 +40,9 @@ include "ProcGetCarByCarPlate.php";
             .header__bottom {
                 display: none;
             }
+            .accounts{
+                display: none;
+            }
             </style>';
         }
     ?>
