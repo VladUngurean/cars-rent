@@ -238,11 +238,12 @@
                     </tr>
                 </tbody>
             </table>
-            <?php  
+            <?php
                 echo '<label style="position:absolute; left:20px; bottom:-65px;"><a style="color:#fa2f2f; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
-                if(!isset($_SESSION["email"])){  
-                    echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">Session is not active<p/>' ;
-                } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">Session is active <p/>' ; }
+
+                if(!isset($_SESSION["email"])){
+                    echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">Session is not active<p/>';
+                } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-47px;">Session is active as '. $_SESSION["role"].'<p/>'; }
             ?>
         </div>
         <div class="header__bottom">
