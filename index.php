@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    $_SESSION['role'] = 'Guest';
 ?>
 
 <!DOCTYPE html>
@@ -25,7 +26,7 @@
     <!-- <button id="sendToSession">Click me</button> -->
 
     <!-- HTML code -->
-    <form id="myForm" action="" method="GET">
+    <form id="myForm" action="carRentPage.php" method="GET">
         <input type="hidden" name="car_plate" id="hiddenValue">
     </form>
 

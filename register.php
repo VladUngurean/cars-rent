@@ -48,6 +48,15 @@ if(isset($_POST['submit'])) {
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
                         }
+
+                        elseif ($checkEmail && $checkPhone && ($_SESSION['role'] != 'Admin')){
+                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
+                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
+                            if(mysqli_query($conn, $query)) {  
+                                echo '<script>alert("Registration Done")</script>';  
+                                echo '<script> window.location.href = "login.php";</script>';
+                            }
+                        }
                         elseif (($_SESSION['role'] === 'Admin')) {
                             $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password)
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
@@ -56,39 +65,31 @@ if(isset($_POST['submit'])) {
                                 echo '<script> window.location.href = "adminProfile.php";</script>';
                                 exit;
                         }  
-                        elseif ($checkEmail && $checkPhone){
-                            $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
-                            VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
-                            if(mysqli_query($conn, $query)) {  
-                                echo '<script>alert("Registration Done")</script>';  
-                                echo '<script> window.location.href = "login.php";</script>';
-                            }
-                        }
                         }
                     } else {  
                         list($a,$b,$c,$d) = catchValues();
                         $registerErrorMesage =  "Phone Number should contain only numbers";
-                        session_destroy();  
+                        // session_destroy();  
                     }  
                 } else {  
                     list($a,$b,$c,$d) = catchValues();
                     $registerErrorMesage =  "Last name should contain only alphabetical characters";
-                    session_destroy();  
+                    // session_destroy();  
                 }  
             } else {  
                 list($a,$b,$c,$d) = catchValues();
                 $registerErrorMesage =  "First name should contain only alphabetical characters";
-                session_destroy();  
+                // session_destroy();  
             }  
         } else { 
             list($a,$b,$c,$d) = catchValues(); 
             $registerErrorMesage =  "Passwords does not matches";
-            session_destroy();  
+            // session_destroy();  
         }  
     } else {
         list($a,$b,$c,$d) = catchValues();
         $registerErrorMesage =  "Email is not valid";
-        session_destroy();  
+        // session_destroy();  
     }
 }
 function validateEmail($email) {

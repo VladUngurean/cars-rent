@@ -15,8 +15,8 @@ if(isset($_GET['car_plate'])) {
     $_SESSION['local_car_plate'] = $decoded_car_plate;
 
     // Redirect to another page
-    header("Location: carRentPage.php");
-    exit; // Ensure that further execution stops after redirection
+    // header("Location: carRentPage.php");
+    // exit; // Ensure that further execution stops after redirection
 } else {
     // Handle error if car_plate not received
     echo "Did not select car yet";
