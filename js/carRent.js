@@ -1,6 +1,4 @@
 const selecterCarToRent = carToRent;
-
-
 // Get the container to render cars
 const swiperContainer = document.querySelector(".swiper-wrapper");
 const carsContainer = document.querySelector("#selected-car-images");
@@ -67,28 +65,32 @@ const createCarDetailsHTML = (car) => `
     <p>${car.descriptionRo}</p>
   </div>
 `;
+//swiper start
+const createCarImageHTML = (imagePath) => `<img src="/images/carsList/${imagePath}" alt="carImage">`;
 
-function carImagesSwiper(imagesFromDB) {
-    const parent = document.querySelector(".swiper");
-    const swiperWrapperDiv = document.createElement('div');
-    const swiperPaginationDiv = document.createElement('div');
-    const swiperButtonPrevDiv = document.createElement('div');
-    const swiperButtonNextDiv = document.createElement('div');
-    swiperWrapperDiv.classList.add('swiper-wrapper');
-    swiperPaginationDiv.classList.add('swiper-pagination');
-    swiperButtonPrevDiv.classList.add('swiper-button', 'swiper-button-prev');
-    swiperButtonNextDiv.classList.add('swiper-button', 'swiper-button-next');
+const createSwiperComponents = (parent) => {
+  const createDivWithClasses = (classNames) => {
+    const createDiv = document.createElement('div');
+    createDiv.classList.add(...classNames);
+    return createDiv;
+  };
+
+  parent.appendChild(createDivWithClasses(['swiper-wrapper']));
+  parent.appendChild(createDivWithClasses(['swiper-pagination']));
+  parent.appendChild(createDivWithClasses(['swiper-button', 'swiper-button-prev']));
+  parent.appendChild(createDivWithClasses(['swiper-button', 'swiper-button-next']));
+};
+
+function createSwiper(imagesFromDB) {
+  const parent = document.querySelector(".swiper");
+  createSwiperComponents(parent);
   
-    // append wrapper div to swiper div
-    parent.appendChild(swiperWrapperDiv);
-    parent.appendChild(swiperPaginationDiv);
-    parent.appendChild(swiperButtonPrevDiv);
-    parent.appendChild(swiperButtonNextDiv);
-  
-    imagesFromDB.forEach(e => {
-      swiperWrapperDiv.insertAdjacentHTML("beforeend", `<div class="swiper-slide"><img src="/images/carsList/${e}" alt="carImage"></div>` );
-    })
+  const swiperWrapperDiv = parent.querySelector('.swiper-wrapper');
+  imagesFromDB.forEach(image => {
+    swiperWrapperDiv.insertAdjacentHTML("beforeend", `<div class="swiper-slide">${createCarImageHTML(image)}</div>`);
+  });
 }
+//swiper end
 
 const containerForSelectedCarTechDetails = document.getElementById("selected-car-description")
 
@@ -98,7 +100,7 @@ const renderCars = (car) => {
 
   containerForSelectedCarTechDetails.insertAdjacentHTML("beforeend", createCarDetailsToHTML);
 
-  carImagesSwiper(getImages);
+  createSwiper(getImages);
 };
 
 // Function to render all cars

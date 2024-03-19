@@ -101,10 +101,10 @@ include "ProcGetCarByCarPlate.php";
             keyboard: {
                 enabled: true,
             },
-            autoplay: {
-                delay: 4000,
-                disableOnInteraction: false,
-            },
+            // autoplay: {
+            //     delay: 4000,
+            //     disableOnInteraction: false,
+            // },
             // If we need pagination
             pagination: {
                 el: '.swiper-pagination',
