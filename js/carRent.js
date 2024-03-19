@@ -10,19 +10,14 @@ const carImagesForSwiper = (car) =>{
   }
 }
 // Create HTML for a single car
-const createCarHTML = (car, getImages) => `
-  <div id="${car.plate}" class="car-to-rent">
-    <div class="car-list__box">
-      <img src="/images/carsList/${getImages[0]}" alt="carImage">
-      <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
-      <div class="car-list__box-details">
-        <div class="car-list__box-details-price">
-          <h5>${car.rentDaysPrice46}€/Zi</h5>
-        </div>
-        <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
-      </div>
-    </div>
-  </div>
+const createPriceTableHTML = (car) => `
+  <tr>
+    <td>${car.rentDaysPrice1_2}</td>
+    <td>${car.rentDaysPrice3_7}</td>
+    <td>${car.rentDaysPrice8_20}</td>
+    <td>${car.rentDaysPrice21_45}</td>
+    <td>${car.rentDaysPrice46}</td>
+  </tr>
 `;
 
 const createCarDetailsHTML = (car) => `
@@ -92,21 +87,26 @@ function createSwiper(imagesFromDB) {
 }
 //swiper end
 
-const containerForSelectedCarTechDetails = document.getElementById("selected-car-description")
+//get container element and place in, data from DB
+function insertHtmlToPage(idOfContainer, funcWithHtml) {
+  document.getElementById(idOfContainer).insertAdjacentHTML("beforeend", funcWithHtml);
+}
 
-const renderCars = (car) => {
+//
+const combineHTMLNeededForSelectedCar = (car) => {
+  //split string of car images paths from DB
   let getImages = car.carImage.split(",");
-  const createCarDetailsToHTML = createCarDetailsHTML(car);
 
-  containerForSelectedCarTechDetails.insertAdjacentHTML("beforeend", createCarDetailsToHTML);
+  //insert car  html to container from page
+  insertHtmlToPage("selected-car-description", createCarDetailsHTML(car))
+  insertHtmlToPage("carRentPriceTable", createPriceTableHTML(car))
 
+  //place in swiper element its custom options and images from DB
   createSwiper(getImages);
 };
 
-// Function to render all cars
-function renderAllCars() {
-  selecterCarToRent.forEach(renderCars);
+// render selected car info
+function renderSelectedCarInfo() {
+  selecterCarToRent.forEach(combineHTMLNeededForSelectedCar);
 }
-
-// Render all cars initially
-renderAllCars();
+renderSelectedCarInfo();

@@ -67,7 +67,7 @@ include "ProcGetCarByCarPlate.php";
             <div class="selected-car-bottom-side">
                 <h2>Prețuri chirie auto</h2>
 
-                <div class="table-container">
+                <div class="selected-car-table-container">
                     <table>
                         <thead>
                             <tr>
@@ -78,9 +78,7 @@ include "ProcGetCarByCarPlate.php";
                                 <th>46+ Zile</th>
                             </tr>
                         </thead>
-                        <tbody id='carRentPriceTable'>
-                            <!-- <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="" /> -->
-                        </tbody>
+                        <tbody id='carRentPriceTable'></tbody>
                     </table>
                 </div>
             </div>

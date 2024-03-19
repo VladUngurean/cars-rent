@@ -1485,22 +1485,19 @@ nav{
   overflow: hidden;
 }
 
-// .swiper-slide {
-//   display: flex !important;
-//   align-items: center  !important;
-//   justify-content: center  !important;
-// }
-.swiper-slide>img {
-  // width: auto;
-  // height: auto;
+.swiper-slide {
   // width: 100%;
-  // height: 100%;
-  min-width: 100%;
-  max-width: 650px;
+  display: flex !important;
+  align-items: center  !important;
+  justify-content: center  !important;
+  overflow: hidden;
+}
+.swiper-slide>img {
+  // min-width: 100%;
+  // max-width: 650px;
   min-height: 100%;
   max-height: 450px;
 }
-
 
 .swiper-button {
   color: rgba(255, 255, 255, 0.8) !important;
@@ -1586,6 +1583,40 @@ nav{
   justify-content: flex-start;
   align-items: flex-start;
   flex-direction: column;
+
+  &>h2{
+    margin: 25px 0 20px;
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 500;
+    font-size: 40px;
+  }
 }
+
+.selected-car-table-container{
+  
+  &>table{
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  td, th {
+    width: 180px;
+    padding: 5px 15px;
+    border: 2px solid $text-light-half-transparent;
+  }
+  td{
+    padding: 5px 25px;
+  }
+  tr{
+    text-align: center;
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
+
+
 //Bottom side END
 // car to rent on carRentPage END
