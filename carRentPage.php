@@ -78,7 +78,7 @@ include "ProcGetCarByCarPlate.php";
                                 <th>46+ Zile</th>
                             </tr>
                         </thead>
-                        <tbody id='carInfoTable'>
+                        <tbody id='carRentPriceTable'>
                             <!-- <input id="tableDeleteCarButton" class="button" name="deleteExistingCar" type="submit" value="" /> -->
                         </tbody>
                     </table>

@@ -69,23 +69,17 @@ const createCarDetailsHTML = (car) => `
 `;
 
 function carImagesSwiper(imagesFromDB) {
-    // swiperContainer.insertAdjacentHTML("beforeend", carImages);
     const parent = document.querySelector(".swiper");
-
-    // Create swiper wrapper div
     const swiperWrapperDiv = document.createElement('div');
-    swiperWrapperDiv.classList.add('swiper-wrapper');
-    // Create swiper wrapper div
     const swiperPaginationDiv = document.createElement('div');
-    swiperPaginationDiv.classList.add('swiper-pagination');
-    // Create swiper wrapper div
     const swiperButtonPrevDiv = document.createElement('div');
-    swiperButtonPrevDiv.classList.add('swiper-button', 'swiper-button-prev');
-    // Create swiper wrapper div
     const swiperButtonNextDiv = document.createElement('div');
+    swiperWrapperDiv.classList.add('swiper-wrapper');
+    swiperPaginationDiv.classList.add('swiper-pagination');
+    swiperButtonPrevDiv.classList.add('swiper-button', 'swiper-button-prev');
     swiperButtonNextDiv.classList.add('swiper-button', 'swiper-button-next');
   
-    // Append wrapper div to swiper div
+    // append wrapper div to swiper div
     parent.appendChild(swiperWrapperDiv);
     parent.appendChild(swiperPaginationDiv);
     parent.appendChild(swiperButtonPrevDiv);
@@ -100,10 +94,8 @@ const containerForSelectedCarTechDetails = document.getElementById("selected-car
 
 const renderCars = (car) => {
   let getImages = car.carImage.split(",");
-  // const productHTML = createCarHTML(car, getImages);
   const createCarDetailsToHTML = createCarDetailsHTML(car);
 
-  // carsContainer.insertAdjacentHTML("beforeend", productHTML);
   containerForSelectedCarTechDetails.insertAdjacentHTML("beforeend", createCarDetailsToHTML);
 
   carImagesSwiper(getImages);
@@ -111,7 +103,6 @@ const renderCars = (car) => {
 
 // Function to render all cars
 function renderAllCars() {
-  // carsContainer.innerHTML = "";
   selecterCarToRent.forEach(renderCars);
 }
 
