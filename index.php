@@ -189,8 +189,8 @@
                     <p>Primește consultație telefonică de la expert și ajuor în alegerea aumombilului potrivit:</p>
                     <a href="tel:+37300000000">(+373) 00 000 000</a>
                     <div class="info-about-contacts-buttons">
-                        <a class="contacts-button whatsapp" href="https://www.pexels.com/search/cat/" target="_blank">Scrie pe WhatsApp</a>
-                        <a class="contacts-button telegram" href="https://www.pexels.com/search/cat/" target="_blank">Scrie pe Telegram</a>
+                        <a class="contacts-button whatsapp" href="" target="_blank">Scrie pe WhatsApp</a>
+                        <a class="contacts-button telegram" href="" target="_blank">Scrie pe Telegram</a>
                     </div>
                 </div>
             </div>

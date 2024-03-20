@@ -195,10 +195,15 @@
 
         .accounts-table {
             display: none;
+            border-collapse: collapse;
         }
 
         .show-accounts-table {
             display: block;
+        }
+
+        .textToCopy {
+            cursor: pointer;
         }
         </style>
         <!-- /* // accounts end */ -->
@@ -215,7 +220,7 @@
                 <thead>
                     <tr>
                         <th>Role</th>
-                        <th>Email</th>
+                        <th>Email (click to copy)</th>
                         <th>Password</th>
                     </tr>
                 </thead>
@@ -223,17 +228,17 @@
                 <tbody>
                     <tr>
                         <td>Admin</td>
-                        <td>admin@gmail.com</td>
+                        <td class="textToCopy">admin@gmail.com</td>
                         <td>112233</td>
                     </tr>
                     <tr>
                         <td>Manager</td>
-                        <td>manager@gmail.com</td>
+                        <td class="textToCopy">manager@gmail.com</td>
                         <td>112233</td>
                     </tr>
                     <tr>
                         <td>User</td>
-                        <td>user@gmail.com</td>
+                        <td class="textToCopy">user@gmail.com</td>
                         <td>112233</td>
                     </tr>
                 </tbody>
@@ -267,6 +272,14 @@
     document.querySelector(".accounts-header").onclick = function() {
         getAccountsTable.classList.toggle("show-accounts-table");
     };
+    </script>
+
+    <!-- when click on email from table , email will be copied -->
+    <script>
+    var allInputs = document.querySelectorAll(".textToCopy");
+    allInputs.forEach(e => e.addEventListener("click", function() {
+        navigator.clipboard.writeText(e.innerHTML);
+    }))
     </script>
 </section>
 

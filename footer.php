@@ -34,11 +34,11 @@
             </div>
         </div>
         <hr>
-        <div class="footer-bottom">
+        <!-- <div class="footer-bottom">
             <a href="">UI/UX Designer</a>
             <a href="">Frontend</a>
             <a href="">Backend</a>
-        </div>
+        </div> -->
     </div>
 
 </section>
