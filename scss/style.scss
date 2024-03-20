@@ -1462,6 +1462,9 @@ nav{
   height: 100%;
   @include flex-center;
   margin-bottom: 200px;
+  & form{
+    // width: 100%;
+  }
 }
 .selected-car-container{
   width: 100%;
@@ -1584,7 +1587,7 @@ nav{
   align-items: flex-start;
   flex-direction: column;
 
-  &>h2{
+  & h2{
     margin: 25px 0 20px;
     color: $text-light;
     font-family: "Bai Jamjuree", sans-serif;

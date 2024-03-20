@@ -48,10 +48,10 @@ include "ProcGetCarByCarPlate.php";
     ?>
 
     <?php  
-        echo '<label style="position:absolute; left:20px; bottom:20px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
+        echo '<label style="position:absolute; left:20px; bottom:800px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
         if(!isset($_SESSION["email"])){  
-            echo '<p style="color:white; position:absolute; left:20px; bottom:40px;">Session is not active<p/>' ;
-        } else { echo '<p style="color:white; position:absolute; left:20px; bottom:20px;">Session is active <p/>' ; }
+            echo '<p style="color:white; position:absolute; left:20px; bottom:820px;">Session is not active<p/>' ;
+        } else { echo '<p style="color:white; position:absolute; left:20px; bottom:800px;">Session is active <p/>' ; }
     ?>
 
     <section class="selected-car-area">
@@ -65,22 +65,68 @@ include "ProcGetCarByCarPlate.php";
 
             </div>
             <div class="selected-car-bottom-side">
-                <h2>Prețuri chirie auto</h2>
 
-                <div class="selected-car-table-container">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>1-1 Zile</th>
-                                <th>3-7 Zile</th>
-                                <th>8-20 Zile</th>
-                                <th>21-45 Zile</th>
-                                <th>46+ Zile</th>
-                            </tr>
-                        </thead>
-                        <tbody id='carRentPriceTable'></tbody>
-                    </table>
-                </div>
+                <form action="">
+                    <h2>Prețuri chirie auto</h2>
+
+                    <div class="selected-car-table-container">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>1-1 Zile</th>
+                                    <th>3-7 Zile</th>
+                                    <th>8-20 Zile</th>
+                                    <th>21-45 Zile</th>
+                                    <th>46+ Zile</th>
+                                </tr>
+                            </thead>
+                            <tbody id='carRentPriceTable'></tbody>
+                        </table>
+                    </div>
+
+                    <h2>Calculează prețul închirierii mașinii</h2>
+                    <div class="selected-car-rent-date">
+                        <input type="date" name="" id="">
+                        <input type="time" name="" id="">
+                    </div>
+
+                    <h2>Alege tipul de asisgurare</h2>
+                    <div class="selected-car-insurace-type">
+                        <input type="radio" name="insurance" id="insuraceRCA">
+                        <label for="insuraceRCA">insuraceRCA</label>
+                        <input type="radio" name="insurance" id="insuraceCasco">
+                        <label for="insuraceCasco">insuraceCasco</label>
+                    </div>
+
+                    <h2>Locul preluării mașinii:</h2>
+                    <div class="selected-car-pickup-place">
+                        <input type="radio" name="pickup_place" id="pickup_place_airoprt_ch">
+                        <label for="pickup_place_airoprt_ch">airport ch</label>
+                        <input type="radio" name="pickup_place" id="pickup_place_our_office">
+                        <label for="pickup_place_our_office">our office</label>
+                        <input type="radio" name="pickup_place" id="pickup_place_balti">
+                        <label for="pickup_place_balti">balti</label>
+                    </div>
+
+                    <h2>Date de contact:</h2>
+                    <div class="selected-car-guest-info">
+                        <input type="text" name="first_name_last_name" palceholder="Nume Prenume">
+                        <input type="tel" name="first_name_last_name" palceholder="Telefon">
+                        <input type="tel" name="first_name_last_name" palceholder="Vârsta șofer">
+                    </div>
+
+                    <h2>Cum preferați să vă contactăm:</h2>
+                    <div class="selected-car-contact-guest-type">
+                        <input type="checkbox" name="contact-guest-type" id="contact-option-viber">
+                        <label for="contact-option-viber">Viber</label>
+                        <input type="checkbox" name="contact-guest-type" id="contact-option-telegram">
+                        <label for="contact-option-telegram">Telegram</label>
+                        <input type="checkbox" name="contact-guest-type" id="contact-option-whatsapp">
+                        <label for="contact-option-whatsapp">Whats App</label>
+                    </div>
+
+                    <input type="submit" value="Submit">
+                </form>
             </div>
         </div>
     </section>

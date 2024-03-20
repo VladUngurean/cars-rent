@@ -1263,7 +1263,6 @@ nav > .nav__ul .nav__li:hover::before {
   align-items: center;
   margin-bottom: 200px;
 }
-
 .selected-car-container {
   width: 100%;
   display: flex;
@@ -1368,7 +1367,7 @@ nav > .nav__ul .nav__li:hover::before {
   align-items: flex-start;
   flex-direction: column;
 }
-.selected-car-bottom-side > h2 {
+.selected-car-bottom-side h2 {
   margin: 25px 0 20px;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
