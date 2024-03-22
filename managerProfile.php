@@ -112,37 +112,63 @@
     //delete images and car from DB
     if(isset($_POST["deleteExistingCar"])) {  
 
-    $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);  
+        $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);  
 
-    //delete local images
-    $stmt = $conn->prepare("CALL getCarImages(?)");
-    $stmt->execute([$carPlate]);
-    $stmt->bind_result($imagePaths);
-    $stmt->fetch();
+        //delete local images
+        $stmt = $conn->prepare("CALL getCarImages(?)");
+        $stmt->execute([$carPlate]);
+        $stmt->bind_result($imagePaths);
+        $stmt->fetch();
 
-    $imagesArray = explode(',', $imagePaths);
-    foreach ($imagesArray as $imageName) {
-        deleteImage($imageName);
+        $imagesArray = explode(',', $imagePaths);
+        foreach ($imagesArray as $imageName) {
+            deleteImage($imageName);
+        }
+        // Close the statement
+        $stmt->close();
+        
+        //delete cars from db
+        $stmt = $conn->prepare("CALL deleteCar(?)");
+        
+        if ($stmt->execute([$carPlate])) {
+            echo '<script>alert("Car successfully deleted from DB")</script>'; 
+            echo '<script> window.location.href = "managerProfile.php";</script>';
+        } else {
+            echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
+        }
+
+        // Close the statement
+        $stmt->close();
     }
-    // Close the statement
-    $stmt->close();
-    
-
-    //delete cars from db
-    $stmt = $conn->prepare("CALL deleteCar(?)");
-    
-    if ($stmt->execute([$carPlate])) {
-        echo '<script>alert("Car successfully deleted from DB")</script>'; 
-        echo '<script> window.location.href = "managerProfile.php";</script>';
-    } else {
-        echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
     }
 
-    // Close the statement
-    $stmt->close();
-    }
+
+    // get all users from DB
+    $result = $conn->query('CALL getAllUsers()');
+
+if ($result->num_rows > 0) {
+    // output data of each row
+    while($row = $result->fetch_assoc()) {
+
+    $allUsersData[] = array(
+        'allUsersRole' => $row['user_role'],
+        'allUsersfirstName' => $row['first_name'],
+        'allUserslastName' => $row['last_name'],
+        'allUsersemail' => $row['email'],
+        'allUsersphone' => $row['phone'],
+    );
     }
 
+    if (!empty($allUsersData)) {
+      echo '<script> let allUsersData = ' . json_encode($allUsersData) . '; </script>';
+    } 
+
+  } else {
+    echo '<script> let allUsersData =  ""; </script>';
+    echo json_encode(["message" => "No data found"]);
+  }
+  $result->close();
+  $conn->next_result();
 ?>
 
 <body>
@@ -212,6 +238,7 @@
             padding: 8px;
             text-align: left;
             color: white;
+            max-height: 30px;
         }
         </style>
         <div class="table-container">
@@ -251,13 +278,14 @@
             <table>
                 <thead>
                     <tr>
+                        <th>Role</th>
                         <th>Nume</th>
                         <th>Prenume</th>
                         <th>Email</th>
                         <th>Nr. telefon</th>
                     </tr>
                 </thead>
-                <tbody id='usesrInfoTable'>
+                <tbody id='allUsersInfoTable'>
                 </tbody>
             </table>
         </div>

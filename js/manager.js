@@ -138,6 +138,17 @@ function HTMLforCarsTable(carInfo) {
     </tr>
   `;
 }
+function HTMLforUsersTable(userInfo) {
+  return `
+  <tr>
+      <td>${userInfo.allUsersRole}</td>
+      <td>${userInfo.allUsersfirstName}</td>
+      <td>${userInfo.allUserslastName}</td>
+      <td>${userInfo.allUsersemail}</td>
+      <td>${userInfo.allUsersphone}</td>
+    </tr>
+  `;
+}
 
 //HTML for TABLE end-------------------------------------------------------------------------------------
 
@@ -239,12 +250,7 @@ function renderCarModelsForSelect(models, container) {
   });
 }
 
-function renderSelectOptionsForSelect(
-  infoAboutCar,
-  container,
-  carCharacteristic,
-  functionThatReturnHTML
-) {
+function renderSelectOptionsForSelect(infoAboutCar, container, carCharacteristic, functionThatReturnHTML) {
   infoAboutCar.forEach((type) => {
     const HTMLtoRender = functionThatReturnHTML(type[carCharacteristic]);
     container.insertAdjacentHTML("beforeend", HTMLtoRender);
@@ -370,10 +376,10 @@ function displaySelectedImages(input) {
     for (let i = 0; i < files.length; i++) {
       let image = document.createElement("img");
       image.src = URL.createObjectURL(files[i]);
-      image.style.minWidth = "100px";
-      image.style.maxWidth = "100px";
-      image.style.minHeight = "100px"; 
-      image.style.maxHeight = "100px"; 
+      image.style.width = "100px";
+      // image.style.maxWidth = "100px";
+      image.style.height = "100px"; 
+      // image.style.maxHeight = "100px"; 
       container.appendChild(image);
   }
 }
@@ -393,4 +399,16 @@ function checkIfImagesSelected() {
     return false;
   } 
   return true;
+}
+
+
+// show all users data in table
+const allUsersDataFromDb = allUsersData;
+console.log(allUsersDataFromDb);
+const allUsersDataTableContainer = document.getElementById("allUsersInfoTable");
+if (allUsersDataFromDb === "") {
+  allUsersDataTableContainer.insertAdjacentHTML("beforeend", "No users in Data Base");
+  console.log("No cars available");
+} else {
+  renderTableRows(allUsersDataFromDb, allUsersDataTableContainer, HTMLforUsersTable);
 }
