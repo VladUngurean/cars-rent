@@ -1,9 +1,10 @@
 <?php
 include "config.php";
 
-$result = $conn->query('CALL GetCarInformation()');
+if (!empty($conn)) {
+  $result = $conn->query('CALL GetCarInformation()');
 
-if ($result->num_rows > 0) {
+  if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {
 
@@ -32,8 +33,11 @@ if ($result->num_rows > 0) {
     if (!empty($data)) {
       echo '<script> let carData = ' . json_encode($data) . '; </script>';
     }
-} else {
+  } else {
     echo '<script> let carData = ""; </script>';
   }
   $conn->next_result();
+
+}
+
 ?>

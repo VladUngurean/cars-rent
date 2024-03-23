@@ -39,7 +39,7 @@
                 <div id='user__container'>
 
                     <?php  
-                    include "config.php";
+                    // include "config.php";
                     function getUserRole($email) {
                         global $conn;
                         $query = "CALL getUserRole('$email')";
