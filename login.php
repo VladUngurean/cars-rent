@@ -4,6 +4,10 @@
 <?php  
     include "config.php";
 
+    if (isset($_SESSION['role']) && $_SESSION['role'] != "Guest") {
+        header("Location: index.php");
+    }
+    
     $loginErrorMesage = '';
 
     if(isset($_POST["login"])) {  
