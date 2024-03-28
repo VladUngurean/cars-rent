@@ -1271,6 +1271,10 @@ nav > .nav__ul .nav__li:hover::before {
   text-align: left;
 }
 
+label[for="deletemanager@gmail.com"] {
+  pointer-events: none;
+}
+
 #manager-form-add-new-car {
   width: 100%;
 }

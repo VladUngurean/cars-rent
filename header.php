@@ -68,6 +68,8 @@
 
                     if(isset($_SESSION["email"])){
                         $userData = getUserData($_SESSION["email"]);
+                        $conn->next_result();
+
                         if ($userData) {
                             $_SESSION['first_name'] = $userData['first_name'];
                             $_SESSION['last_name'] = $userData['last_name'];
@@ -86,8 +88,6 @@
                     } elseif(isset($_SESSION["email"])) {
 
                         $userRole = getUserRole($_SESSION["email"]);
-                        $conn->next_result();
-                        $conn->next_result();
                         // Store user information in the session
                         $_SESSION['email'] = $_SESSION["email"];
                         $_SESSION['role'] = $userRole;

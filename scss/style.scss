@@ -1474,6 +1474,11 @@ nav{
     text-align: left;
   }
 }
+
+label[for="deletemanager@gmail.com"] {
+  pointer-events: none;
+}
+
 //for admin end
 
 //for manager start
