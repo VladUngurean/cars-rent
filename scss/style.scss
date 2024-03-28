@@ -21,9 +21,9 @@
   justify-content: space-between;
   align-items: center;
   }
-@mixin input-placeholder {
+@mixin input-placeholder($font-eight) {
   font-family: "Jura", sans-serif;
-  font-weight: 700;
+  font-weight: $font-eight;
   font-size: 16px;
   line-height: 19px;
   }
@@ -1258,6 +1258,33 @@ nav{
   gap: 40px;
 }
 
+.register-area__input-field{
+  &>text{
+    // width: 100%;
+    // text-align: left;
+    color: $text-light;
+    font-family: "Jura", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    margin-bottom: 5px;
+  }
+
+
+  &>select{
+    width: 100%;
+    height: 50px;
+    padding-left: 10px;
+    border: none;
+
+    border-radius: 2px;
+    @include input-placeholder(600);
+
+  }
+  &>select:focus{
+    outline: black solid 1px gray solid 2px;
+  }
+}
+
 .register-area__input-field, .login-area__input-field{
   width: 100%;
   
@@ -1311,19 +1338,19 @@ nav{
   }
   
   &>input::-webkit-input-placeholder {
-    @include input-placeholder;
+    @include input-placeholder(700);
   }
 
   &>input:-ms-input-placeholder {
-    @include input-placeholder;
+    @include input-placeholder(700);
   }
 
   &>input:-moz-placeholder {
-    @include input-placeholder;
+    @include input-placeholder(700);
   }
 
   &>input::-moz-placeholder {
-    @include input-placeholder;
+    @include input-placeholder(700);
   }
 }
 
@@ -1403,6 +1430,51 @@ nav{
 .scroll-to-top:hover>svg>g>path {
   fill-opacity: 0.2;
 }
+
+//for admin start
+
+.table-container{
+  min-height: 300px;
+  
+  .table-row-container{
+    position: relative;
+  }
+  .delete-user-button{
+    width: 20px;
+    position: absolute;
+    transform: translate(-50px, 10px);
+    // top: 3px;
+    // right: 5px;
+  }
+
+  
+  & h2 {
+    color: white;
+  }
+
+  table {
+    width: 100%;
+    border-collapse: collapse;
+  }
+
+  tr {
+    position: relative;
+  }
+
+  table label {
+    color: white;
+  }
+
+  th,
+  td {
+    position: relative;
+    color: white;
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+  }
+}
+//for admin end
 
 //for manager start
 #manager-form-add-new-car{

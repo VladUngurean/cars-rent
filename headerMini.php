@@ -1,3 +1,6 @@
+<?php 
+//   session_start();
+?>
 <section class="header-register-area">
     <div class="header-register-area-container">
         <a href="index.php" class="header-register-close-button">

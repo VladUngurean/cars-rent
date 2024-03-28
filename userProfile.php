@@ -16,7 +16,28 @@
 
 <body>
     <?php include "header.php"; ?>
-    <h1 style="margin-bottom:150px; color:white;">Hello, User</h1>
+
+    <?php
+
+        $currentPage = $_SERVER['SCRIPT_NAME'];
+        // echo $currentPage;
+        if ($currentPage == "/userProfile.php"){
+            echo '
+            <style>
+            .header-area{
+                margin-bottom:100px;
+            }
+            .header__container {
+                height: 65px;
+            }
+            .header__bottom {
+                display: none;
+            }
+            </style>';
+        }
+    ?>
+
+    <h1 style="margin-top:450px; color:white;">Hello, User</h1>
 </body>
 
 </html>

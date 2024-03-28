@@ -22,11 +22,11 @@
             $result = mysqli_query($conn, $query);  
 
             if(mysqli_num_rows($result) > 0) {  
-                // If user login is successful, get the user role
-                $userRole = getUserRole($email);
-
                 // Store user information in the session
                 $_SESSION['email'] = $email;
+                
+                // If user login is successful, get the user role
+                $userRole = getUserRole($email);
                 $_SESSION['role'] = $userRole;
 
                 // Redirect to the appropriate dashboard or home page

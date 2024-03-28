@@ -1,5 +1,5 @@
 <?php 
-    // session_start();
+    session_start();
 ?>
 
 <!DOCTYPE html>
@@ -11,26 +11,26 @@
     <title>Admin</title>
 
     <?php
-include "ProcGetManagersAndCouriers.php";
+    include "ProcGetManagersAndCouriers.php";
 
-//delete images in cars from DB
-if(isset($_POST["deleteUser"])) {  
+    //delete images in cars from DB
+    if(isset($_POST["deleteUser"])) {  
 
-    $emailToDelete = mysqli_real_escape_string($conn, $_POST["deleteUser"]);  
+        $emailToDelete = mysqli_real_escape_string($conn, $_POST["deleteUser"]);  
 
-    //delete cars from db
-    $stmt = $conn->prepare("CALL deleteManagerORCourier(?)");
-    
-    if ($stmt->execute([$emailToDelete])) {
-        echo '<script>alert("User successfully deleted from DB")</script>'; 
-        echo '<script> window.location.href = "adminProfile.php";</script>';
-    } else {
-        echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
+        //delete cars from db
+        $stmt = $conn->prepare("CALL deleteManagerORCourier(?)");
+        
+        if ($stmt->execute([$emailToDelete])) {
+            echo '<script>alert("User successfully deleted from DB")</script>'; 
+            echo '<script> window.location.href = "adminProfile.php";</script>';
+        } else {
+            echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
+        }
+
+        // Close the statement
+        $stmt->close();
     }
-
-    // Close the statement
-    $stmt->close();
-}
 ?>
 
     <script type='text/javascript' src="/js/admin.js" defer></script>
@@ -38,10 +38,11 @@ if(isset($_POST["deleteUser"])) {
 
 <body>
     <?php
+    // echo $_SESSION["role"];
     include "register.php";
 
     $currentPage = $_SERVER['SCRIPT_NAME'];
-    echo $currentPage;
+    // echo $currentPage;
     if ($currentPage == "/adminProfile.php"){
         echo '
         <style>
@@ -50,30 +51,13 @@ if(isset($_POST["deleteUser"])) {
         }
         </style>';
     }
+    
 ?>
 
     <form action="" method="post">
 
-        <style>
-        .table-container {
-            min-height: 300px;
-            overflow-x: auto;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            border: 1px solid #ddd;
-            padding: 8px;
-            text-align: left;
-        }
-        </style>
-
         <div class="table-container">
+            <h2>Lista de manageri si Curieri</h2>
             <table>
                 <thead>
                     <tr>
@@ -90,15 +74,6 @@ if(isset($_POST["deleteUser"])) {
         </div>
 
     </form>
-
-    <?php  
-        echo '<label><a href="logout.php">Logout</a></label><br>';  
-        if(!isset($_SESSION["email"])){  
-            echo 'Session is not active<br>' ;
-        } else { echo 'Session is active<br>' ; }
-        echo $_SESSION['role']
-    ?>
-
 
 </body>
 

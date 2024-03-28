@@ -38,8 +38,9 @@
                 <!-- user login, register start -->
                 <div id='user__container'>
 
-                    <?php  
-                    // include "config.php";
+                    <?php 
+                    include "config.php";
+
                     function getUserRole($email) {
                         global $conn;
                         $query = "CALL getUserRole('$email')";
@@ -247,8 +248,8 @@
                 echo '<label style="position:absolute; left:20px; bottom:-65px;"><a style="color:#fa2f2f; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
 
                 if(!isset($_SESSION["email"])){
-                    echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">Session is not active<p/>';
-                } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-47px;">Session is active as '. $_SESSION["role"].'<p/>'; }
+                    echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">You are not logged in<p/>';
+                } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-47px;">You are logged in as '. $_SESSION["role"].'<p/>'; }
             ?>
         </div>
         <div class="header__bottom">

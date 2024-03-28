@@ -1,14 +1,14 @@
 <!-- PHP CODE START -->
 <?php 
-  session_start();
+//   session_start();
 ?>
 <?php
 include "config.php";
 
-// $_SESSION['role'] = 'Guest';
-if (isset($_SESSION['role']) && $_SESSION['role'] != "Guest") {
-    header("Location: index.php");
-}
+// // $_SESSION['role'] = 'Guest';
+// if (isset($_SESSION['role']) && $_SESSION['role'] != "Guest") {
+//     header("Location: index.php");
+// }
 
 if(isset($_POST['submit'])) {  
     $email = mysqli_real_escape_string($conn, $_POST["email"]);  
@@ -50,24 +50,21 @@ if(isset($_POST['submit'])) {
                         } elseif(mysqli_num_rows($checkPhone) > 0){
                             list($a,$b,$c,$d) = catchValues();
                             $dataBaseResponse = 'Phone Already exists'; 
-                        }
-
-                        elseif ($checkEmail && $checkPhone && ($_SESSION['role'] != 'Admin')){
+                        } elseif ($checkEmail && $checkPhone && ($_SESSION['role'] != 'Admin')){
                             $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password) 
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                             if(mysqli_query($conn, $query)) {  
                                 echo '<script>alert("Registration Done")</script>';  
                                 echo '<script> window.location.href = "login.php";</script>';
                             }
-                        }
-                        elseif (($_SESSION['role'] === 'Admin')) {
+                        } elseif (($_SESSION['role'] === 'Admin')) {
                             $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password)
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                             if(mysqli_query($conn, $query)) {  
                                 echo '<script>alert("Registration Done")</script>';
                                 echo '<script> window.location.href = "adminProfile.php";</script>';
                                 exit;
-                        }  
+                            }  
                         }
                     } else {  
                         list($a,$b,$c,$d) = catchValues();
@@ -123,7 +120,13 @@ function validateEmail($email) {
 
 <body>
 
-    <?php include "headerMini.php"; ?>
+    <?php include "headerMini.php"; 
+    
+    if (isset($_SESSION['role']) && $_SESSION['role'] === "Admin") {
+        echo '<label><a href="logout.php" style="color:red; font-size:20px;">Logout</a></label><br>';  
+    }
+    ?>
+
 
     <!-- Register secction START -->
     <section class="register-area">
@@ -180,7 +183,7 @@ function validateEmail($email) {
                             if (isset($_SESSION['role']) && $_SESSION['role'] === 'Admin') {
                             echo ' 
                             <div class="register-area__input-field">
-                                <p>Alege Rolul</p>
+                                <text>Alege Rolul</text>
                                 <select name="role" id="">
                                     <option value="Manager">Manager</option>
                                     <option value="Courier">Curier</option>

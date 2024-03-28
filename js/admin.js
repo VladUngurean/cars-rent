@@ -1,8 +1,10 @@
 function HTMLforManagersAndCouriers(user) {
     return `
-    <input id="delete${user.email}" class="button" name="deleteUser" type="submit" value="${user.email}" style="display: none;"/>
-    <label for="delete${user.email}">Delete User</label>
-    <tr>
+      <input id="delete${user.email}" class="button" name="deleteUser" type="submit" value="${user.email}" style="display: none;"/>
+      <label class="delete-user-button" for="delete${user.email}">
+        Delete
+      </label>
+      <tr>
         <td>${user.userRole}</td>
         <td>${user.firstName}</td>
         <td>${user.lastName}</td>

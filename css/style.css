@@ -1079,6 +1079,28 @@ nav > .nav__ul .nav__li:hover::before {
   gap: 40px;
 }
 
+.register-area__input-field > text {
+  color: #FFFFFF;
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  margin-bottom: 5px;
+}
+.register-area__input-field > select {
+  width: 100%;
+  height: 50px;
+  padding-left: 10px;
+  border: none;
+  border-radius: 2px;
+  font-family: "Jura", sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  line-height: 19px;
+}
+.register-area__input-field > select:focus {
+  outline: black solid 1px gray solid 2px;
+}
+
 .register-area__input-field, .login-area__input-field {
   width: 100%;
   display: flex;
@@ -1214,6 +1236,39 @@ nav > .nav__ul .nav__li:hover::before {
 
 .scroll-to-top:hover > svg > g > path {
   fill-opacity: 0.2;
+}
+
+.table-container {
+  min-height: 300px;
+}
+.table-container .table-row-container {
+  position: relative;
+}
+.table-container .delete-user-button {
+  width: 20px;
+  position: absolute;
+  transform: translate(-50px, 10px);
+}
+.table-container h2 {
+  color: white;
+}
+.table-container table {
+  width: 100%;
+  border-collapse: collapse;
+}
+.table-container tr {
+  position: relative;
+}
+.table-container table label {
+  color: white;
+}
+.table-container th,
+.table-container td {
+  position: relative;
+  color: white;
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: left;
 }
 
 #manager-form-add-new-car {
