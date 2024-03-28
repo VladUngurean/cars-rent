@@ -37,22 +37,13 @@
 </head>
 
 <body>
-    <?php
-    // echo $_SESSION["role"];
-    include "register.php";
-
-    $currentPage = $_SERVER['SCRIPT_NAME'];
-    // echo $currentPage;
-    if ($currentPage == "/adminProfile.php"){
-        echo '
-        <style>
-        .register-area__input-field>p {
-            display: none;
-        }
-        </style>';
+    <style>
+    .register-area__input-field>p {
+        display: none;
     }
-    
-?>
+    </style>
+
+    <?php include "register.php";?>
 
     <form action="" method="post">
 
