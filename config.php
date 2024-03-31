@@ -10,7 +10,4 @@
   } catch (mysqli_sql_exception) {
     echo "Can not connect to Data Base";
   }
-  // if (!empty($conn)) {
-  //   echo "Connected successfully";
-  // }
 ?>

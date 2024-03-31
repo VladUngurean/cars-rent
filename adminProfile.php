@@ -59,7 +59,7 @@
                         <th>Email</th>
                     </tr>
                 </thead>
-                <tbody id='managesAndCouriersInfoTable'>
+                <tbody id="managesAndCouriersInfoTable">
                 </tbody>
             </table>
         </div>

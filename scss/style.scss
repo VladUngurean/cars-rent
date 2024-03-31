@@ -564,9 +564,9 @@ nav{
   }
 }
 
-.car-list__box:hover>img{
-  // scale: 1.2;
-}
+// .car-list__box:hover>img{
+//   // scale: 1.2;
+// }
 // render cars end
 
 .show-more-cars{
@@ -1539,9 +1539,9 @@ label[for="deletemanager@gmail.com"] {
   height: 100%;
   @include flex-center;
   margin-bottom: 200px;
-  & form{
-    // width: 100%;
-  }
+  // & form{
+  //   // width: 100%;
+  // }
 }
 .selected-car-container{
   width: 100%;
