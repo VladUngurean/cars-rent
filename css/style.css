@@ -123,11 +123,11 @@ nav > .nav__ul {
   gap: 30px;
   pointer-events: none;
 }
-nav > .nav__ul > .nav__li {
+nav > .nav__ul > .nav__item {
   position: relative;
-  pointer-events: all;
 }
-nav > .nav__ul > .nav__li > a {
+nav > .nav__ul > .nav__item > a {
+  pointer-events: all;
   white-space: nowrap;
   color: #FFFFFF;
   font-family: "Jura", sans-serif;
@@ -146,6 +146,11 @@ nav > .nav__ul .nav__li::before {
 }
 nav > .nav__ul .nav__li:hover::before {
   animation: border_hover_animation 0.3s linear forwards;
+}
+
+.nav__link-active {
+  pointer-events: none !important;
+  border-bottom: 1px solid white !important;
 }
 
 @keyframes border_hover_animation {
@@ -260,7 +265,7 @@ nav > .nav__ul .nav__li:hover::before {
   flex-direction: column;
   width: 100%;
   position: relative;
-  top: -160px;
+  top: -400px;
 }
 .header__bottom > h1 {
   white-space: nowrap;

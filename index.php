@@ -37,6 +37,15 @@
     </div>
 
     <?php include('header.php'); ?>
+
+    <div class="header__bottom">
+        <h1>Închiriere mașini 24/7 în Chișinău</h1>
+        <p>Alege autopacul:</p>
+        <div class="park__links">
+            <a href="#">Chișinău</a>
+            <a href="#">Bălți</a>
+        </div>
+    </div>
     <!-- About us secction START -->
 
     <section class="aboutus-area">

@@ -25,9 +25,6 @@ include "ProcGetCarByCarPlate.php";
 <body>
     <?php
         include('header.php'); 
-
-        $currentPage = $_SERVER['SCRIPT_NAME'];
-        echo $currentPage;
         if ($currentPage == "/carRentPage.php"){
             echo '
             <style>

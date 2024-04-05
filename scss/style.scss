@@ -173,10 +173,10 @@ nav{
     gap: 30px;
     pointer-events: none;
 
-    &>.nav__li{
+    &>.nav__item{
       position: relative;
-      pointer-events: all;
       &>a{
+        pointer-events: all;
         white-space: nowrap;
         color: $text-light;
         font-family: "Jura", sans-serif;
@@ -199,6 +199,11 @@ nav{
       animation: border_hover_animation 0.3s linear forwards;
     }
   }
+}
+
+.nav__link-active{
+  pointer-events:none !important; 
+  border-bottom: 1px solid white !important;
 }
 
 @keyframes border_hover_animation {
@@ -316,7 +321,7 @@ nav{
   width: 100%;
 
   position: relative;
-  top: -160px;
+  top: -400px;
 
   &>h1{
     white-space: nowrap;

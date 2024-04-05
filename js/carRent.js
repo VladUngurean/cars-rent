@@ -6,7 +6,7 @@ const carsContainer = document.querySelector("#selected-car-images");
 const carImagesForSwiper = (car) =>{
   let getImages = car.carImage.split(",");
   for (let i = 0; i < getImages.length; i++) {
-    return `<img src="/images/carsList/${getImages[i]}" alt="carImage">`    
+    return `<img loading="lazy" role="presentation" src="/images/carsList/${getImages[i]}" alt="carImage">`    
   }
 }
 // Create HTML for a single car
@@ -154,7 +154,7 @@ const createCarDetailsHTML = (car) => `
   </div>
 `;
 //swiper start
-const createCarImageHTML = (imagePath) => `<img src="/images/carsList/${imagePath}" alt="carImage">`;
+const createCarImageHTML = (imagePath) => `<img loading="lazy" role="presentation" src="/images/carsList/${imagePath}" alt="carImage">`;
 
 const createSwiperComponents = (parent) => {
   const createDivWithClasses = (classNames) => {

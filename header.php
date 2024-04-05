@@ -1,4 +1,9 @@
 <!-- Header secction START -->
+<?php
+$currentPage = $_SERVER['SCRIPT_NAME'];
+echo $currentPage;
+?>
+
 
 <section class="header-area">
 
@@ -19,11 +24,11 @@
                 <!-- Nav START -->
                 <nav>
                     <ul class="nav__ul">
-                        <li class="nav__li"><a href="#">Despre noi</a></li>
-                        <li class="nav__li"><a href="#">Contacte</a></li>
-                        <li class="nav__li"><a href="#">Termeni și condiții</a></li>
-                        <li class="nav__li"><a href="#">Recenzii</a></li>
-                        <li class="nav__li" style="pointer-events:none; border-bottom: 1px solid white;"><a href="#">Mașini</a></li>
+                        <li class="nav__item"><a class="nav__link" href="aboutUs.php">Despre noi</a></li>
+                        <li class="nav__item"><a class="nav__link" href="contacts.php">Contacte</a></li>
+                        <li class="nav__item"><a class="nav__link" href="thermsAndPol.php">Termeni și condiții</a></li>
+                        <li class="nav__item"><a class="nav__link" href="feedback.php">Recenzii</a></li>
+                        <li class="nav__item"><a class="nav__link" href="index.php">Mașini</a></li>
                     </ul>
                 </nav>
                 <!-- nav END -->
@@ -256,14 +261,7 @@
                 } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-47px;">You are logged in as '. $_SESSION["role"].'<p/>'; }
             ?>
         </div>
-        <div class="header__bottom">
-            <h1>Închiriere mașini 24/7 în Chișinău</h1>
-            <p>Alege autopacul:</p>
-            <div class="park__links">
-                <a href="#">Chișinău</a>
-                <a href="#">Bălți</a>
-            </div>
-        </div>
+
 
     </div>
 

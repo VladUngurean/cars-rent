@@ -1,3 +1,14 @@
+const navLinks = document.querySelectorAll('.nav__link');
+const windowPathName = window.location.pathname;
+
+navLinks.forEach(navElement =>{
+  if (navElement.href.includes(windowPathName)) {
+    navElement.classList.add("nav__link-active");
+  }
+})
+
+
+
 function togglePassrwordVisability(inputId, passwordShowIcon, passwordHideIcon) {
     let passInput = document.getElementById(`${inputId}`);
     let passShowIcon = document.getElementById(`${passwordShowIcon}`);
