@@ -1,7 +1,7 @@
 <!-- Header secction START -->
 <?php
-$currentPage = $_SERVER['SCRIPT_NAME'];
-echo $currentPage;
+// $currentPage = $_SERVER['SCRIPT_NAME'];
+// echo $currentPage;
 ?>
 
 
