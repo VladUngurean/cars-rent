@@ -791,7 +791,7 @@ nav{
   align-items: flex-start;
   background-color: black;
 
-  background-image: url(/images/backgrounds/bgForBonusInfo.svg);
+  background-image: url('/images/backgrounds/bgForBonusInfo.svg');
   background-size: cover;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -1133,7 +1133,7 @@ nav{
 
   &>a{
     display: flex;
-    align-items: center;
+    // align-items: center;
     flex-direction: row;
     gap: 5px;
 

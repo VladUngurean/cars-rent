@@ -658,7 +658,7 @@ nav > .nav__ul .nav__li:hover::before {
   display: flex;
   align-items: flex-start;
   background-color: black;
-  background-image: url(/images/backgrounds/bgForBonusInfo.svg);
+  background-image: url("/images/backgrounds/bgForBonusInfo.svg");
   background-size: cover;
   background-repeat: no-repeat;
   pointer-events: none;
@@ -963,7 +963,6 @@ nav > .nav__ul .nav__li:hover::before {
 }
 .footer-right > a {
   display: flex;
-  align-items: center;
   flex-direction: row;
   gap: 5px;
   color: rgba(255, 255, 255, 0.9);
