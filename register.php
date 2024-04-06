@@ -1,7 +1,4 @@
 <!-- PHP CODE START -->
-<?php 
-//   session_start();
-?>
 <?php
 include "config.php";
 
@@ -10,7 +7,7 @@ include "config.php";
 //     header("Location: index.php");
 // }
 
-if(isset($_POST['submit'])) {  
+if(isset($_POST['register'])) {  
     $email = mysqli_real_escape_string($conn, $_POST["email"]);  
     $firstName = mysqli_real_escape_string($conn, $_POST['first_name']);
     $lastName = mysqli_real_escape_string($conn, $_POST['last_name']);
@@ -195,7 +192,7 @@ function validateEmail($email) {
                         if (!empty($registerErrorMesage)) echo "<p class='register-error-message'>$registerErrorMesage</p>";
                         if (!empty($dataBaseResponse)) echo "<p class='register-error-message'>$dataBaseResponse</p>";
                     ?>
-                <input class="register-button" name="submit" type="submit" value="Register" />
+                <input class="register-button" name="register" type="submit" value="Register" />
             </form>
 
         </div>

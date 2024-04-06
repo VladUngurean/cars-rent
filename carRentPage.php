@@ -13,13 +13,21 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
+    <!-- swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+
+    <!-- datetime picker -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <link rel="stylesheet" type="text/css" href="https://npmcdn.com/flatpickr/dist/themes/dark.css">
+
+    <script type='text/javascript' src="/js/carRent.js" defer></script>
 </head>
 
 <?php
-include "save_value.php"; 
+include "save_carplate_in_session.php"; 
 include "ProcGetCarByCarPlate.php"; 
+include "ProcRentCar.php"; 
 ?>
 
 <body>
@@ -66,7 +74,7 @@ include "ProcGetCarByCarPlate.php";
             </div>
             <div class="selected-car-bottom-side">
 
-                <form action="">
+                <form action="" method="post">
                     <h2>Prețuri chirie auto</h2>
 
                     <div class="selected-car-table-container">
@@ -86,23 +94,30 @@ include "ProcGetCarByCarPlate.php";
 
                     <h2>Calculează prețul închirierii mașinii</h2>
                     <div class="selected-car-rent-date">
-                        <input type="date" name="" id="">
-                        <input type="time" name="" id="">
+                        <div class="rent-pickup-datetime">
+                            <input type="date" name="rent_pickup_date" required>
+                            <input type="time" name="rent_pickup_time" required>
+                        </div>
+
+                        <div class="rent-pickup-datetime">
+                            <input type="date" name="rent_return_date" required>
+                            <input type="time" name="rent_return_time" required>
+                        </div>
                     </div>
 
                     <h2>Alege tipul de asisgurare</h2>
                     <div class="selected-car-insurace-type">
-                        <input type="radio" name="insurance" id="insuraceRCA">
+                        <input type="radio" name="insurance" value="RCA" id="insuraceRCA">
                         <label for="insuraceRCA">insuraceRCA</label>
-                        <input type="radio" name="insurance" id="insuraceCasco">
+                        <input type="radio" name="insurance" value="Casco" id="insuraceCasco">
                         <label for="insuraceCasco">insuraceCasco</label>
                     </div>
 
                     <h2>Locul preluării mașinii:</h2>
                     <div class="selected-car-pickup-place">
-                        <input type="radio" name="pickup_place" id="pickup_place_airoprt_ch">
+                        <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_airoprt_ch">
                         <label for="pickup_place_airoprt_ch">airport ch</label>
-                        <input type="radio" name="pickup_place" id="pickup_place_our_office">
+                        <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_our_office">
                         <label for="pickup_place_our_office">our office</label>
                         <input type="radio" name="pickup_place" id="pickup_place_balti">
                         <label for="pickup_place_balti">balti</label>
@@ -110,12 +125,15 @@ include "ProcGetCarByCarPlate.php";
 
                     <h2>Date de contact:</h2>
                     <div class="selected-car-guest-info">
-                        <input type="text" name="first_name_last_name" palceholder="Nume Prenume">
-                        <input type="tel" name="first_name_last_name" palceholder="Telefon">
-                        <input type="tel" name="first_name_last_name" palceholder="Vârsta șofer">
+                        <input type="text" name="first_name" placeholder="Nume"> <br>
+                        <input type="text" name="last_name" placeholder="Prenume"> <br>
+                        <input type="email" name="email" placeholder="Email"> <br>
+                        <input type="tel" name="phone_number" placeholder="Telefon"> <br>
                     </div>
 
-                    <h2>Cum preferați să vă contactăm:</h2>
+                    <input type="number" name="rent_full_cost" placeholder="rent full cost"> <br>
+                    <input type="tel" name="cashback" placeholder="cashback"> <br>
+                    <!-- <h2>Cum preferați să vă contactăm:</h2>
                     <div class="selected-car-contact-guest-type">
                         <input type="checkbox" name="contact-guest-type" id="contact-option-viber">
                         <label for="contact-option-viber">Viber</label>
@@ -123,9 +141,10 @@ include "ProcGetCarByCarPlate.php";
                         <label for="contact-option-telegram">Telegram</label>
                         <input type="checkbox" name="contact-guest-type" id="contact-option-whatsapp">
                         <label for="contact-option-whatsapp">Whats App</label>
-                    </div>
+                    </div> -->
+                    <br>
 
-                    <input type="submit" value="Submit">
+                    <input name="rent_car" type="submit" value="Submit">
                 </form>
             </div>
         </div>
@@ -133,9 +152,28 @@ include "ProcGetCarByCarPlate.php";
 
     <?php include('footer.php'); ?>
 
-    <script type='text/javascript' src="/js/carRent.js" defer></script>
-
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
+    config = {
+        dateFormat: "Y-m-d",
+        altInput: true,
+        altFormat: "F j, Y",
+        minDate: "today",
+        allowInput: true,
+    }
+    configTime = {
+        enableTime: true,
+        noCalendar: true,
+        dateFormat: "H:i",
+        time_24hr: true,
+        allowInput: true,
+    }
+    flatpickr("input[name=rent_pickup_date]", config)
+    flatpickr("input[name=rent_pickup_time]", configTime)
+    flatpickr("input[name=rent_return_date]", config)
+    flatpickr("input[name=rent_return_time]", configTime)
+
+
     setTimeout(() => {
         const swiper = new Swiper('.swiper', {
             // Optional parameters
@@ -145,10 +183,6 @@ include "ProcGetCarByCarPlate.php";
             keyboard: {
                 enabled: true,
             },
-            // autoplay: {
-            //     delay: 4000,
-            //     disableOnInteraction: false,
-            // },
             // If we need pagination
             pagination: {
                 el: '.swiper-pagination',
@@ -159,7 +193,6 @@ include "ProcGetCarByCarPlate.php";
                 nextEl: '.swiper-button-next',
                 prevEl: '.swiper-button-prev',
             },
-
         });
     }, 0);
     </script>

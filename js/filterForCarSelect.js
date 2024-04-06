@@ -532,6 +532,18 @@ const createCarDetailsHTML = (car) => `
   </div>
 `;
 
+//add vent listener to each car for rent and send its plate number to php
+function sendCarPlateToPhp() {
+  let allCarsForRent = document.querySelectorAll(".car-to-rent");
+  // Attach a click event listener to the button
+  allCarsForRent.forEach(e => {
+      e.onclick = function() {
+        document.getElementById("hiddenValue").value = encodeURIComponent(e.id);
+        document.getElementById("myForm").submit();
+      }
+  })
+}
+
 // Get the container to render cars
 const carsContainer = document.querySelector("#car-list-render");
 
@@ -539,6 +551,8 @@ const renderCars = (car) => {
   let getImages = car.carImage.split(",");
   const productHTML = createCarHTML(car, getImages);
   carsContainer.insertAdjacentHTML("beforeend", productHTML);
+
+  sendCarPlateToPhp();
 };
 
 // Function to render all cars
@@ -549,8 +563,11 @@ function renderAllCars() {
 
 // Render all cars initially
 renderAllCars();
-// Function to render filtered cars based on checked checkboxes
 
+//add vent listener to each car for rent and send its plate number to php
+sendCarPlateToPhp();
+
+// Function to render filtered cars based on checked checkboxes
 function renderFilteredCars() {
   carsContainer.innerHTML = "";
 
@@ -607,12 +624,3 @@ function renderFilteredCars() {
   }
 }
 }
-
-let globalValue = document.querySelectorAll(".car-to-rent");
-// Attach a click event listener to the button
-globalValue.forEach(e => {
-    e.onclick = function() {
-      document.getElementById("hiddenValue").value = encodeURIComponent(e.id);
-      document.getElementById("myForm").submit();
-    }
-})

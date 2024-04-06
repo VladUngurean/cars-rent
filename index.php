@@ -16,13 +16,12 @@
 
 </head>
 <?php 
-    include "save_value.php";
+    include "save_carplate_in_session.php";
     include "ProcGetExistingCarsToShow.php"; 
 ?>
 
 <body>
     <p id="top" style="position:absolute; opacity:0;"></p>
-
     <!-- <button id="sendToSession">Click me</button> -->
 
     <!-- HTML code -->
