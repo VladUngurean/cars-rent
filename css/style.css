@@ -1432,11 +1432,11 @@ label[for="deletemanager@gmail.com"] {
   flex-direction: row;
 }
 .selected-car-bottom-side h2 {
-  margin: 25px 0 20px;
+  margin: 70px 0 20px;
   color: #FFFFFF;
-  font-family: "Bai Jamjuree", sans-serif;
+  font-family: "Inter", sans-serif;
   font-weight: 500;
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .selected-car-table-container > table {
@@ -1467,11 +1467,11 @@ label[for="deletemanager@gmail.com"] {
   background-color: rgba(255, 255, 255, 0.05);
   padding: 50px 25px;
   gap: 20px;
+  margin: 0 50px 100px 0;
   color: #FFFFFF;
 }
 .selected-car-final-price-container > h3 {
   text-align: start;
-  color: #FFFFFF;
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 30px;
@@ -1480,9 +1480,68 @@ label[for="deletemanager@gmail.com"] {
   display: flex;
   justify-content: space-between;
   flex-direction: row;
-  text-align: center;
+  align-items: center;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-size: 18px;
+}
+.selected-car-final-price-container .selected-car-final-price-element text {
+  font-size: 14px;
+}
+.selected-car-final-price-container .selected-car-final-price-element text a {
+  color: rgba(255, 137, 137, 0.8);
+}
+
+.selected-car-rent-details input[type=text], .selected-car-rent-details input[type=tel], .selected-car-rent-details input[type=email] {
+  width: 250px;
+  height: 35px;
+  padding-left: 5px;
+}
+.selected-car-rent-details input::-webkit-input-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+.selected-car-rent-details input:-ms-input-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+.selected-car-rent-details input:-moz-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+.selected-car-rent-details input::-moz-placeholder {
+  font-family: "Jura", sans-serif;
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 19px;
+}
+.selected-car-rent-details label {
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 500;
   font-size: 18px;
+}
+
+.selected-car-insurace-type {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 7px;
+}
+
+.selected-car-pickup-place {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.selected-car-guest-info {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
 }/*# sourceMappingURL=style.css.map */

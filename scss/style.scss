@@ -21,9 +21,9 @@
   justify-content: space-between;
   align-items: center;
   }
-@mixin input-placeholder($font-eight) {
+@mixin input-placeholder($font-weight) {
   font-family: "Jura", sans-serif;
-  font-weight: $font-eight;
+  font-weight: $font-weight;
   font-size: 16px;
   line-height: 19px;
   }
@@ -1670,11 +1670,11 @@ label[for="deletemanager@gmail.com"] {
   flex-direction: row;
 
   & h2{
-    margin: 25px 0 20px;
+    margin: 70px 0 20px;
     color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
+    font-family: "Inter", sans-serif;
     font-weight: 500;
-    font-size: 40px;
+    font-size: 30px;
   }
 }
 
@@ -1710,12 +1710,13 @@ label[for="deletemanager@gmail.com"] {
   background-color: $background-transparent;
   padding: 50px 25px;
   gap: 20px;
+
+  margin: 0 50px 100px 0;
   
   color: $text-light;
 
   &>h3{
     text-align: start;
-    color: $text-light;
     font-family: "Inter", sans-serif;
     font-weight: 500;
     font-size: 30px;
@@ -1725,15 +1726,66 @@ label[for="deletemanager@gmail.com"] {
     display: flex;
     justify-content: space-between;
     flex-direction: row;
+    align-items: center;
 
-    text-align: center;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-size: 18px;
+    text{
+      font-size: 14px;
+
+      a{
+        color: rgba(255, 137, 137, 0.8);
+      }
+    }
+  }
+}
+
+.selected-car-rent-details{
+
+  input[type=text],input[type=tel],input[type=email]{
+    width: 250px;
+    height: 35px;
+    padding-left: 5px;
+  }
+  & input::-webkit-input-placeholder {
+    @include input-placeholder(500);
+  }
+
+  & input:-ms-input-placeholder {
+    @include input-placeholder(500);
+  }
+
+  & input:-moz-placeholder {
+    @include input-placeholder(500);
+  }
+
+  & input::-moz-placeholder {
+    @include input-placeholder(500);
+  }
+
+  & label{
     color: $text-light;
     font-family: "Bai Jamjuree", sans-serif;
     font-weight: 500;
     font-size: 18px;
   }
+
 }
-
-
+.selected-car-insurace-type{
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 20px;
+  row-gap: 7px;
+}
+.selected-car-pickup-place{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+.selected-car-guest-info{
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
 //Bottom side END
 // car to rent on carRentPage END

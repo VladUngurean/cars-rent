@@ -74,15 +74,15 @@ include "ProcRentCar.php";
             </div>
             <div class="selected-car-bottom-side">
 
-                <form style="display:flex; flex-direction:row; align-items: flex-end;" action="" method="post">
-                    <div>
-                        <h2>Prețuri chirie auto</h2>
+                <form style="width: 100%; display:flex; justify-content:space-between; flex-direction:row; align-items: flex-end;" action="" method="post">
+                    <div class="selected-car-rent-details">
+                        <h2>Prețuri chirie auto:</h2>
 
                         <div class="selected-car-table-container">
                             <table>
                                 <thead>
                                     <tr>
-                                        <th>1-1 Zile</th>
+                                        <th>1-2 Zile</th>
                                         <th>3-7 Zile</th>
                                         <th>8-20 Zile</th>
                                         <th>21-45 Zile</th>
@@ -93,42 +93,54 @@ include "ProcRentCar.php";
                             </table>
                         </div>
 
-                        <h2>Calculează prețul închirierii mașinii</h2>
+                        <h2>Calculează prețul închirierii mașinii:</h2>
                         <div class="selected-car-rent-date">
                             <div class="rent-pickup-datetime">
-                                <input id="rentPickupDate" type="date" name="rent_pickup_date" placeholder="Data Închirierii" required>
-                                <input id="rentReturnDate" type="date" name="rent_return_date" placeholder="Data Returnarii Masinii" required>
+                                <input id="rentPickupDate" type="date" name="rent_pickup_date" placeholder="Data - Ora Închirierii" required>
+                                <input id="rentReturnDate" type="date" name="rent_return_date" placeholder="Data - Ora Returnarii Masinii" required>
                             </div>
                         </div>
 
-                        <h2>Alege tipul de asisgurare</h2>
+                        <h2>Alege tipul de asisgurare:</h2>
                         <div class="selected-car-insurace-type">
-                            <input type="radio" name="insurance" value="RCA" id="insuraceRCA">
-                            <label for="insuraceRCA">insuraceRCA</label>
-                            <input type="radio" name="insurance" value="Casco" id="insuraceCasco">
-                            <label for="insuraceCasco">insuraceCasco</label>
+                            <label for="insuraceRCA">
+                                <input type="radio" name="insurance" value="RCA" id="insuraceRCA" required>
+                                Asigurare RCA
+                            </label>
+                            <label for="insuraceCasco">
+                                <input type="radio" name="insurance" value="Casco" id="insuraceCasco" required>
+                                Asigurare Casco
+                            </label>
                         </div>
 
                         <h2>Locul preluării mașinii:</h2>
                         <div class="selected-car-pickup-place">
-                            <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_airoprt_ch">
-                            <label for="pickup_place_airoprt_ch">airport ch</label>
-                            <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_our_office">
-                            <label for="pickup_place_our_office">our office</label>
-                            <input type="radio" name="pickup_place" id="pickup_place_balti">
-                            <label for="pickup_place_balti">balti</label>
+                            <label for="pickup_place_airoprt_ch">
+                                <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_airoprt_ch" required>
+                                Aeroportul Chișinău
+                            </label>
+                            <label for="pickup_place_our_office">
+                                <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_our_office" required>
+                                Oficiul nostru Chișinău
+                            </label>
+                            <label for="pickup_place_balti">
+                                <input type="radio" name="pickup_place" id="pickup_place_balti" required>
+                                Oficiul nostru Bălti
+                            </label>
                         </div>
 
                         <h2>Date de contact:</h2>
                         <div class="selected-car-guest-info">
-                            <input type="text" name="first_name" placeholder="Nume"> <br>
-                            <input type="text" name="last_name" placeholder="Prenume"> <br>
-                            <input type="email" name="email" placeholder="Email"> <br>
-                            <input type="tel" name="phone_number" placeholder="Telefon"> <br>
+                            <input type="text" name="first_name" placeholder="Nume" required> <br>
+                            <input type="text" name="last_name" placeholder="Prenume" required> <br>
+                            <input type="email" name="email" placeholder="Email" required> <br>
+                            <input type="tel" name="phone_number" placeholder="Telefon" required> <br>
                         </div>
-
+                        <hr style="margin:20px 0;">
                         <br>
-                        <input name="rent_car" type="submit" value="Submit">
+                        <div style="width:100%; text-align:center;">
+                            <input class="login-button" name="rent_car" type="submit" value="Arendeaza">
+                        </div>
                     </div>
 
                     <span class="selected-car-final-price-container">
@@ -149,9 +161,12 @@ include "ProcRentCar.php";
                             <label class="car-final-price" for="carFinalPrice"></label>
                         </div>
                         <div class="selected-car-final-price-element">
-                            <p>Cashback:</p>
-                            <input id="carFinalPrice" type="number" name="cashback" value="" style="display: none;" />
-                            <label class="" for="carFinalPrice">9%</label>
+                            <text>Folosesete de cashback, <br>
+                                <a href="register.php">Registreazate</a>
+                                acum.
+                            </text>
+                            <input id="carCashback" type="number" name="cashback" value="" style="display: none;" />
+                            <label class="car-cashback" for="carCashback">5.5%</label>
                         </div>
                     </span>
                 </form>
@@ -176,7 +191,7 @@ include "ProcRentCar.php";
 
         minDate: "today",
         defaultDate: "today",
-        // allowInput: true,
+        allowInput: true,
         onChange: function(selectedDates) {
             if (selectedDates.length > 0) {
                 configReturn.minDate = selectedDates[0];
@@ -189,7 +204,7 @@ include "ProcRentCar.php";
         time_24hr: true,
 
         altInput: true,
-        allowInput: false,
+        allowInput: true,
         altFormat: "F j, Y - Ora(H:i)",
         minDate: "today",
     }

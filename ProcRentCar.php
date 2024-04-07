@@ -2,7 +2,7 @@
 include "config.php";
 
 // echo $_SESSION['email'];
-echo $_SESSION['global_car_plate'];
+// echo $_SESSION['global_car_plate'];
 
 if(isset($_POST['rent_car'])) {  
     // $firstName = mysqli_real_escape_string($conn, $_POST["first_name"]);  
