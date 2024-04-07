@@ -1,7 +1,7 @@
 <!-- Footer secction START -->
 
 <section class="footer-area">
-
+    <hr style="margin-bottom:20px; opacity:0.5;">
     <div id="footerArea" class="footer-area__container">
         <div class="footer-top">
             <div class="footer-left">
@@ -66,7 +66,7 @@
                 </div>
             </div>
         </div>
-        <hr>
+        <hr style="opacity:0.5;">
         <!-- <div class="footer-bottom">
             <a href="">UI/UX Designer</a>
             <a href="">Frontend</a>

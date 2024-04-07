@@ -221,6 +221,7 @@ function calculateDaysDifference(startDate, endDate) {
 
 let fullPrice;
 let pricePerDay;
+let cashback;
 
 const carPricePerDayInput = document.getElementById("carPricePerDay");
 const carPricePerDayLabel = document.querySelector(".car-price-per-day");
@@ -231,7 +232,7 @@ const carRentDaysLabel = document.querySelector(".car-rent-days");
 const carFinalPriceInput = document.getElementById("carFinalPrice");
 const carFinalPriceLabel = document.querySelector(".car-final-price");
 
-
+const carCashbackInput = document.getElementById("carCashback");
 
 // add change listener for datetime input that call calc function
 function changeListenerForDates(dateInput) {
@@ -248,26 +249,31 @@ function changeListenerForDates(dateInput) {
       case result<3:        
         fullPrice = selectedCarToRent[0].rentDaysPrice1_2 * result;
         pricePerDay = fullPrice / result;
+        cashback = fullPrice * 0.05;
         break;
 
         case result<8:
         fullPrice = selectedCarToRent[0].rentDaysPrice3_7 * result;
         pricePerDay = fullPrice / result;
+        cashback = fullPrice * 0.05;
         break;
 
         case result<21:
         fullPrice = selectedCarToRent[0].rentDaysPrice8_20 * result;
         pricePerDay = fullPrice / result;
+        cashback = fullPrice * 0.05;
         break;
 
         case result<46:
         fullPrice = selectedCarToRent[0].rentDaysPrice21_45 * result;
         pricePerDay = fullPrice / result;
+        cashback = fullPrice * 0.05;
         break;
         
         default:
         fullPrice = selectedCarToRent[0].rentDaysPrice46 * result;
         pricePerDay = fullPrice / result;
+        cashback = fullPrice * 0.05;
         break;
     } // switch end
 
@@ -276,7 +282,8 @@ function changeListenerForDates(dateInput) {
 
     carFinalPriceInput.value = fullPrice;
     carFinalPriceLabel.innerHTML = fullPrice + " $";
-
+    
+    carCashbackInput.value = cashback;
     // console.log(result);
   })
 }

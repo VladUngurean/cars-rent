@@ -39,7 +39,7 @@ include "ProcRentCar.php";
             echo '
             <style>
             .header-area{
-                margin-bottom:100px;
+                margin-bottom:50px;
             }
             .header__container {
                 height: 65px;
@@ -53,13 +53,6 @@ include "ProcRentCar.php";
             }
             </style>';
         }
-    ?>
-
-    <?php  
-        echo '<label style="position:absolute; left:20px; bottom:800px;"><a style="color:gray; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
-        if(!isset($_SESSION["email"])){  
-            echo '<p style="color:white; position:absolute; left:20px; bottom:820px;">Session is not active<p/>' ;
-        } else { echo '<p style="color:white; position:absolute; left:20px; bottom:800px;">Session is active <p/>' ; }
     ?>
 
     <section class="selected-car-area">
@@ -131,13 +124,13 @@ include "ProcRentCar.php";
 
                         <h2>Date de contact:</h2>
                         <div class="selected-car-guest-info">
-                            <input type="text" name="first_name" placeholder="Nume" required> <br>
-                            <input type="text" name="last_name" placeholder="Prenume" required> <br>
-                            <input type="email" name="email" placeholder="Email" required> <br>
-                            <input type="tel" name="phone_number" placeholder="Telefon" required> <br>
+                            <input type="text" name="first_name" placeholder="Nume" required>
+                            <input type="text" name="last_name" placeholder="Prenume" required>
+                            <input type="email" name="email" placeholder="Email" required>
+                            <input type="tel" name="phone_number" placeholder="Telefon" required>
                         </div>
-                        <hr style="margin:20px 0;">
-                        <br>
+                        <hr style="margin:20px 0; opacity:0.5;">
+
                         <div style="width:100%; text-align:center;">
                             <input class="login-button" name="rent_car" type="submit" value="Arendeaza">
                         </div>
@@ -147,25 +140,25 @@ include "ProcRentCar.php";
                         <h3>Prețul final:</h3>
                         <div class="selected-car-final-price-element">
                             <p>Preț pe zi:</p>
-                            <input id="carPricePerDay" type="number" name="rent_daily_cost" value="" style="display: none;" />
+                            <input id="carPricePerDay" class="input-to-hide" type="text" name="rent_daily_cost" />
                             <label class="car-price-per-day" for="carPricePerDay"></label>
                         </div>
                         <div class="selected-car-final-price-element">
                             <p>Total zile:</p>
-                            <input id="carRentDays" type="number" name="rent_days_count" value="" style="display: none;" />
+                            <input id="carRentDays" class="input-to-hide" type="text" name="rent_days_count" />
                             <label class="car-rent-days" for="carRentDays"></label>
                         </div>
                         <div class="selected-car-final-price-element">
                             <p>Prețul total:</p>
-                            <input id="carFinalPrice" type="number" name="rent_full_cost" value="" style="display: none;" />
+                            <input id="carFinalPrice" class="input-to-hide" type="text" name="rent_full_cost" />
                             <label class="car-final-price" for="carFinalPrice"></label>
                         </div>
                         <div class="selected-car-final-price-element">
-                            <text>Folosesete de cashback, <br>
+                            <text>Folosesete de cashback,<br>
                                 <a href="register.php">Registreazate</a>
                                 acum.
                             </text>
-                            <input id="carCashback" type="number" name="cashback" value="" style="display: none;" />
+                            <input id="carCashback" class="input-to-hide" type="text" name="cashback" />
                             <label class="car-cashback" for="carCashback">5.5%</label>
                         </div>
                     </span>
