@@ -1,4 +1,5 @@
 const selecterCarToRent = carToRent;
+console.log(selecterCarToRent);
 // Get the container to render cars
 const swiperContainer = document.querySelector(".swiper-wrapper");
 const carsContainer = document.querySelector("#selected-car-images");

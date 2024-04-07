@@ -35,7 +35,7 @@ include "ProcRentCar.php";
         include('header.php'); 
         $currentPage = $_SERVER['SCRIPT_NAME'];
         
-        if ($currentPage == "/carRentPage.php"){
+        if ($currentPage != "/index.php"){
             echo '
             <style>
             .header-area{
@@ -100,8 +100,8 @@ include "ProcRentCar.php";
                         </div>
 
                         <div class="rent-pickup-datetime">
-                            <input type="date" name="rent_return_date" required>
-                            <input type="time" name="rent_return_time" required>
+                            <input type="date" name="rent_return_date" placeholder="Data Returnarii Masinii" required>
+                            <input type="time" name="rent_return_time" placeholder="Ora Returnarii Masinii" required>
                         </div>
                     </div>
 
@@ -133,19 +133,26 @@ include "ProcRentCar.php";
 
                     <input type="number" name="rent_full_cost" placeholder="rent full cost"> <br>
                     <input type="tel" name="cashback" placeholder="cashback"> <br>
-                    <!-- <h2>Cum preferați să vă contactăm:</h2>
-                    <div class="selected-car-contact-guest-type">
-                        <input type="checkbox" name="contact-guest-type" id="contact-option-viber">
-                        <label for="contact-option-viber">Viber</label>
-                        <input type="checkbox" name="contact-guest-type" id="contact-option-telegram">
-                        <label for="contact-option-telegram">Telegram</label>
-                        <input type="checkbox" name="contact-guest-type" id="contact-option-whatsapp">
-                        <label for="contact-option-whatsapp">Whats App</label>
-                    </div> -->
                     <br>
 
                     <input name="rent_car" type="submit" value="Submit">
                 </form>
+
+                <div class="selected-car-final-price-container">
+                    <h3>Prețul final:</h3>
+                    <div class="selected-car-final-price-element">
+                        <p>Preț pe zi:</p>
+                        <span id="carPricePreDay">7</span>
+                    </div>
+                    <div class="selected-car-final-price-element">
+                        <p>Total zile:</p>
+                        <span id="carRentDays">19</span>
+                    </div>
+                    <div class="selected-car-final-price-element">
+                        <p>Prețul total:</p>
+                        <span id="carFinalPrice">30</span>
+                    </div>
+                </div>
             </div>
         </div>
     </section>

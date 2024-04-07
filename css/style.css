@@ -135,7 +135,7 @@ nav > .nav__ul > .nav__item > a {
   font-size: 18px;
   line-height: 21px;
 }
-nav > .nav__ul .nav__li::before {
+nav > .nav__ul .nav__link::before {
   content: "";
   width: 0px;
   position: absolute;
@@ -144,8 +144,8 @@ nav > .nav__ul .nav__li::before {
   width: 0;
   border-bottom: solid 1px white;
 }
-nav > .nav__ul .nav__li:hover::before {
-  animation: border_hover_animation 0.3s linear forwards;
+nav > .nav__ul .nav__link:hover::before {
+  animation: border_hover_animation 0.2s linear forwards;
 }
 
 .nav__link-active {
@@ -1427,9 +1427,9 @@ label[for="deletemanager@gmail.com"] {
 .selected-car-bottom-side {
   width: 100%;
   display: flex;
-  justify-content: flex-start;
-  align-items: flex-start;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-end;
+  flex-direction: row;
 }
 .selected-car-bottom-side h2 {
   margin: 25px 0 20px;
@@ -1444,7 +1444,7 @@ label[for="deletemanager@gmail.com"] {
   border-collapse: collapse;
 }
 .selected-car-table-container td, .selected-car-table-container th {
-  width: 180px;
+  max-width: 175px;
   padding: 5px 15px;
   border: 2px solid rgba(255, 255, 255, 0.5);
 }

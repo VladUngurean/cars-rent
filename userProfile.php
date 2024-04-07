@@ -37,7 +37,9 @@
         }
     ?>
 
-    <h1 style="margin-top:450px; color:white;">Hello, User</h1>
+    <h1 style="margin:450px 0; color:white;">Hello, User</h1>
+
+    <?php include('footer.php'); ?>
 </body>
 
 </html>

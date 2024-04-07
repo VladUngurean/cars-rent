@@ -13,9 +13,27 @@
 </head>
 
 <body>
-    <?php include('header.php'); ?>
+    <?php include('header.php');
+        $currentPage = $_SERVER['SCRIPT_NAME'];
+        
+        if ($currentPage != "/index.php"){
+            echo '
+            <style>
+            .header-area{
+                margin-bottom:100px;
+            }
+            .header__container {
+                height: 65px;
+                margin-bottom: 75px;
+            }
+            .header__bottom {
+                display: none;
+            }
+            </style>';
+        }
+    ?>
 
-    <h1>ABOUT US PAGE</h1>
+    <h1 style="margin:450px 0; color:white;">Therms and Pol</h1>
 
     <?php include('footer.php'); ?>
 
