@@ -1463,6 +1463,7 @@ label[for="deletemanager@gmail.com"] {
   display: flex;
   flex-direction: column;
   min-width: 400px;
+  height: fit-content;
   background-color: rgba(255, 255, 255, 0.05);
   padding: 50px 25px;
   gap: 20px;

@@ -1,5 +1,5 @@
-const selecterCarToRent = carToRent;
-console.log(selecterCarToRent);
+const selectedCarToRent = carToRent;
+console.log(selectedCarToRent);
 // Get the container to render cars
 const swiperContainer = document.querySelector(".swiper-wrapper");
 const carsContainer = document.querySelector("#selected-car-images");
@@ -201,7 +201,7 @@ const combineHTMLNeededForSelectedCar = (car) => {
 
 // render selected car info
 function renderSelectedCarInfo() {
-  selecterCarToRent.forEach(combineHTMLNeededForSelectedCar);
+  selectedCarToRent.forEach(combineHTMLNeededForSelectedCar);
 }
 renderSelectedCarInfo();
 
@@ -217,13 +217,67 @@ function calculateDaysDifference(startDate, endDate) {
   return roundedDays;
 }
 
+
+
+let fullPrice;
+let pricePerDay;
+
+const carPricePerDayInput = document.getElementById("carPricePerDay");
+const carPricePerDayLabel = document.querySelector(".car-price-per-day");
+
+const carRentDaysInput = document.getElementById("carRentDays");
+const carRentDaysLabel = document.querySelector(".car-rent-days");
+
+const carFinalPriceInput = document.getElementById("carFinalPrice");
+const carFinalPriceLabel = document.querySelector(".car-final-price");
+
+
+
 // add change listener for datetime input that call calc function
 function changeListenerForDates(dateInput) {
   dateInput.addEventListener("change", function () {
     const rentPickupDateValue = document.getElementById("rentPickupDate").value;
     const rentReturnDateValue = document.getElementById("rentReturnDate").value;
     const result = calculateDaysDifference(rentPickupDateValue, rentReturnDateValue);
-    console.log(result);
+
+    carRentDaysInput.value = result;
+    carRentDaysLabel.innerHTML = "x " + result;
+
+    console.log(selectedCarToRent[0].rentDaysPrice1_2);
+    switch (result) {
+      case result<3:        
+        fullPrice = selectedCarToRent[0].rentDaysPrice1_2 * result;
+        pricePerDay = fullPrice / result;
+        break;
+
+        case result<8:
+        fullPrice = selectedCarToRent[0].rentDaysPrice3_7 * result;
+        pricePerDay = fullPrice / result;
+        break;
+
+        case result<21:
+        fullPrice = selectedCarToRent[0].rentDaysPrice8_20 * result;
+        pricePerDay = fullPrice / result;
+        break;
+
+        case result<46:
+        fullPrice = selectedCarToRent[0].rentDaysPrice21_45 * result;
+        pricePerDay = fullPrice / result;
+        break;
+        
+        default:
+        fullPrice = selectedCarToRent[0].rentDaysPrice46 * result;
+        pricePerDay = fullPrice / result;
+        break;
+    } // switch end
+
+    carPricePerDayInput.value = pricePerDay;
+    carPricePerDayLabel.innerHTML = pricePerDay + " $";
+
+    carFinalPriceInput.value = fullPrice;
+    carFinalPriceLabel.innerHTML = fullPrice + " $";
+
+    // console.log(result);
   })
 }
 const rentPickupDate = document.getElementById("rentPickupDate");
