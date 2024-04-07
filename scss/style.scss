@@ -1659,7 +1659,7 @@ label[for="deletemanager@gmail.com"] {
       font-size: 18px;
     }
   }
-  
+
 }
 //Bottom side START
 .selected-car-bottom-side{
@@ -1694,6 +1694,37 @@ label[for="deletemanager@gmail.com"] {
     padding: 5px 25px;
   }
   tr{
+    text-align: center;
+    color: $text-light;
+    font-family: "Bai Jamjuree", sans-serif;
+    font-weight: 500;
+    font-size: 18px;
+  }
+}
+
+.selected-car-final-price-container{
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  background-color: $background-transparent;
+  padding: 50px 25px;
+  gap: 20px;
+  
+  color: $text-light;
+
+  &>h3{
+    text-align: start;
+    color: $text-light;
+    font-family: "Inter", sans-serif;
+    font-weight: 500;
+    font-size: 30px;
+  }
+
+  .selected-car-final-price-element{
+    display: flex;
+    justify-content: space-between;
+    flex-direction: row;
+
     text-align: center;
     color: $text-light;
     font-family: "Bai Jamjuree", sans-serif;

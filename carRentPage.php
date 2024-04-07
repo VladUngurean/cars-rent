@@ -95,13 +95,8 @@ include "ProcRentCar.php";
                     <h2>Calculează prețul închirierii mașinii</h2>
                     <div class="selected-car-rent-date">
                         <div class="rent-pickup-datetime">
-                            <input type="date" name="rent_pickup_date" required>
-                            <input type="time" name="rent_pickup_time" required>
-                        </div>
-
-                        <div class="rent-pickup-datetime">
-                            <input type="date" name="rent_return_date" placeholder="Data Returnarii Masinii" required>
-                            <input type="time" name="rent_return_time" placeholder="Ora Returnarii Masinii" required>
+                            <input id="rentPickupDate" type="date" name="rent_pickup_date" placeholder="Data Închirierii" required>
+                            <input id="rentReturnDate" type="date" name="rent_return_date" placeholder="Data Returnarii Masinii" required>
                         </div>
                     </div>
 
@@ -161,24 +156,38 @@ include "ProcRentCar.php";
 
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
     <script>
-    config = {
-        dateFormat: "Y-m-d",
-        altInput: true,
-        altFormat: "F j, Y",
-        minDate: "today",
-        allowInput: true,
-    }
-    configTime = {
+    configRent = {
+        // dateFormat: "Y-m-d",
+        // dateFormat: "YYYY-MM-DD HH:MM",
         enableTime: true,
-        noCalendar: true,
-        dateFormat: "H:i",
         time_24hr: true,
-        allowInput: true,
+
+        altInput: true,
+        allowInput: false,
+        altFormat: "F j, Y - Ora(H:i)",
+
+        minDate: "today",
+        defaultDate: "today",
+        // allowInput: true,
+        onChange: function(selectedDates) {
+            if (selectedDates.length > 0) {
+                configReturn.minDate = selectedDates[0];
+                flatpickr("input[name=rent_return_date]", configReturn);
+            }
+        },
     }
-    flatpickr("input[name=rent_pickup_date]", config)
-    flatpickr("input[name=rent_pickup_time]", configTime)
-    flatpickr("input[name=rent_return_date]", config)
-    flatpickr("input[name=rent_return_time]", configTime)
+    configReturn = {
+        enableTime: true,
+        time_24hr: true,
+
+        altInput: true,
+        allowInput: false,
+        altFormat: "F j, Y - Ora(H:i)",
+        minDate: "today",
+    }
+    flatpickr("input[name=rent_pickup_date]", configRent)
+
+    flatpickr("input[name=rent_return_date]", configReturn)
 
 
     setTimeout(() => {

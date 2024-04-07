@@ -39,7 +39,7 @@ button, ul, li, label {
 }
 
 body {
-  background-color: #1D1D1D;
+  background-color: rgb(29, 29, 29);
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
@@ -63,7 +63,7 @@ body {
   height: auto;
 }
 .banner__video::after {
-  background: linear-gradient(180deg, rgba(29, 29, 29, 0.4), #1D1D1D);
+  background: linear-gradient(180deg, rgba(29, 29, 29, 0.4), rgb(29, 29, 29));
   content: "";
   position: absolute;
   top: 0;
@@ -1452,6 +1452,33 @@ label[for="deletemanager@gmail.com"] {
   padding: 5px 25px;
 }
 .selected-car-table-container tr {
+  text-align: center;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.selected-car-final-price-container {
+  display: flex;
+  flex-direction: column;
+  min-width: 400px;
+  background-color: rgba(255, 255, 255, 0.05);
+  padding: 50px 25px;
+  gap: 20px;
+  color: #FFFFFF;
+}
+.selected-car-final-price-container > h3 {
+  text-align: start;
+  color: #FFFFFF;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  font-size: 30px;
+}
+.selected-car-final-price-container .selected-car-final-price-element {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
   text-align: center;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;

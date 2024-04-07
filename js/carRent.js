@@ -13,11 +13,11 @@ const carImagesForSwiper = (car) =>{
 // Create HTML for a single car
 const createPriceTableHTML = (car) => `
   <tr>
-    <td>${car.rentDaysPrice1_2}</td>
-    <td>${car.rentDaysPrice3_7}</td>
-    <td>${car.rentDaysPrice8_20}</td>
-    <td>${car.rentDaysPrice21_45}</td>
-    <td>${car.rentDaysPrice46}</td>
+    <td>${car.rentDaysPrice1_2} $</td>
+    <td>${car.rentDaysPrice3_7} $</td>
+    <td>${car.rentDaysPrice8_20} $</td>
+    <td>${car.rentDaysPrice21_45} $</td>
+    <td>${car.rentDaysPrice46} $</td>
   </tr>
 `;
 
@@ -204,3 +204,29 @@ function renderSelectedCarInfo() {
   selecterCarToRent.forEach(combineHTMLNeededForSelectedCar);
 }
 renderSelectedCarInfo();
+
+
+//calculate Days Difference between two datetimes
+function calculateDaysDifference(startDate, endDate) {
+  const startDateTime = new Date(startDate);
+  const endDateTime = new Date(endDate);
+
+  const timeDifference = endDateTime - startDateTime;
+  const daysDifference = timeDifference / (1000 * 60 * 60 * 24);
+  const roundedDays = Math.round(daysDifference * 4) / 4;
+  return roundedDays;
+}
+
+// add change listener for datetime input that call calc function
+function changeListenerForDates(dateInput) {
+  dateInput.addEventListener("change", function () {
+    const rentPickupDateValue = document.getElementById("rentPickupDate").value;
+    const rentReturnDateValue = document.getElementById("rentReturnDate").value;
+    const result = calculateDaysDifference(rentPickupDateValue, rentReturnDateValue);
+    console.log(result);
+  })
+}
+const rentPickupDate = document.getElementById("rentPickupDate");
+changeListenerForDates(rentPickupDate);
+const rentReturnDate = document.getElementById("rentReturnDate");
+changeListenerForDates(rentReturnDate);
