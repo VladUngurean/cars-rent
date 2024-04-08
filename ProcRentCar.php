@@ -33,7 +33,7 @@ if(isset($_POST['rent_car'])) {
 
     $stmt->close();
     $conn->next_result();
-    echo '<script>alert("Arenda a fost plasata cu succes!");</script>';
+    echo '<script>alert("Arenda a fost plasata cu succes!<br> Vei fi contactat in scurt timp.");</script>';
 }
     ?>
 <!-- PHP CODE END -->

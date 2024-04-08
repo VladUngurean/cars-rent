@@ -67,7 +67,7 @@ include "ProcRentCar.php";
             </div>
             <div class="selected-car-bottom-side">
 
-                <form style="width: 100%; display:flex; justify-content:space-between; flex-direction:row; align-items: flex-end;" action="" method="post">
+                <form id="carRentForm" style="width: 100%; display:flex; justify-content:space-between; flex-direction:row; align-items: flex-end;" action="" method="post">
                     <div class="selected-car-rent-details">
                         <h2>Prețuri chirie auto:</h2>
 
@@ -97,11 +97,11 @@ include "ProcRentCar.php";
                         <h2>Alege tipul de asisgurare:</h2>
                         <div class="selected-car-insurace-type">
                             <label for="insuraceRCA">
-                                <input type="radio" name="insurance" value="RCA" id="insuraceRCA" required>
+                                <input id="insuraceRCA" class="insurance-for-car" type="radio" name="insurance" value="RCA" checked required>
                                 Asigurare RCA
                             </label>
                             <label for="insuraceCasco">
-                                <input type="radio" name="insurance" value="Casco" id="insuraceCasco" required>
+                                <input id="insuraceCasco" class="insurance-for-car" type="radio" name="insurance" value="Casco" required>
                                 Asigurare Casco
                             </label>
                         </div>
@@ -117,7 +117,7 @@ include "ProcRentCar.php";
                                 Oficiul nostru Chișinău
                             </label>
                             <label for="pickup_place_balti">
-                                <input type="radio" name="pickup_place" id="pickup_place_balti" required>
+                                <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_balti" required>
                                 Oficiul nostru Bălti
                             </label>
                         </div>

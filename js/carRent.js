@@ -219,9 +219,9 @@ function calculateDaysDifference(startDate, endDate) {
 
 
 
-let fullPrice;
-let pricePerDay;
-let cashback;
+let carPricePerDay = 0;
+let fullPrice = 0;
+let insurancePrice = 0;
 
 const carPricePerDayInput = document.getElementById("carPricePerDay");
 const carPricePerDayLabel = document.querySelector(".car-price-per-day");
@@ -234,60 +234,75 @@ const carFinalPriceLabel = document.querySelector(".car-final-price");
 
 const carCashbackInput = document.getElementById("carCashback");
 
+let insuraceRCA = document.getElementById("insuraceRCA");
+let insuraceCasco = document.getElementById("insuraceCasco");
+
 // add change listener for datetime input that call calc function
-function changeListenerForDates(dateInput) {
-  dateInput.addEventListener("change", function () {
+function changeListenerForDates(element) {
+  element.addEventListener("change", function () {
     const rentPickupDateValue = document.getElementById("rentPickupDate").value;
     const rentReturnDateValue = document.getElementById("rentReturnDate").value;
-    const result = calculateDaysDifference(rentPickupDateValue, rentReturnDateValue);
+    let result = calculateDaysDifference(rentPickupDateValue, rentReturnDateValue);
+    if (!result) {
+      result = 0;
+    }
 
-    carRentDaysInput.value = result;
-    carRentDaysLabel.innerHTML = "x " + result;
-
-    console.log(selectedCarToRent[0].rentDaysPrice1_2);
-    switch (result) {
-      case result<3:        
+    switch (true) {
+      case result < 3:        
         fullPrice = selectedCarToRent[0].rentDaysPrice1_2 * result;
-        pricePerDay = fullPrice / result;
-        cashback = fullPrice * 0.05;
+        carPricePerDay = selectedCarToRent[0].rentDaysPrice1_2;
         break;
 
-        case result<8:
+        case result < 8:
         fullPrice = selectedCarToRent[0].rentDaysPrice3_7 * result;
-        pricePerDay = fullPrice / result;
-        cashback = fullPrice * 0.05;
+        carPricePerDay = selectedCarToRent[0].rentDaysPrice3_7;
         break;
 
-        case result<21:
+        case result < 21:
         fullPrice = selectedCarToRent[0].rentDaysPrice8_20 * result;
-        pricePerDay = fullPrice / result;
-        cashback = fullPrice * 0.05;
+        carPricePerDay = selectedCarToRent[0].rentDaysPrice8_20;
         break;
 
-        case result<46:
+        case result < 46:
         fullPrice = selectedCarToRent[0].rentDaysPrice21_45 * result;
-        pricePerDay = fullPrice / result;
-        cashback = fullPrice * 0.05;
+        carPricePerDay = selectedCarToRent[0].rentDaysPrice21_45;
         break;
         
         default:
         fullPrice = selectedCarToRent[0].rentDaysPrice46 * result;
-        pricePerDay = fullPrice / result;
-        cashback = fullPrice * 0.05;
+        carPricePerDay = selectedCarToRent[0].rentDaysPrice46;
         break;
     } // switch end
 
-    carPricePerDayInput.value = pricePerDay;
-    carPricePerDayLabel.innerHTML = pricePerDay + " $";
+    //calcule insurance
+    if (insuraceRCA.checked) {
+        insurancePrice = fullPrice*0.15;
+      }
+      if (insuraceCasco.checked) {
+        insurancePrice = fullPrice*0.2;
+      }
+      //dates for inputs
+    insurancePrice = Number(insurancePrice.toFixed(2));
 
+    fullPrice = fullPrice + insurancePrice
+    fullPrice = fullPrice.toFixed(2);
+
+    // carPricePerDay = fullPrice / result;
+    // carPricePerDay = carPricePerDay.toFixed(2);
+
+    carPricePerDayInput.value = carPricePerDay;
+    
+    carPricePerDayLabel.innerHTML = carPricePerDay + " $";
+    
+    carRentDaysInput.value = result;
+    carRentDaysLabel.innerHTML = "x " + result;
+    
     carFinalPriceInput.value = fullPrice;
     carFinalPriceLabel.innerHTML = fullPrice + " $";
     
-    carCashbackInput.value = cashback;
+    carCashbackInput.value = fullPrice * 0.05;
     // console.log(result);
   })
 }
-const rentPickupDate = document.getElementById("rentPickupDate");
-changeListenerForDates(rentPickupDate);
-const rentReturnDate = document.getElementById("rentReturnDate");
-changeListenerForDates(rentReturnDate);
+const carRentForm = document.getElementById('carRentForm');
+changeListenerForDates(carRentForm);
