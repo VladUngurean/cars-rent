@@ -186,8 +186,10 @@ function insertHtmlToPage(idOfContainer, funcWithHtml) {
   document.getElementById(idOfContainer).insertAdjacentHTML("beforeend", funcWithHtml);
 }
 
-//
-const combineHTMLNeededForSelectedCar = (car) => {
+const combineHTMLNeededForSelectedCar = async (carPromise) => {
+  // wait for the car data to be fetched
+  const car = await carPromise;
+
   //split string of car images paths from DB
   let getImages = car.carImage.split(",");
 
@@ -200,8 +202,10 @@ const combineHTMLNeededForSelectedCar = (car) => {
 };
 
 // render selected car info
-function renderSelectedCarInfo() {
-  selectedCarToRent.forEach(combineHTMLNeededForSelectedCar);
+async function renderSelectedCarInfo() {
+  for (const car of selectedCarToRent) {
+    await combineHTMLNeededForSelectedCar(car);
+  }
 }
 renderSelectedCarInfo();
 
@@ -216,8 +220,6 @@ function calculateDaysDifference(startDate, endDate) {
   const roundedDays = Math.round(daysDifference * 4) / 4;
   return roundedDays;
 }
-
-
 
 let carPricePerDay = 0;
 let fullPrice = 0;
