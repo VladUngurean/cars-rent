@@ -34,7 +34,6 @@ include "ProcRentCar.php";
     <?php
         include('header.php'); 
         $currentPage = $_SERVER['SCRIPT_NAME'];
-        
         if ($currentPage != "/index.php"){
             echo '
             <style>
@@ -122,13 +121,20 @@ include "ProcRentCar.php";
                             </label>
                         </div>
 
-                        <h2>Date de contact:</h2>
-                        <div class="selected-car-guest-info">
-                            <input type="text" name="first_name" placeholder="Nume" required>
-                            <input type="text" name="last_name" placeholder="Prenume" required>
-                            <input type="email" name="email" placeholder="Email" required>
-                            <input type="tel" name="phone_number" placeholder="Telefon" required>
-                        </div>
+                        <?php
+                        if (empty($_SESSION['email'])) {
+                            echo '                            
+                            <h2>Date de contact:</h2>
+                            <div class="selected-car-guest-info">
+                                <input type="text" name="first_name" placeholder="Nume" required>
+                                <input type="text" name="last_name" placeholder="Prenume" required>
+                                <input type="email" name="email" placeholder="Email" required>
+                                <input type="tel" name="phone_number" placeholder="Telefon" required>
+                            </div>
+                            ';
+                        }
+                        ?>
+
                         <hr style="margin:20px 0; opacity:0.5;">
 
                         <div style="width:100%; text-align:center;">

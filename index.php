@@ -14,7 +14,11 @@
     <title>Chișinău Dream Cars</title>
     <link rel="icon" type="image/x-icon" href="/images/logo.svg">
 
+
+    <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
+    <script type='text/javascript' src="/js/main.js" defer></script>
 </head>
+
 <?php 
     include "save_carplate_in_session.php";
     include "ProcGetExistingCarsToShow.php"; 
@@ -296,8 +300,6 @@
 
     <?php include('footer.php'); ?>
 
-    <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
-    <script type='text/javascript' src="/js/main.js" defer></script>
 </body>
 
 </html>

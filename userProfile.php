@@ -11,11 +11,14 @@
 
     <link rel="stylesheet" href="/css/style.css">
 
-
+    <script type='text/javascript' src="js/userPage.js" defer></script>
 </head>
 
 <body>
-    <?php include "header.php"; ?>
+    <?php
+        include "header.php"; 
+        include "ProcGetAllUserData.php"; 
+    ?>
 
     <?php
 
@@ -33,9 +36,16 @@
             .header__bottom {
                 display: none;
             }
+            .accounts{
+                display:none;
+            }
             </style>';
         }
     ?>
+
+    <section>
+        <div id="rentedCarContainer"></div>
+    </section>
 
     <h1 style="margin:450px 0; color:white;">Hello, User</h1>
 
