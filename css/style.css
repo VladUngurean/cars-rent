@@ -53,6 +53,10 @@ body {
   padding: 0 10px;
 }
 
+section {
+  width: 100%;
+}
+
 .banner__video {
   transform-origin: center center;
   position: absolute;
@@ -467,8 +471,8 @@ nav > .nav__ul .nav__link:hover::before {
 }
 .car-list__box .car-list__box-details-tech .car-list__box-details-tech__item > h6 {
   white-space: nowrap;
-  color: #FFFFFF;
   opacity: 60%;
+  color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 600;
   font-size: 17px;
@@ -870,6 +874,7 @@ nav > .nav__ul .nav__link:hover::before {
   height: 50px;
   text-align: center;
   padding: 13px 0;
+  color: black;
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 20px;
@@ -913,7 +918,7 @@ nav > .nav__ul .nav__link:hover::before {
   flex-direction: row;
 }
 .footer-top > a, .footer-bottom > a {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 400;
   font-size: 18px;
@@ -953,7 +958,7 @@ nav > .nav__ul .nav__link:hover::before {
   pointer-events: none;
 }
 .footer-center > a {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -970,7 +975,7 @@ nav > .nav__ul .nav__link:hover::before {
   display: flex;
   flex-direction: row;
   gap: 5px;
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -1010,7 +1015,7 @@ nav > .nav__ul .nav__link:hover::before {
   height: 25px;
 }
 .footer-right-map-links > p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.5);
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 400;
   font-size: 20px;
@@ -1307,6 +1312,26 @@ label[for="deletemanager@gmail.com"] {
   gap: 6px;
 }
 
+.user-account-data {
+  background-color: rgba(255, 255, 255, 0.05);
+  max-width: 400px;
+  padding: 15px;
+  border-radius: 10px;
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+.user-finances-container {
+  width: 100%;
+}
+
+.user-finances-item {
+  width: 100%;
+  display: flex;
+}
+
 .show {
   max-height: 300px;
   display: flex;
@@ -1472,6 +1497,7 @@ label[for="deletemanager@gmail.com"] {
 }
 .selected-car-final-price-container > h3 {
   text-align: start;
+  color: #FFFFFF;
   font-family: "Inter", sans-serif;
   font-weight: 500;
   font-size: 30px;

@@ -28,6 +28,13 @@
   line-height: 19px;
   }
 
+  @mixin font-settings($text-color, $font-fam, $font-wei, $font-size){
+    color: $text-color;
+    font-family: $font-fam;
+    font-weight: $font-wei;
+    font-size: $font-size;
+  }
+
   // mixins end
   // keyframes start
   
@@ -96,6 +103,9 @@ body {
   margin: 0 auto;
   padding: 0 10px;
 }
+section{
+  width: 100%;
+}
 
 .banner__video{
   transform-origin: center center; 
@@ -129,10 +139,8 @@ body {
     z-index: 2;
 
     white-space: nowrap;
-    color: $text-light;
-    font-family: "Jura", sans-serif;
-    font-weight: 500;
-    font-size: 18px;
+
+    @include font-settings($text-light, $font-jura, 500, 18px);
     line-height: 21px;
   }
 }
@@ -178,10 +186,9 @@ nav{
       &>a{
         pointer-events: all;
         white-space: nowrap;
-        color: $text-light;
-        font-family: "Jura", sans-serif;
-        font-weight: 500;
-        font-size: 18px;
+
+        @include font-settings($text-light, $font-jura, 500, 18px);
+
         line-height: 21px;
       }
     }
@@ -227,10 +234,9 @@ nav{
     &>p{
       white-space: nowrap;
       text-align: center;
-      color: $text-light-half-transparent;
-      font-family: "Jura", sans-serif;
-      font-weight: 500;
-      font-size: 18px;
+
+      @include font-settings($text-light-half-transparent, $font-jura, 500, 18px);
+
       line-height: 21px;
       cursor: pointer;
     }
@@ -250,10 +256,9 @@ nav{
       &>a{
         white-space: nowrap;
         height: 100%;
-        color: $text-light;
-        font-family: "Jura", sans-serif;
-        font-weight: 500;
-        font-size: 18px;
+
+        @include font-settings($text-light, $font-jura, 500, 18px);
+
         line-height: 21px;
       }
     }
@@ -267,10 +272,7 @@ nav{
       gap: 5px;
       white-space: nowrap;
       height: 100%;
-      color: $text-light;
-      font-family: "Jura", sans-serif;
-      font-weight: 500;
-      font-size: 18px;
+      @include font-settings($text-light, $font-jura, 500, 18px);
       line-height: 21px;
     }
   }
@@ -283,15 +285,10 @@ nav{
       flex-direction: row;
       align-items: center;
       gap: 5px;
-
       &>p{
-
         white-space: nowrap;
         height: 100%;
-        color: $text-light;
-        font-family: "Bai Jamjuree", sans-serif;
-        font-weight: 400;
-        font-size: 18px;
+        @include font-settings($text-light, $font-bai-jamjuree, 400, 18px);
         line-height: 21px;
       }
     }
@@ -326,10 +323,7 @@ nav{
   &>h1{
     white-space: nowrap;
     height: 100%;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 500;
-    font-size: 70px;
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 70px);
     line-height: 86px;
     pointer-events: none;
   }
@@ -337,10 +331,7 @@ nav{
   &>p{
     white-space: nowrap;
     height: 100%;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 500;
-    font-size: 35px;
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 35px);
     line-height: 44px;
 
     margin:40px 0 35px;
@@ -361,10 +352,7 @@ nav{
 
       white-space: nowrap;
       height: 100%;
-      color: $text-light;
-      font-family: "Jura", sans-serif;
-      font-weight: 600;
-      font-size: 22px;
+      @include font-settings($text-light, $font-jura, 600, 22px);
       line-height: 26px;
 
       transition: background 0.3s ease-in-out;
@@ -404,12 +392,8 @@ nav{
     &>p{
       text-align: center;
       height: 46px;
-      color: $text-light;
-      font-family: "Bai Jamjuree", sans-serif;
-      font-weight: 500;
-      font-size: 18px;
+      @include font-settings($text-light, $font-bai-jamjuree, 500, 18px);
       line-height: 23px;
-
       margin-top: 30px;
     }
   }
@@ -426,10 +410,7 @@ nav{
 
   & h2{
     height: 100%;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 500;
-    font-size: 40px;
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 40px);
     line-height: 50px;
 
     pointer-events: none;
@@ -512,10 +493,7 @@ nav{
 
     &>h4{
       white-space: nowrap;
-      color: $text-light;
-      font-family: "Jura", sans-serif;
-      font-weight: 600;
-      font-size: 25px;
+      @include font-settings($text-light, $font-jura, 600, 25px);
       line-height: 33px;
     }
   }
@@ -529,10 +507,7 @@ nav{
     .car-list__box-details-price{
       &>h5{
         white-space: nowrap;
-        color: $text-light;
-        font-family: "Bai Jamjuree", sans-serif;
-        font-weight: 600;
-        font-size: 22px;
+        @include font-settings($text-light, $font-bai-jamjuree, 600, 22px);
         line-height: 31px;
       }
     }
@@ -558,11 +533,8 @@ nav{
 
       &>h6{
         white-space: nowrap;
-        color: $text-light;
         opacity: 60%;
-        font-family: "Bai Jamjuree", sans-serif;
-        font-weight: 600;
-        font-size: 17px;
+        @include font-settings($text-light, $font-bai-jamjuree, 600, 17px);
         line-height: 23px;
       }
     }
@@ -590,10 +562,7 @@ nav{
 
   &>p{
     white-space: nowrap;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 500;
-    font-size: 30px;
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 30px);
     line-height: 37px;
   }
 }
@@ -627,10 +596,7 @@ nav{
       text-align: center;
       white-space: nowrap;
       height: 100%;
-      color: $text-light;
-      font-family: "Jura", sans-serif;
-      font-weight: 500;
-      font-size: 24px;
+      @include font-settings($text-light, $font-jura, 500, 24px);
       line-height: 28px;
     }
 
@@ -678,10 +644,7 @@ nav{
     width: 100%;
     height: 100%;
     white-space: nowrap;
-    color: $text-light;
-    font-family: "Jura", sans-serif;
-    font-weight: 600;
-    font-size: 18px;
+    @include font-settings($text-light, $font-jura, 600, 18px);
     line-height: 21px;
   }
 }
@@ -710,10 +673,7 @@ nav{
     &>p{
       white-space: nowrap;
       height: 100%;
-      color: $text-light;
-      font-family: "Jura", sans-serif;
-      font-weight: 600;
-      font-size: 20px;
+      @include font-settings($text-light, $font-jura, 600, 20px);
       line-height: 24px;
     }
   }
@@ -741,10 +701,7 @@ nav{
     &>label{
       white-space: nowrap;
       height: 100%;
-      color: $text-light;
-      font-family: "Jura", sans-serif;
-      font-weight: 600;
-      font-size: 18px;
+      @include font-settings($text-light, $font-jura, 600, 18px);
       line-height: 21px;
     }
 
@@ -828,18 +785,12 @@ nav{
   max-width: 422px;
   
   p:first-child{
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 700;
-    font-size: 40px;
+    @include font-settings($text-light, $font-bai-jamjuree, 700, 40px);
     line-height: 50px;
     margin-bottom: 20px;
   }
   p:nth-child(2){
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 600;
-    font-size: 20px;
+    @include font-settings($text-light, $font-bai-jamjuree, 600, 20px);
     line-height: 25px;
   }
 }
@@ -891,10 +842,7 @@ nav{
 
       border-bottom: 1px solid $text-light;
 
-      color: $text-light;
-      font-family: "Jura", sans-serif;
-      font-weight: 700;
-      font-size: 28px;
+      @include font-settings($text-light, $font-jura, 700, 28px);
     }
   }
 }
@@ -930,10 +878,7 @@ nav{
     width: 100%;
     height: 100%;
 
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 600;
-    font-size: 20px;
+    @include font-settings($text-light, $font-bai-jamjuree, 600, 20px);
     line-height: 25px;
   }
 }
@@ -984,30 +929,21 @@ nav{
   justify-content: flex-start;
   flex-direction: column;
   &>h2{
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 700;
-    font-size: 40px;
+    @include font-settings($text-light, $font-bai-jamjuree, 700, 40px);
     line-height: 50px;
 
     pointer-events: none;
   }
   &>p{
     max-width: 422px;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 600;
-    font-size: 20px;
+    @include font-settings($text-light, $font-bai-jamjuree, 600, 20px);
     line-height: 25px;
     margin: 20px 0 5px;
 
     pointer-events: none;
   }
   &>a{
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 400;
-    font-size: 24px;
+    @include font-settings($text-light, $font-bai-jamjuree, 400, 24px);
     line-height: 30px;
 
     border-bottom: 1px solid $text-light;
@@ -1030,9 +966,7 @@ nav{
   
   text-align: center;
   padding: 13px 0;
-  font-family: "Jura", sans-serif;
-  font-weight: 700;
-  font-size: 20px;
+  @include font-settings(black, $font-jura, 700, 20px);
 }
 
 .whatsapp{
@@ -1077,10 +1011,7 @@ nav{
   flex-direction: row;
 
   &>a{
-    color: $text-light-transparent;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
+    @include font-settings($text-light-half-transparent, $font-bai-jamjuree, 400, 18px);
   }
 }
 
@@ -1096,10 +1027,7 @@ nav{
     height: 78px;
   }
   &>p{
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 400;
-    font-size: 18px;
+    @include font-settings($text-light, $font-bai-jamjuree, 400, 18px);
     pointer-events: none;
   }
 }
@@ -1113,18 +1041,12 @@ nav{
   align-items: flex-start;
 
   &>h5{
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 600;
-    font-size: 24px;
+    @include font-settings($text-light, $font-bai-jamjuree, 600, 24px);
     pointer-events: none;
 
   }
   &>a{
-    color: $text-light-transparent;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+    @include font-settings($text-light-half-transparent, $font-bai-jamjuree, 400, 20px);
   }
 }
 
@@ -1138,14 +1060,10 @@ nav{
 
   &>a{
     display: flex;
-    // align-items: center;
     flex-direction: row;
     gap: 5px;
 
-    color: $text-light-transparent;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+    @include font-settings($text-light-half-transparent, $font-bai-jamjuree, 400, 20px);
     line-height: 25px;
 
     &>img{
@@ -1166,10 +1084,7 @@ nav{
 
   &>h5{
     margin-right: 26px;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 600;
-    font-size: 24px;
+    @include font-settings($text-light, $font-bai-jamjuree, 600, 24px);
     pointer-events: none;
   }
 }
@@ -1186,16 +1101,11 @@ nav{
   }
 
   &>p{
-    color: $text-light-transparent;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 400;
-    font-size: 20px;
+    @include font-settings($text-light-half-transparent, $font-bai-jamjuree, 400, 20px);
     line-height: 25px;
   }
 }
 //footer end
-
-
 
 //register start
 
@@ -1219,10 +1129,7 @@ nav{
   gap: 10px;
 
   &>p{
-    color: $text-light;
-    font-family: "Jura", sans-serif;
-    font-weight: 500;
-    font-size: 20px;
+    @include font-settings($text-light, $font-jura, 500, 20px);
   }
 }
 //register header end
@@ -1241,10 +1148,7 @@ nav{
 
   &>h1{
     text-align: center;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 500;
-    font-size: 50px;
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 50px);
     line-height: 63px;
   }
 }
@@ -1265,12 +1169,7 @@ nav{
 
 .register-area__input-field{
   &>text{
-    // width: 100%;
-    // text-align: left;
-    color: $text-light;
-    font-family: "Jura", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+    @include font-settings($text-light, $font-jura, 500, 16px);
     margin-bottom: 5px;
   }
 
@@ -1303,10 +1202,7 @@ nav{
     margin-right: 8px;
     text-align: end;
     white-space: nowrap;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 400;
-    font-size: 16px;
+    @include font-settings($text-light, $font-bai-jamjuree, 400, 16px);
     line-height: 20px;
     margin-bottom: 5px;
 
@@ -1375,10 +1271,7 @@ nav{
   &>p{
     width: 42px;
     text-align: left;
-    color: $text-light;
-    font-family: "Jura", sans-serif;
-    font-weight: 500;
-    font-size: 16px;
+    @include font-settings($text-light, $font-jura, 500, 16px);
   }
 }
 
@@ -1387,10 +1280,7 @@ nav{
   width: 100%;
   height: 50px;
 
-  color: black;
-  font-family: "Jura", sans-serif;
-  font-weight: 700;
-  font-size: 18px;
+  @include font-settings(black, $font-jura, 700, 18px);
 
   cursor: pointer;
 }
@@ -1403,10 +1293,7 @@ nav{
   background-color: rgba(255, 0, 0, 0.3);
   border-radius: 2px;
 
-  color: $text-light;
-  font-family: "Jura", sans-serif;
-  font-weight: 700;
-  font-size: 16px;
+  @include font-settings($text-light, $font-jura, 700, 16px);
 }
 
 
@@ -1518,14 +1405,34 @@ label[for="deletemanager@gmail.com"] {
 }
 
 .addNewCar{
-  color: $text-light;
-  font-family: "Bai Jamjuree", sans-serif;
-  font-weight: 600;
-  font-size: 24px;
+  @include font-settings($text-light, $font-bai-jamjuree, 600, 24px);
   gap: 6px;
 }
 
 //for manager end
+
+//for user profile start
+.user-account-data{
+  background-color: $background-transparent;
+  max-width: 400px;
+  padding: 15px;
+  border-radius: 10px;
+
+  @include font-settings($text-light, $font-bai-jamjuree, 600, 18px);
+}
+
+.user-finances-container{
+  width: 100%;
+  // text-align: end;
+}
+.user-finances-item{
+  width: 100%;
+
+  display: flex;
+
+}
+
+//for user profile end
 
 .show {
   max-height: 300px;
@@ -1611,10 +1518,7 @@ label[for="deletemanager@gmail.com"] {
   .selected-car-make-model{
 
     h1{
-      color: $text-light;
-      font-family: "Bai Jamjuree", sans-serif;
-      font-weight: 500;
-      font-size: 40px;
+      @include font-settings($text-light, $font-bai-jamjuree, 500, 40px);
     }
   }
 
@@ -1642,10 +1546,7 @@ label[for="deletemanager@gmail.com"] {
       &>h6{
         min-width: 200px;
         white-space: nowrap;
-        color: $text-light;
-        font-family: "Bai Jamjuree", sans-serif;
-        font-weight: 600;
-        font-size: 16px;
+        @include font-settings($text-light, $font-bai-jamjuree, 600, 16px);
       }
     }
   }
@@ -1653,10 +1554,7 @@ label[for="deletemanager@gmail.com"] {
   .selected-car-description{
     max-width: 800px;
     &>p{
-      color: $text-light;
-      font-family: "Bai Jamjuree", sans-serif;
-      font-weight: 500;
-      font-size: 18px;
+      @include font-settings($text-light, $font-bai-jamjuree, 500, 18px);
     }
   }
 
@@ -1671,10 +1569,7 @@ label[for="deletemanager@gmail.com"] {
 
   & h2{
     margin: 70px 0 20px;
-    color: $text-light;
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    font-size: 30px;
+    @include font-settings($text-light, $font-inter, 500, 30px);
   }
 }
 
@@ -1695,10 +1590,7 @@ label[for="deletemanager@gmail.com"] {
   }
   tr{
     text-align: center;
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 500;
-    font-size: 18px;
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 18px);
   }
 }
 
@@ -1717,9 +1609,7 @@ label[for="deletemanager@gmail.com"] {
 
   &>h3{
     text-align: start;
-    font-family: "Inter", sans-serif;
-    font-weight: 500;
-    font-size: 30px;
+    @include font-settings($text-light, $font-inter, 500, 30px);
   }
 
   .selected-car-final-price-element{
@@ -1764,10 +1654,7 @@ label[for="deletemanager@gmail.com"] {
   }
 
   & label{
-    color: $text-light;
-    font-family: "Bai Jamjuree", sans-serif;
-    font-weight: 500;
-    font-size: 18px;
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 18px);
   }
 
 }

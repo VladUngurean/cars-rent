@@ -19,9 +19,7 @@
         include "header.php"; 
         include "ProcGetAllUserData.php"; 
     ?>
-
     <?php
-
         $currentPage = $_SERVER['SCRIPT_NAME'];
         // echo $currentPage;
         if ($currentPage == "/userProfile.php"){
@@ -43,11 +41,30 @@
         }
     ?>
 
+
     <section>
+        <div class="user-account-data">
+            <div class="user-account-wellcome-text">Wellcome,<br> <?php echo $_SESSION['first_name'] . " " . $_SESSION['last_name'] ; ?></div>
+            <div class="user-account-phone">
+                <p>Phone Number</p>
+                2342442
+            </div>
+
+            <hr>
+
+            <div class="user-finances-container">
+                <div class="user-finances-item">
+                    Cashback available: <p id="userCashbackAvailable">1202 </p> $
+                </div>
+                <div class="user-finances-item">
+                    Total spent: <p id="userTotalSpent">1231</p> $
+                </div>
+            </div>
+        </div>
+
         <div id="rentedCarContainer"></div>
     </section>
 
-    <h1 style="margin:450px 0; color:white;">Hello, User</h1>
 
     <?php include('footer.php'); ?>
 </body>
