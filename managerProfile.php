@@ -77,9 +77,11 @@
                 echo "There was an error uploading your file!";
             }
         } else {
-            echo '<script>alert("You cannot upload files of this type!")</script>';
+            echo '<script>
+                    alert("You cannot upload files of this type!")
+                    window.location.href = "managerProfile.php";
+                </script>';
             exit();
-            echo '<script> window.location.href = "managerProfile.php";</script>';
         } 
         }
         // $allImages = rtrim($allImages, ',');

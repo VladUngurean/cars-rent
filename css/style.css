@@ -407,6 +407,15 @@ nav > .nav__ul .nav__link:hover::before {
   gap: 30px;
 }
 
+.car-to-rent {
+  display: none;
+}
+
+.car-to-rent:nth-child(1), .car-to-rent:nth-child(2), .car-to-rent:nth-child(3),
+.car-to-rent:nth-child(4), .car-to-rent:nth-child(5), .car-to-rent:nth-child(6) {
+  display: block;
+}
+
 .car-list__box {
   width: 480px;
   height: 100%;

@@ -230,16 +230,17 @@ function renderCarForSelect(car) {
 newMakeModelRadio.addEventListener("change", function(){
   newMakeModelInput.setAttribute("required", "");
 })
-  let modelSelecetOptions = forRenderModels.querySelector(`#select${model}`)
-  modelSelecetOptions.addEventListener("change",function (){
-  if (modelSelecetOptions.checked === true) {
-    newMakeModelInput.removeAttribute("required");
-  }
-})
 
-makeCheckbox.addEventListener("change", function () {
-  toggleMakeCheckbox(makeCheckbox, forRenderModels);
-  newMakeModelInput.setAttribute("required", "");
+  let modelSelecetOptions = document.querySelectorAll(".model-checkbox")
+  modelSelecetOptions.forEach(e => e.addEventListener("change",function (){
+    if (e.checked === true) {
+      newMakeModelInput.removeAttribute("required");
+    }
+  })); 
+
+  makeCheckbox.addEventListener("change", function () {
+    toggleMakeCheckbox(makeCheckbox, forRenderModels);
+    newMakeModelInput.setAttribute("required", "");
   });
 }
 
