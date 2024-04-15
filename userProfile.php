@@ -15,9 +15,14 @@
 </head>
 
 <body>
+    <!-- Get car plate and load carRentPage.php based on car plate -->
+    <form id="formToRentCarPage" action="carRentPage.php" method="GET">
+        <input type="hidden" name="car_plate" id="hiddenValue">
+    </form>
     <?php
         include "header.php"; 
         include "ProcGetAllUserData.php"; 
+        include "save_carplate_in_session.php"; 
     ?>
     <?php
         $currentPage = $_SERVER['SCRIPT_NAME'];

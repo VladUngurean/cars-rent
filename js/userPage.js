@@ -13,12 +13,16 @@ const createCarHTML = (car, getImages) => `
       <div class="car-list__box-details-element">
         <p>Full cost</p>
         <p>${car.rentedCarFullCost} €</p>
+        <p>Cashback</p>
+        <p>${car.rentedCarCashback} €</p>
       </div>
       <div class="car-list__box-details-element">
         <p>Pick-up date</p>
         <p>${car.rentStartDateTime}</p>
         <p>Drop-off date</p>
         <p>${car.rentEndDateTime}</p>
+        <p>Pick-up place</p>
+        <p>${car.pickupPlace}</p>
       </div>
         <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
       </div>
@@ -93,5 +97,24 @@ function renderAllRentedCars() {
   rentedCarData.forEach(renderRentedCars);
 }
 
+//add vent listener to each car for rent and send its plate number to php
+function sendCarPlateToPhp() {
+  let rentedCars = document.querySelectorAll(".car-to-rent");
+  // Attach a click event listener to the button
+  rentedCars.forEach(e => {
+      e.onclick = function() {
+        console.log("hr");
+        document.getElementById("hiddenValue").value = encodeURIComponent(e.id);
+        document.getElementById("formToRentCarPage").submit();
+      }
+  })
+}
+
+// after DOM is loaded call sendCarPlateToPhp function
+document.addEventListener('DOMContentLoaded', function() {
+  sendCarPlateToPhp();
+}, false);
+
 // Render all cars initially
 renderAllRentedCars();
+

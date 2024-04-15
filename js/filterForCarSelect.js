@@ -539,7 +539,7 @@ function sendCarPlateToPhp() {
   allCarsForRent.forEach(e => {
       e.onclick = function() {
         document.getElementById("hiddenValue").value = encodeURIComponent(e.id);
-        document.getElementById("myForm").submit();
+        document.getElementById("formToRentCarPage").submit();
       }
   })
 }
@@ -551,8 +551,6 @@ const renderCars = (car) => {
   let getImages = car.carImage.split(",");
   const productHTML = createCarHTML(car, getImages);
   carsContainer.insertAdjacentHTML("beforeend", productHTML);
-
-  sendCarPlateToPhp();
 };
 
 // Function to render all cars

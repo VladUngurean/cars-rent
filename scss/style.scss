@@ -1418,6 +1418,7 @@ label[for="deletemanager@gmail.com"] {
   // justify-content: space-between;
   column-gap: 30px;
   margin-bottom: 75px;
+  min-height: 500px;
 }
 .user-account-data{
   background-color: $background-transparent;
@@ -1534,6 +1535,9 @@ label[for="deletemanager@gmail.com"] {
       &>p:nth-child(odd){
         @include font-settings($text-light, $font-bai-jamjuree, 600, 11px);
         opacity: 0.5;
+      }
+      &>p:nth-child(5){
+        margin-top: 10px;
       }
     }
 

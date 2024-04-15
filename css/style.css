@@ -1317,6 +1317,7 @@ label[for="deletemanager@gmail.com"] {
   flex-direction: row;
   column-gap: 30px;
   margin-bottom: 75px;
+  min-height: 500px;
 }
 
 .user-account-data {
@@ -1439,6 +1440,9 @@ label[for="deletemanager@gmail.com"] {
   font-weight: 600;
   font-size: 11px;
   opacity: 0.5;
+}
+.rented-car-list__box > .car-list__box-details > .car-list__box-details-element > p:nth-child(5) {
+  margin-top: 10px;
 }
 .rented-car-list__box > .car-list__box-details > .car-list__box-details-tech {
   display: flex;
