@@ -35,7 +35,8 @@
 
     <div class="banner__video">
         <video id="bannerVideo" preload="auto" playsinline="" autoplay="" loop="" muted="">
-            <source src="https://clout-dev.ru/MDC_cover.mp4" type="video/mp4">
+            <source src="/images/backgrounds/videoBannerCompressed.mp4" type="video/mp4">
+            <!-- <source src="https://clout-dev.ru/MDC_cover.mp4" type="video/mp4"> -->
         </video>
     </div>
 

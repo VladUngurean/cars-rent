@@ -3,20 +3,28 @@
 // Create HTML for a single car
 console.log(rentedCarData);
 const createCarHTML = (car, getImages) => `
-  <div id="${car.plate}" class="car-to-rent">
-    <div class="car-list__box">
+  <div id="${car.carPlate}" class="car-to-rent">
+    <div class="rented-car-list__box">
       <div class="car-list__box-image">
         <img loading="lazy" role="presentation" src="/images/carsList/${getImages[0]}" alt="Car Image(gets only images PATHS from data base)">
       </div>
       <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
       <div class="car-list__box-details">
-      <div class="car-list__box-details-price">
-        <h5>${car.rentedCarFullCost} €</h5>
+      <div class="car-list__box-details-element">
+        <p>Full cost</p>
+        <p>${car.rentedCarFullCost} €</p>
+      </div>
+      <div class="car-list__box-details-element">
+        <p>Pick-up date</p>
+        <p>${car.rentStartDateTime}</p>
+        <p>Drop-off date</p>
+        <p>${car.rentEndDateTime}</p>
       </div>
         <div class="car-list__box-details-tech"> ${createCarDetailsHTML(car)}</div>
       </div>
     </div>
   </div>
+  <hr style="margin:10px 0;">
 `;
 
 // Create HTML for car details
@@ -71,7 +79,7 @@ const createCarDetailsHTML = (car) => `
 
 
 // Get the container to render cars
-const rentedCarsContainer = document.querySelector("#rentedCarContainer");
+const rentedCarsContainer = document.querySelector("#rentedCarList");
 
 const renderRentedCars = (car) => {
   let getImages = car.imagePath.split(",");
@@ -81,7 +89,7 @@ const renderRentedCars = (car) => {
 
 // Function to render all cars
 function renderAllRentedCars() {
-  rentedCarsContainer.innerHTML = "";
+  // rentedCarsContainer.innerHTML = "";
   rentedCarData.forEach(renderRentedCars);
 }
 
