@@ -112,11 +112,11 @@ include "ProcRentCar.php";
                                 Aeroportul Chișinău
                             </label>
                             <label for="pickup_place_our_office">
-                                <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_our_office" required>
+                                <input type="radio" name="pickup_place" value="Office Chisinau" id="pickup_place_our_office" required>
                                 Oficiul nostru Chișinău
                             </label>
                             <label for="pickup_place_balti">
-                                <input type="radio" name="pickup_place" value="Aeroport" id="pickup_place_balti" required>
+                                <input type="radio" name="pickup_place" value="Office Balti" id="pickup_place_balti" required>
                                 Oficiul nostru Bălti
                             </label>
                         </div>

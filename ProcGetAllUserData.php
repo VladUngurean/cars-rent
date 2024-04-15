@@ -63,12 +63,12 @@ if ($result->num_rows > 0) {
     if (!empty($rentedCarData)) {
       echo '<script> const rentedCarData = ' . json_encode($rentedCarData) . '; </script>';
       echo '<script> console.log(rentedCarData); </script>';
+    } else {
+      echo '<script> const rentedCarData = []; </script>';
+      // echo json_encode(["message" => "No rented cars"]);
     }
 
-  } else {
-    echo '<script> const rentedCarData = ""; </script>';
-    echo json_encode(["message" => "No engine Fuel found"]);
-  }
+  } 
   $result->close();
   $conn->next_result();
 ?>

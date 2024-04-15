@@ -17,12 +17,11 @@ if ($result->num_rows > 0) {
 
     if (!empty($dataMakesModels)) {
       echo '<script> let makesModelsFromDb = ' . json_encode($dataMakesModels) . '; </script>';
-    } 
-
-  } else {
-    echo '<script> let makesModelsFromDb =  ""; </script>';
-    echo json_encode(["message" => "No make and models found"]);
-  }
+    } else {
+      echo '<script> let makesModelsFromDb =  ""; </script>';
+      echo json_encode(["message" => "No make and models found"]);
+    }
+  } 
   $result->close();
   $conn->next_result();
 //    else {
@@ -41,10 +40,10 @@ if ($result->num_rows > 0) {
     }
     if (!empty($dataTransmissions)) {
       echo '<script> const transmissionsFromDb = ' . json_encode($dataTransmissions) . '; </script>';
+    } else {
+      echo '<script> const transmissionsFromDb = ""; </script>';
+      echo json_encode(["message" => "No trsnsmission type found"]);
     }
-  } else {
-    echo '<script> const transmissionsFromDb = ""; </script>';
-    echo json_encode(["message" => "No trsnsmission type found"]);
   }
 $result->close();
 $conn->next_result();
@@ -57,16 +56,15 @@ if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
 
     $dataEngineFuel[] = array(
-        'engineFuel' => $row['engine_fuel'],
+      'engineFuel' => $row['engine_fuel'],
     );
     }
     if (!empty($dataEngineFuel)) {
       echo '<script> const engineFuelsFromDb = ' . json_encode($dataEngineFuel) . '; </script>';
+    } else {
+      echo '<script> const engineFuelsFromDb = ""; </script>';
+      echo json_encode(["message" => "No engine Fuel found"]);
     }
-
-  } else {
-    echo '<script> const engineFuelsFromDb = ""; </script>';
-    echo json_encode(["message" => "No engine Fuel found"]);
   }
   $result->close();
   $conn->next_result();
@@ -82,10 +80,12 @@ if ($result->num_rows > 0) {
         'bodyType' => $row['body_type'],
     );
     }
-    echo '<script> const bodyTypesFromDb = ' . json_encode($dataBodyType) . '; </script>';
-  } else {
-    echo '<script> const bodyTypesFromDb = ""; </script>';
-    echo json_encode(["message" => "No body Type found"]);
+    if (!empty($dataEngineFuel)) {
+      echo '<script> const bodyTypesFromDb = ' . json_encode($dataBodyType) . '; </script>';
+    } else {
+      echo '<script> const bodyTypesFromDb = ""; </script>';
+      echo json_encode(["message" => "No body Type found"]);
+    }
   }
   $result->close();
   $conn->next_result();

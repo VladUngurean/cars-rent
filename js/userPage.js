@@ -1,7 +1,7 @@
 // userData = userData;
 // rentedCarData = rentedCarData;
 // Create HTML for a single car
-console.log(rentedCarData);
+// console.log(rentedCarData);
 const createCarHTML = (car, getImages) => `
   <div id="${car.carPlate}" class="car-to-rent">
     <div class="rented-car-list__box">

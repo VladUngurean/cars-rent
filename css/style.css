@@ -1347,6 +1347,7 @@ label[for="deletemanager@gmail.com"] {
   padding: 5px;
 }
 .user-account-data-item > span {
+  white-space: nowrap;
   font-size: 11px;
   opacity: 0.5;
 }

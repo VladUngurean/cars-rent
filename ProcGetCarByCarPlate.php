@@ -37,12 +37,11 @@ if ($result->num_rows > 0) {
     }
     if (!empty($data)) {
       echo '<script>
-      let carToRent = ' . json_encode($data) . ';
-      console.log(carToRent);
+        let carToRent = ' . json_encode($data) . ';
       </script>';
-  }
-} else {
-    echo '<script> let carToRent = ""; </script>';
+    } else {
+      echo '<script> let carToRent = ""; </script>';
+    }
 }
   $stmt->close();
   $conn->next_result();

@@ -557,13 +557,14 @@ const renderCars = (car) => {
 function renderAllCars() {
   carsContainer.innerHTML = "";
   carsInfoFromPHP.forEach(renderCars);
+  sendCarPlateToPhp();
 }
 
 // Render all cars initially
 renderAllCars();
 
 //add vent listener to each car for rent and send its plate number to php
-sendCarPlateToPhp();
+// sendCarPlateToPhp();
 
 // Function to render filtered cars based on checked checkboxes
 function renderFilteredCars() {
@@ -617,6 +618,7 @@ function renderFilteredCars() {
           checkedRentStatus.includes(car.rentStatus))
       ) {
         renderCars(car);
+        sendCarPlateToPhp();
       }
     });
   }
