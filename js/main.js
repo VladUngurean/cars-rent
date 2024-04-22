@@ -38,13 +38,11 @@ function toggleScrollToTopButton(entries) {
     scrollToTopButton.style.position = 'fixed';
     
     scrollToTopButton.style.pointerEvents = "all";
-    console.log('hi');
   } else {
     scrollToTopButton.style.opacity = 0;
     scrollToTopButton.style.zIndex = -10;
     // scrollToTopButton.style.position = 'absolute';
     scrollToTopButton.style.pointerEvents = "none";
-    console.log('bie');
   }
 }
 

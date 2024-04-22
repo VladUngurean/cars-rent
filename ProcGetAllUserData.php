@@ -52,14 +52,27 @@ if ($result->num_rows > 0) {
       'bodyType' => $row['body_type'],
       'doorsNumber' => $row['doors_number'],
       'passengersNumber' => $row['passengers_number'],
+      
       'rentStartDateTime' => $row['rent_start_date_time'],
       'rentEndDateTime' => $row['rent_end_date_time'],
+      
       'insuranceType' => $row['insurance_type'],
       'pickupPlace' => $row['pickup_place'],
       'rentedCarFullCost' => $row['rented_car_full_cost'],
       'rentedCarCashback' => $row['rented_car_cashback'],
       ];
     }
+    // echo $rentedCarData[0]["rentStartDateTime"];
+    foreach($rentedCarData as &$car){
+      $rent_start_datetime = $car["rentStartDateTime"];
+      $rent_end_datetime = $car["rentEndDateTime"];
+      $new_rent_start_datetime = new DateTime($rent_start_datetime);
+      $new_rent_end_datetime = new DateTime($rent_end_datetime);
+      $car["rentStartDateTime"] = $new_rent_start_datetime->format('Y-m-d H:i');
+      $car["rentEndDateTime"] = $new_rent_end_datetime->format('Y-m-d H:i');
+    }
+    unset($car);
+    
     if (!empty($rentedCarData)) {
       echo '<script> const rentedCarData = ' . json_encode($rentedCarData) . '; </script>';
       echo '<script> console.log(rentedCarData); </script>';
