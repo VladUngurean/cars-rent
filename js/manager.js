@@ -114,7 +114,7 @@ function HTMLBodyTypeSelectOptions(bodyType) {
 function HTMLforCarsTable(carInfo) {
   return `
   <input id="tableDelete${carInfo.plate}Button" class="button" name="deleteExistingCar" type="submit" value="${carInfo.plate}" style="display: none;"/>
-  <label style="color: white; cursor:pointer;" for="tableDelete${carInfo.plate}Button">Delete</label>
+  <label class="deleteCarFromDbButton" style="color: white; cursor:pointer;" for="tableDelete${carInfo.plate}Button">Delete</label>
   <tr>
       <td>${carInfo.plate}</td>
       <td>${carInfo.make}</td>
@@ -412,3 +412,14 @@ if (allUsersDataFromDb === "") {
 } else {
   renderTableRows(allUsersDataFromDb, allUsersDataTableContainer, HTMLforUsersTable);
 }
+
+//prevent delete car in one click
+document.querySelectorAll('.deleteCarFromDbButton').forEach(e => {
+  e.addEventListener('click', function(event) {
+    let confirmation = confirm('Are you sure you want to delete this Car?');
+    if (confirmation) {
+    } else {
+      event.preventDefault();
+    }
+  })
+})

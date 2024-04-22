@@ -63,13 +63,13 @@ let currentItems = 6;
 loadMoreButton.onclick = () => {
   let boxes = [...document.querySelectorAll(".car-to-rent")];
   for (let i = currentItems; i < currentItems + 3; i++){
-    if (boxes[i] == undefined) {
+    if (boxes[i] == undefined || currentItems >= boxes.length) {
     loadMoreButton.style.pointerEvents = "none";
     break;
     }
     boxes[i].style.display = "inline";
   }
 
-  // currentItems +=3;
+  currentItems +=3;
 
 }
