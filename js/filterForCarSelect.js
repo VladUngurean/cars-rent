@@ -31,9 +31,7 @@ function HTMLmakeSelectOptions(make) {
         <input id="selectMake${make}" class="make-checkbox" type="checkbox" name="" value="">
         <span id="dropDown${make}Models"> 
           <p>${make}</p> 
-          <svg width="31" height="33" viewBox="0 0 31 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-            <path d="M7.9917 5.12635L22.1864 16.1667L7.9917 27.207" stroke="white" stroke-width="2.36579"/>
-          </svg> 
+          <span class="showMore${make}Models"> + </span>
         </span>
       </div>
 
@@ -171,18 +169,9 @@ function filterForSelectOptions(inputArray, carDetail) {
 }
 
 // Applies filter on data from the database
-function applyFiltersAndRenderForSelectOption(
-  filteredData,
-  container,
-  infoAboutCar,
-  HTMLreturnMainFunction
-) {
+function applyFiltersAndRenderForSelectOption(filteredData, container, infoAboutCar, HTMLreturnMainFunction) {
   filteredData.forEach((car) => {
-    renderSelectOptionsForSelect(
-      car[infoAboutCar],
-      container,
-      HTMLreturnMainFunction
-    );
+    renderSelectOptionsForSelect(car[infoAboutCar], container, HTMLreturnMainFunction);
   });
 }
 function HTMLreturnMainFunction(type) {
@@ -192,7 +181,10 @@ function HTMLreturnMainFunction(type) {
 
 // CHECK ACTIVE STATUS
 
-function toggleShowSelectOptions(container, activeStatus) {
+function toggleShowSelectOptions(moreModelsSign, container, activeStatus) {
+
+// moreModelsSign : need to make + and - in dependence of situation
+
   if (activeStatus === activeMain) {
     if (activeMain === container) {
       container.classList.toggle("show");
@@ -238,73 +230,39 @@ renderSelectOptions("renderCarRentStatusSelect", HTMLforRentStatusSelect);
 
 //aplly filter for transmission
 const forRenderTransmission = document.getElementById("transmissionTypeList");
-const filteredTransmission = filterForSelectOptions(
-  carsInfoFromPHP,
-  "transmissionType"
-);
-applyFiltersAndRenderForSelectOption(
-  filteredTransmission,
-  forRenderTransmission,
-  "transmissionTypes",
-  HTMLtransmissionSelectOptions
-);
+const filteredTransmission = filterForSelectOptions(carsInfoFromPHP, "transmissionType");
+applyFiltersAndRenderForSelectOption(filteredTransmission, forRenderTransmission, "transmissionTypes", HTMLtransmissionSelectOptions);
 //aplly filter for fuel type
 const forRenderFuelType = document.getElementById("fuelTypeList");
-const filteredFuelType = filterForSelectOptions(
-  carsInfoFromPHP,
-  "engineFuel"
-);
-applyFiltersAndRenderForSelectOption(
-  filteredFuelType,
-  forRenderFuelType,
-  "engineFuels",
-  HTMLFuelTypeSelectOptions
-);
+const filteredFuelType = filterForSelectOptions(carsInfoFromPHP, "engineFuel");
+applyFiltersAndRenderForSelectOption(filteredFuelType, forRenderFuelType, "engineFuels", HTMLFuelTypeSelectOptions);
 //aplly filter for body type
 const forRenderBodyType = document.getElementById("BodyTypeList");
 const filteredBodyType = filterForSelectOptions(carsInfoFromPHP, "bodyType");
-applyFiltersAndRenderForSelectOption(
-  filteredBodyType,
-  forRenderBodyType,
-  "bodyTypes",
-  HTMLBodyTypeSelectOptions
-);
+applyFiltersAndRenderForSelectOption(filteredBodyType, forRenderBodyType, "bodyTypes", HTMLBodyTypeSelectOptions);
 //aplly filter for body type
 const forRenderRentStatus = document.getElementById("rentStatusList");
-const filteredRentStatus = filterForSelectOptions(
-  carsInfoFromPHP,
-  "rentStatus"
-);
-applyFiltersAndRenderForSelectOption(
-  filteredRentStatus,
-  forRenderRentStatus,
-  "rentStatuss",
-  HTMLRentStatusSelectOptions
-);
+const filteredRentStatus = filterForSelectOptions(carsInfoFromPHP, "rentStatus");
+applyFiltersAndRenderForSelectOption(filteredRentStatus, forRenderRentStatus, "rentStatuss", HTMLRentStatusSelectOptions);
 // ALL FUNCTION CALLS END-----------------------------------------------------------------
 
 //ALL FUNCTIONS FOR RENDER SOMETHING FOR SELECT
 function renderCarForSelect(car) {
-  const carMakesForSelectDropdown =
-    document.getElementById("carMakesForSelect");
+  const carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
 
   const make = car.make;
   const renderCarForSelectHTML = HTMLmakeSelectOptions(make);
-  carMakesForSelectDropdown.insertAdjacentHTML(
-    "beforeend",
-    renderCarForSelectHTML
-  );
+  carMakesForSelectDropdown.insertAdjacentHTML("beforeend", renderCarForSelectHTML);
 
-  const dropDownForCarModel = document.getElementById(
-    `dropDown${make}Models`
-  );
+  const dropDownForCarModel = document.getElementById(`dropDown${make}Models`);
   const forRenderModels = document.getElementById(`renderModels${make}`);
 
   renderCarModelsForSelect(car.models, forRenderModels);
-
+  
   dropDownForCarModel.addEventListener("click", function () {
-    console.log("second");
-    toggleShowSelectOptions(forRenderModels, activeSecond);
+    // let test123 = document.querySelector(`.showMore${make}Models`);
+    // console.log("second");
+    toggleShowSelectOptions(undefined, forRenderModels, activeSecond);
   });
 
   let makeCheckbox = document.getElementById(`selectMake${make}`);
@@ -344,17 +302,12 @@ function renderSelectOptionsForSelect(
 //GOLBAL VARIABLES-----------------------------------------------------------------------
 
 //dropdorns and checboxes for transmission
-const carMakesForSelectDropdown =
-  document.getElementById("carMakesForSelect");
+const carMakesForSelectDropdown = document.getElementById("carMakesForSelect");
 const dropDownMakes = document.getElementById("dropDownMakes");
 
 //dropdorns and checboxes for transmission
-const dropDownForTransmission = document.getElementById(
-  "selectTransmissionType"
-);
-const transmissionCheckboxes = document.querySelectorAll(
-  ".transmissionType-checkbox"
-);
+const dropDownForTransmission = document.getElementById("selectTransmissionType");
+const transmissionCheckboxes = document.querySelectorAll(".transmissionType-checkbox");
 
 //dropdorns and checboxes for fuel type
 const dropDownForFuelType = document.getElementById("selectFuelType");
@@ -364,9 +317,7 @@ const dropDownForBodyType = document.getElementById("selectBodyType");
 const bodyTypeCheckboxes = document.querySelectorAll(".bodyType-checkbox");
 //dropdorns and checboxes for rent status
 const dropDownForRentStatus = document.getElementById("selectRentStatus");
-const rentStatusCheckboxes = document.querySelectorAll(
-  ".rentStatus-checkbox"
-);
+const rentStatusCheckboxes = document.querySelectorAll(".rentStatus-checkbox");
 
 // Applies filter on data from the database
 const carsFromFilter = filterNestedDataForSelectOptions(carsInfoFromPHP);
@@ -379,23 +330,23 @@ carsFromFilter.forEach(renderCarForSelect);
 dropDownMakes.addEventListener("click", function () {
   forRenderFuelType;
   console.log("make");
-  toggleShowSelectOptions(carMakesForSelectDropdown, activeMain);
+  toggleShowSelectOptions(undefined, carMakesForSelectDropdown, activeMain);
 });
 
 dropDownForTransmission.addEventListener("click", function () {
-  toggleShowSelectOptions(forRenderTransmission, activeMain);
+  toggleShowSelectOptions(undefined, forRenderTransmission, activeMain);
   console.log("transmi");
 });
 dropDownForFuelType.addEventListener("click", function () {
-  toggleShowSelectOptions(forRenderFuelType, activeMain);
+  toggleShowSelectOptions(undefined, forRenderFuelType, activeMain);
   console.log("fuel");
 });
 dropDownForBodyType.addEventListener("click", function () {
-  toggleShowSelectOptions(forRenderBodyType, activeMain);
+  toggleShowSelectOptions(undefined, forRenderBodyType, activeMain);
   console.log("body");
 });
 dropDownForRentStatus.addEventListener("click", function () {
-  toggleShowSelectOptions(forRenderRentStatus, activeMain);
+  toggleShowSelectOptions(undefined, forRenderRentStatus, activeMain);
   console.log("body");
 });
 

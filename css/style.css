@@ -521,7 +521,7 @@ nav > .nav__ul .nav__link:hover::before {
   width: 280px;
   min-height: 150px;
   position: relative;
-  padding: 60px 0;
+  padding: 60px 25px;
   background-color: rgba(255, 255, 255, 0.05);
 }
 .select-options-for-rent > span {
@@ -548,7 +548,7 @@ nav > .nav__ul .nav__link:hover::before {
 }
 
 .ul-for-hide-selectoptions {
-  min-width: 130px;
+  max-width: 100%;
   opacity: 0;
   pointer-events: none;
   position: absolute;
@@ -596,6 +596,7 @@ nav > .nav__ul .nav__link:hover::before {
   align-items: center;
   flex-direction: row;
   gap: 10px;
+  color: #FFFFFF;
 }
 .select-option-container > span {
   width: 100%;
@@ -1486,6 +1487,8 @@ label[for="deletemanager@gmail.com"] {
 }
 
 .show {
+  width: 100%;
+  max-width: 220px;
   max-height: 300px;
   display: flex;
   opacity: 1;
@@ -1493,7 +1496,8 @@ label[for="deletemanager@gmail.com"] {
   position: relative;
   z-index: 2;
   animation: increaseHeight 0.4s ease-in-out;
-  overflow: scroll;
+  overflow-x: hidden;
+  overflow-y: scroll;
 }
 
 .selected-car-area {

@@ -217,7 +217,6 @@ if (carsInfoForTable === "") {
 function renderCarForSelect(car) {
   const make = car.make;
   const model = car.model.split(",");
-  // const model = car.model.split(",");
 
   const forRenderModels = document.getElementById(`renderModels${make}`);
   renderCarModelsForSelect(model, forRenderModels);
