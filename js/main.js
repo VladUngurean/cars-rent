@@ -1,5 +1,6 @@
 const navLinks = document.querySelectorAll('.nav__link');
-const windowPathName = window.location.pathname;
+const windowPathName = window.location.href;
+console.log(windowPathName);
 
 navLinks.forEach(navElement =>{
   if (navElement.href.includes(windowPathName)) {
