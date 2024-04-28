@@ -70,6 +70,7 @@ section {
   background: linear-gradient(180deg, rgba(29, 29, 29, 0.4), rgb(29, 29, 29));
   content: "";
   position: absolute;
+  z-index: 2;
   top: 0;
   left: 0;
   height: 100%;
@@ -96,7 +97,7 @@ section {
   height: 100%;
   margin-top: 30px;
   position: relative;
-  z-index: 2;
+  z-index: 3;
 }
 
 .header__container {
@@ -271,7 +272,7 @@ nav > .nav__ul .nav__link:hover::before {
   flex-direction: column;
   width: 100%;
   position: relative;
-  z-index: 2;
+  z-index: 3;
   top: -400px;
 }
 .header__bottom > h1 {

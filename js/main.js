@@ -1,9 +1,13 @@
 const navLinks = document.querySelectorAll('.nav__link');
 const windowPathName = window.location.href;
+navLinks.forEach(e =>{
+  console.log(e.href);
+})
+
 console.log(windowPathName);
 
 navLinks.forEach(navElement =>{
-  if (navElement.href.includes(windowPathName)) {
+  if (navElement.href == windowPathName) {
     navElement.classList.add("nav__link-active");
   }
 })
