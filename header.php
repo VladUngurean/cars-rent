@@ -171,11 +171,11 @@
             flex-direction: column;
             position: absolute;
             top: 150px;
-            background-color: rgba(255, 255, 255, 0.5);
+            background-color: rgba(0, 0, 0, 0.35);
             padding: 15px;
             border-radius: 5px;
 
-            color: black;
+            color: white;
             font-family: white, sans-serif;
             font-weight: 500;
             font-size: 18px;
@@ -225,7 +225,7 @@
 
         <div class="accounts">
             <div class="accounts-header">
-                <h5>Accounts:</h5>
+                <h5>Accounts (click to open):</h5>
                 <svg width="31" height="33" viewBox="0 0 31 33" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M7.9917 5.12635L22.1864 16.1667L7.9917 27.207" stroke="black" stroke-width="2.36579" />
                 </svg>

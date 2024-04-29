@@ -132,9 +132,9 @@ function HTMLforCarsTable(carInfo) {
       <td>${carInfo.rentDaysPrice21_45}</td>
       <td>${carInfo.rentDaysPrice46}</td>
       <td>${carInfo.rentStatus}</td>
-      <td><div style="height:50px; overflow:scroll;">${carInfo.carImage}</div></td>
-      <td><div style="height:50px; overflow:scroll;">${carInfo.descriptionEn}</div></td>
-      <td><div style="height:50px; overflow:scroll;">${carInfo.descriptionRo}</div></td>
+      <td><div style="max-height:90px; overflow:scroll;">${carInfo.carImage}</div></td>
+      <td><div style="max-height:90px; overflow:scroll;">${carInfo.descriptionEn}</div></td>
+      <td><div style="max-height:90px; overflow:scroll;">${carInfo.descriptionRo}</div></td>
     </tr>
   `;
 }
