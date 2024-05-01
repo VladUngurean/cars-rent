@@ -227,7 +227,7 @@
             <div class="accounts-header">
                 <h5>Accounts (click to open):</h5>
                 <svg width="31" height="33" viewBox="0 0 31 33" fill="none" xmlns="http://www.w3.org/2000/svg">
-                    <path d="M7.9917 5.12635L22.1864 16.1667L7.9917 27.207" stroke="black" stroke-width="2.36579" />
+                    <path d="M7.9917 5.12635L22.1864 16.1667L7.9917 27.207" stroke="white" stroke-width="2.36579" />
                 </svg>
 
             </div>

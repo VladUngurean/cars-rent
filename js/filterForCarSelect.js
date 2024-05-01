@@ -420,7 +420,7 @@ const createCarHTML = (car, getImages) => `
   <div id="${car.plate}" class="car-to-rent">
     <div class="car-list__box">
       <div class="car-list__box-image">
-        <img loading="lazy" role="presentation" src="/images/carsList/${getImages[0]}" alt="Car Image(gets only images PATHS from data base)">
+        <img loading="lazy" role="presentation" src="/images/carsList/${getImages[0]}" alt="">
       </div>
       <div class="car-list__box-make-model" ><h4>${car.make} - ${car.model}</h4></div>
       <div class="car-list__box-details">
