@@ -1,9 +1,9 @@
 <?php
 
   $dbhost ="sql.freedb.tech";
-  $dbuser = "freedb_Vladd";
-  $dbpass="28wSGgn5FJ*MxtQ";
-  $dbname ="freedb_carsrent";
+  $dbuser = "freedb_vladd";
+  $dbpass="ZTCX&G&2&qwYjzW";
+  $dbname ="freedb_dream_cars";
 
   try {
     $conn = new mysqli($dbhost, $dbuser, $dbpass,$dbname);

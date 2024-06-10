@@ -4,7 +4,6 @@
 // echo $currentPage;
 ?>
 
-
 <section class="header-area">
 
     <div id="headerArea" class="header__container">
