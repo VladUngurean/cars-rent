@@ -13,9 +13,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
     <title>Manager Account</title>
-
-
-    <script type='text/javascript' src="/js/manager.js" defer></script>
 </head>
 <?php
     include "ProcGetExistingCarsToShow.php";
@@ -299,6 +296,7 @@ if ($result->num_rows > 0) {
         echo '<label style=" margin-bottom:250px" ><a href="index.php">Main Page</a></label> <br><br><br>';  
     ?>
 
+    <script type='text/javascript' src="/js/manager.js" defer></script>
 </body>
 
 </html>

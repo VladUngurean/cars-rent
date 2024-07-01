@@ -500,6 +500,9 @@ const carsContainer = document.querySelector("#car-list-render");
 
 const renderCars = (car) => {
   let getImages = car.carImage.split(",");
+  if (getImages = null) {
+    getImages = "";
+  }
   const productHTML = createCarHTML(car, getImages);
   carsContainer.insertAdjacentHTML("beforeend", productHTML);
 };
