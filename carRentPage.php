@@ -15,7 +15,9 @@
 
     <!-- swiper -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
-    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js" defer></script>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+    <!-- <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script> -->
 
     <!-- datetime picker -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
@@ -23,11 +25,6 @@
 
 </head>
 
-<?php
-include "save_carplate_in_session.php"; 
-include "ProcGetCarByCarPlate.php"; 
-include "ProcRentCar.php"; 
-?>
 
 <body>
     <?php
@@ -173,9 +170,13 @@ include "ProcRentCar.php";
         </div>
     </section>
 
-    <?php include('footer.php'); ?>
+    <?php
+include "ProcGetCarByCarPlate.php"; 
+include "ProcRentCar.php"; 
+?>
 
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <?php include('footer.php'); ?>
+    <!-- 
     <script>
     configRent = {
         // dateFormat: "Y-m-d",
@@ -232,9 +233,9 @@ include "ProcRentCar.php";
             },
         });
     }, 0);
-    </script>
-    <script type='text/javascript' src="/js/carRent.js" defer></script>
+    </script> -->
 
+    <!-- <script type='text/javascript' src="/js/carRent.js"></script> -->
 </body>
 
 </html>

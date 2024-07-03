@@ -490,7 +490,9 @@ function sendCarPlateToPhp() {
   allCarsForRent.forEach(e => {
       e.onclick = function() {
         document.getElementById("hiddenValue").value = encodeURIComponent(e.id);
-        document.getElementById("formToRentCarPage").submit();
+        setTimeout(() => {
+          document.getElementById("formToRentCarPage").submit();
+        }, 100);
       }
   })
 }
