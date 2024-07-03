@@ -1,9 +1,9 @@
 <?php
 
   $dbhost ="localhost";
-  $dbuser = "id21984908_vlad";
-  $dbpass="112233Vl!";
-  $dbname ="id21984908_dreamcars";
+  $dbuser = "root";
+  $dbpass="admin";
+  $dbname ="ch_dream_cars";
 
   try {
     $conn = new mysqli($dbhost, $dbuser, $dbpass,$dbname);

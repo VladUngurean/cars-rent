@@ -782,6 +782,8 @@ nav > .nav__ul .nav__link:hover::before {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   gap: 24px;
   pointer-events: none;
 }
