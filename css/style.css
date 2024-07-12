@@ -21,7 +21,8 @@ html {
   margin: 0;
 }
 
-ul, li {
+ul,
+li {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -34,7 +35,10 @@ a {
   color: #FFFFFF;
 }
 
-button, ul, li, label {
+button,
+ul,
+li,
+label {
   cursor: pointer;
 }
 
@@ -389,8 +393,10 @@ nav > .nav__ul .nav__link:hover::before {
 }
 .search-form > .search-container > .search__select-options {
   display: flex;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 15px;
   flex-direction: row;
 }
 
@@ -404,10 +410,9 @@ nav > .nav__ul .nav__link:hover::before {
 }
 .car-list__container > #car-list-render {
   width: 100%;
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  flex-wrap: wrap;
+  display: grid;
+  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
   gap: 30px;
 }
 
@@ -415,13 +420,17 @@ nav > .nav__ul .nav__link:hover::before {
   display: none;
 }
 
-.car-to-rent:nth-child(1), .car-to-rent:nth-child(2), .car-to-rent:nth-child(3),
-.car-to-rent:nth-child(4), .car-to-rent:nth-child(5), .car-to-rent:nth-child(6) {
+.car-to-rent:nth-child(1),
+.car-to-rent:nth-child(2),
+.car-to-rent:nth-child(3),
+.car-to-rent:nth-child(4),
+.car-to-rent:nth-child(5),
+.car-to-rent:nth-child(6) {
   display: block;
 }
 
 .car-list__box {
-  width: 480px;
+  width: 100%;
   height: 100%;
   cursor: pointer;
 }
@@ -435,10 +444,9 @@ nav > .nav__ul .nav__link:hover::before {
   overflow: hidden;
 }
 .car-list__box > .car-list__box-image > img {
-  min-width: 100%;
-  max-width: 500px;
-  min-height: 100%;
-  max-height: 300px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 .car-list__box > .car-list__box-make-model {
   margin: 10px 0;
@@ -927,13 +935,15 @@ nav > .nav__ul .nav__link:hover::before {
   margin: 40px 0 20px;
 }
 
-.footer-top, .footer-bottom {
+.footer-top,
+.footer-bottom {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
   flex-direction: row;
 }
-.footer-top > a, .footer-bottom > a {
+.footer-top > a,
+.footer-bottom > a {
   color: rgba(255, 255, 255, 0.5);
   font-family: "Bai Jamjuree", sans-serif;
   font-weight: 400;
@@ -1066,7 +1076,8 @@ nav > .nav__ul .nav__link:hover::before {
   font-size: 20px;
 }
 
-.register-area, .login-area {
+.register-area,
+.login-area {
   width: 100%;
   display: flex;
   justify-content: center;
@@ -1074,14 +1085,16 @@ nav > .nav__ul .nav__link:hover::before {
   margin: 50px 0 130px;
 }
 
-.register-area__container, .login-area-container {
+.register-area__container,
+.login-area-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
   flex-direction: column;
 }
-.register-area__container > h1, .login-area-container > h1 {
+.register-area__container > h1,
+.login-area-container > h1 {
   text-align: center;
   color: #FFFFFF;
   font-family: "Bai Jamjuree", sans-serif;
@@ -1090,7 +1103,8 @@ nav > .nav__ul .nav__link:hover::before {
   line-height: 63px;
 }
 
-#registerForm, #logInForm {
+#registerForm,
+#logInForm {
   width: 100%;
   max-width: 320px;
   gap: 27px;
@@ -1126,7 +1140,8 @@ nav > .nav__ul .nav__link:hover::before {
   outline: black solid 1px gray solid 2px;
 }
 
-.register-area__input-field, .login-area__input-field {
+.register-area__input-field,
+.login-area__input-field {
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -1134,7 +1149,8 @@ nav > .nav__ul .nav__link:hover::before {
   align-items: flex-end;
   position: relative;
 }
-.register-area__input-field > p, .login-area__input-field > p {
+.register-area__input-field > p,
+.login-area__input-field > p {
   margin-right: 8px;
   text-align: end;
   white-space: nowrap;
@@ -1145,11 +1161,13 @@ nav > .nav__ul .nav__link:hover::before {
   line-height: 20px;
   margin-bottom: 5px;
 }
-.register-area__input-field > p a, .login-area__input-field > p a {
+.register-area__input-field > p a,
+.login-area__input-field > p a {
   font-weight: bold;
   text-decoration: underline;
 }
-.register-area__input-field > .show-password, .login-area__input-field > .show-password {
+.register-area__input-field > .show-password,
+.login-area__input-field > .show-password {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1161,35 +1179,41 @@ nav > .nav__ul .nav__link:hover::before {
   margin-right: 8px;
   cursor: pointer;
 }
-.register-area__input-field > input, .login-area__input-field > input {
+.register-area__input-field > input,
+.login-area__input-field > input {
   width: 100%;
   height: 50px;
   padding-left: 10px;
   border: none;
   border-radius: 2px;
 }
-.register-area__input-field > input:focus, .login-area__input-field > input:focus {
+.register-area__input-field > input:focus,
+.login-area__input-field > input:focus {
   outline: black solid 1px gray solid 2px;
 }
-.register-area__input-field > input::-webkit-input-placeholder, .login-area__input-field > input::-webkit-input-placeholder {
+.register-area__input-field > input::-webkit-input-placeholder,
+.login-area__input-field > input::-webkit-input-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
 }
-.register-area__input-field > input:-ms-input-placeholder, .login-area__input-field > input:-ms-input-placeholder {
+.register-area__input-field > input:-ms-input-placeholder,
+.login-area__input-field > input:-ms-input-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
 }
-.register-area__input-field > input:-moz-placeholder, .login-area__input-field > input:-moz-placeholder {
+.register-area__input-field > input:-moz-placeholder,
+.login-area__input-field > input:-moz-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
   line-height: 19px;
 }
-.register-area__input-field > input::-moz-placeholder, .login-area__input-field > input::-moz-placeholder {
+.register-area__input-field > input::-moz-placeholder,
+.login-area__input-field > input::-moz-placeholder {
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 16px;
@@ -1216,7 +1240,8 @@ nav > .nav__ul .nav__link:hover::before {
   font-size: 16px;
 }
 
-.register-button, .login-button {
+.register-button,
+.login-button {
   max-width: 236px;
   width: 100%;
   height: 50px;
@@ -1631,7 +1656,8 @@ label[for="deletemanager@gmail.com"] {
   width: 100%;
   border-collapse: collapse;
 }
-.selected-car-table-container td, .selected-car-table-container th {
+.selected-car-table-container td,
+.selected-car-table-container th {
   max-width: 175px;
   padding: 5px 15px;
   border: 2px solid rgba(255, 255, 255, 0.5);
@@ -1680,7 +1706,9 @@ label[for="deletemanager@gmail.com"] {
   color: rgba(255, 137, 137, 0.8);
 }
 
-.selected-car-rent-details input[type=text], .selected-car-rent-details input[type=tel], .selected-car-rent-details input[type=email] {
+.selected-car-rent-details input[type=text],
+.selected-car-rent-details input[type=tel],
+.selected-car-rent-details input[type=email] {
   width: 250px;
   height: 35px;
   padding-left: 5px;
