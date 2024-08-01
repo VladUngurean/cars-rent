@@ -14,6 +14,8 @@
     <title>Chișinău Dream Cars</title>
     <link rel="icon" type="image/x-icon" href="/images/logo.svg">
 
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
 
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
     <script type='text/javascript' src="/js/main.js" defer></script>
