@@ -36,10 +36,6 @@
             .header-area{
                 margin-bottom:50px;
             }
-            .header__container {
-                height: 65px;
-                margin-bottom: 75px;
-            }
             .header__bottom {
                 display: none;
             }

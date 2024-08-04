@@ -57,7 +57,7 @@ html {
 *,
 *::after,
 *::before {
-  box-sizing: inherit;
+  box-sizing: border-box;
   padding: 0;
   margin: 0;
 
@@ -152,17 +152,159 @@ section {
   }
 }
 
+//accounts start
+.accounts {
+  width: 505px;
+  display: none;
+  // display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: 150px;
+  background-color: rgba(0, 0, 0, 0.35);
+  padding: 15px;
+  border-radius: 5px;
+
+  color: white;
+  font-family: white, sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+}
+
+.accounts-header {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.accounts-header>h5 {
+  font-family: "Jura", sans-serif;
+  font-weight: 600;
+  font-size: 22px;
+}
+
+tr {
+  text-align: left;
+  font-family: "Jura", sans-serif;
+  /* font-weight: 600; */
+  font-size: 22px;
+}
+
+th,
+td {
+  border: 1px solid black;
+  padding: 5px
+}
+
+.accounts-table {
+  display: none;
+  border-collapse: collapse;
+}
+
+.show-accounts-table {
+  display: block;
+}
+
+.textToCopy {
+  cursor: pointer;
+}
+//accounts end
+
 // header start
+
+// hanburger menu start
+.menu__mobile {
+  width: min-content;
+  height: min-content;
+	display: none;
+	// display: flex;
+	align-items: center;
+	justify-content: center;
+	
+	&_button {
+		position: relative;
+		height: 26px;
+		width: 40px;
+		cursor: pointer;
+		background-color: transparrent;
+			
+		&.active {
+			span {
+				opacity: 0;
+			}
+			&.menu__mobile_button:before,
+			&.menu__mobile_button:after  {
+				top: 40%;
+			}
+			&.menu__mobile_button:before {
+				transform: rotate(45deg);
+			}
+			&.menu__mobile_button:after {
+				transform: rotate(-45deg);
+			}
+		}
+
+		span,
+		&:before, 
+		&:after {
+			display: block;
+			position: absolute;
+			height: 3px;
+			width: 100%;
+			background-color: $text-light;
+			border-radius: 6px;
+			opacity: 1;
+		}
+		&:before, 
+		&:after {
+			content: "";
+			transition: top .35s cubic-bezier(.23,1,.32,1),transform .35s cubic-bezier(.23,1,.32,1);
+		}
+	
+		span {
+			top: 45%;
+			transform: translateY(-50%);
+		}
+		&:before {
+			top: 0;
+		}
+		&:after {
+			top: calc(100% - 6px);
+		}
+	}
+} 
+// hanburger menu end
+
+//mobile header start
+
+.header__mobile {
+  width: 100%;
+  display: none;
+}
+.header__mobile.visible {
+  display: flex
+}
+
+.header__mobile_bot {
+  @include flex-center();
+  flex-direction: row;
+  gap: 20px;
+}
+
+//mobile header end
 
 .header-area {
   width: 100%;
   max-width: 1534px;
   height: max-content;
-  margin-top: 30px;
-
+  padding: 30px 0;
   position: absolute;
   top: 0;
   z-index: 3;
+}
+.header-area.active {
+  background: linear-gradient(#000000 95%, transparent);
 }
 
 .header__container {
@@ -170,13 +312,18 @@ section {
   flex-direction: row;
   width: 100%;
   padding: 0 10px;
+  gap: 20px;
   // height: 900px;
   & > .header__left {
     @include flex-between;
-    .logo__container {
-      margin-right: 40px;
-    }
   }
+}
+.header__container_top {
+  width: 100%;
+  @include flex-between;
+}
+.logo__container {
+  // margin-right: 40px;
 }
 
 
@@ -232,7 +379,7 @@ nav {
   @include flex-between;
   gap: 30px;
 
-  & > .language__container {
+  & .language__container {
     display: flex;
     flex-direction: row;
     gap: 10px;
@@ -300,9 +447,9 @@ nav {
     }
   }
 
-  & > .theme__switch-container {
+  & .theme__switch-container {
     @include flex-center;
-    & > .theme__switch-circle {
+    & .theme__switch-circle {
       width: 24px;
       height: 24px;
       border: 1px solid rgb(255, 255, 255);
@@ -1334,6 +1481,7 @@ nav {
   height: 0;
   position: sticky;
   top: 1px;
+  z-index: 10;
 }
 
 .scroll-to-top:hover > svg > g > path {
@@ -1840,4 +1988,51 @@ label[for="deletemanager@gmail.com"] {
   z-index: -999;
   pointer-events: none;
   opacity: 0;
+}
+
+
+@media (min-width:1280px) {
+  .header-area.active {
+    background: transparent;
+  }
+  .header__mobile {
+    display: none;
+  }
+  .header__mobile.visible {
+    display: none;
+  }
+}
+
+@media (max-width:1280px) {
+  .header__container {
+    padding: 0 20px;
+    flex-direction: column;
+  }
+  .header__container > .header__left {
+    display: none;
+  }
+
+  .header__container > .header__right {
+    display: none;
+  }
+  .header__container_top > .menu__mobile {
+    display: flex;
+  }
+
+  .header__mobile {
+    // @include flex-center();
+    flex-direction: column;
+    gap: 20px;
+  }
+
+  .header__mobile nav > .nav__ul {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
+  .header__mobile .header__right {
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+  }
 }

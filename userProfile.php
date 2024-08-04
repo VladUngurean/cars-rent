@@ -34,9 +34,6 @@
             .header-area{
                 margin-bottom:100px;
             }
-            .header__container {
-                height: 65px;
-            }
             .header__bottom {
                 display: none;
             }

@@ -6,9 +6,11 @@
 
 <section class="header-area">
 
+
+
     <div id="headerArea" class="header__container">
 
-        <div class="header__left">
+        <div class="header__container_top">
             <!-- Logo START -->
             <div class="logo__container">
                 <a href="index.php" class="header-register-close-button">
@@ -18,6 +20,167 @@
                 </a>
             </div>
             <!-- Logo END -->
+
+            <div class="menu__mobile">
+                <div class="menu__mobile_button">
+                    <span></span>
+                </div>
+            </div>
+        </div>
+
+        <div class="header__mobile">
+
+            <div class="header__left">
+
+                <!-- Nav START -->
+                <nav>
+                    <ul class="nav__ul">
+                        <li class="nav__item"><a class="nav__link" href="aboutUs.php">Despre noi</a></li>
+                        <li class="nav__item"><a class="nav__link" href="contacts.php">Contacte</a></li>
+                        <li class="nav__item"><a class="nav__link" href="thermsAndPol.php">Termeni și condiții</a></li>
+                        <li class="nav__item"><a class="nav__link" href="feedback.php">Recenzii</a></li>
+                        <li class="nav__item"><a class="nav__link" href="index.php">Mașini</a></li>
+                    </ul>
+                </nav>
+                <!-- nav END -->
+            </div>
+
+            <div class="header__right">
+
+                <!-- user login, register start -->
+                <div id='user__container'>
+
+                    <?php 
+        include "config.php";
+
+        function getUserRole($email) {
+            global $conn;
+            $query = "CALL getUserRole('$email')";
+            $result = mysqli_query($conn, $query);
+        
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                mysqli_next_result($conn);
+                return $row['user_role'];
+            }
+        
+            return null;
+        }
+        function getUserData($email) {
+            global $conn;
+            $query = "CALL getUserData('$email')";
+            $result = mysqli_query($conn, $query);
+            if ($result && mysqli_num_rows($result) > 0) {
+                $row = mysqli_fetch_assoc($result);
+                mysqli_next_result($conn);
+                    return [
+                    'first_name' => $row['first_name'],
+                    'last_name' => $row['last_name'],
+                    'phone' => $row['phone']
+                    ];
+            }
+            return null;
+        }
+
+        if(isset($_SESSION["email"])){
+            $userData = getUserData($_SESSION["email"]);
+            $conn->next_result();
+
+            if ($userData) {
+                $_SESSION['first_name'] = $userData['first_name'];
+                $_SESSION['last_name'] = $userData['last_name'];
+                $_SESSION['phone'] = $userData['phone'];
+            }
+        }
+
+        if(!isset($_SESSION["email"])){  
+            echo '
+            <div class="login-register-container">
+                <a href="register.php">Sign Up</a>
+                <span style="pointer-events:none; color:#FEFEFE; font-size: 18px; margin:0 2px; font-weight: 600;"> / </span>
+                <a href="login.php">Log in</a>
+            </div>
+            ';  
+
+        } elseif(isset($_SESSION["email"])) {
+
+            $userRole = getUserRole($_SESSION["email"]);
+            // Store user information in the session
+            $_SESSION['email'] = $_SESSION["email"];
+            $_SESSION['role'] = $userRole;
+            $firstNameChar = substr($_SESSION['first_name'], 0, 1);
+            $lastNameChar = substr($_SESSION['last_name'], 0, 1);
+            // Redirect to user role page or home page
+            if ($_SESSION['role'] == 'User' && !empty($_SESSION['first_name'])){
+                echo '<div class="logged-user">
+                        <a href="userProfile.php">
+                            <svg width="24" height="24" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M30 0C13.431 0 0 13.431 0 30C0 46.569 13.431 60 30 60C46.569 60 60 46.569 60 30C60 13.431 46.569 0 30 0ZM19.5 22.5C19.5 21.1211 19.7716 19.7557 20.2993 18.4818C20.8269 17.2079 21.6004 16.0504 22.5754 15.0754C23.5504 14.1004 24.7079 13.3269 25.9818 12.7993C27.2557 12.2716 28.6211 12 30 12C31.3789 12 32.7443 12.2716 34.0182 12.7993C35.2921 13.3269 36.4496 14.1004 37.4246 15.0754C38.3996 16.0504 39.1731 17.2079 39.7007 18.4818C40.2284 19.7557 40.5 21.1211 40.5 22.5C40.5 25.2848 39.3938 27.9555 37.4246 29.9246C35.4555 31.8938 32.7848 33 30 33C27.2152 33 24.5445 31.8938 22.5754 29.9246C20.6062 27.9555 19.5 25.2848 19.5 22.5ZM48.774 44.952C46.5283 47.7769 43.6734 50.0579 40.4225 51.6246C37.1716 53.1914 33.6087 54.0034 30 54C26.3913 54.0034 22.8284 53.1914 19.5775 51.6246C16.3266 50.0579 13.4717 47.7769 11.226 44.952C16.089 41.463 22.725 39 30 39C37.275 39 43.911 41.463 48.774 44.952Z" fill="#FEFEFE" fill-opacity="0.6"/>
+                            </svg>' . $lastNameChar. '.' . $firstNameChar . '.
+                        </a>
+                    </div>'; 
+            } elseif ($_SESSION['role'] == 'Manager' && !empty($_SESSION['first_name'])){
+                echo '<div class="logged-user">
+                        <a href="managerProfile.php"> 
+                            <svg width="24" height="24" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M30 0C13.431 0 0 13.431 0 30C0 46.569 13.431 60 30 60C46.569 60 60 46.569 60 30C60 13.431 46.569 0 30 0ZM19.5 22.5C19.5 21.1211 19.7716 19.7557 20.2993 18.4818C20.8269 17.2079 21.6004 16.0504 22.5754 15.0754C23.5504 14.1004 24.7079 13.3269 25.9818 12.7993C27.2557 12.2716 28.6211 12 30 12C31.3789 12 32.7443 12.2716 34.0182 12.7993C35.2921 13.3269 36.4496 14.1004 37.4246 15.0754C38.3996 16.0504 39.1731 17.2079 39.7007 18.4818C40.2284 19.7557 40.5 21.1211 40.5 22.5C40.5 25.2848 39.3938 27.9555 37.4246 29.9246C35.4555 31.8938 32.7848 33 30 33C27.2152 33 24.5445 31.8938 22.5754 29.9246C20.6062 27.9555 19.5 25.2848 19.5 22.5ZM48.774 44.952C46.5283 47.7769 43.6734 50.0579 40.4225 51.6246C37.1716 53.1914 33.6087 54.0034 30 54C26.3913 54.0034 22.8284 53.1914 19.5775 51.6246C16.3266 50.0579 13.4717 47.7769 11.226 44.952C16.089 41.463 22.725 39 30 39C37.275 39 43.911 41.463 48.774 44.952Z" fill="#FEFEFE" fill-opacity="0.6"/>
+                            </svg>'. 'Manager ' . $lastNameChar. '.' . $firstNameChar . '.
+                        </a>
+                    </div>'; 
+            } elseif ($_SESSION['role'] === 'Courier' && !empty($_SESSION['first_name'])){
+                echo '<div class="logged-user">
+                        <a href="courierProfile.php">
+                            <svg width="24" height="24" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M30 0C13.431 0 0 13.431 0 30C0 46.569 13.431 60 30 60C46.569 60 60 46.569 60 30C60 13.431 46.569 0 30 0ZM19.5 22.5C19.5 21.1211 19.7716 19.7557 20.2993 18.4818C20.8269 17.2079 21.6004 16.0504 22.5754 15.0754C23.5504 14.1004 24.7079 13.3269 25.9818 12.7993C27.2557 12.2716 28.6211 12 30 12C31.3789 12 32.7443 12.2716 34.0182 12.7993C35.2921 13.3269 36.4496 14.1004 37.4246 15.0754C38.3996 16.0504 39.1731 17.2079 39.7007 18.4818C40.2284 19.7557 40.5 21.1211 40.5 22.5C40.5 25.2848 39.3938 27.9555 37.4246 29.9246C35.4555 31.8938 32.7848 33 30 33C27.2152 33 24.5445 31.8938 22.5754 29.9246C20.6062 27.9555 19.5 25.2848 19.5 22.5ZM48.774 44.952C46.5283 47.7769 43.6734 50.0579 40.4225 51.6246C37.1716 53.1914 33.6087 54.0034 30 54C26.3913 54.0034 22.8284 53.1914 19.5775 51.6246C16.3266 50.0579 13.4717 47.7769 11.226 44.952C16.089 41.463 22.725 39 30 39C37.275 39 43.911 41.463 48.774 44.952Z" fill="#FEFEFE" fill-opacity="0.6"/>
+                            </svg>'. 'Courier ' . $lastNameChar. '.' . $firstNameChar . '.
+                        </a>
+                    </div>';
+            } elseif ($_SESSION['role'] === 'Admin' && !empty($_SESSION['first_name'])){
+                echo '<div class="logged-user">
+                        <a href="adminProfile.php">
+                            <svg width="24" height="24" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg"><path fill-rule="evenodd" clip-rule="evenodd" d="M30 0C13.431 0 0 13.431 0 30C0 46.569 13.431 60 30 60C46.569 60 60 46.569 60 30C60 13.431 46.569 0 30 0ZM19.5 22.5C19.5 21.1211 19.7716 19.7557 20.2993 18.4818C20.8269 17.2079 21.6004 16.0504 22.5754 15.0754C23.5504 14.1004 24.7079 13.3269 25.9818 12.7993C27.2557 12.2716 28.6211 12 30 12C31.3789 12 32.7443 12.2716 34.0182 12.7993C35.2921 13.3269 36.4496 14.1004 37.4246 15.0754C38.3996 16.0504 39.1731 17.2079 39.7007 18.4818C40.2284 19.7557 40.5 21.1211 40.5 22.5C40.5 25.2848 39.3938 27.9555 37.4246 29.9246C35.4555 31.8938 32.7848 33 30 33C27.2152 33 24.5445 31.8938 22.5754 29.9246C20.6062 27.9555 19.5 25.2848 19.5 22.5ZM48.774 44.952C46.5283 47.7769 43.6734 50.0579 40.4225 51.6246C37.1716 53.1914 33.6087 54.0034 30 54C26.3913 54.0034 22.8284 53.1914 19.5775 51.6246C16.3266 50.0579 13.4717 47.7769 11.226 44.952C16.089 41.463 22.725 39 30 39C37.275 39 43.911 41.463 48.774 44.952Z" fill="#FEFEFE" fill-opacity="0.6"/>
+                            </svg>'. 'Admin ' . $lastNameChar. '.' . $firstNameChar . '.
+                        </a>
+                    </div>'; 
+            }
+
+        } else {  
+            echo '<script>alert("Wrong User Details")</script>';  
+        }
+    ?>
+
+                </div>
+                <!-- user login, register end -->
+
+                <!-- phone start -->
+                <div class="phone__number-container">
+                    <a href="tel:+37300000000">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M5.63913 0.549061L5.63934 0.549003C6.28262 0.373262 6.95311 0.683345 7.23722 1.27772L7.26781 1.35113L9.14272 5.85093L9.14281 5.85113C9.37636 6.41098 9.21523 7.05655 8.74407 7.44173L6.43325 9.3307L6.13053 9.57816L6.29772 9.93161C7.90804 13.336 10.664 16.092 14.0684 17.7023L14.4214 17.8693L14.6689 17.5672L16.5626 15.2564L16.5643 15.2542C16.9437 14.786 17.5925 14.6231 18.1536 14.8572L18.1538 14.8573L22.6536 16.7322L22.6546 16.7326C23.2929 16.9968 23.6333 17.6934 23.451 18.3607L23.4509 18.3609L22.3264 22.4843C22.3263 22.4845 22.3263 22.4847 22.3262 22.4849C22.1604 23.0849 21.616 23.5 20.9991 23.5C9.67885 23.5 0.5 14.3211 0.5 3.00092C0.5 2.38407 0.915015 1.83965 1.51506 1.67381C1.51528 1.67375 1.5155 1.67369 1.51572 1.67363L5.63913 0.549061Z" stroke="white" stroke-opacity="0.8" />
+                        </svg>
+                        <p> (+373) 00 000 000</p>
+                    </a>
+                </div>
+                <!-- phone end -->
+
+                <div class="header__mobile_bot">
+
+                    <!-- language start -->
+                    <div class="language__container">
+                        <p class="language-active">Rom</p>
+                        <p class="">Eng</p>
+                    </div>
+                    <!-- language end -->
+
+                    <!-- theme switch start -->
+                    <div class="theme__switch-container">
+                        <div class="theme__switch-circle"></div>
+                    </div>
+                    <!-- theme switch end -->
+                </div>
+
+            </div>
+
+        </div>
+
+        <div class="header__left">
 
             <!-- Nav START -->
             <nav>
@@ -37,37 +200,7 @@
             <!-- user login, register start -->
             <div id='user__container'>
 
-                <?php 
-                    include "config.php";
-
-                    function getUserRole($email) {
-                        global $conn;
-                        $query = "CALL getUserRole('$email')";
-                        $result = mysqli_query($conn, $query);
-                    
-                        if ($result && mysqli_num_rows($result) > 0) {
-                            $row = mysqli_fetch_assoc($result);
-                            mysqli_next_result($conn);
-                            return $row['user_role'];
-                        }
-                    
-                        return null;
-                    }
-                    function getUserData($email) {
-                        global $conn;
-                        $query = "CALL getUserData('$email')";
-                        $result = mysqli_query($conn, $query);
-                        if ($result && mysqli_num_rows($result) > 0) {
-                            $row = mysqli_fetch_assoc($result);
-                            mysqli_next_result($conn);
-                                return [
-                                'first_name' => $row['first_name'],
-                                'last_name' => $row['last_name'],
-                                'phone' => $row['phone']
-                                ];
-                        }
-                        return null;
-                    }
+                <?php
 
                     if(isset($_SESSION["email"])){
                         $userData = getUserData($_SESSION["email"]);
@@ -163,61 +296,7 @@
 
         <!-- // accounts start -->
         <style>
-        .accounts {
-            width: 505px;
-            display: flex;
-            flex-direction: column;
-            position: absolute;
-            top: 150px;
-            background-color: rgba(0, 0, 0, 0.35);
-            padding: 15px;
-            border-radius: 5px;
 
-            color: white;
-            font-family: white, sans-serif;
-            font-weight: 500;
-            font-size: 18px;
-        }
-
-        .accounts-header {
-            display: flex;
-            flex-direction: row;
-            align-items: center;
-            justify-content: space-between;
-            cursor: pointer;
-        }
-
-        .accounts-header>h5 {
-            font-family: "Jura", sans-serif;
-            font-weight: 600;
-            font-size: 22px;
-        }
-
-        tr {
-            text-align: left;
-            font-family: "Jura", sans-serif;
-            /* font-weight: 600; */
-            font-size: 22px;
-        }
-
-        th,
-        td {
-            border: 1px solid black;
-            padding: 5px
-        }
-
-        .accounts-table {
-            display: none;
-            border-collapse: collapse;
-        }
-
-        .show-accounts-table {
-            display: block;
-        }
-
-        .textToCopy {
-            cursor: pointer;
-        }
         </style>
         <!-- /* // accounts end */ -->
 
@@ -273,19 +352,29 @@
         display: block;
     }
     </style>
+
     <script>
     let getAccountsTable = document.querySelector(".accounts-table");
     document.querySelector(".accounts-header").onclick = function() {
         getAccountsTable.classList.toggle("show-accounts-table");
     };
-    </script>
 
-    <!-- when click on email from table , email will be copied -->
-    <script>
+    // <!-- when click on email from table , email will be copied -->
     var allInputs = document.querySelectorAll(".textToCopy");
     allInputs.forEach(e => e.addEventListener("click", function() {
         navigator.clipboard.writeText(e.innerHTML);
     }))
+
+    //mobil hamburger menu functional
+    const button = document.querySelector('.menu__mobile_button');
+    const mobileMenu = document.querySelector('.header__mobile');
+    const header = document.querySelector('.header-area');
+
+    button.addEventListener('click', () => {
+        button.classList.toggle('active');
+        header.classList.toggle('active');
+        mobileMenu.classList.toggle('visible');
+    })
     </script>
 </section>
 
