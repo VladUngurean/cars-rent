@@ -39,21 +39,23 @@
 
     <div class="banner__video">
         <video id="bannerVideo" preload="auto" playsinline="" autoplay="" loop="" muted="">
-            <!-- <source src="/images/backgrounds/videoBannerCompressed.mp4" type="video/mp4"> -->
-            <source src="https://clout-dev.ru/MDC_cover.mp4" type="video/mp4">
+            <source src="/images/backgrounds/videoBannerCompressed.mp4" type="video/mp4">
+            <!-- <source src="https://clout-dev.ru/MDC_cover.mp4" type="video/mp4"> -->
         </video>
+
+        <div class="banner_text">
+            <h1>Închiriere mașini 24/7 în Chișinău</h1>
+            <p>Alege autopacul:</p>
+            <div class="park__links">
+                <a href="#">Chișinău</a>
+                <a href="#">Bălți</a>
+            </div>
+        </div>
     </div>
 
     <?php include('header.php'); ?>
 
-    <div class="header__bottom">
-        <h1>Închiriere mașini 24/7 în Chișinău</h1>
-        <p>Alege autopacul:</p>
-        <div class="park__links">
-            <a href="#">Chișinău</a>
-            <a href="#">Bălți</a>
-        </div>
-    </div>
+
     <!-- About us secction START -->
 
     <section class="aboutus-area">

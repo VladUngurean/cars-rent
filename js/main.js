@@ -137,21 +137,21 @@ function YesYesYes() {
 }
 
 // Start the function and set local storage data
-window.addEventListener("load", () => {
-	const currentTime = new Date().getTime();
-	const storedTimestamp = localStorage.getItem(TIMESTAMP_KEY);
-	const isExecuted = localStorage.getItem(SCRIPT_EXECUTION_KEY);
+// window.addEventListener("load", () => {
+// 	const currentTime = new Date().getTime();
+// 	const storedTimestamp = localStorage.getItem(TIMESTAMP_KEY);
+// 	const isExecuted = localStorage.getItem(SCRIPT_EXECUTION_KEY);
 
-	if (
-		!isExecuted ||
-		(storedTimestamp && currentTime - storedTimestamp > EXPIRY_TIME)
-	) {
-		// Increment the counter and call the function
-		TIMES_RETURNED += 1;
-		YesYesYes();
-		// Update local storage
-		localStorage.setItem(TIMES_RETURNED_KEY, TIMES_RETURNED);
-		localStorage.setItem(SCRIPT_EXECUTION_KEY, "true");
-		localStorage.setItem(TIMESTAMP_KEY, currentTime.toString());
-	}
-});
+// 	if (
+// 		!isExecuted ||
+// 		(storedTimestamp && currentTime - storedTimestamp > EXPIRY_TIME)
+// 	) {
+// 		// Increment the counter and call the function
+// 		TIMES_RETURNED += 1;
+// 		YesYesYes();
+// 		// Update local storage
+// 		localStorage.setItem(TIMES_RETURNED_KEY, TIMES_RETURNED);
+// 		localStorage.setItem(SCRIPT_EXECUTION_KEY, "true");
+// 		localStorage.setItem(TIMESTAMP_KEY, currentTime.toString());
+// 	}
+// });

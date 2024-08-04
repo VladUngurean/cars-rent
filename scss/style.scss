@@ -112,13 +112,15 @@ section {
 }
 
 .banner__video {
+  @include flex-center;
   transform-origin: center center;
-  position: absolute;
+  position: relative;
   top: 0;
   left: 0;
   z-index: 1;
-  width: 100%;
+  width: 100vw;
   height: auto;
+  margin-bottom: 50px;
 
   &::after {
     background: linear-gradient(180deg, rgba(29, 29, 29, 0.4), $background-color);
@@ -133,6 +135,7 @@ section {
   }
 
   & > video {
+    width: 100%;
     min-height: 100%;
   }
 
@@ -153,24 +156,21 @@ section {
 
 .header-area {
   width: 100%;
-  height: 100%;
+  max-width: 1534px;
+  height: max-content;
   margin-top: 30px;
 
-  position: relative;
+  position: absolute;
+  top: 0;
   z-index: 3;
 }
 
 .header__container {
   @include flex-between;
-  flex-direction: column;
+  flex-direction: row;
   width: 100%;
-  height: 900px;
-}
-
-.header__top {
-  @include flex-between;
-  width: 100%;
-
+  padding: 0 10px;
+  // height: 900px;
   & > .header__left {
     @include flex-between;
     .logo__container {
@@ -178,6 +178,7 @@ section {
     }
   }
 }
+
 
 nav {
   & > .nav__ul {
@@ -314,16 +315,18 @@ nav {
   }
 }
 
-.header__bottom {
+.banner_text {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
   flex-direction: column;
   width: 100%;
+  max-width: 1534px;
 
-  position: relative;
+  position: absolute;
   z-index: 3;
-  top: -400px;
+  bottom: 20px;
+  padding: 0 10px;
 
   & > h1 {
     white-space: nowrap;
