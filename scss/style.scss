@@ -136,7 +136,8 @@ section {
 
   & > video {
     width: 100%;
-    min-height: 100%;
+    min-height: 500px;
+    object-fit: cover;
   }
 
   & > p {
@@ -296,7 +297,7 @@ td {
 
 .header-area {
   width: 100%;
-  max-width: 1534px;
+  max-width: 1920px;
   height: max-content;
   padding: 30px 0;
   position: absolute;
@@ -319,7 +320,7 @@ td {
   }
 }
 .header__container_top {
-  width: 100%;
+  width: min-content;
   @include flex-between;
 }
 .logo__container {
@@ -476,7 +477,6 @@ nav {
   padding: 0 10px;
 
   & > h1 {
-    white-space: nowrap;
     height: 100%;
     @include font-settings($text-light, $font-bai-jamjuree, 500, 70px);
     line-height: 86px;
@@ -2014,6 +2014,9 @@ label[for="deletemanager@gmail.com"] {
 
   .header__container > .header__right {
     display: none;
+  }
+  .header__container_top {
+    width: 100%;
   }
   .header__container_top > .menu__mobile {
     display: flex;
