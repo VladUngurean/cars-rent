@@ -114,18 +114,54 @@
                         </div>
 
                         <?php
-                        if (empty($_SESSION['email'])) {
-                            echo '                            
-                            <h2>Date de contact:</h2>
+                        // if (empty($_SESSION['email'])) {
+                            // echo '                            
+                            // <h2>Date de contact:</h2>
+                            // <div class="selected-car-guest-info">
+                            //     <input type="text" name="first_name" placeholder="Nume" required>
+                            //     <input type="text" name="last_name" placeholder="Prenume" required>
+                            //     <input type="email" name="email" placeholder="Email" required>
+                            //     <input type="tel" name="phone_number" placeholder="Telefon" required>
+                            // </div>
+                            // ';
+                        // }
+                        ?>
+                        <h2>Date de contact:</h2>
+                        <div class="bottom-form-container">
                             <div class="selected-car-guest-info">
                                 <input type="text" name="first_name" placeholder="Nume" required>
                                 <input type="text" name="last_name" placeholder="Prenume" required>
                                 <input type="email" name="email" placeholder="Email" required>
                                 <input type="tel" name="phone_number" placeholder="Telefon" required>
                             </div>
-                            ';
-                        }
-                        ?>
+
+                            <span class="selected-car-final-price-container">
+                                <h3>Prețul final:</h3>
+                                <div class="selected-car-final-price-element">
+                                    <p>Preț pe zi:</p>
+                                    <input id="carPricePerDay" class="input-to-hide" type="text" name="rent_daily_cost" />
+                                    <label class="car-price-per-day" for="carPricePerDay"></label>
+                                </div>
+                                <div class="selected-car-final-price-element">
+                                    <p>Total zile:</p>
+                                    <input id="carRentDays" class="input-to-hide" type="text" name="rent_days_count" />
+                                    <label class="car-rent-days" for="carRentDays"></label>
+                                </div>
+                                <div class="selected-car-final-price-element">
+                                    <p>Prețul total:</p>
+                                    <input id="carFinalPrice" class="input-to-hide" type="text" name="rent_full_cost" />
+                                    <label class="car-final-price" for="carFinalPrice"></label>
+                                </div>
+                                <div class="selected-car-final-price-element">
+                                    <text>Folosesete de cashback,<br>
+                                        <a href="register.php">Registreazate</a>
+                                        acum.
+                                    </text>
+                                    <input id="carCashback" class="input-to-hide" type="text" name="cashback" />
+                                    <label class="car-cashback" for="carCashback">5.5%</label>
+                                </div>
+                            </span>
+                        </div>
 
                         <hr style="margin:20px 0; opacity:0.5;">
 
@@ -134,32 +170,7 @@
                         </div>
                     </div>
 
-                    <span class="selected-car-final-price-container">
-                        <h3>Prețul final:</h3>
-                        <div class="selected-car-final-price-element">
-                            <p>Preț pe zi:</p>
-                            <input id="carPricePerDay" class="input-to-hide" type="text" name="rent_daily_cost" />
-                            <label class="car-price-per-day" for="carPricePerDay"></label>
-                        </div>
-                        <div class="selected-car-final-price-element">
-                            <p>Total zile:</p>
-                            <input id="carRentDays" class="input-to-hide" type="text" name="rent_days_count" />
-                            <label class="car-rent-days" for="carRentDays"></label>
-                        </div>
-                        <div class="selected-car-final-price-element">
-                            <p>Prețul total:</p>
-                            <input id="carFinalPrice" class="input-to-hide" type="text" name="rent_full_cost" />
-                            <label class="car-final-price" for="carFinalPrice"></label>
-                        </div>
-                        <div class="selected-car-final-price-element">
-                            <text>Folosesete de cashback,<br>
-                                <a href="register.php">Registreazate</a>
-                                acum.
-                            </text>
-                            <input id="carCashback" class="input-to-hide" type="text" name="cashback" />
-                            <label class="car-cashback" for="carCashback">5.5%</label>
-                        </div>
-                    </span>
+
                 </form>
 
             </div>

@@ -15,7 +15,7 @@ if (!isset($_SESSION['local_car_plate'])) {
 if (isset($_GET['car_plate'])) {
     $car_plate = filter_input(INPUT_GET, 'car_plate', FILTER_SANITIZE_FULL_SPECIAL_CHARS);
     $decoded_car_plate = urldecode($car_plate);
-    echo htmlspecialchars($decoded_car_plate); // Avoid XSS attacks
+    // echo htmlspecialchars($decoded_car_plate); // Avoid XSS attacks
 
     // Set the decoded car_plate in the PHP session
     $_SESSION['local_car_plate'] = $decoded_car_plate;
@@ -23,7 +23,7 @@ if (isset($_GET['car_plate'])) {
 
 // Set the global car plate session variable
 $_SESSION['global_car_plate'] = $_SESSION['local_car_plate'];
-echo "Global car_plate saved in session: " . htmlspecialchars($_SESSION['global_car_plate']);
+// echo "Global car_plate saved in session: " . htmlspecialchars($_SESSION['global_car_plate']);
 
 // Prepare and execute the stored procedure call
 if ($stmt = $conn->prepare("CALL getCar(?)")) {
