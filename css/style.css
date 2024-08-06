@@ -465,7 +465,6 @@ nav > .nav__ul .nav__link:hover::before {
   background-image: url(/images/backgrounds/BgInfoAboutUs.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  pointer-events: none;
   background-position: center;
 }
 
@@ -549,7 +548,6 @@ nav > .nav__ul .nav__link:hover::before {
 .car-list__container > #car-list-render {
   width: 100%;
   display: grid;
-  gap: 15px;
   grid-template-columns: repeat(auto-fit, minmax(480px, 1fr));
   gap: 30px;
 }
@@ -832,7 +830,6 @@ nav > .nav__ul .nav__link:hover::before {
   background-image: url("/images/backgrounds/bgForBonusInfo.svg");
   background-size: cover;
   background-repeat: no-repeat;
-  pointer-events: none;
   background-position: center;
 }
 .info-about-bonus-programm::before {
@@ -885,16 +882,19 @@ nav > .nav__ul .nav__link:hover::before {
   background-image: url(/images/backgrounds/bgChDeamCars.svg);
   background-size: cover;
   background-repeat: no-repeat;
-  pointer-events: none;
   background-position: center;
 }
 
 .info-about-company-container {
+  width: 100%;
   display: flex;
   justify-content: flex-start;
-  align-items: flex-start;
+  align-items: flex-end;
   gap: 80px;
   flex-direction: column;
+}
+.info-about-company-container > .svg-container > svg {
+  width: 100%;
 }
 .info-about-company-container > button {
   width: 100%;
@@ -906,6 +906,9 @@ nav > .nav__ul .nav__link:hover::before {
   background-color: transparent;
   border: none;
   pointer-events: all;
+}
+.info-about-company-container > button > svg {
+  min-width: 40px;
 }
 .info-about-company-container > button > p {
   text-align: center;
@@ -930,8 +933,7 @@ nav > .nav__ul .nav__link:hover::before {
 .info-about-aditioal-rent-options-container {
   width: 100%;
   display: grid;
-  gap: 15px;
-  grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(370px, 1fr));
   justify-items: center;
   gap: 24px;
 }
@@ -992,6 +994,8 @@ nav > .nav__ul .nav__link:hover::before {
 }
 
 .info-about-contacts-container {
+  width: 100%;
+  height: 100%;
   display: flex;
   align-items: flex-start;
   justify-content: flex-start;
@@ -1084,6 +1088,7 @@ nav > .nav__ul .nav__link:hover::before {
   align-items: flex-start;
   flex-direction: row;
   flex-wrap: wrap;
+  gap: 20px;
 }
 .footer-top > a,
 .footer-bottom > a {
@@ -1682,6 +1687,7 @@ label[for="deletemanager@gmail.com"] {
   justify-content: center;
   align-items: center;
   margin-bottom: 200px;
+  margin-top: 125px;
 }
 
 .selected-car-container {
@@ -1699,10 +1705,14 @@ label[for="deletemanager@gmail.com"] {
   gap: 24px;
 }
 
+#selected-car-images {
+  width: 100%;
+  height: 100%;
+}
+
 .swiper {
-  width: 626px;
+  width: 100%;
   height: 425px;
-  background-color: rgba(255, 255, 255, 0.1);
   overflow: hidden;
 }
 
@@ -1747,13 +1757,9 @@ label[for="deletemanager@gmail.com"] {
 }
 #selected-car-description .selected-car-characteristics {
   width: 100%;
-  min-width: 470px;
-  max-width: 550px;
-  min-height: 125px;
-  display: flex;
-  flex-wrap: wrap;
-  row-gap: 15px;
-  column-gap: 30px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 24px;
 }
 #selected-car-description .selected-car-characteristics .selected-car-characteristics-item {
   height: 20px;
@@ -1965,6 +1971,7 @@ label[for="deletemanager@gmail.com"] {
   }
   .aboutus-area-container {
     flex-direction: column;
+    gap: 30px;
   }
 }
 @media (max-width: 1010px) {
@@ -1976,12 +1983,20 @@ label[for="deletemanager@gmail.com"] {
     height: auto;
     aspect-ratio: 1/0.7;
   }
+  .selected-car-top-side {
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
 }
 @media (max-width: 900px) {
   .select-options-for-rent {
     width: 100%;
     padding: 25px;
     min-height: auto;
+  }
+  .select-options-for-rent > span {
+    min-width: unset;
   }
 }
 @media (max-width: 800px) {
@@ -2004,9 +2019,11 @@ label[for="deletemanager@gmail.com"] {
   }
   .banner_text > h1 {
     font-size: 30px;
+    line-height: normal;
   }
   .banner_text > p {
     font-size: 25px;
+    margin: 0 0 20px;
   }
   .search-form-area h2 {
     font-size: 25px;
@@ -2014,16 +2031,54 @@ label[for="deletemanager@gmail.com"] {
   .select-options-for-rent > span > p {
     font-size: 17px;
   }
+  .info-about-contacts-container > h2 {
+    font-size: 30px;
+  }
+  .info-about-contacts-container > p {
+    font-size: 16px;
+  }
+  .info-about-bonus-programm-container p:first-child {
+    font-size: 30px;
+    line-height: normal;
+  }
+  .info-about-bonus-programm-container p:nth-child(2) {
+    font-size: 16px;
+  }
+  .info-about-company-container > button > p {
+    font-size: 20px;
+  }
+  .show-more-cars > p {
+    font-size: 25px;
+  }
+  .swiper {
+    height: 100%;
+  }
 }
 @media (max-width: 690px) {
+  .info-about-bonus-programm {
+    padding: 10px;
+    height: 100%;
+  }
+  .info-about-bonus-programm::before,
+  .info-about-bonus-programm::after {
+    content: unset;
+  }
   .info-about-contacts {
     padding: 10px;
   }
-  .info-about-contacts::before {
-    content: unset;
-  }
+  .info-about-contacts::before,
   .info-about-contacts::after {
     content: unset;
+  }
+  .info-about-contacts-container {
+    justify-content: center;
+  }
+  .info-about-company {
+    height: auto;
+    padding: 20px 10px;
+  }
+  .info-about-company-container {
+    gap: 0;
   }
 }
 @media (max-width: 450px) {
@@ -2035,6 +2090,13 @@ label[for="deletemanager@gmail.com"] {
   }
   .car-list__box > .car-list__box-image {
     aspect-ratio: 1/0.8;
+  }
+  .show-more-cars {
+    padding: 10px;
+    height: auto;
+  }
+  .aboutus-area-container__el > p {
+    margin-top: 10px;
   }
 }
 @media (max-width: 400px) {
