@@ -88,6 +88,7 @@ section {
   width: 100%;
   min-height: 500px;
   object-fit: cover;
+  max-height: 1100px;
 }
 .banner__video > p {
   position: relative;
@@ -714,6 +715,7 @@ nav > .nav__ul .nav__link:hover::before {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  padding-right: 10px;
   gap: 10px;
 }
 .select-option-make input {

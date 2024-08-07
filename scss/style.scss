@@ -138,6 +138,7 @@ section {
     width: 100%;
     min-height: 500px;
     object-fit: cover;
+    max-height: 1100px;
   }
 
   & > p {
@@ -803,6 +804,7 @@ nav {
   display: flex;
   align-items: flex-start;
   flex-direction: column;
+  padding-right: 10px;
 
   gap: 10px;
 
