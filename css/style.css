@@ -880,7 +880,7 @@ nav > .nav__ul .nav__link:hover::before {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  background-image: url(/images/backgrounds/bgChDeamCars.svg);
+  background-image: url(../images/backgrounds/bgChDeamCars.svg);
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;

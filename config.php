@@ -1,16 +1,11 @@
 <?php
+  $dbhost ="sql310.infinityfree.com";
 
+  $dbuser = "if0_36986938";
 
+  $dbpass="53S9Q6NyOIa1Dhr";
 
-  $dbhost ="sql7.freesqldatabase.com";
-
-  $dbuser = "sql7724574";
-
-  $dbpass="b7EJTdnrvx";
-
-  $dbname ="sql7724574";
-
-
+  $dbname ="if0_36986938_dream_cars";
 
   try {
 

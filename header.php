@@ -602,7 +602,7 @@
 
 
 
-        <div class="accounts">
+        <!-- <div class="accounts">
 
             <div class="accounts-header">
 
@@ -674,19 +674,19 @@
             <div id="tooltip" style="display:none;position:absolute;padding:5px;background-color:gray;border:1px solid black;border-radius:3px;">Copied!</div>
             <?php
 
-                echo '<label style="position:absolute; left:20px; bottom:-65px;"><a style="color:#fa2f2f; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
+                //echo '<label style="position:absolute; left:20px; bottom:-65px;"><a style="color:#fa2f2f; position:absolute; bottom:40px;" href="logout.php">Logout</a></label>';
 
 
 
-                if(!isset($_SESSION["email"])){
+                //if(!isset($_SESSION["email"])){
 
-                    echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">You are not logged in<p/>';
+                  //  echo '<p style="color:white; position:absolute; left:20px; bottom:-45px;">You are not logged in<p/>';
 
-                } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-47px;">You are logged in as '. $_SESSION["role"].'<p/>'; }
+              //  } else { echo '<p style="color:white; position:absolute; left:20px; bottom:-47px;">You are logged in as '. $_SESSION["role"].'<p/>'; }
 
             ?>
 
-        </div>
+        </div> -->
 
 
 
@@ -697,71 +697,68 @@
 
 
     <style>
-
     .show-accounts-table {
 
         display: block;
 
     }
-
     </style>
 
 
 
     <script>
+    // let getAccountsTable = document.querySelector(".accounts-table");
 
-    let getAccountsTable = document.querySelector(".accounts-table");
+    // document.querySelector(".accounts-header").onclick = function() {
 
-    document.querySelector(".accounts-header").onclick = function() {
+    //     getAccountsTable.classList.toggle("show-accounts-table");
 
-        getAccountsTable.classList.toggle("show-accounts-table");
-
-    };
-
+    // };
 
 
-    // <!-- when click on email from table , email will be copied -->
-    document.querySelectorAll(".textToCopy").forEach(e => {
-    e.addEventListener("click", function() {
-        if (navigator.clipboard) {
-            navigator.clipboard.writeText(e.innerHTML)
-                .then(() => {
-                    showTooltip(e);
-                    console.log('Text copied to clipboard');
-                })
-                .catch(err => {
-                    console.error('Error in copying text: ', err);
-                });
-        } else {
-            // Fallback for browsers that do not support navigator.clipboard
-            let range = document.createRange();
-            range.selectNode(e);
-            window.getSelection().removeAllRanges();
-            window.getSelection().addRange(range);
 
-            try {
-                document.execCommand('copy');
-                showTooltip(e);
-                console.log('Text copied to clipboard');
-            } catch (err) {
-                console.error('Error in copying text: ', err);
-            }
+    // // <!-- when click on email from table , email will be copied -->
+    // document.querySelectorAll(".textToCopy").forEach(e => {
+    //     e.addEventListener("click", function() {
+    //         if (navigator.clipboard) {
+    //             navigator.clipboard.writeText(e.innerHTML)
+    //                 .then(() => {
+    //                     showTooltip(e);
+    //                     console.log('Text copied to clipboard');
+    //                 })
+    //                 .catch(err => {
+    //                     console.error('Error in copying text: ', err);
+    //                 });
+    //         } else {
+    //             // Fallback for browsers that do not support navigator.clipboard
+    //             let range = document.createRange();
+    //             range.selectNode(e);
+    //             window.getSelection().removeAllRanges();
+    //             window.getSelection().addRange(range);
 
-            window.getSelection().removeAllRanges();
-        }
-    });
-});
+    //             try {
+    //                 document.execCommand('copy');
+    //                 showTooltip(e);
+    //                 console.log('Text copied to clipboard');
+    //             } catch (err) {
+    //                 console.error('Error in copying text: ', err);
+    //             }
 
-function showTooltip(element) {
-    const tooltip = document.getElementById('tooltip');
-    const rect = element.getBoundingClientRect();
-    tooltip.style.left = `50%`;
-    tooltip.style.top = `-20px`;
-    tooltip.style.display = 'block';
-    setTimeout(() => {
-        tooltip.style.display = 'none';
-    }, 1000);
-}
+    //             window.getSelection().removeAllRanges();
+    //         }
+    //     });
+    // });
+
+    // function showTooltip(element) {
+    //     const tooltip = document.getElementById('tooltip');
+    //     const rect = element.getBoundingClientRect();
+    //     tooltip.style.left = `50%`;
+    //     tooltip.style.top = `-20px`;
+    //     tooltip.style.display = 'block';
+    //     setTimeout(() => {
+    //         tooltip.style.display = 'none';
+    //     }, 1000);
+    // }
 
 
 
@@ -784,7 +781,6 @@ function showTooltip(element) {
         mobileMenu.classList.toggle('visible');
 
     })
-
     </script>
 
 </section>
