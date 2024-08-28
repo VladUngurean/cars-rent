@@ -22,7 +22,7 @@
     <?php
         include "header.php"; 
         include "ProcGetAllUserData.php"; 
-        // include "ProcCancelRent.php"; 
+        // include "ProcCancelRent.php"; //need to do
         include "save_carplate_in_session.php"; 
     ?>
     <?php

@@ -7,6 +7,13 @@
 
   $dbname ="if0_36986938_dream_cars";
 
+  // $dbhost ="localhost";
+
+  // $dbuser = "root";
+
+  // $dbpass="Admin112233";
+
+  // $dbname ="ch_dream_cars";
   try {
 
     $conn = new mysqli($dbhost, $dbuser, $dbpass,$dbname);
