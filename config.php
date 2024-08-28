@@ -1,19 +1,19 @@
 <?php
-  $dbhost ="sql310.infinityfree.com";
+  // $dbhost ="sql310.infinityfree.com";
 
-  $dbuser = "if0_36986938";
+  // $dbuser = "if0_36986938";
 
-  $dbpass="53S9Q6NyOIa1Dhr";
+  // $dbpass="53S9Q6NyOIa1Dhr";
 
-  $dbname ="if0_36986938_dream_cars";
+  // $dbname ="if0_36986938_dream_cars";
 
-  // $dbhost ="localhost";
+  $dbhost ="localhost";
 
-  // $dbuser = "root";
+  $dbuser = "root";
 
-  // $dbpass="Admin112233";
+  $dbpass="Admin112233";
 
-  // $dbname ="ch_dream_cars";
+  $dbname ="ch_dream_cars";
   try {
 
     $conn = new mysqli($dbhost, $dbuser, $dbpass,$dbname);
