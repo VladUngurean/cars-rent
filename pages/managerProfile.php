@@ -158,29 +158,13 @@
 
         // Prepare the statement 16
 
-        $stmt = $conn->prepare("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-
-        
-
-        // Execute the statement
-
+        $stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $descriptionEn ,$descriptionRo, $allImages]);
+        $stmt = $conn->query("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
         if ($stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $descriptionEn ,$descriptionRo, $allImages])) {
-
             echo '<script>alert("New car successfully added to DB")</script>'; 
-
             echo '<script> window.location.href = "managerProfile.php";</script>';
-
         }
-
-        // Close the statement
-
-        $stmt->close();
-
-
-
     };
-
-
 
     //funtion for delete local images
 

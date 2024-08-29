@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../config.php";
 
 $currentPage = $_SERVER['SCRIPT_NAME'];
 // echo $_SESSION['email'];

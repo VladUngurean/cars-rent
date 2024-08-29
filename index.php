@@ -16,12 +16,13 @@
 </head>
 
 <body>
-    <?php include "ProcGetExistingCarsToShow.php"; ?>
+    <?php include "./procedures/ProcGetExistingCarsToShow.php"; ?>
+
     <p id="top" style="position:absolute; opacity:0;"></p>
     <!-- <button id="sendToSession">Click me</button> -->
     <!-- HTML code -->
     <!-- Get car plate and load carRentPage.php based on car plate -->
-    <form id="formToRentCarPage" action="carRentPage.php" method="GET">
+    <form id="formToRentCarPage" action="./pages/carRentPage.php" method="GET">
         <input type="hidden" name="car_plate" id="hiddenValue">
     </form>
 
@@ -35,8 +36,8 @@
             <h1>Închiriere mașini 24/7 în Chișinău</h1>
             <p>Alege autopacul:</p>
             <div class="park__links">
-                <a href="#">Chișinău</a>
-                <a href="#">Bălți</a>
+                <a href="">Chișinău</a>
+                <a href="">Bălți</a>
             </div>
         </div>
     </div>
@@ -79,13 +80,13 @@
     <!-- About us secction END -->
 
     <div class="forScrollToTop">
-        <a href="#top" class="scroll-to-top">
+        <div onclick="scrollToTopFunc()" class="scroll-to-top">
             <svg width="60" height="60" viewBox="0 0 60 60" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <g clip-path="url(#clip0_2058_1288)">
                     <path d="M30 60C46.568 60 60 46.568 60 30C60 13.432 46.568 0 30 0C13.432 0 0 13.432 0 30C0 46.568 13.432 60 30 60ZM30 13L46 28.305L35.143 28.305V47H24.858L24.858 28.305L14 28.305L30 13Z" fill="#FEFEFE" fill-opacity="0.1" />
                 </g>
             </svg>
-        </a>
+        </div>
     </div>
 
     <!-- Rent car secction START -->
