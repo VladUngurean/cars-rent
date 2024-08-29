@@ -65,17 +65,21 @@ if ($_SESSION['role'] == 'Manager') {
             $fileActualExt = strtolower(end($fileExt));
             if (in_array($fileActualExt, $allowed)) {
                 if ($fileError === 0) {
+                    // $uniqueFileName = uniqid('', true) . '_' . $fileName;  // Generate a unique filename
+                    // $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $uniqueFileName;
+                    // move_uploaded_file($fileTmpName, $fileDestination);
+                    // $allImages .= $uniqueFileName . ',';  // Store the unique filename in the list
                     $uniqueFileName = uniqid('', true) . '_' . $fileName;  // Generate a unique filename
-                    $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $uniqueFileName;
+                    $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $fileName;
                     move_uploaded_file($fileTmpName, $fileDestination);
-                    $allImages .= $uniqueFileName . ',';  // Store the unique filename in the list
+                    $allImages .= $fileName . ',';  // Store the unique filename in the list
                 } else {
                     echo "There was an error uploading your file!";
                 }
             } else {
                 echo '<script>
                     alert("You cannot upload files of this type!")
-                    window.location.href = "managerProfile.php";
+                    window.location.href = "../pages/managerProfile.php";
                 </script>';
                 exit();
             }

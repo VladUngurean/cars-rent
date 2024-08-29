@@ -28,6 +28,14 @@ li {
   list-style: none;
 }
 
+input {
+  outline: gray solid 0px;
+}
+
+input:focus {
+  outline: rgb(211, 190, 190) solid 2px;
+}
+
 a {
   margin: 0;
   padding: 0;
@@ -1402,11 +1410,19 @@ nav > .nav__ul .nav__link:hover::before {
   max-width: 236px;
   width: 100%;
   height: 50px;
+  background-color: #ddd;
+  border: none;
+  border-radius: 2px;
   color: black;
   font-family: "Jura", sans-serif;
   font-weight: 700;
   font-size: 18px;
   cursor: pointer;
+}
+
+.register-button:hover,
+.login-button:hover {
+  opacity: 0.9;
 }
 
 .register-error-message {
