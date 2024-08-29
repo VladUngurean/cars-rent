@@ -116,7 +116,7 @@ if (mysqli_error($conn)) {
     echo '<script>alert("Error renting car: ' . mysqli_error($conn) . '")</script>';
 } else {
     echo '<script>alert("Car successfully rented")</script>';
-    echo '<script> window.location.href = "./pages/userProfile.php";</script>'; // Replace with your confirmation page
+    echo "<script> window.location.href = '$currentPage';</script>";
 }
     echo '<script>alert("Arenda a fost plasata cu succes!<br> Vei fi contactat in scurt timp.");</script>';
     echo "<script> window.location.href = '$currentPage';</script>";

@@ -54,7 +54,7 @@ if ($_SESSION['role'] == 'Manager') {
         $fileCount = count($imagePaths);
         $allImages = '';
 
-        $allowed = array('jpg', 'jpeg', 'png');
+        $allowed = array('jpg', 'jpeg', 'png', 'webp');
         for ($i = 0; $i < $fileCount; $i++) {
             $fileName = $_FILES['image_paths']['name'][$i];
             $fileTmpName = $_FILES['image_paths']['tmp_name'][$i];
