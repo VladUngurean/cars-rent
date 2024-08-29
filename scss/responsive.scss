@@ -1,0 +1,286 @@
+
+//RESPONSIVE min-width:1280px =================================================
+@media (min-width:1280px) {
+    .header-area.active {
+      background: transparent;
+    }
+    .header__mobile {
+      display: none;
+    }
+    .header__mobile.visible {
+      display: none;
+    }
+  }
+  
+  //RESPONSIVE max-width:1280px =================================================
+  @media (max-width:1280px) {
+    .header__container {
+      padding: 0 20px;
+      flex-direction: column;
+    }
+    .header__container > .header__left {
+      display: none;
+    }
+  
+    .header__container > .header__right {
+      display: none;
+    }
+    .header__container_top {
+      width: 100%;
+    }
+    .header__container_top > .menu__mobile {
+      display: flex;
+    }
+  
+    .header__mobile {
+      // @include flex-center();
+      flex-direction: column;
+      gap: 20px;
+    }
+  
+    .header__mobile nav > .nav__ul {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+    .header__mobile .header__right {
+      flex-direction: column;
+      align-items: center;
+      gap: 20px;
+    }
+  
+    .banner_text > h1 {
+      font-size: 50px;
+    }
+  
+    .aboutus-area {
+      height: 100%;
+      background-image: none;
+    }
+  
+    .aboutus-area-container {
+      flex-direction: column;
+      gap: 30px;
+    }
+  }
+  
+  //RESPONSIVE max-width:1010px =================================================
+  @media (max-width:1010px) {
+    .car-list__container > #car-list-render {
+      grid-template-columns: repeat(2, minmax(140px, 1fr));
+      gap: 10px;
+    }
+  
+    .car-list__box > .car-list__box-image {
+      height: auto;
+      aspect-ratio: 1/ 0.7;
+    }
+  
+    //rent car page start
+    .selected-car-top-side {
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+    }
+    //rent car page end
+  }
+  
+  //RESPONSIVE max-width:900px =================================================
+  @media (max-width:900px) {
+    .select-options-for-rent {
+      width: 100%;
+      padding: 25px;
+      min-height: auto;
+    }
+  
+    .select-options-for-rent > span {
+      min-width: unset;
+    }
+  }
+  //RESPONSIVE max-width:800px =================================================
+  @media (max-width:800px) {
+    .info-about-aditioal-rent-options-container {
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    }
+  }
+  
+  //RESPONSIVE max-width:750px =================================================
+  @media (max-width:750px) {
+    .car-list__box > .car-list__box-make-model > h4 {
+      font-size: 20px;
+    }
+    .car-list__box > .car-list__box-details > .car-list__box-details-price > h5 {
+      font-size: 20px;
+    }
+  
+    .car-list__box > .car-list__box-details > .car-list__box-details-tech > .car-list__box-details-tech__item > h6 {
+      font-size: 14px;
+    }
+  
+    .car-list__box > .car-list__box-details > .car-list__box-details-tech > .car-list__box-details-tech__item > svg {
+      display: none;
+    }
+  
+    //font size start 
+    .banner_text > h1 {
+      font-size: 30px;
+      line-height: normal;
+    }
+  
+    .banner_text > p {
+      font-size: 25px;
+      margin: 0 0 20px;
+    }
+  
+    .search-form-area h2 {
+      font-size: 25px;
+    }
+  
+    .select-options-for-rent > span > p {
+      font-size: 17px;
+    }
+  
+    .info-about-contacts-container > h2 {
+      font-size: 30px;
+    }
+    .info-about-contacts-container > p {
+      font-size: 16px;
+    }
+  
+    .info-about-bonus-programm-container p:first-child {
+      font-size: 30px;
+      line-height: normal;
+    }
+    .info-about-bonus-programm-container p:nth-child(2) {
+      font-size: 16px;
+    }
+  
+    .info-about-company-container > button > p {
+      font-size: 20px;
+    }
+  
+    .show-more-cars > p {
+      font-size: 25px;
+    }
+    //font size end
+  
+    // #selected-car-images {
+    //   aspect-ratio: 1 / 0.9;
+    // }
+  
+    .swiper {
+      height: 100%;
+    }
+  
+    .selected-car-area {
+      margin-bottom: 50px;
+    }
+  }
+  
+  //RESPONSIVE max-width:690px =================================================
+  @media (max-width:690px) {
+    .info-about-bonus-programm {
+      padding: 10px;
+      height: 100%;
+    }
+    .info-about-bonus-programm::before, 
+    .info-about-bonus-programm::after {
+      content: unset;
+    }
+  
+    .info-about-contacts {
+      padding: 10px;
+    }
+    .info-about-contacts::before,
+    .info-about-contacts::after {
+      content: unset;
+    }
+    .info-about-contacts-container {
+      justify-content: center;
+    }
+  
+    .info-about-company {
+      height: auto;
+      padding: 20px 10px;
+    }
+    .info-about-company-container {
+      gap: 0;
+    }
+  
+    .swiper-button {
+      display: none !important;
+    }
+  
+    .footer-left > p {
+      font-size: 14px;
+    }
+    .footer-center > h5 {
+      font-size: 20px;
+    }
+    .footer-center > a {
+      font-size: 16px;
+    }
+  
+    .footer-right-top-container > h5 {
+      font-size: 20px;
+    }
+  
+    .footer-right > a {
+      font-size: 18px;
+    }
+    
+    .footer-right-map-links > p {
+      font-size: 18px;
+    }
+    
+  }
+  
+  //RESPONSIVE max-width:550px =================================================
+  @media (max-width:550px) {
+    .accounts {
+      display: none;
+    }
+  }
+  //RESPONSIVE max-width:450px =================================================
+  @media (max-width:450px) {
+    .car-list__box > .car-list__box-details > .car-list__box-details-tech {
+      display: none;
+    }
+  
+    .car-list__box > .car-list__box-make-model {
+      margin: 0;
+    }
+  
+    .car-list__box > .car-list__box-image {
+      aspect-ratio: 1/0.8;
+    }
+  
+    .show-more-cars {
+      padding: 10px;
+      height: auto;
+    }
+    .aboutus-area-container__el > p {
+      margin-top: 10px;
+    }
+  
+    .selected-car-table-container tr {
+      font-size: 14px;
+    }
+  
+    .selected-car-table-container th,
+    .selected-car-table-container td {
+      padding: 5px;
+    }
+  
+  }
+  
+  //RESPONSIVE max-width:400px =================================================
+  @media (max-width:400px) {
+    .car-list__box > .car-list__box-make-model > h4 {
+      font-size: 16px;
+    }
+  
+    .info-about__aditioal-rent-option > text {
+      font-size: 16px;
+    }
+  }

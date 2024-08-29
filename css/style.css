@@ -693,8 +693,15 @@ nav > .nav__ul .nav__link:hover::before {
   font-size: 24px;
   line-height: 28px;
 }
+.select-options-for-rent > span > svg {
+  transition: transform 0.3s;
+}
 .select-options-for-rent > span > img {
   height: 100%;
+}
+
+.rotateArrow {
+  transform: rotate(90deg);
 }
 
 .ul-for-hide-selectoptions {
