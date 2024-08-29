@@ -123,7 +123,7 @@ function HTMLforCarsTable(carInfo) {
       <td>${carInfo.engineFuel}</td>
       <td>${carInfo.engineCapacity}</td>
       <td>${carInfo.bodyType}</td>
-      <td>${carInfo.dorsNumber}</td>
+      <td>${carInfo.doorsNumber}</td>
       <td>${carInfo.passengersNumber}</td>
       <td>${carInfo.rentDaysPrice1_2}</td>
       <td>${carInfo.rentDaysPrice3_7}</td>

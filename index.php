@@ -1,6 +1,7 @@
 <?php 
     session_start();
     $_SESSION['role'] = 'Guest';
+    include "./config.php";
 ?>
 
 <!DOCTYPE html>

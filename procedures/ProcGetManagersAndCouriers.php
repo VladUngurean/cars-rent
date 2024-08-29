@@ -1,6 +1,6 @@
 <?php
 
-include "config.php";
+include "../config.php";
 
 $result = $conn->query("SELECT user_roles.user_role, user.first_name, user.last_name, user.email, user.phone
                         FROM user

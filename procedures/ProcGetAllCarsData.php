@@ -1,11 +1,10 @@
 <?php
-include "config.php";
+include "../config.php";
 // echo isset($_SESSION["email"]) ? 'Session is active' : 'Session is not active';
 $result = $conn->query('SELECT car_make.make, GROUP_CONCAT(car_make_models.model) AS models FROM car_make
                         left JOIN 
                         car_make_models ON car_make.make_id=car_make_models.make_id
-                        GROUP BY make;
-                        ');
+                        GROUP BY make;');
 if ($result->num_rows > 0) {
     // output data of each row
     while($row = $result->fetch_assoc()) {

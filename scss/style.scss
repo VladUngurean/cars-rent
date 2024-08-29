@@ -631,6 +631,7 @@ nav {
 
 .car-to-rent {
   display: none;
+  max-width: 706px;
 }
 .car-to-rent:nth-child(1),
 .car-to-rent:nth-child(2),
@@ -1611,6 +1612,7 @@ label[for="deletemanager@gmail.com"] {
   column-gap: 30px;
   margin-bottom: 75px;
   min-height: 500px;
+  margin-top: 175px;
 }
 .user-account-data {
   background-color: $background-transparent;

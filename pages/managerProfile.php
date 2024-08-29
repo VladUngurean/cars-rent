@@ -1,5 +1,7 @@
-<?php 
-    session_start();
+<?php
+session_start();
+// include "./config.php";
+include "../config.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,38 +17,39 @@
 </head>
 
 <?php
-    include "ProcGetExistingCarsToShow.php";
-    include "ProcGetAllCarsData.php";
-    if (!isset($_SESSION['email'])) {
-        header('Location: login.php');
-        exit;
-    }
 
-    // Check if the user has the correct role
-    if ($_SESSION['role'] !== 'Manager') {
-        header('Location: index.php');
-        exit;
-    }
-    if ($_SESSION['role'] == 'Manager') {
+include "../procedures/ProcGetExistingCarsToShow.php";
+include "../procedures/ProcGetAllCarsData.php";
+if (!isset($_SESSION['email'])) {
+    header('Location: login.php');
+    exit;
+}
 
-    if(isset($_POST['sendNewCar'])) {  
-        $make = mysqli_real_escape_string($conn, $_POST["make"]);  
-        $model = mysqli_real_escape_string($conn, $_POST["model"]);  
-        $transmissionType = mysqli_real_escape_string($conn, $_POST["transmission_type"]);  
-        $fuelType = mysqli_real_escape_string($conn, $_POST["fuel_type"]);  
-        $bodyType = mysqli_real_escape_string($conn, $_POST["body_type"]);  
-        $carPlate = mysqli_real_escape_string($conn, $_POST["car_plate"]);  
-        $doorsNumber = mysqli_real_escape_string($conn, $_POST["doors_number"]);  
-        $pasangersNumber = mysqli_real_escape_string($conn, $_POST["pasangers_number"]);  
-        $engineCapacity = mysqli_real_escape_string($conn, $_POST["engine_capacity"]);  
-        $registrationYear = mysqli_real_escape_string($conn, $_POST["registration_year"]);  
-        $descriptionRo = mysqli_real_escape_string($conn, $_POST["description_ro"]);  
-        $descriptionEn = mysqli_real_escape_string($conn, $_POST["description_en"]);  
-        $rentDaysPrice1_2 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_1_2"]);  
-        $rentDaysPrice3_7 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_3_7"]);  
-        $rentDaysPrice8_20 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_8_20"]);  
-        $rentDaysPrice21_4 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_21_4"]);  
-        $rentDaysPrice46 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_46"]);  
+// Check if the user has the correct role
+if ($_SESSION['role'] !== 'Manager') {
+    header('Location: ../index.php');
+    exit;
+}
+if ($_SESSION['role'] == 'Manager') {
+
+    if (isset($_POST['sendNewCar'])) {
+        $make = mysqli_real_escape_string($conn, $_POST["make"]);
+        $model = mysqli_real_escape_string($conn, $_POST["model"]);
+        $transmissionType = mysqli_real_escape_string($conn, $_POST["transmission_type"]);
+        $fuelType = mysqli_real_escape_string($conn, $_POST["fuel_type"]);
+        $bodyType = mysqli_real_escape_string($conn, $_POST["body_type"]);
+        $carPlate = mysqli_real_escape_string($conn, $_POST["car_plate"]);
+        $doorsNumber = mysqli_real_escape_string($conn, $_POST["doors_number"]);
+        $pasangersNumber = mysqli_real_escape_string($conn, $_POST["pasangers_number"]);
+        $engineCapacity = mysqli_real_escape_string($conn, $_POST["engine_capacity"]);
+        $registrationYear = mysqli_real_escape_string($conn, $_POST["registration_year"]);
+        $descriptionRo = mysqli_real_escape_string($conn, $_POST["description_ro"]);
+        $descriptionEn = mysqli_real_escape_string($conn, $_POST["description_en"]);
+        $rentDaysPrice1_2 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_1_2"]);
+        $rentDaysPrice3_7 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_3_7"]);
+        $rentDaysPrice8_20 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_8_20"]);
+        $rentDaysPrice21_45 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_21_4"]);
+        $rentDaysPrice46 = mysqli_real_escape_string($conn, $_POST["rentDaysPrice_46"]);
         $imagePaths = $_FILES['image_paths']['name'];
         $fileCount = count($imagePaths);
         $allImages = '';
@@ -60,34 +63,107 @@
 
             $fileExt = explode('.', $fileName);
             $fileActualExt = strtolower(end($fileExt));
-        if (in_array($fileActualExt, $allowed)) {
-            if ($fileError === 0) {
-                $uniqueFileName = uniqid('', true) . '_' . $fileName;  // Generate a unique filename
-                $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $uniqueFileName;
-                move_uploaded_file($fileTmpName, $fileDestination);
-                $allImages .= $uniqueFileName . ',';  // Store the unique filename in the list
+            if (in_array($fileActualExt, $allowed)) {
+                if ($fileError === 0) {
+                    $uniqueFileName = uniqid('', true) . '_' . $fileName;  // Generate a unique filename
+                    $fileDestination = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $uniqueFileName;
+                    move_uploaded_file($fileTmpName, $fileDestination);
+                    $allImages .= $uniqueFileName . ',';  // Store the unique filename in the list
+                } else {
+                    echo "There was an error uploading your file!";
+                }
             } else {
-                echo "There was an error uploading your file!";
-            }
-        } else {
-            echo '<script>
+                echo '<script>
                     alert("You cannot upload files of this type!")
                     window.location.href = "managerProfile.php";
                 </script>';
-            exit();
-        } 
+                exit();
+            }
         }
         // $allImages = rtrim($allImages, ',');
         // Prepare the statement 16
-        $stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $descriptionEn ,$descriptionRo, $allImages]);
-        $stmt = $conn->query("CALL InsertCarAndImages(?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)");
-        if ($stmt->execute([$carPlate, $make, $model, $registrationYear, $engineCapacity, $fuelType, $transmissionType, $bodyType, $doorsNumber, $pasangersNumber, $rentDaysPrice1_2, $rentDaysPrice3_7, $rentDaysPrice8_20, $rentDaysPrice21_4, $rentDaysPrice46, $descriptionEn ,$descriptionRo, $allImages])) {
-            echo '<script>alert("New car successfully added to DB")</script>'; 
+
+        // Step 1: Find or insert the car make
+        $query = "SELECT make_id FROM car_make WHERE make = '$make'";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $v_make_id = $row ? $row['make_id'] : null;
+
+        if (!$v_make_id) {
+            $query = "INSERT INTO car_make(make) VALUES ('$make')";
+            mysqli_query($conn, $query);
+            $v_make_id = mysqli_insert_id($conn);
+        }
+
+        // Step 2: Find or insert the car model
+        $query = "SELECT model_id FROM car_make_models WHERE model = '$model'";
+        $result = mysqli_query($conn, $query);
+        $row = mysqli_fetch_assoc($result);
+        $v_model_id = $row ? $row['model_id'] : null;
+
+        if (!$v_model_id) {
+            $query = "INSERT INTO car_make_models(make_id, model) VALUES ($v_make_id, '$model')";
+            mysqli_query($conn, $query);
+            $v_model_id = mysqli_insert_id($conn);
+        } else {
+            // Check if the existing model is related to the specified make
+            $query = "SELECT make_id FROM car_make_models WHERE model = '$model'";
+            $result = mysqli_query($conn, $query);
+            $row = mysqli_fetch_assoc($result);
+            $existing_make_id = $row['make_id'];
+
+            if ($existing_make_id != $v_make_id) {
+                die("Model already exists and is related to another make.");
+            }
+        }
+
+        // Step 3: Insert into car table
+        $query = "INSERT INTO car (
+    car_plate, model_id, registration_year, engine_capacity, engine_fuel_id, transmission_type_id, body_type_id, doors_number, passengers_number
+) VALUES (
+    '$carPlate',
+    $v_model_id,
+    '$registrationYear',
+    '$engineCapacity',
+    (SELECT engine_fuel_id FROM car_engine_fuel WHERE engine_fuel = '$fuelType'),
+    (SELECT transmission_type_id FROM car_transmission_type WHERE transmission_type = '$transmissionType'),
+    (SELECT body_type_id FROM car_body_type WHERE body_type = '$bodyType'),
+    $doorsNumber,
+    $pasangersNumber
+)";
+        mysqli_query($conn, $query);
+        $last_id = mysqli_insert_id($conn);
+
+        // Step 4: Insert into car_rent_cost table
+        $query = "INSERT INTO car_rent_cost (
+    car_id, rent_days_price_1_2, rent_days_price_3_7, rent_days_price_8_20, rent_days_price_21_45, rent_days_price_46
+) VALUES (
+    $last_id, '$rentDaysPrice1_2', '$rentDaysPrice3_7', '$rentDaysPrice8_20', '$rentDaysPrice21_45', '$rentDaysPrice46'
+)";
+        mysqli_query($conn, $query);
+
+        // Step 5: Insert into car_description table
+        $query = "INSERT INTO car_description (car_id, description_english, description_romanian)
+VALUES ($last_id, '$descriptionEn', '$descriptionRo')";
+        mysqli_query($conn, $query);
+
+        // Step 6: Handle the image paths
+        $imagePathsArray = explode(',', $allImages);
+
+        foreach ($imagePathsArray as $imagePath) {
+            $imagePath = trim($imagePath);  // Remove any spaces around the image path
+            $query = "INSERT INTO car_images (car_id, image_path) VALUES ($last_id, '$imagePath')";
+            mysqli_query($conn, $query);
+        }
+
+        if (mysqli_query($conn, $query)) {
+            echo '<script>alert("New car successfully added to DB")</script>';
             echo '<script> window.location.href = "managerProfile.php";</script>';
         }
     };
     //funtion for delete local images
-    function deleteImage($imageName) {
+    function deleteImage($imageName)
+    {
         $imagePath = 'C:\Users\ungur\OneDrive\Рабочий стол\cars-rent\images\carsList/' . $imageName;
         // Check if the file exists before attempting to delete
         if (file_exists($imagePath)) {
@@ -98,11 +174,15 @@
         }
     }
     //delete images and car from DB
-    if(isset($_POST["deleteExistingCar"])) {  
-        $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);  
+    if (isset($_POST["deleteExistingCar"])) {
+        $carPlate = mysqli_real_escape_string($conn, $_POST["deleteExistingCar"]);
         //delete local images
-        $stmt = $conn->prepare("CALL getCarImages(?)");
-        $stmt->execute([$carPlate]);
+        $stmt = $conn->prepare("SELECT GROUP_CONCAT(car_images.image_path) images
+                                FROM car_images
+                                RIGHT JOIN car ON car_images.car_id=car.car_id
+                                WHERE car.car_plate=?;");
+        $stmt->bind_param("s", $carPlate);
+        $stmt->execute();
         $stmt->bind_result($imagePaths);
         $stmt->fetch();
         $imagesArray = explode(',', $imagePaths);
@@ -112,54 +192,99 @@
         // Close the statement
         $stmt->close();
         //delete cars from db
-        $stmt = $conn->prepare("CALL deleteCar(?)");
-        if ($stmt->execute([$carPlate])) {
-            echo '<script>alert("Car successfully deleted from DB")</script>'; 
-            echo '<script> window.location.href = "managerProfile.php";</script>';
-        } else {
-            echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
-        }
-        // Close the statement
-        $stmt->close();
+
+        // Step 1: Get the model_id related to the car_plate
+$query = "SELECT model_id FROM car WHERE car_plate = '$carPlate' LIMIT 1";
+$result = mysqli_query($conn, $query);
+$row = mysqli_fetch_assoc($result);
+$v_model_id = $row ? $row['model_id'] : null;
+
+if ($v_model_id !== null) {
+    // Step 2: Get the make_id related to the model_id
+    $query = "SELECT make_id FROM car_make_models WHERE model_id = $v_model_id LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $v_make_id = $row ? $row['make_id'] : null;
+
+    // Step 3: Delete the car from the car table
+    $query = "DELETE FROM car WHERE car_plate = '$carPlate'";
+    mysqli_query($conn, $query);
+
+    // Step 4: Check if there are any other cars with the same model_id
+    $query = "SELECT car_id FROM car WHERE model_id = $v_model_id LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $v_car_id = $row ? $row['car_id'] : null;
+
+    // Step 5: If no other car uses the model, delete the model from car_make_models
+    if ($v_car_id === null) {
+        $query = "DELETE FROM car_make_models WHERE model_id = $v_model_id";
+        mysqli_query($conn, $query);
     }
+
+    // Step 6: Check if there are any other models with the same make_id
+    $query = "SELECT make_id FROM car_make_models WHERE make_id = $v_make_id LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $row = mysqli_fetch_assoc($result);
+    $v_make_id2 = $row ? $row['make_id'] : null;
+
+    // Step 7: If no other model uses the make, delete the make from car_make
+    if ($v_make_id2 === null) {
+        $query = "DELETE FROM car_make WHERE make_id = $v_make_id";
+        mysqli_query($conn, $query);
     }
-    // get all users from DB
-    $result = $conn->query('CALL getAllUsers()');
+
+    echo '<script>alert("Car successfully deleted from DB")</script>';
+} else {
+    echo '<script>alert("Car not found.")</script>';
+}
+
+// Redirect back to managerProfile.php
+echo '<script> window.location.href = "managerProfile.php";</script>';
+    }
+}
+// get all users from DB
+$result = $conn->query('SELECT user_roles.user_role, user.first_name, user.last_name, user.email, user.phone
+                            FROM user_roles
+                            RIGHT JOIN user ON user.user_role_id = user_roles.user_role_id
+                            WHERE user_roles.user_role="Guest" OR user_roles.user_role="User"
+                            ORDER BY user_roles.user_role_id;');
 
 if ($result->num_rows > 0) {
     // output data of each row
-    while($row = $result->fetch_assoc()) {
+    while ($row = $result->fetch_assoc()) {
 
-    $allUsersData[] = array(
-        'allUsersRole' => $row['user_role'],
-        'allUsersfirstName' => $row['first_name'],
-        'allUserslastName' => $row['last_name'],
-        'allUsersemail' => $row['email'],
-        'allUsersphone' => $row['phone'],
-    );
+        $allUsersData[] = array(
+            'allUsersRole' => $row['user_role'],
+            'allUsersfirstName' => $row['first_name'],
+            'allUserslastName' => $row['last_name'],
+            'allUsersemail' => $row['email'],
+            'allUsersphone' => $row['phone'],
+        );
     }
     if (!empty($allUsersData)) {
-    } 
-  } else {
+    }
+} else {
     echo '<script> let allUsersData =  ""; </script>';
     echo json_encode(["message" => "No data found"]);
-  }
-  $result->close();
-  $conn->next_result();
+}
+$result->close();
+$conn->next_result();
 ?>
 
 <body>
 
-    <?php include "headerMini.php"
-        ?>
+    <?php include "../headerMini.php"
+    ?>
 
-    <?php  
-            if(!isset($_SESSION["email"])){  
-                echo 'Session is not active<br>' ;
-            } else { echo 'Session is active<br>' ; 
-                echo $_SESSION['role'];
-            }
-        ?>
+    <?php
+    if (!isset($_SESSION["email"])) {
+        echo 'Session is not active<br>';
+    } else {
+        echo 'Session is active<br>';
+        echo $_SESSION['role'];
+    }
+    ?>
 
     <br />
 
@@ -265,10 +390,8 @@ if ($result->num_rows > 0) {
         </div>
     </form>
 
-    <?php  
-        echo '<label><a href="logout.php">Logout</a></label> <br>';  
-        echo '<br>';  
-        echo '<label style=" margin-bottom:250px" ><a href="index.php">Main Page</a></label> <br><br><br>';  
+    <?php
+    echo '<label><a href="../logout.php">Logout</a></label> <br>';
     ?>
 
     <script type='text/javascript' src="/js/manager.js" defer></script>

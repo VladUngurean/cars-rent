@@ -12,6 +12,16 @@
     }
   }
   
+  //RESPONSIVE max-width:1330px =================================================
+  @media (max-width:1330px) {
+    .user-data-body {
+      flex-direction: column;
+    }
+
+    .rented-car-container {
+      margin-top: 30px;
+    }
+  }
   //RESPONSIVE max-width:1280px =================================================
   @media (max-width:1280px) {
     .header__container {

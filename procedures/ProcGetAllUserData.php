@@ -1,5 +1,5 @@
 <?php
-include "config.php";
+include "../config.php";
 $email = $_SESSION['email'];
 $query = "SELECT user.first_name, user.last_name, user.email, 
           user.phone,
@@ -8,7 +8,7 @@ $query = "SELECT user.first_name, user.last_name, user.email,
           user_finances.debt
           FROM user 
           LEFT JOIN user_finances USING(user_id)
-          WHERE user.email=$email;";
+          WHERE user.email='$email';";
 
 $result = mysqli_query($conn, $query);
 // $result = $conn->query("CALL getUserAccountData($email);");
@@ -68,7 +68,7 @@ if ($result->num_rows > 0) {
             LEFT JOIN rented_car_insurance ON rented_car.car_insurance=rented_car_insurance.insurance_id
             LEFT JOIN rented_cars_pickup_place ON rented_car.car_pickup_place=rented_cars_pickup_place.pickup_place_id
             LEFT JOIN rented_car_cost USING(rented_car_id)
-            WHERE user.email=$email
+            WHERE user.email='$email'
             GROUP BY car.car_plate,
             car_make.make,
             car_make_models.model,
@@ -118,10 +118,12 @@ if ($result->num_rows > 0) {
     foreach($rentedCarData as &$car){
       $rent_start_datetime = $car["rentStartDateTime"];
       $rent_end_datetime = $car["rentEndDateTime"];
-      $new_rent_start_datetime = new DateTime($rent_start_datetime);
-      $new_rent_end_datetime = new DateTime($rent_end_datetime);
-      $car["rentStartDateTime"] = $new_rent_start_datetime->format('Y-m-d H:i');
-      $car["rentEndDateTime"] = $new_rent_end_datetime->format('Y-m-d H:i');
+      // $new_rent_start_datetime = new DateTime($rent_start_datetime);
+      // $new_rent_end_datetime = new DateTime($rent_end_datetime);
+      // $car["rentStartDateTime"] = $new_rent_start_datetime->format('Y-m-d H:i');
+      // $car["rentEndDateTime"] = $new_rent_end_datetime->format('Y-m-d H:i');
+      $car["rentStartDateTime"] = $rent_start_datetime;
+      $car["rentEndDateTime"] = $rent_end_datetime;
     }
     unset($car);
     if (!empty($rentedCarData)) {

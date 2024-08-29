@@ -32,64 +32,92 @@ if(isset($_POST['rent_car'])) {
     $cashback = mysqli_real_escape_string($conn, $_POST["cashback"]);  
     $cashback = (float)$cashback;
     
-    $conn->query("IF EXISTS (SELECT user_id FROM user WHERE email = ".$email.") THEN
-        INSERT INTO rented_car (car_id,user_id,rent_start_date_time,rent_end_date_time, car_insurance,car_pickup_place)
-        VALUES (
-            (SELECT car_id FROM car WHERE car_plate = ".$carPlate."), 
-            (SELECT user_id FROM user WHERE email = ".$email."),
-            STR_TO_DATE(".$rentPickupDateTime.", '%Y-%m-%d %H:%i:%s'), 
-            STR_TO_DATE(".$rentReturnDateTime.", '%Y-%m-%d %H:%i:%s'), 
-            (SELECT insurance_id FROM rented_car_insurance WHERE insurance_type = ".$insurance."),
-            (SELECT pickup_place_id FROM rented_cars_pickup_place WHERE pickup_place = ".$pickupPlace.")
-        );
-        SET @rented_car_id = LAST_INSERT_ID();
-# inserting the infromation about car cost
-        INSERT INTO rented_car_cost (rented_car_id, rented_car_full_cost, rented_car_cashback)
-        VALUES (@rented_car_id, ".$rentFullCost.", ".$cashback.");
-        
-			#inserting or updating the user finances data 
-				if EXISTS (SELECT user_finances.user_id FROM user_finances LEFT JOIN user USING(user_id) WHERE user.email=".$email.") then
-					# updating the user finances data 
-			        UPDATE user_finances
-			        LEFT JOIN user USING(user_id)
-			        SET user_finances.total_cashback =user_finances.total_cashback+".$cashback.", 
-						 user_finances.total_spent=user_finances.total_spent+".$rentFullCost."
-					  WHERE user.email=".$email.";
-				else
-				INSERT INTO user_finances (user_id,user_finances.total_cashback, user_finances.total_spent)
-				VALUES ((SELECT user_id FROM user WHERE email=".$email."),".$cashback.", ".$rentFullCost.");
-				END if;
-	
-       
-# if user does not exists add user as a guest 
-    ELSE
-        INSERT INTO user (user_role_id, first_name,last_name, password,email,phone)
-        VALUES (
-            (SELECT user_role_id FROM user_roles WHERE user_role = 'Guest'), 
-            ".$firstName.", 
-            ".$lastName.", 
-            '1111', 
-            ".$email.", 
-            ".$phoneNumber."
-        );
-        SET @user_id = LAST_INSERT_ID();
-# insert info about the rented car inside rented_cars
-        INSERT INTO rented_car (car_id,user_id,rent_start_date_time,rent_end_date_time, car_insurance,car_pickup_place)
-        VALUES (
-            (SELECT car_id FROM car WHERE car_plate = ".$carPlate."), 
-            @user_id,
-            STR_TO_DATE(".$rentPickupDateTime.", '%Y-%m-%d %H:%i:%s'), 
-            STR_TO_DATE(".$rentReturnDateTime.", '%Y-%m-%d %H:%i:%s'), 
-            (SELECT insurance_id FROM rented_car_insurance WHERE insurance_type = ".$insurance."),
-            (SELECT pickup_place_id FROM rented_cars_pickup_place WHERE pickup_place = ".$pickupPlace.")
-        );
-        SET @rented_car_id = LAST_INSERT_ID();
-#insert info about the rented car cost into rented_car_cost
-        INSERT INTO rented_car_cost (rented_car_id, rented_car_full_cost, rented_car_cashback)
-        VALUES (@rented_car_id, ".$rentFullCost.", ".$cashback.");
-    END IF;");
+    // Step 1: Check if the user already exists
+$query = "SELECT user_id FROM user WHERE email = '$email' LIMIT 1";
+$result = mysqli_query($conn, $query);
+$user = mysqli_fetch_assoc($result);
+$user_id = $user ? $user['user_id'] : null;
 
-    $conn->next_result();
+if ($user_id !== null) {
+    // User exists, proceed with inserting data into rented_car
+    $query = "INSERT INTO rented_car (car_id, user_id, rent_start_date_time, rent_end_date_time, car_insurance, car_pickup_place)
+              VALUES (
+                  (SELECT car_id FROM car WHERE car_plate = '$carPlate' LIMIT 1), 
+                  $user_id,
+                  STR_TO_DATE('$rentPickupDateTime', '%Y-%m-%d %H:%i:%s'), 
+                  STR_TO_DATE('$rentReturnDateTime', '%Y-%m-%d %H:%i:%s'), 
+                  (SELECT insurance_id FROM rented_car_insurance WHERE insurance_type = '$insurance' LIMIT 1),
+                  (SELECT pickup_place_id FROM rented_cars_pickup_place WHERE pickup_place = '$pickupPlace' LIMIT 1)
+              )";
+    mysqli_query($conn, $query);
+    $rented_car_id = mysqli_insert_id($conn);
+
+    // Step 2: Insert the information about the car cost
+    $query = "INSERT INTO rented_car_cost (rented_car_id, rented_car_full_cost, rented_car_cashback)
+              VALUES ($rented_car_id, $rentFullCost, $cashback)";
+    mysqli_query($conn, $query);
+
+    // Step 3: Check if the user finances record exists
+    $query = "SELECT user_finances.user_id FROM user_finances 
+              LEFT JOIN user USING(user_id) WHERE user.email = '$email' LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    $user_finances = mysqli_fetch_assoc($result);
+
+    if ($user_finances) {
+        // User finances exist, update the record
+        $query = "UPDATE user_finances
+                  LEFT JOIN user USING(user_id)
+                  SET user_finances.total_cashback = user_finances.total_cashback + $cashback, 
+                      user_finances.total_spent = user_finances.total_spent + $rentFullCost
+                  WHERE user.email = '$email'";
+        mysqli_query($conn, $query);
+    } else {
+        // User finances don't exist, insert a new record
+        $query = "INSERT INTO user_finances (user_id, total_cashback, total_spent)
+                  VALUES ($user_id, $cashback, $rentFullCost)";
+        mysqli_query($conn, $query);
+    }
+
+} else {
+    // User does not exist, add user as a guest
+    $query = "INSERT INTO user (user_role_id, first_name, last_name, password, email, phone)
+              VALUES (
+                  (SELECT user_role_id FROM user_roles WHERE user_role = 'Guest' LIMIT 1), 
+                  '$firstName', 
+                  '$lastName', 
+                  '1111', 
+                  '$email', 
+                  '$phoneNumber'
+              )";
+    mysqli_query($conn, $query);
+    $user_id = mysqli_insert_id($conn);
+
+    // Step 4: Insert info about the rented car inside rented_car
+    $query = "INSERT INTO rented_car (car_id, user_id, rent_start_date_time, rent_end_date_time, car_insurance, car_pickup_place)
+              VALUES (
+                  (SELECT car_id FROM car WHERE car_plate = '$carPlate' LIMIT 1), 
+                  $user_id,
+                  STR_TO_DATE('$rentPickupDateTime', '%Y-%m-%d %H:%i:%s'), 
+                  STR_TO_DATE('$rentReturnDateTime', '%Y-%m-%d %H:%i:%s'), 
+                  (SELECT insurance_id FROM rented_car_insurance WHERE insurance_type = '$insurance' LIMIT 1),
+                  (SELECT pickup_place_id FROM rented_cars_pickup_place WHERE pickup_place = '$pickupPlace' LIMIT 1)
+              )";
+    mysqli_query($conn, $query);
+    $rented_car_id = mysqli_insert_id($conn);
+
+    // Step 5: Insert info about the rented car cost into rented_car_cost
+    $query = "INSERT INTO rented_car_cost (rented_car_id, rented_car_full_cost, rented_car_cashback)
+              VALUES ($rented_car_id, $rentFullCost, $cashback)";
+    mysqli_query($conn, $query);
+}
+
+// Optional: Return success or error messages
+if (mysqli_error($conn)) {
+    echo '<script>alert("Error renting car: ' . mysqli_error($conn) . '")</script>';
+} else {
+    echo '<script>alert("Car successfully rented")</script>';
+    echo '<script> window.location.href = "./pages/userProfile.php";</script>'; // Replace with your confirmation page
+}
     echo '<script>alert("Arenda a fost plasata cu succes!<br> Vei fi contactat in scurt timp.");</script>';
     echo "<script> window.location.href = '$currentPage';</script>";
 }

@@ -3,7 +3,7 @@
 // Create HTML for a single car
 // console.log(rentedCarData);
 const createCarHTML = (car, getImages) => `
-  <div id="${car.carPlate}" class="car-to-rent">
+  <div id="${car.carPlate}" class="rented_car">
     <div class="rented-car-list__box">
       <div class="car-list__box-image">
         <img loading="lazy" role="presentation" src="/images/carsList/${getImages[0]}" alt="Car Image(gets only images PATHS from data base)">
@@ -99,7 +99,7 @@ function renderAllRentedCars() {
 
 //add vent listener to each car for rent and send its plate number to php
 function sendCarPlateToPhp() {
-  let rentedCars = document.querySelectorAll(".car-to-rent");
+  let rentedCars = document.querySelectorAll(".rented_car");
   // Attach a click event listener to the button
   rentedCars.forEach(e => {
       e.onclick = function() {
