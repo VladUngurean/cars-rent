@@ -1,7 +1,6 @@
 <?php
 session_start();
-// include "./config.php";
-include "../config.php";
+include "./reusable/config.php";
 ?>
 <!DOCTYPE html>
 <html>
@@ -18,8 +17,8 @@ include "../config.php";
 
 <?php
 
-include "../procedures/ProcGetExistingCarsToShow.php";
-include "../procedures/ProcGetAllCarsData.php";
+include "procedures/ProcGetExistingCarsToShow.php";
+include "procedures/ProcGetAllCarsData.php";
 if (!isset($_SESSION['email'])) {
     header('Location: login.php');
     exit;
@@ -27,7 +26,7 @@ if (!isset($_SESSION['email'])) {
 
 // Check if the user has the correct role
 if ($_SESSION['role'] !== 'Manager') {
-    header('Location: ../index.php');
+    header('Location: index.php');
     exit;
 }
 if ($_SESSION['role'] == 'Manager') {
@@ -79,7 +78,7 @@ if ($_SESSION['role'] == 'Manager') {
             } else {
                 echo '<script>
                     alert("You cannot upload files of this type!")
-                    window.location.href = "../pages/managerProfile.php";
+                    window.location.href = "pages/managerProfile.php";
                 </script>';
                 exit();
             }
@@ -278,7 +277,7 @@ $conn->next_result();
 
 <body>
 
-    <?php include "../headerMini.php"
+    <?php include "./reusable/headerMini.php"
     ?>
 
     <?php
@@ -395,7 +394,7 @@ $conn->next_result();
     </form>
 
     <?php
-    echo '<label><a href="../logout.php">Logout</a></label> <br>';
+    echo '<label><a href="logout.php">Logout</a></label> <br>';
     ?>
 
     <script type='text/javascript' src="/js/manager.js" defer></script>

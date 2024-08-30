@@ -1,0 +1,60 @@
+RewriteEngine on
+
+# Log rewrite actions
+RewriteLog "/path/to/rewrite.log"
+RewriteLogLevel 3
+
+# Handle index page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^index/?$ index.php [L]
+
+# Handle about_us page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^about_us/?$ about_us.php [L]
+
+# Handle contacts page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^contacts/?$ contacts.php [L]
+
+# Handle therms_n_pol page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^therms_n_pol/?$ therms_n_pol.php [L]
+
+# Handle feedback page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^feedback/?$ feedback.php [L]
+
+# Handle carRentPage page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^carRentPage/?$ carRentPage.php [L]
+
+# Handle adminProfile page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^adminProfile/?$ adminProfile.php [L]
+
+# Handle managerProfile page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^managerProfile/?$ managerProfile.php [L]
+
+# Handle userProfile page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^userProfile/?$ userProfile.php [L]
+
+# Handle register page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^register/?$ register.php [L]
+
+# Handle login page without .php
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.php -f
+RewriteRule ^login/?$ login.php [L]

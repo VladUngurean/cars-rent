@@ -27,7 +27,7 @@
 
 <body>
     <?php
-        include('../header.php'); 
+        include('./reusable/header.php'); 
         $currentPage = $_SERVER['SCRIPT_NAME'];
         if ($currentPage != "/index.php"){
             echo '
@@ -171,11 +171,11 @@
     </section>
 
     <?php
-include "../procedures/ProcGetCarByCarPlate.php"; 
-include "../procedures/ProcRentCar.php"; 
+include "procedures/ProcGetCarByCarPlate.php"; 
+include "procedures/ProcRentCar.php"; 
 ?>
 
-    <?php include('../footer.php'); ?>
+    <?php include('./reusable/footer.php'); ?>
     <!-- 
     <script>
     configRent = {

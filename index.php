@@ -1,7 +1,7 @@
 <?php 
     session_start();
     $_SESSION['role'] = 'Guest';
-    include "./config.php";
+    include "./reusable/config.php";
 ?>
 
 <!DOCTYPE html>
@@ -43,7 +43,7 @@
         </div>
     </div>
 
-    <?php require_once('header.php'); ?>
+    <?php require_once('./reusable/header.php'); ?>
     <!-- About us secction START -->
     <section class="aboutus-area">
         <div class="aboutus-area-container">
@@ -281,7 +281,7 @@
         </div>
     </section>
     <!-- Comment secction END -->
-    <?php require_once('footer.php'); ?>
+    <?php require_once('./reusable/footer.php'); ?>
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
     <script type='text/javascript' src="/js/main.js" defer></script>
 </body>

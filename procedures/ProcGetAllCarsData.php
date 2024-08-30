@@ -1,5 +1,4 @@
 <?php
-include "../config.php";
 // echo isset($_SESSION["email"]) ? 'Session is active' : 'Session is not active';
 $result = $conn->query('SELECT car_make.make, GROUP_CONCAT(car_make_models.model) AS models FROM car_make
                         left JOIN 

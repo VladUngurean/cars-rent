@@ -16,7 +16,7 @@
 </head>
 
 <body>
-    <?php include('../header.php');
+    <?php include('./reusable/header.php');
         $currentPage = $_SERVER['SCRIPT_NAME'];
         
         if ($currentPage != "/index.php"){
@@ -35,7 +35,7 @@
 
     <h1 style="margin:450px 0; color:white; font-size:60px">404</h1>
 
-    <?php include('../footer.php'); ?>
+    <?php include('./reusable/footer.php'); ?>
 
 </body>
 

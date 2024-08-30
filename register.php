@@ -1,6 +1,6 @@
 <!-- PHP CODE START -->
 <?php
-include "../config.php";
+include "./reusable/config.php";
 
 // // $_SESSION['role'] = 'Guest';
 // if (isset($_SESSION['role']) && $_SESSION['role'] != "Guest") {
@@ -51,14 +51,14 @@ if(isset($_POST['register'])) {
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='User'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                             if(mysqli_query($conn, $query)) {  
                                 echo '<script>alert("Registration Done")</script>';  
-                                echo '<script> window.location.href = "login.php";</script>';
+                                echo '<script> window.location.href = "../login/";</script>';
                             }
                         } elseif (($_SESSION['role'] === 'Admin')) {
                             $query = "INSERT INTO user(user_role_id,first_name,last_name,phone,email,password)
                             VALUES((SELECT user_role_id FROM user_roles WHERE user_role='$role'),'$firstName','$lastName','$phoneNumber','$email','$password')";
                             if(mysqli_query($conn, $query)) {  
                                 echo '<script>alert("Registration Done")</script>';
-                                echo '<script> window.location.href = "adminProfile.php";</script>';
+                                echo '<script> window.location.href = "/adminProfile/";</script>';
                                 exit;
                             }  
                         }
@@ -116,9 +116,9 @@ function validateEmail($email) {
 
 <body>
 
-    <?php include "../headerMini.php"; 
+    <?php include "./reusable/headerMini.php"; 
     if (isset($_SESSION['role']) && $_SESSION['role'] === "Admin") {
-        echo '<label><a href="logout.php" style="color:red; font-size:20px;">Logout</a></label><br>';  
+        echo '<label><a href="./reusable/logout.php" style="color:red; font-size:20px;">Logout</a></label><br>';  
     }
     ?>
 
@@ -129,7 +129,7 @@ function validateEmail($email) {
             <h1>Comanda Masina Online</h1>
             <form id="registerForm" action="" method="post">
                 <div class="register-area__input-field">
-                    <p>Already have an account? <a href="login.php">Log in</a></p>
+                    <p>Already have an account? <a href="../login/">Log in</a></p>
                     <input value="<?php if(isset($a)){ echo $a;}?>" type="email" name="email" placeholder="E-mail" minlength="5" maxlength="40" required />
                 </div>
                 <div class="register-area__input-field">

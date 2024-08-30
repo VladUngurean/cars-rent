@@ -1,5 +1,7 @@
 <?php 
     session_start();
+    include "./reusable/config.php";
+
 ?>
 
 <!DOCTYPE html>
@@ -11,7 +13,7 @@
     <title>Admin</title>
 
     <?php
-    include "ProcGetManagersAndCouriers.php";
+    include "/procedures/ProcGetManagersAndCouriers.php";
 
     //delete images in cars from DB
     if(isset($_POST["deleteUser"])) {  

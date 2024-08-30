@@ -9,9 +9,9 @@
             </div>
             <div class="footer-center">
                 <h5>Informații suplimentare</h5>
-                <a href="index.php">Mașini</a>
-                <a href="../pages/aboutUs.php">Despre noi</a>
-                <a href="../pages/thermsAndPol.php">Termeni și condiții</a>
+                <a href="/index/">Mașini</a>
+                <a href="/aboutUs/">Despre noi</a>
+                <a href="/thermsAndPol/">Termeni și condiții</a>
             </div>
             <div class="footer-right">
                 <div class="footer-right-top-container">

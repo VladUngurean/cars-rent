@@ -2,7 +2,7 @@
     session_start();
 ?>
 <?php  
-    include "../config.php";
+    include "./reusable/config.php";
 
     if (isset($_SESSION['role']) && $_SESSION['role'] != "Guest") {
         header("Location: index.php");
@@ -76,7 +76,7 @@
 
 <body>
 
-    <?php include "../headerMini.php"; ?>
+    <?php include "./reusable/headerMini.php"; ?>
 
     <section class="login-area">
         <div class="login-area-container">
@@ -84,7 +84,7 @@
             <h1>Log in</h1>
             <form id="logInForm" method="post">
                 <div class="register-area__input-field">
-                    <p>Need an account? <a href="register.php">Sign Up</a></p>
+                    <p>Need an account? <a href="../register/">Sign Up</a></p>
                     <input type="text" name="email" placeholder="E-mail" minlength="5" maxlength="40" required />
                 </div>
                 <div class="register-area__input-field">

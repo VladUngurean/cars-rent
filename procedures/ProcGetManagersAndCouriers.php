@@ -1,7 +1,5 @@
 <?php
 
-include "../config.php";
-
 $result = $conn->query("SELECT user_roles.user_role, user.first_name, user.last_name, user.email, user.phone
                         FROM user
                         LEFT JOIN user_roles USING(user_role_id)

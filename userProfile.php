@@ -9,9 +9,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User</title>
 
-    <link rel="stylesheet" href="../css/style.css">
+    <link rel="stylesheet" href="css/style.css">
 
-    <script type='text/javascript' src="../js/userPage.js" defer></script>
+    <script type='text/javascript' src="js/userPage.js" defer></script>
 </head>
 
 <body>
@@ -20,8 +20,8 @@
         <input type="hidden" name="car_plate" id="hiddenValue">
     </form>
     <?php
-        include "../header.php"; 
-        include "../procedures/ProcGetAllUserData.php"; 
+        include "./reusable/header.php"; 
+        include "procedures/ProcGetAllUserData.php"; 
         // include "ProcCancelRent.php"; //need to do
         // include "save_carplate_in_session.php"; 
     ?>
@@ -64,7 +64,7 @@
                             </p>
                         </div>
 
-                        <?php echo '<label><a href="../logout.php">Logout</a></label> <br>';?>
+                        <?php echo '<label><a href="logout.php">Logout</a></label> <br>';?>
 
                     </div>
                 </div>
@@ -125,7 +125,7 @@
     </section>
 
 
-    <?php include('../footer.php'); ?>
+    <?php include('./reusable/footer.php'); ?>
 </body>
 
 </html>
