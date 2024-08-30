@@ -24,7 +24,7 @@
         $stmt = $conn->prepare("CALL deleteManagerORCourier(?)");
         if ($stmt->execute([$emailToDelete])) {
             echo '<script>alert("User successfully deleted from DB")</script>'; 
-            echo '<script> window.location.href = "adminProfile.php";</script>';
+            echo '<script> window.location.href = "/adminProfile/";</script>';
         } else {
             echo '<script>alert("Error deleting car: ' . $stmt->error . '")</script>'; 
         }

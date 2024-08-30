@@ -23,7 +23,7 @@
     <!-- <button id="sendToSession">Click me</button> -->
     <!-- HTML code -->
     <!-- Get car plate and load carRentPage.php based on car plate -->
-    <form id="formToRentCarPage" action="./pages/carRentPage.php" method="GET">
+    <form id="formToRentCarPage" action="/carRentPage/" method="GET">
         <input type="hidden" name="car_plate" id="hiddenValue">
     </form>
 
@@ -267,6 +267,7 @@
                     </div>
                 </div>
             </div>
+
             <div class="info-about-contacts">
                 <div class="info-about-contacts-container">
                     <h2>Ai întrebări?</h2>

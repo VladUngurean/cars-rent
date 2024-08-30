@@ -118,7 +118,7 @@ function validateEmail($email) {
 
     <?php include "./reusable/headerMini.php"; 
     if (isset($_SESSION['role']) && $_SESSION['role'] === "Admin") {
-        echo '<label><a href="./reusable/logout.php" style="color:red; font-size:20px;">Logout</a></label><br>';  
+        echo '<label><a href="../reusable/logout.php" style="color:red; font-size:20px;">Logout</a></label><br>';  
     }
     ?>
 

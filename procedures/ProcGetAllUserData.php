@@ -1,5 +1,4 @@
 <?php
-include "../config.php";
 $email = $_SESSION['email'];
 $query = "SELECT user.first_name, user.last_name, user.email, 
           user.phone,

@@ -1,5 +1,6 @@
 <?php 
   session_start();
+  include "./reusable/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -28,7 +29,7 @@
     <?php
         $currentPage = $_SERVER['SCRIPT_NAME'];
         // echo $currentPage;
-        if ($currentPage == "/userProfile.php"){
+        if ($currentPage == "/userProfile/"){
             echo '
             <style>
             .header-area{
@@ -64,7 +65,7 @@
                             </p>
                         </div>
 
-                        <?php echo '<label><a href="logout.php">Logout</a></label> <br>';?>
+                        <?php echo '<label><a href="../reusable/logout.php">Logout</a></label> <br>';?>
 
                     </div>
                 </div>

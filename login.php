@@ -30,11 +30,11 @@
 
                 // Redirect to the appropriate dashboard or home page
                 if ($userRole === 'User') {
-                    header("location:userProfile.php");
+                    header("location:/userProfile/");
                 } elseif ($userRole === 'Manager') {
-                    header("location:managerProfile.php");
+                    header("location:/managerProfile/");
                 } elseif ($userRole === 'Admin') {
-                    header("location:adminProfile.php");
+                    header("location:/adminProfile/");
                 } else {
                     echo "Unknown user role!";
                 }

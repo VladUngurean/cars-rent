@@ -394,7 +394,7 @@ $conn->next_result();
     </form>
 
     <?php
-    echo '<label><a href="logout.php">Logout</a></label> <br>';
+    echo '<label><a href="../reusable/logout.php">Logout</a></label> <br>';
     ?>
 
     <script type='text/javascript' src="/js/manager.js" defer></script>

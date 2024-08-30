@@ -1,6 +1,4 @@
 <?php
-include "../config.php";
-
 $currentPage = $_SERVER['SCRIPT_NAME'];
 // echo $_SESSION['email'];
 // echo $_SESSION['global_car_plate'];

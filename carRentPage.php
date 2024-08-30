@@ -1,5 +1,6 @@
 <?php 
     session_start();
+    include "./reusable/config.php";
 ?>
 <!DOCTYPE html>
 <html lang="en">
