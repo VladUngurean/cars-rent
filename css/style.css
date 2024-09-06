@@ -52,6 +52,7 @@ label {
 
 body {
   background-color: rgb(29, 29, 29);
+  height: 100%;
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
@@ -1959,6 +1960,84 @@ label[for="deletemanager@gmail.com"] {
   opacity: 0;
 }
 
+.about_us_container {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+.about_us_container > span {
+  margin-top: 40px;
+  font-weight: 600;
+}
+.about_us_container > p {
+  margin-top: 20px;
+  font-weight: 400;
+}
+
+.about_us_title {
+  color: #FFFFFF;
+  font-family: "Bai Jamjuree", sans-serif;
+  font-weight: 500;
+  font-size: 40px;
+}
+
+.contacts_container {
+  width: 100%;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  color: #FFFFFF;
+  font-size: 20px;
+  font-family: "Bai Jamjuree", sans-serif;
+}
+
+.contacts_card_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+
+.contacts_card {
+  padding: 40px 20px;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.contacts_map {
+  width: 100%;
+  margin-top: 40px;
+}
+.contacts_map .contacts_map_buttons {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+}
+.contacts_map .contacts_map_buttons .contacts_map_ch {
+  width: 100%;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+.contacts_map .contacts_map_buttons .contacts_map_ch:hover {
+  opacity: 0.8;
+}
+.contacts_map .contacts_map_buttons .contacts_map_ch:nth-child(1) {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+.contacts_map .contacts_map_buttons .contacts_map_ch:nth-child(2) {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
 @media (min-width: 1280px) {
   .header-area.active {
     background: transparent;
@@ -1976,6 +2055,9 @@ label[for="deletemanager@gmail.com"] {
   }
   .rented-car-container {
     margin-top: 30px;
+  }
+  .contacts_card_container {
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 @media (max-width: 1280px) {
@@ -2150,6 +2232,9 @@ label[for="deletemanager@gmail.com"] {
   }
   .footer-right-map-links > p {
     font-size: 18px;
+  }
+  .contacts_card_container {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media (max-width: 550px) {

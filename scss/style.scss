@@ -99,6 +99,7 @@ label {
 body {
   background-color: $background-color;
   // background-color: blue;
+  height: 100%;
   min-width: 320px;
   min-height: 100vh;
   overflow-x: hidden;
@@ -2050,5 +2051,87 @@ label[for="deletemanager@gmail.com"] {
   pointer-events: none;
   opacity: 0;
 }
+
+
+//about us =========================================================================
+.about_us_container {
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  color: $text-light;
+  font-size: 20px;
+  font-family: $font-bai-jamjuree;
+
+  &>span {
+    margin-top: 40px;
+    font-weight: 600;
+  }
+  &>p {
+    margin-top: 20px;
+    font-weight: 400;
+  }
+}
+.about_us_title {
+  @include font-settings($text-light, $font-bai-jamjuree, 500, 40px);
+}
+//about us end =========================================================================
+
+// contacts ============================================================================
+.contacts_container {
+  width: 100%;
+  margin-top: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: flex-start;
+  color: $text-light;
+  font-size: 20px;
+  font-family: $font-bai-jamjuree;
+}
+
+.contacts_card_container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+}
+.contacts_card {
+  padding: 40px 20px;
+  background-color: $background-transparent;
+}
+
+.contacts_map {
+  width: 100%;
+  margin-top: 40px;
+  
+  .contacts_map_buttons {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+
+    .contacts_map_ch {
+      width: 100%;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+    .contacts_map_ch:hover {
+    opacity: 0.8;
+    }
+    .contacts_map_ch:nth-child(1) {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+    .contacts_map_ch:nth-child(2) {
+      background-color: $background-transparent;
+    }
+  }
+  
+}
+// contacts end ============================================================================
 
 @import "responsive";

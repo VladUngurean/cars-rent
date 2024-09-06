@@ -16,6 +16,9 @@
   .rented-car-container {
     margin-top: 30px;
   }
+  .contacts_card_container {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 @media (max-width: 1280px) {
   .header__container {
@@ -189,6 +192,9 @@
   }
   .footer-right-map-links > p {
     font-size: 18px;
+  }
+  .contacts_card_container {
+    grid-template-columns: repeat(1, 1fr);
   }
 }
 @media (max-width: 550px) {
