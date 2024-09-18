@@ -285,6 +285,23 @@
     <?php require_once('./reusable/footer.php'); ?>
     <script type='text/javascript' src="/js/filterForCarSelect.js" defer></script>
     <script type='text/javascript' src="/js/main.js" defer></script>
+
+    <script defer>
+    // Load more button
+    let loadMoreButton = document.getElementById("loadMoreCars");
+    let currentItems = 6;
+    loadMoreButton.onclick = () => {
+        let boxes = [...document.querySelectorAll(".car-to-rent")];
+        for (let i = currentItems; i < currentItems + 3; i++) {
+            if (boxes[i] == undefined || currentItems >= boxes.length) {
+                loadMoreButton.style.pointerEvents = "none";
+                break;
+            }
+            boxes[i].style.display = "inline";
+        }
+        currentItems += 3;
+    }
+    </script>
 </body>
 
 

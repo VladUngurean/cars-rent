@@ -187,7 +187,7 @@ section {
   cursor: pointer;
 }
 
-.accounts-header>h5 {
+.accounts-header > h5 {
   font-family: "Jura", sans-serif;
   font-weight: 600;
   font-size: 22px;
@@ -203,7 +203,7 @@ tr {
 th,
 td {
   border: 1px solid black;
-  padding: 5px
+  padding: 5px;
 }
 
 .accounts-table {
@@ -226,63 +226,65 @@ td {
 .menu__mobile {
   width: min-content;
   height: min-content;
-	display: none;
-	// display: flex;
-	align-items: center;
-	justify-content: center;
-	
-	&_button {
-		position: relative;
-		height: 26px;
-		width: 40px;
-		cursor: pointer;
-		background-color: transparrent;
-			
-		&.active {
-			span {
-				opacity: 0;
-			}
-			&.menu__mobile_button:before,
-			&.menu__mobile_button:after  {
-				top: 40%;
-			}
-			&.menu__mobile_button:before {
-				transform: rotate(45deg);
-			}
-			&.menu__mobile_button:after {
-				transform: rotate(-45deg);
-			}
-		}
+  display: none;
+  // display: flex;
+  align-items: center;
+  justify-content: center;
 
-		span,
-		&:before, 
-		&:after {
-			display: block;
-			position: absolute;
-			height: 3px;
-			width: 100%;
-			background-color: $text-light;
-			border-radius: 6px;
-			opacity: 1;
-		}
-		&:before, 
-		&:after {
-			content: "";
-			transition: top .35s cubic-bezier(.23,1,.32,1),transform .35s cubic-bezier(.23,1,.32,1);
-		}
-	
-		span {
-			top: 45%;
-			transform: translateY(-50%);
-		}
-		&:before {
-			top: 0;
-		}
-		&:after {
-			top: calc(100% - 6px);
-		}
-	}
-} 
+  &_button {
+    position: relative;
+    height: 26px;
+    width: 40px;
+    cursor: pointer;
+    background-color: transparrent;
+
+    &.active {
+      span {
+        opacity: 0;
+      }
+      &.menu__mobile_button:before,
+      &.menu__mobile_button:after {
+        top: 40%;
+      }
+      &.menu__mobile_button:before {
+        transform: rotate(45deg);
+      }
+      &.menu__mobile_button:after {
+        transform: rotate(-45deg);
+      }
+    }
+
+    span,
+    &:before,
+    &:after {
+      display: block;
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      background-color: $text-light;
+      border-radius: 6px;
+      opacity: 1;
+    }
+    &:before,
+    &:after {
+      content: "";
+      transition:
+        top 0.35s cubic-bezier(0.23, 1, 0.32, 1),
+        transform 0.35s cubic-bezier(0.23, 1, 0.32, 1);
+    }
+
+    span {
+      top: 45%;
+      transform: translateY(-50%);
+    }
+    &:before {
+      top: 0;
+    }
+    &:after {
+      top: calc(100% - 6px);
+    }
+  }
+}
 // hanburger menu end
 
 //mobile header start
@@ -292,7 +294,7 @@ td {
   display: none;
 }
 .header__mobile.visible {
-  display: flex
+  display: flex;
 }
 
 .header__mobile_bot {
@@ -334,7 +336,6 @@ td {
 .logo__container {
   // margin-right: 40px;
 }
-
 
 nav {
   & > .nav__ul {
@@ -554,7 +555,7 @@ nav {
     flex-direction: column;
     width: 100%;
 
-    &> svg {
+    & > svg {
       width: 100%;
     }
 
@@ -614,6 +615,11 @@ nav {
 //select car end
 
 //rendered cars for rent start
+
+.rent-pickup-datetime {
+  text-align: start;
+}
+
 .car-list__container {
   width: 100%;
   margin-top: 70px;
@@ -797,7 +803,6 @@ nav {
 .rotateArrow {
   transform: rotate(90deg);
 }
-
 
 .ul-for-hide-selectoptions {
   max-width: 100%;
@@ -1026,7 +1031,7 @@ nav {
     background-color: transparent;
     border: none;
 
-    &>svg {
+    & > svg {
       min-width: 40px;
     }
     pointer-events: all;
@@ -1853,7 +1858,6 @@ label[for="deletemanager@gmail.com"] {
   max-height: 450px;
   min-height: 200px;
   object-fit: cover;
-
 }
 
 .swiper-button {
@@ -2052,7 +2056,6 @@ label[for="deletemanager@gmail.com"] {
   opacity: 0;
 }
 
-
 //about us =========================================================================
 .about_us_container {
   margin-top: 150px;
@@ -2064,11 +2067,11 @@ label[for="deletemanager@gmail.com"] {
   font-size: 20px;
   font-family: $font-bai-jamjuree;
 
-  &>span {
+  & > span {
     margin-top: 40px;
     font-weight: 600;
   }
-  &>p {
+  & > p {
     margin-top: 20px;
     font-weight: 400;
   }
@@ -2105,7 +2108,7 @@ label[for="deletemanager@gmail.com"] {
 .contacts_map {
   width: 100%;
   margin-top: 40px;
-  
+
   .contacts_map_buttons {
     display: flex;
     flex-direction: row;
@@ -2121,7 +2124,7 @@ label[for="deletemanager@gmail.com"] {
       cursor: pointer;
     }
     .contacts_map_ch:hover {
-    opacity: 0.8;
+      opacity: 0.8;
     }
     .contacts_map_ch:nth-child(1) {
       background-color: rgba(255, 255, 255, 0.1);
@@ -2130,8 +2133,146 @@ label[for="deletemanager@gmail.com"] {
       background-color: $background-transparent;
     }
   }
-  
 }
 // contacts end ============================================================================
+
+// therms and pol ============================================================================
+
+.tnp {
+  min-height: 100vh;
+  margin: 125px 0;
+  color: $text-light;
+  font-family: $font-bai-jamjuree;
+  & > h1 {
+    @include font-settings($text-light, $font-bai-jamjuree, 500, 40px);
+
+    margin-bottom: 40px;
+  }
+}
+
+.tnp_container {
+  display: flex;
+  flex-direction: row;
+
+  gap: 20px;
+}
+
+.tnp_left {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+
+  .tnp_left_element {
+    display: flex;
+    flex-direction: column;
+
+    background-color: $background-transparent;
+    padding: 35px;
+    gap: 20px;
+  }
+
+  .tnp_left_title {
+    font-size: 24px;
+    white-space: nowrap;
+  }
+
+  .tnp_left_req {
+    @include flex-center();
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+    text-align: center;
+
+    & > div {
+      width: 100%;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      flex-direction: column;
+
+      hr {
+        width: 100%;
+      }
+    }
+  }
+
+  .tnp_left_req.bottom {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 20px;
+    & > div {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      flex-direction: row;
+
+      padding: 0 20px;
+      gap: 10px;
+    }
+  }
+}
+
+.tnp_right {
+  width: 100%;
+  max-width: 1120px;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 20px;
+
+  .tnp_right_element {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: flex-start;
+
+    background-color: $background-transparent;
+    padding: 35px;
+
+    .tnp_right_element_title {
+      position: relative;
+      width: 100%;
+      font-size: 30px;
+      cursor: pointer;
+    }
+
+    .tnp_right_element_title::before {
+      content: "";
+      position: absolute;
+      right: 0;
+      transform: translateY(50%);
+      width: 20px;
+      height: 2px;
+      background-color: #FFFFFF;
+      cursor: pointer;
+      top: 18px;
+    }
+    .tnp_right_element_title::after {
+      content: "";
+      position: absolute;
+      right: 8px;
+      transform: translateY(50%);
+      width: 2px;
+      height: 20px;
+      background-color: #FFFFFF;
+      cursor: pointer;
+    }
+
+    .tnp_right_element_title.show_text::after{
+      content: unset;
+    }
+
+    .tnp_right_element_text {
+      margin-top: 20px;
+      width: 100% !important;
+      display: none;
+    }
+  }
+}
+
+// therms and pol end ============================================================================
 
 @import "responsive";

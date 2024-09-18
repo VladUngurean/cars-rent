@@ -50,20 +50,6 @@ const observer = new IntersectionObserver(toggleScrollToTopButton, {
 if (scrollToTop) {
   observer.observe(scrollToTop);
 }
-// Load more button
-let loadMoreButton = document.getElementById("loadMoreCars");
-let currentItems = 6;
-loadMoreButton.onclick = () => {
-  let boxes = [...document.querySelectorAll(".car-to-rent")];
-  for (let i = currentItems; i < currentItems + 3; i++){
-    if (boxes[i] == undefined || currentItems >= boxes.length) {
-    loadMoreButton.style.pointerEvents = "none";
-    break;
-    }
-    boxes[i].style.display = "inline";
-  }
-  currentItems +=3;
-}
 
 
 //scroll to top function
