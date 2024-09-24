@@ -87,6 +87,14 @@
     min-width: unset;
   }
 }
+@media (max-width: 850px) {
+  .tnp_container {
+    flex-direction: column;
+  }
+  .tnp_left .tnp_left_title {
+    text-align: center;
+  }
+}
 @media (max-width: 800px) {
   .info-about-aditioal-rent-options-container {
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));

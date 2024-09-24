@@ -1965,7 +1965,7 @@ label[for="deletemanager@gmail.com"] {
 }
 
 .about_us_container {
-  margin-top: 150px;
+  margin: 150px 0 50px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -2096,6 +2096,7 @@ label[for="deletemanager@gmail.com"] {
 }
 .tnp_left .tnp_left_req > div hr {
   width: 100%;
+  margin: 3px 0;
 }
 .tnp_left .tnp_left_req.bottom {
   flex-direction: column;
@@ -2252,6 +2253,14 @@ label[for="deletemanager@gmail.com"] {
   }
   .select-options-for-rent > span {
     min-width: unset;
+  }
+}
+@media (max-width: 850px) {
+  .tnp_container {
+    flex-direction: column;
+  }
+  .tnp_left .tnp_left_title {
+    text-align: center;
   }
 }
 @media (max-width: 800px) {

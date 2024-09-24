@@ -2058,7 +2058,7 @@ label[for="deletemanager@gmail.com"] {
 
 //about us =========================================================================
 .about_us_container {
-  margin-top: 150px;
+  margin: 150px 0 50px;
   display: flex;
   flex-direction: column;
   align-items: start;
@@ -2192,6 +2192,7 @@ label[for="deletemanager@gmail.com"] {
 
       hr {
         width: 100%;
+        margin: 3px 0;
       }
     }
   }
